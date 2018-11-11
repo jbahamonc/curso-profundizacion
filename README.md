@@ -69,3 +69,4 @@ git pull origin dev
 git checkout <rama_personal>
 git rebase dev
 ~~~
+__Nota:__ En este punto se pueden presentar conflictos entre las ramas, para solucionar mire la nota puesta al principio.
