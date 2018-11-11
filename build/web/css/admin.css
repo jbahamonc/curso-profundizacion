@@ -1,0 +1,87 @@
+.content-header.no-index .info-box-icon {
+    background-color: #FFF;
+}
+
+.content-header.no-index .info-box-number {
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+}
+
+.btn-fixed {
+    position: fixed;
+    right: 23px;
+    bottom: 23px;
+    margin-bottom: 0;
+    z-index: 998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 1.8em;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.users-list>li img {
+    width: 70px;
+}
+
+.form-group > .input-group > .input-group-addon {
+    padding: 0;
+}
+
+.form-group > .input-group > .input-group-addon button{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.select2-container 
+.select2-selection--multiple 
+.select2-selection__rendered {
+    white-space: normal;
+}
+
+.select2-container--default 
+.select2-search--inline 
+.select2-search__field {
+    display: none;
+}
+
+.select2-container--default 
+.select2-selection--multiple 
+.select2-selection__rendered li {
+    width: 100%;
+}
+
+.input-group.obj {
+    display: block;
+}
+
+.control-sidebar 
+.control-sidebar-menu h4 {
+    color: #FFF;
+}
+
+.control-sidebar .control-sidebar-menu a:hover {
+    background: rgba(0,0,0,0.15);
+}
+
+.control-sidebar-bg {
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+.box-purple {
+    border-top-color: #605ca8;
+}
+
+.box-navy {
+    border-top-color: #001f3f;
+}
