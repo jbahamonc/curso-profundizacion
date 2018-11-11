@@ -18,7 +18,7 @@ __Pasos para agregar un proyecto existente a Gitkraken__
 
 Para empezar a trabajar deberan abrir la terminal de git y ubicarse en la ruta del proyecto, luego ubicarse en su respectiva rama las cuales ya estaran creadas, para ello:
 ~~~
-git checkput <Nomre_Rama> // Ej: git checkout jb
+git checkout <Nomre_Rama> // Ej: git checkout jb
 ~~~
 
 Dentro de cada rama realizan la programación correspondiente, una vez deseen guardar los cambios que han realizado, habra que realizar los siguientes pasos:
@@ -53,7 +53,7 @@ git checkout dev  // Nos movemos a dev
 git merge <Nombre_Rama>  // Rama de donde se van a absorver los cambios
 ~~~
 
-### 2. Pasos a realizar al abrir el proyecto antes de abrir Netbeans
+### 2. Pasos a realizar al abrir el proyecto antes de empezar a codificar
 
 Descargar los ultimos cambios que esten en la rama dev del repositorio de Github, para ello:
 - Se mueven a la rama dev, con el comando:
