@@ -77,8 +77,10 @@
                         <input type="text" class="form-control">
                     </div>			                
                     <div class="form-group col-xs-12">
-                        <label>Responsables (*)</label>
-                        <input type="text" class="form-control">
+                        <label>Nombre Estudiante(s) (*)</label>
+                        <button type="button" data-toggle="modal" data-target="#modal-responsables" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
+                        <select class="js-estudiantes-plan" data-placeholder="Ingrese los estudiantes" name="responsables-actividad[]" multiple style="width: 100%;"></select>	                  	
+                            
                     </div>			                		
                     <div class="form-group col-xs-12">
                         <label>Producto (*)</label>
@@ -91,11 +93,37 @@
                             <option value="0">Grupo de Investigación</option>
                             <option value="1">Semillero de Investigación</option>
                         </select>
-                    </div>  		
+                    </div>  
+                    <div class="clearfix"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modal-responsables" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Agregar Responsables</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-xs-12">
+                        <label>Nombre del Responsable (*)</label>
+                        <input type="text" class="form-control" id="nombre-responsable">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btn-add-responsable">Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

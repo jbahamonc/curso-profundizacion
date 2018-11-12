@@ -54,23 +54,45 @@ $(document).ready(function() {
     	study.focus()
     	university.val("")
     })
+    
+    // JS del select de estudiantes en registro de participación en direccion del plan de accion
+    var $js5 = $('.js-estudiantes-plan').select2();
+    var nombreEst = $("#nombre-estudiante")
+    var programa = $("#programa-estudiante")
+    $("#btn-add-estudiante").on("click", function () {    	
+    	var newOption = new Option(nombreEst.val()+" - "+programa.val(), 1, true, true);
+    	$js5.append(newOption).trigger('change');
+    	nombreEst.val("")
+    	nombreEst.focus()
+    	programa.val("")
+    })
+    
+    // JS del select de responsables en registro de actividades del grupo de investigación
+    var $js6 = $('.js-estudiantes-plan').select2();
+    var nombreResp = $("#nombre-responsable")
+    $("#btn-add-responsable").on("click", function () {    	
+    	var newOption = new Option(nombreResp.val(), 1, true, true);
+    	$js6.append(newOption).trigger('change');
+    	nombreResp.val("")
+    	nombreResp.focus()
+    })
 
     // Evento que se dispara cuando se selecciona algun tipo de producto, con el fin de mostrar campos adicionales
     // dependiento del tipo de producto
     $("#select-tipo-producto").on("change", function () {
-    	var tipo = $(this).val()
+    	var tipo = $(this).val()        
     	$("form .active").removeClass('active').addClass('hidden')
     	if ( tipo == 0) {
-    		$("#fields-book").removeClass('hidden').addClass('active')
+            $("#fields-book").removeClass('hidden').addClass('active')
     	}
     	else if ( tipo == 1) {
-    		$("#fields-chapter").removeClass('hidden').addClass('active')
+            $("#fields-chapter").removeClass('hidden').addClass('active')
     	}
     	else if ( tipo == 2) {
-    		$("#fields-article").removeClass('hidden').addClass('active')
+            $("#fields-article").removeClass('hidden').addClass('active')
     	}
     	else if ( tipo == 3) {
-    		$("#fields-project").removeClass('hidden').addClass('active')
+            $("#fields-project").removeClass('hidden').addClass('active')
     	}
 
     })

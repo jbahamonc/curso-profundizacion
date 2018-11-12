@@ -37,8 +37,8 @@
                             <li><a>Semestre Académico: <span class="pull-right"><b>2</b></span></a></li>
                         </ul>		              
                     </div>
-                    <div class="box-footer no-padding">
-                        <a href="registroPlanDeAccion.jsp" class="btn btn-block">EDITAR PLAN DE ACCIÓN</a>
+                    <div class="box-footer no-padding hidden">
+                        <a href="" class="btn btn-block">EDITAR PLAN DE ACCIÓN</a>
                     </div>
                 </div>	
                 <div class="box box-info">
@@ -266,12 +266,6 @@
                                 <div class="box-body no-padding">
                                     <ul class="nav nav-stacked">
                                         <li>
-                                            <a>Fecha de Inicio:<span class="pull-right"><b>Marzo 2018</b></span></a>
-                                        </li>
-                                        <li>
-                                            <a>Fecha de Terminación:<span class="pull-right"><b>Junio 2018</b></span></a>
-                                        </li>
-                                        <li>
                                             <a>Responsables:<span class="pull-right"><b>Judith del Pilar Rodríguez T<br>Oscar A. Gallardo Pérez<br>Jessica Lorena Pabón</b></span>
                                                 <span class="clearfix"></span>
                                             </a>
@@ -284,48 +278,17 @@
                                                 <ul>
                                                     <li>
                                                         Identificar la documentación a presentar en cuanto a la producción intelectual de los investigadores de la UFPS que sea visible a la comunidad académica e investigativa
+                                                        <p>
+                                                            <span class="label label-success"> Fecha de Inicio: Marzo 2018</span> 
+                                                            <span class="label label-success"> Fecha de Terminación: Junio 2018</span>
+                                                        </p>
                                                     </li>
                                                     <li>
                                                         Seleccionar la productividad de los Grupos de Investigación UFPS ventana 
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                        </li>
-                                    </ul>							            
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" class="collapsed">Revisar las etapas, conceptos y herramientas para la organización de contenidos (análisis, descripción, indización, y clasificación) y el uso de estos que permita construir un producto como expresión de un sistema de información, buscando facilitar la organización y acceso a los contenidos y servicios disponibles en los mismos.</a>
-                                </h4>
-                            </div>
-                            <div id="collapseSeven" class="panel-collapse collapse" aria-expanded="false">
-                                <div class="box-body no-padding">
-                                    <ul class="nav nav-stacked">
-                                        <li>
-                                            <a>Fecha de Inicio:<span class="pull-right"><b>Marzo 2018</b></span></a>
-                                        </li>
-                                        <li>
-                                            <a>Fecha de Terminación:<span class="pull-right"><b>Junio 2018</b></span></a>
-                                        </li>
-                                        <li>
-                                            <a>Responsables:<span class="pull-right"><b>Judith del Pilar Rodríguez T<br>Oscar A. Gallardo Pérez<br>Jessica Lorena Pabón</b></span>
-                                                <span class="clearfix"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>Producto:<span class="pull-right"><b>I  Informe parcial</b></span></a>
-                                        </li>
-                                        <li>
-                                            <a>Actividades:
-                                                <ul>
-                                                    <li>
-                                                        Identificar la documentación a presentar en cuanto a la producción intelectual de los investigadores de la UFPS que sea visible a la comunidad académica e investigativa
-                                                    </li>
-                                                    <li>
-                                                        Seleccionar la productividad de los Grupos de Investigación UFPS ventana 
+                                                        <p>
+                                                            <span class="label label-success"> Fecha de Inicio: Marzo 2018</span> 
+                                                            <span class="label label-success"> Fecha de Terminación: Junio 2018</span>
+                                                        </p>
                                                     </li>
                                                 </ul>
                                             </a>
@@ -357,17 +320,19 @@
                         <a style="border-left: 0">Tipo:<span class="pull-right"><b>Trabajo de Grado - Pregrado</b></span></a>
                     </li>
                     <li>
-                        <a style="border-left: 0">Nombre Estudiante:<span class="pull-right"><b>Farid Santiago Peñaranda Trigos <br>Carlos Augusto Quintero Quintero <br>Edgar Mauricio Peñaranda Fajardo</b></span>
+                        <a style="border-left: 0">Nombre Estudiante:
+                            <span class="pull-right">
+                                <b>Farid Santiago Peñaranda Trigos - Ingeniera de Sistemas <br>
+                                    Carlos Augusto Quintero Quintero - Ingeniera de Sistemas <br>
+                                    Edgar Mauricio Peñaranda Fajardo - Ingeniera de Sistemas
+                                </b>
+                            </span>
                             <span class="clearfix"></span>
                         </a>
                     </li>
                     <li>
                         <a style="border-left: 0">Director:<span class="pull-right"><b>Judith del Pilar Rodríguez T - Director <br>Oscar A. Gallardo Pérez - Co-director</b></span>
                             <span class="clearfix"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="border-left: 0">Programa Académico:<span class="pull-right"><b>Ingeniera de Sistemas</b></span>
                         </a>
                     </li>
                     <li>
