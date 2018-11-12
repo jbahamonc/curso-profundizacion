@@ -85,15 +85,7 @@
                     <div class="form-group col-xs-12">
                         <label>Producto (*)</label>
                         <input type="text" class="form-control">
-                    </div>     
-                    <div class="form-group col-xs-12">
-                        <label>Vincular a (*)</label>
-                        <select class="form-control" id="select-rol-investigador">
-                            <option disabled selected>Seleccione</option>
-                            <option value="0">Grupo de Investigación</option>
-                            <option value="1">Semillero de Investigación</option>
-                        </select>
-                    </div>  
+                    </div>      
                     <div class="clearfix"></div>
                 </div>
                 <div class="modal-footer">

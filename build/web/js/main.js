@@ -76,26 +76,70 @@ $(document).ready(function() {
     	nombreResp.val("")
     	nombreResp.focus()
     })
+    
+    // JS del select de responsables del evento en registro de productos 
+    var $js7 = $('.js-organizadores-evt').select2();
+    var nombreRespEvt = $("#nombre-responsable-evt")
+    $("#btn-add-responsable-evt").on("click", function () {    	
+    	var newOption = new Option(nombreRespEvt.val(), 1, true, true);
+    	$js7.append(newOption).trigger('change');
+    	nombreRespEvt.val("")
+    	nombreRespEvt.focus()
+    })
+    
+    // JS del select de instituciones patrocinadoras del evento en registro de productos 
+    var $js7 = $('.js-inst-patrocinadoras').select2();
+    var instRespo = $("#inst-patrocinadora")
+    $("#btn-add-inst-patrocinadora").on("click", function () {    	
+    	var newOption = new Option(instRespo.val(), 1, true, true);
+    	$js7.append(newOption).trigger('change');
+    	instRespo.val("")
+    	instRespo.focus()
+    })
 
     // Evento que se dispara cuando se selecciona algun tipo de producto, con el fin de mostrar campos adicionales
     // dependiento del tipo de producto
     $("#select-tipo-producto").on("change", function () {
-    	var tipo = $(this).val()        
+    	var tipo = $("#select-tipo-producto option:selected").text()    
+        tipo = tipo.toLowerCase()
+        tipo = quitaAcentos(tipo)
     	$("form .active").removeClass('active').addClass('hidden')
-    	if ( tipo == 0) {
+    	if ( tipo === "libro") {
             $("#fields-book").removeClass('hidden').addClass('active')
     	}
-    	else if ( tipo == 1) {
+    	else if ( tipo == "capitulo") {
             $("#fields-chapter").removeClass('hidden').addClass('active')
     	}
-    	else if ( tipo == 2) {
+    	else if ( tipo == "articulo") {
             $("#fields-article").removeClass('hidden').addClass('active')
     	}
-    	else if ( tipo == 3) {
+    	else if ( tipo == "trabajo de grado") {
             $("#fields-project").removeClass('hidden').addClass('active')
     	}
+        else if ( tipo == "evento cientifico") {
+            $("#fields-ponencia").removeClass('hidden').addClass('active')
+    	}
+        else if ( tipo == "software") {
+            $("#fields-software").removeClass('hidden').addClass('active')
+    	}
+        else {
+            $("#box-empty").removeClass('hidden').addClass('active')
+        }
 
     })
+    
+    // Funcion que quita los acentos del str
+    function quitaAcentos(str){ 
+        for (var i=0;i<str.length;i++){ 
+            //Sustituye "á é í ó ú" 
+            if (str.charAt(i)=="á") str = str.replace(/á/,"a"); 
+            if (str.charAt(i)=="é") str = str.replace(/é/,"e"); 
+            if (str.charAt(i)=="í") str = str.replace(/í/,"i"); 
+            if (str.charAt(i)=="ó") str = str.replace(/ó/,"o"); 
+            if (str.charAt(i)=="ú") str = str.replace(/ú/,"u"); 
+        } 
+        return str; 
+    } 
 
     // Evento que se dispara cuando se selecciona algun tipo de investigador, con el fin de mostrar campos adicionales
     // dependiento del tipo de investigador

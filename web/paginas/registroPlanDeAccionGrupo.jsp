@@ -151,20 +151,14 @@
                                 </select>
                             </div>
                             <div class="form-group col-xs-12">
-                                <label>Título del Proyecto (*)</label>
-                                <input type="text" class="form-control">
-                            </div>	
-                            <div class="form-group col-xs-12">
-                                <label>Nombre Estudiante(s) (*)</label>
-                                <button type="button" data-toggle="modal" data-target="#modal-estudiantes" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                                <select class="js-estudiantes-plan" data-placeholder="Ingrese los estudiantes" name="estudinates-plan[]" multiple style="width: 100%;"></select>	                  	
-                            
-                            </div>		
-                            <div class="form-group col-xs-12">
-                                <label>Director(es) (*) </label>
-                                <button type="button" data-toggle="modal" data-target="#modal-directores" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                                <select class="js-directores" data-placeholder="Ingrese los Objetivos Específicos" name="obj_especificos[]" multiple style="width: 100%;"></select>	                  	
-                            </div>    
+                                <label>Seleccione el Proyecto (*)</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="" selected="" disabled="">Seleccione</option>
+                                    <option value="">Nombre del proyecto</option>
+                                    <option value="">Nombre del proyecto</option>
+                                    <option value="">Nombre del proyecto</option>
+                                </select>
+                            </div>                               
                             <div class="form-group col-xs-12">
                                 <label>Institución (*)</label>
                                 <input type="text" class="form-control">

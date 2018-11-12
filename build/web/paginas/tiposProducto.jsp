@@ -68,6 +68,11 @@
                     <h4 class="modal-title">Formulario de Registro</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-warning alert-dismissible" id="alert-state">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-info"></i> Importante!</h4>
+                        El nombre del producto debe coincidir con los nombres estipulados en el <b>Modelo de Medición de Grupos de Investigación.</b>
+                    </div>
                     <div class="form-group">
                         <label>Seleccione la Tipología (*)</label>
                         <select class="form-control" id="select-rol-investigador">

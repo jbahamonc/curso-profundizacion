@@ -58,6 +58,9 @@
                                     <option value="1">Capítulo</option>
                                     <option value="2">Artículo</option>
                                     <option value="3">Trabajo de Grado</option>
+                                    <option value="4">Evento Científico</option>
+                                    <option value="5">Software</option>
+                                    <option value="6">Patente</option>
                                 </select>
                             </div> 
                             <div class="form-group">
@@ -262,6 +265,69 @@
                                     </select>
                                 </div>
                             </div>
+                            <div id="fields-software" class="hidden">
+                                <div class="form-group">
+                                    <label>Titulo del Producto o Proceso (*)</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Numero de Registro DNDA (*)</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Año de Obtención (*)</label>
+                                    <input type="month" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción del Analisis (*)</label>
+                                    <textarea class="form-control" row="3"></textarea>
+                                </div>            
+                                <div class="form-group">
+                                    <label>Descripción del Diseño (*)</label>
+                                    <textarea class="form-control" row="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción de la Implementación (*)</label>
+                                    <textarea class="form-control" row="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción de la Validación (*)</label>
+                                    <textarea class="form-control" row="3"></textarea>
+                                </div>
+                            </div>
+                            <div id="fields-ponencia" class="hidden">
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <label>Nombre del Evento (*)</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label>Fecha de Inicio (*)</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label>Fecha de Finalización (*)</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Organizadores del Evento (*)</label>
+                                        <button type="button" data-toggle="modal" data-target="#modal" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
+                                        <select class="js-organizadores-evt" data-placeholder="Ingrese los Organizadores" name="responsables-evento[]" multiple style="width: 100%;"></select>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Instituciones Patrocinadoras (*)</label>
+                                        <button type="button" data-toggle="modal" data-target="#modal-instituciones" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
+                                        <select class="js-inst-patrocinadoras" data-placeholder="Ingrese las Instituciones Patrocinadoras" name="inst-patrocinadoras[]" multiple style="width: 100%;"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="box-empty" class="hidden">
+                                <div class="text-center">
+                                    <img src="../img/sad.png" alt="">
+                                    <h3>Lo sentimos!</h3>
+                                    <p>EL tipo de producto no es válido, o no esta automatizado en el sistema.</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                         <br><br>
@@ -287,14 +353,39 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Objetivo Especifico (*)</label>
-                        <textarea id="obj_esp" class="form-control" rows="3"></textarea>
+                        <label>Nombre (*)</label>
+                        <input id="nombre-responsable-evt" class="form-control"></input>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-objective" class="btn btn-primary">Guardar</button>
+                    <button type="button" id="btn-add-responsable-evt" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modal-instituciones" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Formulario de Registro</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Institución (*)</label>
+                        <input id="inst-patrocinadora" class="form-control"></input>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="btn-add-inst-patrocinadora" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
