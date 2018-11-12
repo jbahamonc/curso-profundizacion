@@ -77,7 +77,7 @@
                         <input type="text" class="form-control">
                     </div>			                
                     <div class="form-group col-xs-12">
-                        <label>Nombre Estudiante(s) (*)</label>
+                        <label>Responsables(s) (*)</label>
                         <button type="button" data-toggle="modal" data-target="#modal-responsables" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
                         <select class="js-estudiantes-plan" data-placeholder="Ingrese los estudiantes" name="responsables-actividad[]" multiple style="width: 100%;"></select>	                  	
                             
