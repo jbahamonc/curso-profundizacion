@@ -175,6 +175,10 @@
                             </div>
                             <div id="fields-article" class="hidden">
                                 <div class="form-group">
+                                    <label>Nombre de la Revista (*)</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
                                     <label>Titulo del Artículo (*)</label>
                                     <input type="text" class="form-control">
                                 </div>
@@ -325,7 +329,7 @@
                                 <div class="text-center">
                                     <img src="../img/sad.png" alt="">
                                     <h3>Lo sentimos!</h3>
-                                    <p>EL tipo de producto no es válido, o no esta automatizado en el sistema.</p>
+                                    <p>EL tipo de producto no es válido, o no esta funcional en el sistema.</p>
                                 </div>
                             </div>
                         </div>
