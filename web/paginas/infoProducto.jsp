@@ -42,7 +42,7 @@
                         </ul>		              
                     </div>
                     <div class="box-footer no-padding">
-                        <a href="" class="btn btn-block">EDITAR PRODUCTO</a>
+                        <a href="registroProductos.jsp" class="btn btn-block">EDITAR PRODUCTO</a>
                     </div>
                 </div>
                 <div class="box box-primary">
