@@ -112,38 +112,59 @@
 		            		<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-				            <li>
-				                <a href="categoriaDedicacion.jsp"><i class="fa fa-circle-o"></i> <span>Categorias Dedicación</span></a>
-				            </li>
-				            <li>
-				                <a href="categoriaDocente.jsp"><i class="fa fa-circle-o"></i> <span>Categoria Docente</span></a>
-				            </li>
-				            <li>
-				                <a href="categoriaInvestigador.jsp"><i class="fa fa-circle-o"></i> <span>Categoria Investigador</span></a>
-				            </li>
-				        </ul>
-			        </li>
-			        <li class="treeview">
-		            	<a href="#">
-		            		<i class="fa fa-home"></i>
-		            		<span>Gestión de Tipologías</span>
-		            		<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-		            	</a>
-		            	<ul class="treeview-menu" style="display: none;">
-				            <li>
-				                <a href="tipologiasProducto.jsp"><i class="fa fa-circle-o"></i> <span>Tipologías</span></a>
-				            </li>
-				            <li>
-				                <a href="subtipologiaProducto.jsp"><i class="fa fa-circle-o"></i> <span>Subtipologías</span></a>
-				            </li>
-				            <li>
-				                <a href="tiposProducto.jsp"><i class="fa fa-circle-o"></i> <span>Tipo de Productos</span></a>
-				            </li>
-				            <li>
-				                <a href="categoriaProductos.jsp"><i class="fa fa-circle-o"></i> <span>Categorias</span></a>
-				            </li>
-				        </ul>
-			        </li>
+                                    <li>
+                                        <a href="categoriaDedicacion.jsp"><i class="fa fa-circle-o"></i> <span>Categorias Dedicación</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="categoriaDocente.jsp"><i class="fa fa-circle-o"></i> <span>Categoria Docente</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="categoriaInvestigador.jsp"><i class="fa fa-circle-o"></i> <span>Categoria Investigador</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                        <i class="fa fa-home"></i>
+                                        <span>Gestión de Tipologías</span>
+                                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li>
+                                        <a href="tipologiasProducto.jsp"><i class="fa fa-circle-o"></i> <span>Tipologías</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="subtipologiaProducto.jsp"><i class="fa fa-circle-o"></i> <span>Subtipologías</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="tiposProducto.jsp"><i class="fa fa-circle-o"></i> <span>Tipo de Productos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="categoriaProductos.jsp"><i class="fa fa-circle-o"></i> <span>Categorias</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-home"></i>
+                                    <span>Consultas</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li>
+                                        <a href="produccionTipologia.jsp"><i class="fa fa-circle-o"></i> <span>Filtro de Tipologías</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="produccionGrupo.jsp"><i class="fa fa-circle-o"></i> <span>Producción Grupos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="produccionSemillero.jsp"><i class="fa fa-circle-o"></i> <span>Producción Semilleros</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="produccionInvestigador.jsp"><i class="fa fa-circle-o"></i> <span>Producción Investigador</span></a>
+                                    </li>
+                                </ul>
+                            </li>
 		            <li>
 		                <a href="facultad.jsp"><i class="fa fa-home"></i> <span>Gestion de Facultades</span></a>
 		            </li>

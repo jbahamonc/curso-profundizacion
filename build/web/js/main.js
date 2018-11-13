@@ -3,13 +3,6 @@ $(document).ready(function() {
     $(document).ajaxStart(function () {
         Pace.restart()
     })
-    /*$('.ajax').click(function () {
-        $.ajax({
-            url: '#', success: function (result) {
-                $('.ajax-content').html('<hr>Ajax Request Completed !')
-            }
-        })
-    })*/
 
     $('#example').DataTable();
     //Date range picker
@@ -34,8 +27,7 @@ $(document).ready(function() {
     var $js3 = $('.js-directores').select2();
     var objDirector = $("#director")
     var rol = $("#rol-director")
-    $("#btn-add-director").on("click", function () {
-    	
+    $("#btn-add-director").on("click", function () {    	
     	var newOption = new Option(objDirector.val()+"-"+rol.val().toUpperCase(), 1, true, true);
     	$js3.append(newOption).trigger('change');
     	objDirector.val("")
@@ -46,8 +38,7 @@ $(document).ready(function() {
     var $js4 = $('.js-add-studies').select2();
     var study = $("#study")
     var university = $("#university")
-    $("#btn-add-studies").on("click", function () {
-    	
+    $("#btn-add-studies").on("click", function () {    	
     	var newOption = new Option(study.val()+" - "+university.val(), 1, true, true);
     	$js4.append(newOption).trigger('change');
     	study.val("")
