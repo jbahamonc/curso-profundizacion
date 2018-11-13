@@ -104,10 +104,6 @@
                             <input type="text" class="form-control">
                         </div>	
                         <div class="form-group col-xs-12">
-                            <label>Descripción </label>
-                            <input type="text" class="form-control">
-                        </div>	
-                        <div class="form-group col-xs-12">
                             <label for="exampleInputFile">Archivos</label>
                             <input type="file" id="exampleInputFile" multiple>
                             <p class="help-block">Seleccione todos los archivos de la evidencia.</p>
@@ -117,7 +113,8 @@
                 <div class="clearfix"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btn-save-event">Guardar</button>
+                    <button type="button" class="btn btn-primary hidden" id="btn-back-event">Atras</button>
+                    <button type="button" class="btn btn-primary" id="btn-save-event">Siguiente</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

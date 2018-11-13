@@ -183,10 +183,38 @@ $(document).ready(function() {
     $("#btn-save-event").on("click", function () {
         // Nota: recorrer todos los campos y validar
         var form = $("#form-events")
-        var info_event = form.find("#info-basic-event").addClass("hidden")
-        var info_resource = form.find("#info-resource-event").removeClass("hidden")
+        form.find("#info-basic-event").addClass("hidden")
+        form.find("#info-resource-event").removeClass("hidden")
+        form.find("#btn-back-event").removeClass("hidden")
         $(this).text("Finalizar")
-
+    })
+    
+    // Evento que se dispara cuando se hace un retroceso para ver la info del evento del grupo
+    $("#btn-back-event").on("click", function () {
+        var form = $("#form-events")
+        form.find("#info-basic-event").removeClass("hidden")
+        form.find("#info-resource-event").addClass("hidden")
+        form.find("#btn-save-event").text("Siguiente")
+        $(this).addClass("hidden")
+    })
+    
+    // Evento que se dispara cuando se guarda una capacitacion del semillero
+    $("#btn-save-capacity").on("click", function () {
+        // Nota: recorrer todos los campos y validar
+        var form = $("#form-capacity")
+        form.find("#fields-capacity").addClass("hidden")
+        form.find("#fields-capacity-resource").removeClass("hidden")
+        form.find("#btn-back-capacity").removeClass("hidden")
+        $(this).text("Finalizar")
+    })
+    
+    // Evento que se dispara cuando se hace un retroceso para ver la info de la capacitación del semillero
+    $("#btn-back-capacity").on("click", function () {
+        var form = $("#form-capacity")
+        form.find("#fields-capacity").removeClass("hidden")
+        form.find("#fields-capacity-resource").addClass("hidden")
+        form.find("#btn-save-capacity").text("Siguiente")
+        $(this).addClass("hidden")
     })
     	
 } );

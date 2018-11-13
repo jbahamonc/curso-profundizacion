@@ -62,43 +62,58 @@
 <div class="modal fade" id="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="">
+            <form action="" id="form-capacity">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulario de Registro</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group col-xs-12">
-                        <label>Linea de Investigación (*)</label>
-                        <select class="form-control">
-                            <option disabled selected>Seleccione</option>
-                            <option value="0">Nombre de la linea</option>
-                            <option value="1">Nombre de la linea</option>
-                        </select>
-                    </div> 
-                    <div class="form-group col-xs-12">
-                        <label>Nombre de la Capacitación (*)</label>
-                        <input type="text" class="form-control">
-                    </div>			                
-                    <div class="form-group col-xs-12">
-                        <label>Objetivo (*)</label>
-                        <input type="text" class="form-control">
-                    </div>			                		
-                    <div class="form-group col-xs-12">
-                        <label>Responsables (*)</label>
-                        <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="capacitores[]" multiple style="width: 100%;">
-                            <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                            <option value="WY">Oscar Alberto Gallardo Perez</option>
-                            <option value="WY">Jessica Lorena Pabón</option>
-                            <option value="WY">Gladys Adriana Espinel</option>
-                            <option value="WY">Milton Vera Contreras</option>
-                        </select>
-                    </div>     
-
+                    <div id="fields-capacity">
+                        <div class="form-group col-xs-12">
+                            <label>Linea de Investigación (*)</label>
+                            <select class="form-control">
+                                <option disabled selected>Seleccione</option>
+                                <option value="0">Nombre de la linea</option>
+                                <option value="1">Nombre de la linea</option>
+                            </select>
+                        </div> 
+                        <div class="form-group col-xs-12">
+                            <label>Nombre de la Capacitación (*)</label>
+                            <input type="text" class="form-control">
+                        </div>			                
+                        <div class="form-group col-xs-12">
+                            <label>Objetivo (*)</label>
+                            <input type="text" class="form-control">
+                        </div>			                		
+                        <div class="form-group col-xs-12">
+                            <label>Responsables (*)</label>
+                            <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="capacitores[]" multiple style="width: 100%;">
+                                <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
+                                <option value="WY">Oscar Alberto Gallardo Perez</option>
+                                <option value="WY">Jessica Lorena Pabón</option>
+                                <option value="WY">Gladys Adriana Espinel</option>
+                                <option value="WY">Milton Vera Contreras</option>
+                            </select>
+                        </div>     
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="fields-capacity-resource" class="hidden">
+                        <div class="form-group col-xs-12">
+                            <label>Nombre de la Evidencia (*)</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label for="exampleInputFile">Archivos</label>
+                            <input type="file" id="exampleInputFile" multiple>
+                            <p class="help-block">Seleccione todos los archivos de la evidencia.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-primary hidden" id="btn-back-capacity">Atras</button>
+                    <button type="button" class="btn btn-primary" id="btn-save-capacity">Siguiente</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
