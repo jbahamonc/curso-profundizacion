@@ -207,5 +207,10 @@ $(document).ready(function() {
         form.find("#btn-save-capacity").text("Siguiente")
         $(this).addClass("hidden")
     })
-    	
+    
+    // Evento que se dispara cuando se consulta la productividad de un grupo en consultas
+    $("#btn-consult-productivity").on("click", function() {
+        $("#data-productivity").removeClass("hidden")
+        $("#data-productivity-empty").addClass("hidden")
+    })
 } );

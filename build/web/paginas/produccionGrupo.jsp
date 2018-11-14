@@ -37,7 +37,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-2">
-                                <a href="" class="btn bg-red btn-flat">Consultar</a>
+                                <button type="button" class="btn bg-red btn-flat" id="btn-consult-productivity">Consultar</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>             
@@ -50,7 +50,7 @@
                 <h3 class="box-title">Productividad del Grupo</h3>
             </div>
             <div class="box-body">
-                <div class="row">
+                <div class="row hidden" id="data-productivity">
                     <div class="col-xs-12 col-md-6">
                         <h4 class="text-center"><strong>Generación de Nuevo Conocimiento</strong></h4>
                         <div class="progress-group">
@@ -191,6 +191,9 @@
                         </div>
                         <!-- /.progress-group -->
                     </div>
+                </div>
+                <div class="row" id="data-productivity-empty">
+                    <h3 class="text-center">Seleccione el boton <b>Consultar</b> para ver la información.</h3>
                 </div>
             </div>
         </div>
