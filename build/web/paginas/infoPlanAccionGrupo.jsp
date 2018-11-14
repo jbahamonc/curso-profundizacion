@@ -71,7 +71,8 @@
                                         <hr>
                                         <strong><i class="fa fa-industry margin-r-5"></i> Entidades Participantes</strong>
                                         <p class="text-muted">Universidades - Empresas - Sector de Ingeniería</p>
-
+                                        <strong><i class="fa fa-calendar-check-o margin-r-5"></i> Estado del Evento</strong>
+                                        <p class="text-muted"><span class="badge bg-green">REALIZADO</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +98,8 @@
                                         <hr>
                                         <strong><i class="fa fa-industry margin-r-5"></i> Entidades Participantes</strong>
                                         <p class="text-muted">Universidades - Empresas - Sector de Ingeniería</p>
-
+                                        <strong><i class="fa fa-calendar-check-o margin-r-5"></i> Estado del Evento</strong>
+                                        <p class="text-muted"><span class="badge bg-red">PENDIENTE</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +117,8 @@
                             <div class="">
                                 <div class="box-header with-border">
                                     <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" class="collapsed">Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas</a>
+                                        <a data-toggle="collapse" 
+                                           data-parent="#accordion" href="#collapseThree" aria-expanded="false" class="collapsed">Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas</a>
                                     </h4>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false">
@@ -128,6 +131,8 @@
                                         <hr>
                                         <strong><i class="fa fa-book margin-r-5"></i> Producto</strong>
                                         <p class="text-muted">Envío de Articulo para publicación  Journal Physic ConferenCes</p>
+                                        <strong><i class="fa fa-calendar-check-o margin-r-5"></i> Estado de la Actividad</strong>
+                                        <p class="text-muted"><span class="badge bg-green">CUMPLIDA</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -147,6 +152,8 @@
                                         <hr>
                                         <strong><i class="fa fa-book margin-r-5"></i> Producto</strong>
                                         <p class="text-muted">Envío de Articulo para publicación  Journal Physic ConferenCes</p>
+                                        <strong><i class="fa fa-calendar-check-o margin-r-5"></i> Estado del Evento</strong>
+                                        <p class="text-muted"><span class="badge bg-red">EN DESARROLLO</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -157,48 +164,26 @@
             <div class="col-xs-12 col-md-7">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Proyectos por Linea de Investigación</h3>
+                        <h3 class="box-title">Proyectos Asociados al Plan de Acción</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="box-group" id="accordion">
                             <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                            <div class="">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" class="collapsed">INGENIERIA DE SOFTWARE</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFive" class="panel-collapse collapse" aria-expanded="false">
-                                    <div class="box-body no-padding">
-                                        <ul class="nav nav-stacked">
-                                            <li>
-                                                <a href="" data-toggle="modal" data-target="#modal">Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a href="infoProyecto.jsp" class="">Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta</a>
+                                </h4>
                             </div>
-                            <div class="">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" class="collapsed">LAS TIC Y SUS IMPLICACIONES EN LA EDUCACION</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseEight" class="panel-collapse collapse" aria-expanded="false">
-                                    <div class="box-body no-padding">
-                                        <ul class="nav nav-stacked">
-                                            <li>
-                                                <a href="" data-toggle="modal" data-target="#modal">E-LEARNING EN LA UFPS Fase III  (Proyecto en desarrollo)</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a href="infoProyecto.jsp" class="">E-LEARNING EN LA UFPS Fase III  (Proyecto en desarrollo)</a>
+                                </h4>
                             </div>
                         </div>
                     </div>   
                 </div> 
-                <div class="box box-info">
+                <div class="box box-info hidden">
                     <div class="box-header with-border">
                         <h3 class="box-title">Participación en Dirección</h3>
                     </div>
