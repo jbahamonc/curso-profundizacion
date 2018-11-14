@@ -54,7 +54,7 @@
                 </h2>  
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Listado de Proyectos sin Terminar</h3>
+                        <h3 class="box-title">Listado de Proyectos</h3>
                     </div>        	
                     <div class="box-body">
                         <div class="text-center" id="info-empty-projects">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Listado de Eventos sin Realizar</h3>
+                        <h3 class="box-title">Listado de Eventos</h3>
                     </div>        	
                     <div class="box-body">
                         <div class="text-center" id="info-empty-events">
@@ -116,7 +116,7 @@
                 </div>
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Listado de Actividades sin Completar</h3>
+                        <h3 class="box-title">Listado de Actividades</h3>
                     </div>        	
                     <div class="box-body">
                         <div class="text-center " id="info-empty-activitys">
