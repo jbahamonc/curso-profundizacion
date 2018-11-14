@@ -87,6 +87,26 @@ $(document).ready(function() {
     	instRespo.val("")
     	instRespo.focus()
     })
+    
+    // JS del select de instituciones promotoras del evento en registro del plan de accion 
+    var $js8 = $('.js-inst-promo').select2();    
+    $("#btn-add-inst-promo").on("click", function () { 
+        var instPromo = $("#nombre-inst-promo")
+    	var newOption = new Option(instPromo.val(), 1, true, true);
+    	$js8.append(newOption).trigger('change');
+    	instPromo.val("")
+    	instPromo.focus()
+    })
+    
+    // JS del select de entidades participante del evento en registro del plan de accion 
+    var $js9 = $('.js-entidades').select2();    
+    $("#btn-add-entidad").on("click", function () { 
+        var instEntidad = $("#nombre-entidad")
+    	var newOption = new Option(instEntidad.val(), 1, true, true);
+    	$js9.append(newOption).trigger('change');
+    	instEntidad.val("")
+    	instEntidad.focus()
+    })
 
     // Evento que se dispara cuando se selecciona algun tipo de producto, con el fin de mostrar campos adicionales
     // dependiento del tipo de producto
@@ -212,5 +232,11 @@ $(document).ready(function() {
     $("#btn-consult-productivity").on("click", function() {
         $("#data-productivity").removeClass("hidden")
         $("#data-productivity-empty").addClass("hidden")
+    })
+    
+    // Evento que se dispara cuando se registra un plan de accion
+    $("#btn-save-action-plan").on("click", function() {
+        $(".box-data-action").removeClass("hidden")
+        $("#info-empty-projects, #info-empty-events, #info-empty-activitys").addClass("hidden")
     })
 } );
