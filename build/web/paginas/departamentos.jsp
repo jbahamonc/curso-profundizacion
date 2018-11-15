@@ -12,7 +12,7 @@
         <div class="info-box p-rel">
             <span class="info-box-icon"><i class="fa fa-book"></i></span>
             <div class="info-box-content">
-                <h2 class="info-box-text"><b>Gestion de Facultades</b></h2>
+                <h2 class="info-box-text"><b>Gestion de Departamentos</b></h2>
                 <span class="info-box-number">A continuación podra registrar, eliminar la información.</span>
             </div>
         </div>
@@ -29,16 +29,18 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Codigo</th>
-                                    <th>Nombre de la Facultad</th>
+                                    <th>Facultad</th>
+                                    <th>Código</th>
+                                    <th>Nombre del Departamento</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
+                                    <td>Facultad de Ingenierias</td>
                                     <td>115</td>
-                                    <td>Facultad de Ingeniería</td>
+                                    <td>Departamento de Ingenierías</td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-danger btn-xs">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
@@ -67,11 +69,21 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Codigo</label>
+                        <label>Facultad</label>
+                        <select class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Codigo del Departamento</label>
                         <input type="number" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Nombre</label>
+                        <label>Nombre del Departamento</label>
                         <input type="text" class="form-control">
                     </div>
                 </div>
