@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nombre de la Facultad</th>
+                                    <th>Código del Programa</th>
                                     <th>Nombre del Programa</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>1</td>
                                     <td>Facultad de Ingeniería</td>
+                                    <td>115</td>
                                     <td>Ingenieria de Sistemas</td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-danger btn-xs">
@@ -75,6 +77,10 @@
                             <option>option 4</option>
                             <option>option 5</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Código del Programa</label>
+                        <input type="number" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Programa</label>
