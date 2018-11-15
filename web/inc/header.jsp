@@ -168,12 +168,28 @@
                                     </li>
                                 </ul>
                             </li>
-		            <li>
-		                <a href="facultad.jsp"><i class="fa fa-home"></i> <span>Gestion de Facultades</span></a>
-		            </li>
-		            <li>
-		                <a href="programasAcademicos.jsp"><i class="fa fa-home"></i> <span>Gestion de Programas</span></a>
-		            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-home"></i>
+                                    <span>Gestión Universitaria</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li>
+                                        <a href="facultad.jsp"><i class="fa fa-circle-o"></i> <span>Facultades</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="programasAcademicos.jsp"><i class="fa fa-circle-o"></i> <span>Programas</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="departamentos.jsp"><i class="fa fa-circle-o"></i> <span>Departamentos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="unidadAcademica.jsp"><i class="fa fa-circle-o"></i> <span>Unidades Académicas</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+		            
 		        </ul>
 	      	</section>
 	    </aside>
