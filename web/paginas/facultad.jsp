@@ -29,6 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Codigo</th>
                                     <th>Nombre de la Facultad</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -36,6 +37,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
+                                    <td>115</td>
                                     <td>Facultad de Ingeniería</td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-danger btn-xs">
@@ -64,12 +66,14 @@
                     <h4 class="modal-title">Formulario de Registro</h4>
                 </div>
                 <div class="modal-body">
-
+                    <div class="form-group">
+                        <label>Codigo</label>
+                        <input type="number" class="form-control">
+                    </div>
                     <div class="form-group">
                         <label>Nombre</label>
                         <input type="text" class="form-control">
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
