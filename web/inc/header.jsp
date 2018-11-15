@@ -184,9 +184,6 @@
                                     <li>
                                         <a href="departamentos.jsp"><i class="fa fa-circle-o"></i> <span>Departamentos</span></a>
                                     </li>
-                                    <li>
-                                        <a href="unidadAcademica.jsp"><i class="fa fa-circle-o"></i> <span>Unidades Académicas</span></a>
-                                    </li>
                                 </ul>
                             </li>
 		            
