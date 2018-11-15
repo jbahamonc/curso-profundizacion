@@ -24,19 +24,32 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+                <p>
+                    <span class="badge bg-red"><b>IMPORTANTE: Todos los campos marcados con asterisco (*) son obligatorios</b></span>
+                </p>
                 <div class="row">
-                    <form>
+                    <form id="form-register-groups">
                         <div class="form-group col-xs-12 col-md-8">
                             <label>Nombre del Grupo (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="nombreGrupo" required>
                         </div>				                
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Siglas (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="siglas" required>
                         </div> 
-                        <div class="form-group col-xs-12 col-md-6">
-                            <label>Unidad Académica (*)</label>
-                            <select class="form-control">
+                        <div class="clearfix"></div>
+                        <div class="form-group col-xs-12 col-md-2">
+                            <label>Tipo Unidad Académica (*)</label>
+                            <select class="form-control" name="tipoUnidadAcademica" required>
+                                <option selected disabled> Seleccione</option>
+                                <option>Departamento</option>
+                                <option>Facultada</option>
+                                <option>Programa</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label>Nombre Unidad Académica (*)</label>
+                            <select class="form-control" name="nombreUnidadAcademica" required>
                                 <option value="" selected disabled> Seleccione</option>
                                 <option>option 1</option>
                                 <option>option 2</option>
@@ -47,19 +60,20 @@
                         </div>
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Ubicación (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="ubicacion" required>
                         </div>    
+                        <div class="clearfix"></div>
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Creación (*)</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" name="fechaCreacion" required>
                         </div>   
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Codigo GrupLav (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="codigoGruplav" required>
                         </div>  
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Clasificado Colciencias (*)</label>
-                            <select class="form-control">
+                            <select class="form-control" name="clasificadoColciencias" required>
                                 <option selected disabled>Seleccione</option>
                                 <option>SI</option>
                                 <option>NO</option>
@@ -67,7 +81,7 @@
                         </div>	
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Categoria (*)</label>
-                            <select class="form-control">
+                            <select class="form-control" name="categoriaGrupo" required>
                                 <option selected disabled>Seleccione</option>
                                 <option>SI</option>
                                 <option>NO</option>
@@ -75,20 +89,20 @@
                         </div>		
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Grupo Reconocido por Colciencias sin Categoría (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="reconocidoColciencias" required>
                         </div>
                         <div class="form-group col-xs-12 col-md-9">
                             <label>Director del Grupo (*)</label>
-                            <select class="form-control">
+                            <select class="form-control" name="directorGrupo" required>
                                 <option selected disabled>Seleccione</option>
                                 <option>Nombre</option>
                                 <option>Nombre</option>
                             </select>
                         </div>
-                        <div class="form-group col-xs-12 text-right">
-                            <a href="infoGrupo.jsp" class="btn bg-red btn-flat btn-lg">REGISTRAR GRUPO</a>
-                        </div>                	                                      
                     </form>
+                    <div class="form-group col-xs-12 text-right">
+                        <button type="button" class="btn bg-red btn-flat btn-lg" id="btn-save-group">REGISTRAR GRUPO</button>
+                    </div>          
                 </div>
             </div>
         </div>
