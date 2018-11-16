@@ -76,7 +76,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Seleccione la Actividad (*)</label>
-                        <select class="form-control">
+                        <select class="form-control" required>
                             <option disabled selected>Seleccione</option>
                             <option value="0">Actividad 1</option>
                             <option value="1">Actividad 2</option>
@@ -84,9 +84,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>La actividad se ha realizado?</label>
-                        <button class="btn btn-xs btn-success" style="margin-left: 10px">SI</button>
-                        <button class="btn btn-xs btn-danger">NO</button>
+                        <label>Porcentaje de avance (%) (*)</label>
+                        <input type="number" class="form-control" required>
                     </div> 
                 </div>
                 <div class="modal-footer">
@@ -110,7 +109,7 @@
                 <div class="modal-body"> 
                     <div class="form-group">
                         <label>Nombre del Evento (*)</label>
-                        <select class="form-control">
+                        <select class="form-control" required>
                             <option disabled selected>Seleccione</option>
                             <option value="0">Evento 1</option>
                             <option value="1">Evento 2</option>
@@ -118,10 +117,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>El evento se ha completado?</label>
-                        <button class="btn btn-xs btn-success" style="margin-left: 10px">SI</button>
-                        <button class="btn btn-xs btn-danger">NO</button>
-                    </div>
+                        <label>Porcentaje de avance (%) (*)</label>
+                        <input type="number" class="form-control" required>
+                    </div> 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
