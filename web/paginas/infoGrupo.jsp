@@ -147,16 +147,6 @@
                 </a>
             </li>
             <li>
-                <a href="eventosGrupo.jsp">
-                    <h4 class="control-sidebar-subheading" style="margin: 0">Eventos</h4>
-                </a>
-            </li>
-            <li>
-                <a href="actividades.jsp">
-                    <h4 class="control-sidebar-subheading" style="margin: 0">Actividades</h4>
-                </a>
-            </li>
-            <li>
                 <a href="gruposAsociados.jsp">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Grupos Asociados</h4>
                 </a>
