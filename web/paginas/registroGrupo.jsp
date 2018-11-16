@@ -43,7 +43,7 @@
                             <select class="form-control" name="tipoUnidadAcademica" id="tipo-unidad-academica" required>
                                 <option selected disabled> Seleccione</option>
                                 <option>Departamento</option>
-                                <option>Facultada</option>
+                                <option>Facultad</option>
                                 <option>Programa</option>
                             </select>
                         </div>
