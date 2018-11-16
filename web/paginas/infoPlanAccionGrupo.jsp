@@ -37,8 +37,8 @@
                             <li><a>Semestre Académico: <span class="pull-right"><b>2</b></span></a></li>
                         </ul>		              
                     </div>
-                    <div class="box-footer no-padding hidden">
-                        <a href="" class="btn btn-block">EDITAR PLAN DE ACCIÓN</a>
+                    <div class="box-footer no-padding">
+                        <a href="registroPlanDeAccionGrupo.jsp" class="btn btn-block btn-info btn-flat">Editar Plan de Accion</a>
                     </div>
                 </div>	
                 <div class="box box-info">
@@ -54,6 +54,11 @@
                                     <h4 class="box-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">EIISI 2018</a>
                                     </h4>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-danger" title="Eliminar Evento" >
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="box-body">
@@ -81,6 +86,11 @@
                                     <h4 class="box-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" class="collapsed">EIISI 2019</a>
                                     </h4>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-danger" title="Eliminar Evento" >
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px">
                                     <div class="box-body">
@@ -120,6 +130,11 @@
                                         <a data-toggle="collapse" 
                                            data-parent="#accordion" href="#collapseThree" aria-expanded="false" class="collapsed">Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas</a>
                                     </h4>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-danger" title="Eliminar Actividad" >
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="box-body">
@@ -141,6 +156,11 @@
                                     <h4 class="box-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" class="collapsed">Uso de un repositorio digital como un recurso de comunicación que integra tecnologías de información  mediante una estrategia de visibilidad e impacto de la producción</a>
                                     </h4>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-danger" title="Eliminar Actividad" >
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false" style="height: 0px">
                                     <div class="box-body">
@@ -174,11 +194,21 @@
                                 <h4 class="box-title">
                                     <a href="infoProyecto.jsp" class="">Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta</a>
                                 </h4>
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-xs btn-danger" title="Eliminar Proyecto" >
+                                      <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="box-header with-border">
                                 <h4 class="box-title">
                                     <a href="infoProyecto.jsp" class="">E-LEARNING EN LA UFPS Fase III  (Proyecto en desarrollo)</a>
                                 </h4>
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-xs btn-danger" title="Eliminar Proyecto" >
+                                      <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>   
@@ -214,122 +244,7 @@
         </div>
     </section>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Información del Proyecto</h4>
-            </div>
-            <div class="modal-body no-padding">
-                <ul class="nav nav-stacked">
-                    <li>
-                        <a style="border-left: 0">Lider de la Linea:<span class="pull-right"><b>Judith del Pilar Rodríguez Tenjo</b></span></a>
-                    </li>
-                    <li>
-                        <a style="border-left: 0">Responsables del Proyecto:<span class="pull-right"><b>Judith del Pilar Rodríguez T<br>Oscar A. Gallardo Pérez<br>Jessica Lorena Pabón</b></span>
-                            <span class="clearfix"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal-body">
-                <div class="box box-solid" style="box-shadow: none;">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Objetivos del Proyecto</h3>
-                    </div>
-                    <div class="box-group" id="accordion">
-                        <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                        <div class="">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" class="collapsed">Definir Arquitectura de Información (AI) que permita construir la arquitectura empresarial</a>
-                                </h4>
-                            </div>
-                            <div id="collapseSix" class="panel-collapse collapse" aria-expanded="false">
-                                <div class="box-body no-padding">
-                                    <ul class="nav nav-stacked">
-                                        <li>
-                                            <a>Responsables:<span class="pull-right"><b>Judith del Pilar Rodríguez T<br>Oscar A. Gallardo Pérez<br>Jessica Lorena Pabón</b></span>
-                                                <span class="clearfix"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>Producto:<span class="pull-right"><b>I  Informe parcial</b></span></a>
-                                        </li>
-                                        <li>
-                                            <a>Actividades:
-                                                <ul>
-                                                    <li>
-                                                        Identificar la documentación a presentar en cuanto a la producción intelectual de los investigadores de la UFPS que sea visible a la comunidad académica e investigativa
-                                                        <p>
-                                                            <span class="label label-success"> Fecha de Inicio: Marzo 2018</span> 
-                                                            <span class="label label-success"> Fecha de Terminación: Junio 2018</span>
-                                                        </p>
-                                                    </li>
-                                                    <li>
-                                                        Seleccionar la productividad de los Grupos de Investigación UFPS ventana 
-                                                        <p>
-                                                            <span class="label label-success"> Fecha de Inicio: Marzo 2018</span> 
-                                                            <span class="label label-success"> Fecha de Terminación: Junio 2018</span>
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                        </li>
-                                    </ul>							            
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- Modal -->
-<div class="modal fade" id="modalParticipacion" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Información del Participación en Dirección</h4>
-            </div>
-            <div class="modal-body no-padding">
-                <ul class="nav nav-stacked">
-                    <li>
-                        <a style="border-left: 0">Tipo:<span class="pull-right"><b>Trabajo de Grado - Pregrado</b></span></a>
-                    </li>
-                    <li>
-                        <a style="border-left: 0">Nombre Estudiante:
-                            <span class="pull-right">
-                                <b>Farid Santiago Peñaranda Trigos - Ingeniera de Sistemas <br>
-                                    Carlos Augusto Quintero Quintero - Ingeniera de Sistemas <br>
-                                    Edgar Mauricio Peñaranda Fajardo - Ingeniera de Sistemas
-                                </b>
-                            </span>
-                            <span class="clearfix"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="border-left: 0">Director:<span class="pull-right"><b>Judith del Pilar Rodríguez T - Director <br>Oscar A. Gallardo Pérez - Co-director</b></span>
-                            <span class="clearfix"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="border-left: 0">Institución:<span class="pull-right"><b>UFPS</b></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<a href="registroPlanDeAccionGrupo.jsp" class="btn btn-danger pull-right btn-fixed" title="Agregar Proyectos, Eventos o Actividades">
+    <i class="fa fa-plus" style="vertical-align: bottom;"></i>
+</a>
 <jsp:include page="../inc/footer.jsp"/>
