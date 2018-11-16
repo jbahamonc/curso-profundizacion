@@ -248,3 +248,6 @@
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 <jsp:include page="../inc/footer.jsp"/>
+
+</body>
+</html>
