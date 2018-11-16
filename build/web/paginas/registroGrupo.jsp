@@ -110,3 +110,7 @@
 </div>
 <!-- /END CONTENT WRAPPER -->
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionGrupo.js"></script>
+
+</body>
+</html>
