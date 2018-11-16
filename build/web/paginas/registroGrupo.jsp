@@ -40,7 +40,7 @@
                         <div class="clearfix"></div>
                         <div class="form-group col-xs-12 col-md-2">
                             <label>Tipo Unidad Académica (*)</label>
-                            <select class="form-control" name="tipoUnidadAcademica" required>
+                            <select class="form-control" name="tipoUnidadAcademica" id="tipo-unidad-academica" required>
                                 <option selected disabled> Seleccione</option>
                                 <option>Departamento</option>
                                 <option>Facultada</option>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Nombre Unidad Académica (*)</label>
-                            <select class="form-control" name="nombreUnidadAcademica" required>
+                            <select class="form-control" name="nombreUnidadAcademica" id="nombre-unidad-academica" required>
                                 <option value="" selected disabled> Seleccione</option>
                                 <option>option 1</option>
                                 <option>option 2</option>

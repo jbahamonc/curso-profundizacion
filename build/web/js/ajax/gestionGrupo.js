@@ -45,5 +45,30 @@ $( function () {
         })        
     })
     
+    // Cargar la unidad academica dependiendo de la seleccion en registro de grupos
+    $("#tipo-unidad-academica").on("change", function () {
+        var tipo = $("#tipo-unidad-academica :selected").text().toLowerCase()
+        $.ajax({
+            url      : '#',
+            type     : 'POST',
+//            dataType : 'json',
+            data     : { 
+                tipoUnidad : tipo, 
+                token      : localStorage.getItem('token') },
+            success  : function ( response ) { 
+                console.log(tipo)
+//                if ( response.status == 201 ) {                   
+                    var select = $("#nombre-unidad-academica")
+                    select.empty()
+                    var html = "<option selected disabled>Seleccione</option>"
+                    for (var unidad  in response) {
+                        html += "<option value='"+unidad.id_unidad+"'>"+unidad.nombre+"</option>"
+                    }
+                    select.html(html)
+//                }                
+            }
+        })        
+    })
+    
 })
 
