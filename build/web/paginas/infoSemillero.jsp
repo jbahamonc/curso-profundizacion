@@ -153,16 +153,6 @@
                 </a>
             </li>
             <li>
-                <a href="actividades.jsp">
-                    <h4 class="control-sidebar-subheading" style="margin: 0">Actividades</h4>
-                </a>
-            </li>
-            <li>
-                <a href="capacitacionesSemillero.jsp">
-                    <h4 class="control-sidebar-subheading" style="margin: 0">Capacitaciones</h4>
-                </a>
-            </li>
-            <li>
                 <a href="planAccionSemillero.jsp">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Plan de Acción</h4>
                 </a>

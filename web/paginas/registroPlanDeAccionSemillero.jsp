@@ -54,14 +54,111 @@
                                 </select>
                             </div>	
                             <div class="form-group col-xs-12 text-right">
-                                <a href="" class="btn bg-red btn-flat">REGISTRAR PLAN DE ACCIÓN</a>
+                                <button type="button" class="btn bg-red btn-flat" id="btn-save-action-plan-semillero">REGISTRAR PLAN DE ACCIÓN</button>
                             </div>	                				                                      
                         </form>
                     </div>
                 </div>
+                <h2 class="page-header">
+                    Información del Plan de Acción Anterior
+                    <small>Vincule los proyectos, capacitaciones y actividades del plan de acción anterior.</small>
+                </h2>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Listado de Proyectos</h3>
+                    </div>        	
+                    <div class="box-body">
+                        <div class="text-center" id="info-empty-projects-semillero">
+                            <img src="../img/sad.png" alt="">
+                            <h4><b>No hay información!</b></h4>
+                            <p>No se ha cargado ninguna información en este panel.</p>
+                        </div>
+                        <div class="hidden box-data-action" id="">
+                            <ul class="products-list product-list-in-box">
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="../img/project.svg" alt="Project Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="infoProyecto.jsp" class="product-title">
+                                            Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta
+                                        </a>
+                                        <span class="product-description">
+                                            Fecha de Inicio: 23/02/2018
+                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                            </ul>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Listado de Capacitaciones</h3>
+                    </div>        	
+                    <div class="box-body">
+                        <div class="text-center " id="info-empty-activitys-semillero">
+                            <img src="../img/sad.png" alt="">
+                            <h4><b>No hay información!</b></h4>
+                            <p>No se ha cargado ninguna información en este panel.</p>
+                        </div>
+                        <div id="" class="hidden box-data-action">    
+                            <ul class="products-list product-list-in-box">
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="../img/teacher.svg" alt="Project Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="" class="product-title">
+                                            Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas
+                                        </a>
+                                        <span class="product-description">
+                                            Fecha de Inicio: 23/02/2018
+                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                            </ul>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Listado de Actividades</h3>
+                    </div>        	
+                    <div class="box-body">
+                        <div class="text-center " id="info-empty-activitys-semillero">
+                            <img src="../img/sad.png" alt="">
+                            <h4><b>No hay información!</b></h4>
+                            <p>No se ha cargado ninguna información en este panel.</p>
+                        </div>
+                        <div id="" class="hidden box-data-action">    
+                            <ul class="products-list product-list-in-box">
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="../img/activitys.svg" alt="Project Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="eventosGrupo.jsp" class="product-title">
+                                            Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas
+                                        </a>
+                                        <span class="product-description">
+                                            Fecha de Inicio: 23/02/2018
+                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                            </ul>
+                        </div>
+                    </div>                    
+                </div>
             </div>
             <div class="col-xs-12 col-md-6">
-                <div class="box collapsed-box">
+                <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Registro de Información por Lineas de Investigación</h3>
                         <div class="box-tools pull-right">
@@ -94,92 +191,80 @@
                                     <option value="">Nombre Proyecto</option>
                                     <option value="">Nombre Proyecto</option>
                                 </select>
-                            </div>	
-                            <div class="form-group col-xs-12">
-                                <label>Seleccione el Objetivo (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Descripción del objetivo</option>
-                                    <option value="">Descripción del objetivo</option>
-                                    <option value="">Descripción del objetivo</option>
-                                    <option value="">Descripción del objetivo</option>
-                                    <option value="">Descripción del objetivo</option>
-                                    <option value="">Descripción del objetivo</option>
-                                </select>
-                            </div>	
-                            <div class="form-group col-xs-12">
-                                <label>Actividad del Objetivo Específico(*) </label>
-                                <input type="text" class="form-control">	                  	
-                            </div>		                
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label>Fecha de Inicio (*)</label>
-                                <input type="month" class="form-control">
-                            </div>	
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label>Fecha de Terminación (*)</label>
-                                <input type="month" class="form-control">
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Responsables de la Actividad (*)</label>
-                                <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables[]" multiple style="width: 100%;">
-                                    <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                    <option value="WY">Jessica Lorena Pabón</option>
-                                    <option value="WY">Gladys Adriana Espinel</option>
-                                    <option value="WY">Milton Vera Contreras</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Producto (*)</label>
-                                <input type="text" class="form-control">
-                            </div>	
+                            </div>                            	
                             <div class="form-group col-xs-12 text-right">
                                 <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>
                             </div>	                				                                      
                         </form>
                     </div>
                 </div>
-                <div class="box collapsed-box">
+                <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Capacitaciones</h3>
+                        <h3 class="box-title">Registrar Capacitaciones</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>        	
                     <div class="box-body">
-                        <form>
-                            <div class="form-group col-xs-12">
-                                <label>Linea de Investigación (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Nombre de la linea</option>
-                                    <option value="">Nombre de la linea</option>
-                                    <option value="">Nombre de la linea</option>
-                                    <option value="">Nombre de la linea</option>
-                                </select>
+                        <form action="" id="form-capacity">
+                            <div id="fields-capacity">
+                                <div class="form-group col-xs-12">
+                                    <label>Linea de Investigación (*)</label>
+                                    <select class="form-control">
+                                        <option disabled="" selected="">Seleccione</option>
+                                        <option value="0">Nombre de la linea</option>
+                                        <option value="1">Nombre de la linea</option>
+                                    </select>
+                                </div> 
+                                <div class="form-group col-xs-12">
+                                    <label>Nombre de la Capacitación (*)</label>
+                                    <input type="text" class="form-control">
+                                </div>			                
+                                <div class="form-group col-xs-12">
+                                    <label>Objetivo (*)</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-xs-12 col-md-6">
+                                    <label>Fecha de Realización (*)</label>
+                                    <input type="month" class="form-control">
+                                </div>
+                                <div class="form-group col-xs-12 col-md-6">
+                                    <label>Numero de Asistentes (*)</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Responsables (*)</label>
+                                    <select class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores[]" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
+                                        <option value="WY">Oscar Alberto Gallardo Perez</option>
+                                        <option value="WY">Jessica Lorena Pabón</option>
+                                        <option value="WY">Gladys Adriana Espinel</option>
+                                        <option value="WY">Milton Vera Contreras</option>
+                                    </select>
+                                </div>                               
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="form-group col-xs-12">
-                                <label>Capacitación (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Nombre de la capacitacion</option>
-                                    <option value="">Nombre de la capacitacion</option>
-                                    <option value="">Nombre de la capacitacion</option>
-                                    <option value="">Nombre de la capacitacion</option>
-                                </select>
-                            </div>				                
-                            <div class="form-group col-xs-12">
-                                <label>Fecha de Realización (*)</label>
-                                <input type="text" class="form-control" id="date-realization">
-                            </div>           	
+                            <div id="fields-capacity-resource" class="hidden">
+                                <div class="form-group col-xs-12">
+                                    <label>Nombre de la Evidencia (*)</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="exampleInputFile">Archivos</label>
+                                    <input type="file" id="exampleInputFile" multiple="">
+                                    <p class="help-block">Seleccione todos los archivos de la evidencia.</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
                             <div class="form-group col-xs-12 text-right">
-                                <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>
-                            </div>	                				                                      
+                                <button type="button" class="btn hidden btn-flat" id="btn-back-capacity">Atras</button>
+                                <button type="button" class="btn btn-danger btn-flat" id="btn-save-capacity">Siguiente</button>
+                            </div>
                         </form>
                     </div>
                 </div>
-                <div class="box collapsed-box">
+                <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Otras Actividades de Investigación</h3>
                         <div class="box-tools pull-right">
@@ -188,20 +273,39 @@
                         </div>
                     </div>        	
                     <div class="box-body">
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                            Las Actividadedes de Investigación corresponden a Espacios de socialización, Foros, Reuniones, Elaboración de documentos, entre otros.
+                        </div>
                         <form>
                             <div class="form-group col-xs-12">
-                                <label>Actividad (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Nombre de la Actividad</option>
-                                    <option value="">Nombre de la Actividad</option>
-                                    <option value="">Nombre de la Actividad</option>
-                                    <option value="">Nombre de la Actividad</option>
-                                </select>
-                            </div>				                
+                                <label>Nombre de la Actividad (*)</label>
+                                <input type="text" class="form-control">
+                            </div>	
                             <div class="form-group col-xs-12">
+                                <label>Responsables (*)</label>
+                                <select class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores[]" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
+                                    <option value="WY">Oscar Alberto Gallardo Perez</option>
+                                    <option value="WY">Jessica Lorena Pabón</option>
+                                    <option value="WY">Gladys Adriana Espinel</option>
+                                    <option value="WY">Milton Vera Contreras</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Realización (*)</label>
-                                <input type="text" class="form-control" id="date-realization">
+                                <input type="month" class="form-control">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label>Producto (*)</label>
+                                <select class="form-control" name="" >
+                                    <option disabled>Seleccione</option>
+                                    <option value="AL">Tipo Producto</option>
+                                    <option value="AL">Tipo Producto</option>
+                                    <option value="AL">Tipo Producto</option>
+                                    <option value="AL">Tipo Producto</option>
+                                </select>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
                                 <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>

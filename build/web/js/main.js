@@ -234,9 +234,15 @@ $(document).ready(function() {
         $("#data-productivity-empty").addClass("hidden")
     })
     
-    // Evento que se dispara cuando se registra un plan de accion
+    // Evento que se dispara cuando se registra un plan de accion de un grupo
     $("#btn-save-action-plan").on("click", function() {
         $(".box-data-action").removeClass("hidden")
         $("#info-empty-projects, #info-empty-events, #info-empty-activitys").addClass("hidden")
+    })
+    
+    // Evento que se dispara cuando se registra un plan de accion de un semillero
+    $("#btn-save-action-plan-semillero").on("click", function() {
+        $(".box-data-action").removeClass("hidden")
+        $("#info-empty-projects-semillero, #info-empty-events-semillero, #info-empty-activitys-semillero").addClass("hidden")
     })
 } );
