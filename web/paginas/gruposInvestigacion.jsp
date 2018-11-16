@@ -42,7 +42,7 @@
                             <td>Judith Del Pilar Rodriguez Tenjo</td>
                             <td>A1</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger btn-xs">
+                                <button type="button" class="btn btn-danger btn-xs" data-id="1" id="btn-del-group">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                                 <a href="infoGrupo.jsp" class="btn btn-success btn-xs">
@@ -60,3 +60,7 @@
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionGrupo.js"></script>
+
+</body>
+</html>
