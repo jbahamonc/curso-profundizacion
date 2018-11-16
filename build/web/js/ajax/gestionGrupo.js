@@ -14,12 +14,16 @@ $( function () {
                 type     : 'POST',
                 data     : form.serialize(),
                 success  : function ( response ) {
-                    console.log("Los datos se ha registrado")
-                    form[0].reset()
+                    $.mdtoast('El grupo ha sido creado', {
+                        duration  : 5000                        
+                    });  
+                    document.location.href = '../paginas/gruposInvestigacion.jsp' 
                 }
             })
         } else {
-            console.log("no se ingresaron todos los datos")
+            $.mdtoast('Los campos marcados con (*) son requeridos', {
+                duration  : 5000                
+            });
         }
     })
     
