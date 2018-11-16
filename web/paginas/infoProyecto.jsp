@@ -158,8 +158,8 @@
                 </a>
             </li>
             <li>
-                <a href="gestionProyecto.jsp">
-                    <h4 class="control-sidebar-subheading" style="margin: 0">Gestión del Proyecto</h4>
+                <a href="gestionActividadesProyecto.jsp">
+                    <h4 class="control-sidebar-subheading" style="margin: 0">Gestión de Actividades</h4>
                 </a>
             </li>
         </ul>
