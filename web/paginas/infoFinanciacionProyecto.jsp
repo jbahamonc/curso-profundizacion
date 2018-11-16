@@ -40,10 +40,7 @@
                                     <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et auctor sem. Praesent tincidunt ligula mi, lobortis ultrices mi fermentum at. Proin a sapien ut augue condimentum ultrices</td>
                                     <td>2.000.000</td>
                                     <td class="text-center">
-                                        <a href="" type="button" class="btn btn-success btn-xs">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="" type="button" class="btn btn-danger btn-xs">
+                                        <a href="" type="button" class="btn btn-danger btn-xs" title="Eliminar Fuente de Financiación">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                     </td>

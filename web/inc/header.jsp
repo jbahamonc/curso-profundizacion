@@ -48,16 +48,15 @@
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
                                         <img src="../img/avatar5.png" class="img-circle" alt="User Image">
-
-		                      		<p style="text-transform: capitalize;">
-		                        		NOMBRE
-		                        		<small>Administrador</small>
-		                      		</p>
+                                            <p style="text-transform: capitalize;">
+                                                NOMBRE
+                                                <small>Administrador</small>
+                                            </p>
 		                    	</li>
 			                    <!-- Menu Footer-->
 			                    <li class="user-footer">
 			                      	<div class="pull-right">
-			                        	<a href="../../panel-admin/close/" class="btn btn-default btn-flat">Cerrar Sesion</a>
+			                        	<a href="../index.jsp" class="btn btn-default btn-flat">Cerrar Sesion</a>
 			                      	</div>
 			                    </li>
 		                	</ul>
@@ -82,36 +81,36 @@
 		        </div>
 	        	<!-- Sidebar Menu -->
 	        	<ul class="sidebar-menu tree" data-widget="tree">
-	        		<li class="header">MENÚ PRINCIPAL</li>
-	        		<li>
-		                <a href="../index.jsp"><i class="fa fa-home"></i> <span>home</span></a>
+                            <li class="header">MENÚ PRINCIPAL</li>
+                            <li>
+		                <a href="index.jsp"><i class="fa fa-home"></i> <span>home</span></a>
 		            </li>	        		
 		            <li class="treeview">
 		            	<a href="#">
-		            		<i class="fa fa-home"></i>
-		            		<span>Gestión de Grupos</span>
-		            		<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                    <i class="fa fa-users"></i>
+                                    <span>Gestión de Grupos</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-				            <li><a href="registroGrupo.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-				            <li><a href="gruposInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
-				            <li><a href="categoriasGrupos.jsp"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
-				        </ul>
+                                    <li><a href="registroGrupo.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
+                                    <li><a href="gruposInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
+                                    <li><a href="categoriasGrupos.jsp"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
+                                </ul>
 		            </li>	
 		            <li class="treeview">
 		            	<a href="#">
-		            		<i class="fa fa-home"></i>
-		            		<span>Gestión de Semilleros</span>
-		            		<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                    <i class="fa fa-users"></i>
+                                    <span>Gestión de Semilleros</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-				            <li><a href="registroSemillero.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-				            <li><a href="semillerosInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
-				        </ul>
+                                    <li><a href="registroSemillero.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
+                                    <li><a href="semillerosInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
+                                </ul>
 		            </li>        				  		
 		            <li class="treeview">
 		            	<a href="#">
-		            		<i class="fa fa-home"></i>
+		            		<i class="fa fa-list"></i>
 		            		<span>Gestión de Categorias</span>
 		            		<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
@@ -129,9 +128,9 @@
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                        <i class="fa fa-home"></i>
-                                        <span>Gestión de Tipologías</span>
-                                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                    <i class="fa fa-file-o"></i>
+                                    <span>Gestión de Tipologías</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li>
@@ -150,7 +149,7 @@
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-home"></i>
+                                    <i class="fa fa-search"></i>
                                     <span>Consultas</span>
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                                 </a>
@@ -171,7 +170,7 @@
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-home"></i>
+                                    <i class="fa fa-university"></i>
                                     <span>Gestión Universitaria</span>
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                                 </a>

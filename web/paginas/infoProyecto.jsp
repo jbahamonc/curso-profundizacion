@@ -39,7 +39,7 @@
                         </ul>		              
                     </div>
                     <div class="box-footer no-padding">
-                        <a href="registroGrupo.jsp" class="btn btn-block">EDITAR PROYECTO</a>
+                        <a href="registrarProyecto.jsp" class="btn btn-block btn-flat btn-success">Editar Proyecto</a>
                     </div>
                 </div>
                 <div class="box box-success">

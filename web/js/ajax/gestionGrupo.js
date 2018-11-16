@@ -36,9 +36,9 @@ $( function () {
                 console.log(response)
 //                if ( response.status == 201 ) {                    
                     btn.parent().parent().remove()
-                    $.DataTable.draw()
+//                    $.DataTable.draw()
 //                }
-                $.mdtoast('EL texto a mostrar', {
+                $.mdtoast('El grupo de investigación se ha eliminado', {
                     duration  : 5000                
                 });
             }

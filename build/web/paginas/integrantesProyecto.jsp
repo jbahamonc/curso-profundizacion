@@ -48,10 +48,10 @@
                             <td>email@ufps.edu.co</td>
                             <td>Responsable del proyecto</td>
                             <td class="text-center">
-                                <a href="" type="button" class="btn btn-primary btn-xs">
-                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                <a href="" type="button" class="btn btn-danger btn-xs" title="Desvincular Investigador">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                 </a>
-                                <a href="" type="button" class="btn btn-success btn-xs">
+                                <a href="" type="button" class="btn btn-success btn-xs hidden">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                             </td>
