@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../css/AdminLTE.min.css">	
         <link rel="stylesheet" href="../css/pace.min.css">
         <link rel="stylesheet" href="../css/daterangepicker.css">
+        <link rel="stylesheet" href="../css/mdtoast.css">
         <link rel="stylesheet" href="../css/admin.css">
     </head>
     <body id="con" class="hold-transition skin-red-light sidebar-mini">

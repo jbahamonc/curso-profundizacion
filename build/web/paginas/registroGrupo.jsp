@@ -18,14 +18,14 @@
         </div>
     </section>
     <section class="content">
-        <div class="box box-warning">
+        <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulario de Registro</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <p>
-                    <span class="badge bg-red"><b>IMPORTANTE: Todos los campos marcados con asterisco (*) son obligatorios</b></span>
+                    <span class="label label-danger">IMPORTANTE: Todos los campos marcados con asterisco (*) son obligatorios</span>                    
                 </p>
                 <div class="row">
                     <form id="form-register-groups">
