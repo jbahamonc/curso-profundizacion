@@ -83,13 +83,17 @@
                             <label>Categoria (*)</label>
                             <select class="form-control" name="categoriaGrupo" required>
                                 <option selected disabled>Seleccione</option>
-                                <option>SI</option>
-                                <option>NO</option>
+                                <option>A1</option>
+                                <option>A2</option>
+                                <option>B</option>
+                                <option>B1</option>
+                                <option>Reconocido</option>
+                                <option>Sin categoria</option>
                             </select>
                         </div>		
                         <div class="form-group col-xs-12 col-md-3">
-                            <label>Grupo Reconocido por Colciencias sin Categoría (*)</label>
-                            <input type="text" class="form-control" name="reconocidoColciencias" required>
+                            <label>Email del Grupo (*)</label>
+                            <input type="email" class="form-control" name="reconocidoColciencias" required>
                         </div>
                         <div class="form-group col-xs-12 col-md-9">
                             <label>Director del Grupo (*)</label>
