@@ -4,6 +4,9 @@ $( function () {
     jQuery.validator.messages.number = 'Este campo debe ser num&eacute;rico.';
     jQuery.validator.messages.email = 'La direcci&oacute;n de correo es incorrecta.';
     
+    // Init DataTable of Groups
+    var tableCategoryGroups = $('#table-category-groups').DataTable();
+    
     // Registrar grupos de investigación
     $("#btn-save-group").on("click", function () {
         var form = $("#form-register-groups")
@@ -68,6 +71,61 @@ $( function () {
 //                }                
             }
         })        
+    })
+    
+    // Registrar una categoria del grupo de investigacion
+    $("#btn-save-category-group").on("click", function () {
+        var form = $("#form-category-group")
+        if ( form.valid() ) {
+            $.ajax({
+                url      : '#',
+                type     : 'POST',
+    //            dataType : 'json',
+                data     : { 
+                    nombreCategoria : form.serialize(), 
+                    token : localStorage.getItem('token') 
+                },
+                success  : function ( response ) { 
+    //                if ( response.status == 201 ) {  
+                        tableCategoryGroups.row.add([
+                            1,
+                            "nueva categoria",
+                            "<div class='text-center'>\n\
+                                <button type='button' data-id='' class='btn btn-danger btn-xs btn-del-category'><i class='fa fa-trash' aria-hidden='true'></i>\n\
+                            </button></div>"
+                        ]).draw()
+
+                        $.mdtoast('La categoria se ha registrado', {
+                            duration  : 5000                
+                        });                  
+    //                }                
+                }
+            })    
+        } else {
+            $.mdtoast('El nombre de la categoria es requerido', {
+                duration  : 5000                
+            });
+        }
+    })
+    
+    // Eliminar una categoria de los grupos de investigacion
+    $("#table-category-groups").on("click", ".btn-del-category", function (e) {
+        var btn = $(e.currentTarget)
+        $.ajax({
+            url      : '#',
+            type     : 'GET',
+//            dataType : 'json',
+            data     : {
+                id_categoria : btn.data('id'),
+                token        : localStorage.getItem("token")
+            },
+            success  : function ( response ) {
+                tableCategoryGroups.row(btn.parents('tr')).remove().draw()
+                $.mdtoast('La categoria se ha eliminado', {
+                    duration  : 5000                
+                }); 
+            }
+        })
     })
     
 })

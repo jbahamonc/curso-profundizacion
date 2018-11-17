@@ -12,7 +12,7 @@
         <div class="info-box p-rel">
             <span class="info-box-icon"><i class="fa fa-book"></i></span>
             <div class="info-box-content">
-                <h2 class="info-box-text"><b>Gestion de Facultades</b></h2>
+                <h2 class="info-box-text"><b>Gestion de Programas Académicos</b></h2>
                 <span class="info-box-number">A continuación podra registrar, eliminar la información.</span>
             </div>
         </div>

@@ -1,10 +1,10 @@
 $(document).ready(function() {
     // To make Pace works on Ajax calls
-    $(document).ajaxStart(function () {
-        Pace.restart()
-    })
+//    $(document).ajaxStart(function () {
+//        //Pace.restart()
+//    })
 
-    $('#example').DataTable();
+//    $('#example').DataTable();
     //Date range picker
     $('#date-realization').daterangepicker({
         opens : 'left',
