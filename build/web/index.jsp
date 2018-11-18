@@ -22,7 +22,6 @@
         </style>
     </head>
     <body class="login-page">
-        <% // response.sendRedirect("paginas/index.jsp");%>
         <div class="login-box">
             <div class="login-logo">
                 <img width="200" src="img/logo_ufps.png" alt="">
@@ -50,45 +49,6 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/mdtoast.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
-        <script>
-            $(function () {
-                jQuery.validator.messages.required = 'Este campo es obligatorio.';
-                jQuery.validator.messages.email = 'La direcci&oacute;n de correo no es v&aacute;lida.';
-                
-                $("#btn-login").on("click", function () {
-                    var form = $("#form-login")
-                    var isValid = form.valid()
-                    if ( isValid ) {
-                        $.ajax({
-                            url     : '#',
-                            type    : 'POST',
-                            //dataType : 'json',
-                            data     : form.serialize(),
-                            success  : function ( response ) {
-                                //if ( response.status == 200 ) {
-                                //    localStorage.setItem('token', response.token)
-                                    $.mdtoast('Sesión iniciada, en un momento sera redireccionado', {
-                                        duration  : 5000                
-                                    });
-                                    setTimeout( function () {
-                                        document.location.href = 'paginas/index.jsp'
-                                    }, 6000)   
-                                //} else {
-                                //    $.mdtoast('Las credenciales ingresadas no son válidas', {
-                                //        duration  : 7000                
-                                //    });
-                                //}
-                            }
-                        })
-                    } else {
-                        $.mdtoast('Debe ingresar el usuario y la contraseña', {
-                            duration  : 5000                
-                        });
-                    }
-                })
-                
-                
-            })
-        </script>
+        <script src="js/ajax/login.js"></script>
     </body>
 </html>
