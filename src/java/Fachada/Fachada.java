@@ -5,14 +5,9 @@
  */
 package Fachada;
 
-import Controller.ControladorFacultad;
+import Controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +18,7 @@ import org.json.JSONObject;
 public class Fachada {
     
     private ControladorFacultad controladorFacultad;
-    
+    private ControladorGrupos controladorGrupos;    
     
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
@@ -40,6 +35,15 @@ public class Fachada {
     public ArrayList<JSONObject> listarFacultades () throws IOException, JSONException {
         controladorFacultad = new ControladorFacultad();
         return controladorFacultad.listarFacultad();
+    
+    }
+    
+    // Metodos de Grupos ***************************************************************************************************************************
+    public int registrarGrupo (String nombre, String siglas, String tipoUnidad, String nombreUnidad, String ubicacion, 
+                                    String fecha, String codigoGruplav, String clasificado, String categoria, String email, 
+                                    String nombreDpto, String director) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, categoria, email, nombreDpto, director);
     
     }
 }

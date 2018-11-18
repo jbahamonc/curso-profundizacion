@@ -8,16 +8,29 @@ $( function () {
     var tableCategoryGroups = $('#table-category-groups').DataTable();
     
     // Registrar grupos de investigación
-    $("#btn-save-group").on("click", function () {
-        var form = $("#form-register-groups")
+    $("#btn-save-group").on("click", function () {        
+        var form = $("#form-register-groups")        
         var state = form.valid()
         if ( state ) {
+            var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+            myToast.show()
+            var token = localStorage.getItem("token")
+            form = form.serializeArray()
+            form.push({ token : token })
             $.ajax({
-                url      : '#',
+                url      : '../paginas/procesar/gestionGrupos.jsp',
                 type     : 'POST',
-                data     : form.serialize(),
+                data     : $.param(form),
                 success  : function ( response ) { 
-                    document.location.href = '../paginas/gruposInvestigacion.jsp' 
+                    myToast.hide()
+                    var res = JSON.parse(response)
+                    if (res.status != 200) {                        
+                        document.location.href = '../paginas/procesar/gestionGrupos.jsp?id_grupo='+res.id_grupo+'$operacion='+2+'$token='+token 
+                    } else {
+                        $.mdtoast('Lo sentimos!, Ocurrio un problema en el sistema', {
+                            duration  : 5000                
+                        });
+                    }
                 }
             })
         } else {
@@ -50,24 +63,49 @@ $( function () {
     
     // Cargar la unidad academica dependiendo de la seleccion en registro de grupos
     $("#tipo-unidad-academica").on("change", function () {
-        var tipo = $("#tipo-unidad-academica :selected").text().toLowerCase()
+        var myToast = $.mdtoast('Cargando unidades académicas...', { duration: 100000, init: true });
+        myToast.show()
+        var id = $(this).val()
         $.ajax({
-            url      : '#',
-            type     : 'POST',
+            url      : '../paginas/procesar/gestionGrupos.jsp?id='+id+'operacion=5&token='+localStorage.getItem('token'),
+            type     : 'GET',
 //            dataType : 'json',
-            data     : { 
-                tipoUnidad : tipo, 
-                token      : localStorage.getItem('token') },
             success  : function ( response ) { 
-                console.log(tipo)
+                console.log(response)
+                myToast.hide()
 //                if ( response.status == 201 ) {                   
-                    var select = $("#nombre-unidad-academica")
-                    select.empty()
-                    var html = "<option selected disabled>Seleccione</option>"
-                    for (var unidad  in response) {
-                        html += "<option value='"+unidad.id_unidad+"'>"+unidad.nombre+"</option>"
-                    }
-                    select.html(html)
+//                    var select = $("#nombre-unidad-academica")
+//                    select.empty()
+//                    var html = "<option selected disabled>Seleccione</option>"
+//                    for (var unidad  in response) {
+//                        html += "<option value='"+unidad.id_unidad+"'>"+unidad.nombre+"</option>"
+//                    }
+//                    select.html(html)
+//                }                
+            }
+        })        
+    })
+    
+    // Select que carga los docentes dependiendo del departamento al que pertenezcan
+    $("#nombre-departamento").on("change", function () {
+        var myToast = $.mdtoast('Cargando docentes...', { duration: 100000, init: true });
+        myToast.show()
+        var id = $(this).val()
+        $.ajax({
+            url      : '../paginas/procesar/gestionDepartamentos.jsp?id='+id+'operacion=2&token='+localStorage.getItem('token'),
+            type     : 'GET',
+//            dataType : 'json',
+            success  : function ( response ) {
+                myToast.hide()
+                console.log(response)                
+//                if ( response.status == 201 ) {                   
+//                    var select = $("#director-grupo")
+//                    select.empty()
+//                    var html = "<option selected disabled>Seleccione</option>"
+//                    for (var unidad  in response) {
+//                        html += "<option value='"+unidad.id_unidad+"'>"+unidad.nombre+"</option>"
+//                    }
+//                    select.html(html)
 //                }                
             }
         })        

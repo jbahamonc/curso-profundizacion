@@ -29,6 +29,7 @@
                 </p>
                 <div class="row">
                     <form id="form-register-groups">
+                        <input type="hidden" name="operacion" value="1">
                         <div class="form-group col-xs-12 col-md-8">
                             <label>Nombre del Grupo (*)</label>
                             <input type="text" class="form-control" name="nombreGrupo" required>
@@ -41,21 +42,17 @@
                         <div class="form-group col-xs-12 col-md-2">
                             <label>Tipo Unidad Académica (*)</label>
                             <select class="form-control" name="tipoUnidadAcademica" id="tipo-unidad-academica" required>
-                                <option selected disabled> Seleccione</option>
-                                <option>Departamento</option>
-                                <option>Facultad</option>
-                                <option>Programa</option>
+                                <option disabled> Seleccione</option>
+                                <option selected value="2">Departamento</option>
+                                <option value="1">Facultad</option>
+                                <option value="3">Programa</option>
                             </select>
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Nombre Unidad Académica (*)</label>
                             <select class="form-control" name="nombreUnidadAcademica" id="nombre-unidad-academica" required>
-                                <option value="" selected disabled> Seleccione</option>
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                                <option disabled> Seleccione</option>
+                                <option value="2" selected>Departamento de Geotecnia y Minería</option>
                             </select>
                         </div>
                         <div class="form-group col-xs-12 col-md-6">
@@ -75,32 +72,33 @@
                             <label>Clasificado Colciencias (*)</label>
                             <select class="form-control" name="clasificadoColciencias" required>
                                 <option selected disabled>Seleccione</option>
-                                <option>SI</option>
-                                <option>NO</option>
+                                <option value="0">SI</option>
+                                <option value="1">NO</option>
                             </select>
                         </div>	
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Categoria (*)</label>
                             <select class="form-control" name="categoriaGrupo" required>
                                 <option selected disabled>Seleccione</option>
-                                <option>A1</option>
-                                <option>A2</option>
-                                <option>B</option>
-                                <option>B1</option>
-                                <option>Reconocido</option>
-                                <option>Sin categoria</option>
+                                <option selected value="2">A</option>
                             </select>
                         </div>		
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Email del Grupo (*)</label>
                             <input type="email" class="form-control" name="email" required>
                         </div>
-                        <div class="form-group col-xs-12 col-md-9">
+                        <div class="form-group col-xs-12 col-md-5">
+                            <label>Departamento (*)</label>
+                            <select class="form-control" name="nombreDepartamento" id="nombre-departamento" required>
+                                <option disabled > Seleccione</option>
+                                <option value="11" selected>Departamento de Sistemas</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-4">
                             <label>Director del Grupo (*)</label>
-                            <select class="form-control" name="directorGrupo" required>
-                                <option selected disabled>Seleccione</option>
-                                <option>Nombre</option>
-                                <option>Nombre</option>
+                            <select class="form-control" name="directorGrupo" required id="director-grupo">
+                                <option selected disabled>seleccione</option>
+                                <option selected value="1">Pilar Rodriguez</option>
                             </select>
                         </div>
                     </form>
