@@ -176,7 +176,7 @@
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li>
-                                        <a href="facultad.jsp"><i class="fa fa-circle-o"></i> <span>Facultades</span></a>
+                                        <a href="procesar/gestionFacultad.jsp?operacion=3"><i class="fa fa-circle-o"></i> <span>Facultades</span></a>
                                     </li>
                                     <li>
                                         <a href="programasAcademicos.jsp"><i class="fa fa-circle-o"></i> <span>Programas</span></a>

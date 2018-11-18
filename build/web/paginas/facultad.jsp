@@ -4,6 +4,9 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -35,16 +38,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <% 
+                                    ArrayList<JSONObject> lista = (ArrayList)session.getAttribute("facultades");
+                                    for(JSONObject obj : lista) {%>
                                 <tr>
-                                    <td>1</td>
-                                    <td>115</td>
-                                    <td>Facultad de Ingeniería</td>
+                                    <td><%= obj.getInt("id") %></td>
+                                    <td><%= obj.getInt("codigo") %></td>
+                                    <td><%= obj.getString("nombre") %></td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-danger btn-xs">
+                                        <button type="button" class="btn btn-danger btn-xs" id="btn-del-facultad" data-id="1">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </td>
                                 </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -59,8 +66,9 @@
 <!-- Modal -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
+        <div class="modal-content">            
+            <form action="procesar/gestionFacultad.jsp" method="post">
+                <input type="hidden" name="operacion" value="1">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulario de Registro</h4>
@@ -68,19 +76,23 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Codigo</label>
-                        <input type="number" class="form-control">
+                        <input type="number" class="form-control" name="codigo">
                     </div>
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="nombre">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionFacultad.js"></script>
+
+</body>
+</html>

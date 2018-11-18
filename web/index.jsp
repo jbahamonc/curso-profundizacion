@@ -31,7 +31,7 @@
             <!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Ingrese las credenciales para iniciar sesión.</p>
-                <form action="paginas/index.jsp" method="post" id="form-login">
+                <form action="" method="post" id="form-login">
                     <div class="form-group has-feedback">
                         <input type="email" name="user" class="form-control" placeholder="Email" required>
                         <span class="fa fa-envelope-o form-control-feedback" style="top: 0"></span>

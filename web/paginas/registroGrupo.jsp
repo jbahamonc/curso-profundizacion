@@ -93,7 +93,7 @@
                         </div>		
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Email del Grupo (*)</label>
-                            <input type="email" class="form-control" name="reconocidoColciencias" required>
+                            <input type="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group col-xs-12 col-md-9">
                             <label>Director del Grupo (*)</label>
