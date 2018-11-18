@@ -9,6 +9,8 @@ import java.io.IOException;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClients;
@@ -52,12 +54,28 @@ public class ControladorGrupos {
         requestBuilder.addParameter(correo);
         requestBuilder.addParameter(dir);
         HttpUriRequest uriRequest = requestBuilder.build();        
-        HttpResponse httpResponse = httpClient.execute(uriRequest);        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
-        JSONArray arr = new JSONArray(source);
-//        return Integer.parseInt(arr.optString(0));
-        return 1;
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
+            JSONObject obj = new JSONObject(source);
+            System.out.println("id " + obj.getInt("id"));
+            return obj.getInt("id");
+        }        
+        return -1;
+    }
+
+    public JSONObject consultarGrupo(String id_grupo) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupo/"+id_grupo);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject json = null;
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {
+            String source = EntityUtils.toString(httpResponse.getEntity());
+            System.out.println(source);
+            json = new JSONObject(source);
+        }            
+        return json;
     }
     
 }

@@ -27,9 +27,8 @@
             String nombreDpto = request.getParameter("nombreDepartamento");            
             String director = request.getParameter("directorGrupo");  
             token = request.getParameter("token");  
-            //int id = f.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, 
-            //        categoria, email, nombreDpto, director);
-            int id = 1;
+            int id = f.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, 
+                    categoria, email, nombreDpto, director);
             JSONObject json = new JSONObject();
             if (id > 0) {
                 json.put("status", "200");
@@ -45,8 +44,16 @@
         case 2 :
             String id_grupo = request.getParameter("id_grupo");
             token = request.getParameter("token");
-            
-            
+            JSONObject jsonGrupo = f.consultarGrupo(id_grupo);
+            if ( jsonGrupo != null ) { 
+                jsonGrupo.put("token", token);
+                session.setAttribute("grupo", jsonGrupo);
+                //response.sendRedirect("../infoGrupo.jsp");
+            } else {
+                System.out.println("ocurrio un error");
+            }
+            response.sendRedirect("../infoGrupo.jsp");
+            break;           
             
         default :
             System.out.println("no hay nada para hacer");

@@ -46,4 +46,10 @@ public class Fachada {
         return controladorGrupos.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, categoria, email, nombreDpto, director);
     
     }
+    
+    public JSONObject consultarGrupo(String id_grupo) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.consultarGrupo(id_grupo);
+    
+    }
 }

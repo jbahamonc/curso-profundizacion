@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="../css/mdtoast.css">
         <link rel="stylesheet" href="../css/admin.css">
     </head>
-    <body id="con" class="hold-transition skin-red-light sidebar-mini">
+    <body id="con" class="hold-transition skin-red-light sidebar-mini fixed">
         <div class="wrapper">
             <!-- NAVBAR -->
             <header class="main-header">

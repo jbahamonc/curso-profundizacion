@@ -22,10 +22,11 @@ $( function () {
                 type     : 'POST',
                 data     : $.param(form),
                 success  : function ( response ) { 
+                    console.log(response)
                     myToast.hide()
                     var res = JSON.parse(response)
-                    if (res.status != 200) {                        
-                        document.location.href = '../paginas/procesar/gestionGrupos.jsp?id_grupo='+res.id_grupo+'$operacion='+2+'$token='+token 
+                    if (res.status == 200) {                        
+                        document.location.href = '../paginas/procesar/gestionGrupos.jsp?id_grupo='+res.id_grupo+'&operacion=2&token='+token 
                     } else {
                         $.mdtoast('Lo sentimos!, Ocurrio un problema en el sistema', {
                             duration  : 5000                
