@@ -25,34 +25,35 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                    <form>
+                    <form id="form-register-semillero">
+                        <input type="hidden" value="1" name="operacion"/>
                         <div class="form-group col-xs-12 col-md-8">
                             <label>Nombre del Semillero (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="nombre">
                         </div>				                
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Siglas (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="sigla">
                         </div> 
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Ubicación (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="ubicacion">
                         </div>    
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Creación (*)</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" name="fechaCreacion">
                         </div>  	                 
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Grupo al que Pertenece (*)</label>
-                            <select class="form-control">
+                            <select class="form-control" name="grupoPertenece">
                                 <option selected disabled>Seleccione</option>
-                                <option>Nombre del grupo</option>
-                                <option>Nombre del grupo</option>
+                                <option value="3">Nombre del grupo</option>
+                                <option value="2">Nombre del grupo</option>
                             </select>
                         </div>	
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Director(es) del Grupo (*)</label>
-                            <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="directores[]" multiple style="width: 100%;">
+                            <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="directores" multiple style="width: 100%;">
                                 <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
                                 <option value="WY">Oscar Alberto Gallardo Perez</option>
                                 <option value="WY">Jessica Lorena Pabón</option>
@@ -62,7 +63,7 @@
                         </div>
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Linea de Investigación (*)</label>
-                            <select class="form-control">
+                            <select class="form-control" name="lineaInvestigacion">
                                 <option selected disabled>Seleccione</option>
                                 <option>Nombre de la Linea</option>
                                 <option>Nombre de la Linea</option>
@@ -70,10 +71,10 @@
                         </div>
                         <div class="form-group col-xs-12">
                             <label>Descripción</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name="descripcion"></textarea>
                         </div> 
                         <div class="form-group col-xs-12 text-right">
-                            <a href="infoSemillero.jsp" class="btn bg-red btn-flat btn-lg">REGISTRAR GRUPO</a>
+                            <a href="infoSemillero.jsp" class="btn bg-red btn-flat btn-lg" id="btn-save-semillero">REGISTRAR GRUPO</a>
                         </div>                	                                      
                     </form>
                 </div>
@@ -82,3 +83,4 @@
     </section>
 </div>
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionSemillero.js"></script>

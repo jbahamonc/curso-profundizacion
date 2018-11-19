@@ -6,6 +6,8 @@
 package Fachada;
 
 import Controller.ControladorFacultad;
+import Controller.ControladorSemillero;
+import java.awt.LinearGradientPaint;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.apache.http.HttpResponse;
@@ -23,6 +25,7 @@ import org.json.JSONObject;
 public class Fachada {
     
     private ControladorFacultad controladorFacultad;
+    private ControladorSemillero controladorSemillero;
     
     
     
@@ -41,5 +44,11 @@ public class Fachada {
         controladorFacultad = new ControladorFacultad();
         return controladorFacultad.listarFacultad();
     
+    }
+    
+    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String grupoPertenece,
+    String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, grupoPertenece, directores, lineaInvestigacion, descripcion);
     }
 }
