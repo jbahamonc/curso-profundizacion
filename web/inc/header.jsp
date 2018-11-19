@@ -93,7 +93,7 @@
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
                                     <li><a href="registroGrupo.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-                                    <li><a href="gruposInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
+                                    <li><a href="procesar/gestionGrupos.jsp?operacion=3&token=ecqwe32e23c2343"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
                                     <li><a href="categoriasGrupos.jsp"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
                                 </ul>
 		            </li>	

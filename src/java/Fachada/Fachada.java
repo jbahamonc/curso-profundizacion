@@ -8,6 +8,7 @@ package Fachada;
 import Controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,6 +51,12 @@ public class Fachada {
     public JSONObject consultarGrupo(String id_grupo) throws IOException, JSONException {
         controladorGrupos = new ControladorGrupos();
         return controladorGrupos.consultarGrupo(id_grupo);
+    
+    }
+    
+    public JSONArray listarGrupos() throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.listarGrupos();
     
     }
 }

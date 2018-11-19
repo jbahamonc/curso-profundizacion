@@ -64,7 +64,7 @@ public class ControladorGrupos {
         }        
         return -1;
     }
-
+    
     public JSONObject consultarGrupo(String id_grupo) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupo/"+id_grupo);
@@ -76,6 +76,19 @@ public class ControladorGrupos {
             json = new JSONObject(source);
         }            
         return json;
+    }
+
+    public JSONArray listarGrupos() throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupo/");
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONArray jsonArr = null;
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {
+            String source = EntityUtils.toString(httpResponse.getEntity());
+            jsonArr = new JSONArray(source);
+            System.out.println(source);            
+        }            
+        return jsonArr;
     }
     
 }

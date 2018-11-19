@@ -4,6 +4,7 @@
     Author     : jeferson
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="Fachada.Fachada"%>
 <%
@@ -53,7 +54,15 @@
                 System.out.println("ocurrio un error");
             }
             response.sendRedirect("../infoGrupo.jsp");
-            break;           
+            break;   
+            
+        // Listar
+        case 3 :
+            token = request.getParameter("token");
+            JSONArray grupos = f.listarGrupos();
+            session.setAttribute("grupos", grupos);
+            session.setAttribute("token", token);
+            response.sendRedirect("../gruposInvestigacion.jsp");
             
         default :
             System.out.println("no hay nada para hacer");
