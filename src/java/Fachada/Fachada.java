@@ -5,6 +5,7 @@
  */
 package Fachada;
 
+import Controller.ControladorCategorias;
 import Controller.ControladorFacultad;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import org.json.JSONObject;
 public class Fachada {
     
     private ControladorFacultad controladorFacultad;
-    
+    private ControladorCategorias controladorCategorias;
     
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
@@ -40,6 +41,46 @@ public class Fachada {
     public ArrayList<JSONObject> listarFacultades () throws IOException, JSONException {
         controladorFacultad = new ControladorFacultad();
         return controladorFacultad.listarFacultad();
+    
+    }
+    
+    
+    
+    //METODOS CATEGORIA DEDICACION DOCENTE
+      public boolean registrarCategoriaDedicacion (String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.registrarCategoriaDedicacion(nombre);
+    }
+    
+    public boolean eliminarCategoriaDedicacion (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.eliminarCategoriaDedicacion(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarCategoriaDedicacion () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.listarCategoriasDedicacion();
+    
+    }
+    
+    
+        
+    //METODOS CATEGORIA DOCENTE
+      public boolean registrarCategoriaDocente (String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.registrarCategoriaDedicacion(nombre);
+    }
+    
+    public boolean eliminarCategoriaDocente (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.eliminarCategoriaDedicacion(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarCategoriaDocente () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.listarCategoriasDedicacion();
     
     }
 }
