@@ -19,6 +19,7 @@
     System.out.println(operacion);
     Fachada f = new Fachada();
     switch (operacion) {
+        //CATEGORIA DEDICACION       
         // Registrar
         case 1 : 
             
@@ -48,11 +49,14 @@
             response.sendRedirect("../categoriaDedicacion.jsp");
             break;
             
+            //CATEGORIA DOCENTE
+            
+            // REGGISTRAR 
          case 4 : 
             
             String nombre2 = request.getParameter("nombre");            
-            if (f.registrarCategoriaDedicacion(nombre2)) {
-                session.setAttribute("resultad", "Se ha registrado la Categoria de Dedicacion Docente");
+            if (f.registrarCategoriaDocente(nombre2)) {
+                session.setAttribute("resultad", "Se ha registrado la Categoria Docente");
                 System.out.println("entro aca");
             }
             else {
@@ -63,7 +67,7 @@
         case 5 :
             System.out.println("llego");
             String id2 = request.getParameter("id");
-            if (f.registrarCategoriaDedicacion(id2)) {
+            if (f.eliminarCategoriaDocente(id2)) {
                 response.setStatus(200);
             } else {
                 response.setStatus(400);
@@ -71,9 +75,41 @@
             break;
         // Listar
         case 6 :
-            ArrayList<JSONObject> cdocente = f.listarCategoriaDedicacion();
-            session.setAttribute("categoriadedicacion", cdocente);
-            response.sendRedirect("../categoriaDedicacion.jsp");
+            ArrayList<JSONObject> cdocente = f.listarCategoriaDocente();
+            session.setAttribute("categoriadocente", cdocente);
+            response.sendRedirect("../categoriaDocente.jsp");
+            break;
+            
+            
+       //CATEGORIA INVESTIGADOR
+            
+            // REGGISTRAR 
+         case 7 : 
+            
+            String nombre3 = request.getParameter("nombre");            
+            if (f.registrarCategoriaInvestigador(nombre3)) {
+                session.setAttribute("resultad", "Se ha registrado la Categoria Investigador");
+                System.out.println("entro aca");
+            }
+            else {
+                System.out.println("no le entro");
+            }
+            break;
+        // Eliminar
+        case 8 :
+            System.out.println("llego");
+            String id3 = request.getParameter("id");
+            if (f.eliminarCategoriaInvestigador(id3)) {
+                response.setStatus(200);
+            } else {
+                response.setStatus(400);
+            }
+            break;
+        // Listar
+        case 9 :
+            ArrayList<JSONObject> cinvestigador = f.listarCategoriaInvestigador();
+            session.setAttribute("categoriainvestigador", cinvestigador);
+            response.sendRedirect("../categoriaInvestigador.jsp");
             break;
     }
     

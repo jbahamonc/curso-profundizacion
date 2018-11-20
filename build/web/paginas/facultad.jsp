@@ -39,7 +39,7 @@
                             </thead>
                             <tbody>
                                 <% 
-                                    ArrayList<JSONObject> lista = (ArrayList)session.getAttribute("facultades");
+                                    ArrayList<JSONObject> lista = (ArrayList)session.getAttribute("categorias");
                                     for(JSONObject obj : lista) {%>
                                 <tr>
                                     <td><%= obj.getInt("id") %></td>

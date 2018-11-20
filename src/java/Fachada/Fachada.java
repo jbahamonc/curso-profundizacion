@@ -83,4 +83,22 @@ public class Fachada {
         return controladorCategorias.listarCategoriasDedicacion();
     
     }
+    
+    //METODOS CATEGORIA Investigador
+      public boolean registrarCategoriaInvestigador (String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.registrarCategoriaInvestigador(nombre);
+    }
+    
+    public boolean eliminarCategoriaInvestigador (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.eliminarCategoriaInvestigador(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarCategoriaInvestigador () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorCategorias.listarCategoriasInvestigador();
+    
+    }
 }

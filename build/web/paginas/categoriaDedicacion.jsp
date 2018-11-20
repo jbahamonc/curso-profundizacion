@@ -3,7 +3,9 @@
     Created on : 10-nov-2018, 17:44:23
     Author     : fasap
 --%>
-
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -34,6 +36,9 @@
 					            </tr>
 					        </thead>
 					        <tbody>
+                                                    <% 
+                                    ArrayList<JSONObject> lista = (ArrayList)session.getAttribute("categoriadedicacion");
+                                    for(JSONObject obj : lista) {%>
 					            <tr>
 					                <td>1</td>
 					                <td>TC</td>
@@ -80,3 +85,4 @@
   	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionCategorias.js"></script>
