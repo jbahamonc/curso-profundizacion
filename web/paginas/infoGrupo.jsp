@@ -25,22 +25,22 @@
                         </div>
                         <!-- /.widget-user-image -->
                         <%JSONObject json = (JSONObject)session.getAttribute("grupo"); %>
-                        <h3 class="widget-user-username"><%= json.getString("nombre") %></h3>
-                        <h5 class="widget-user-desc"><%= json.getString("sigla") %></h5>
+                        <h3 class="widget-user-username"><%= json.getString("nombre").substring(0,1).toUpperCase() + json.getString("nombre").substring(1) %></h3>
+                        <h5 class="widget-user-desc"><%= json.getString("sigla").toUpperCase() %></h5>
                     </div>
                     <div class="box-body no-padding">
                         <ul class="nav nav-stacked">
-                            <li><a>Unidad Académica: <span class="pull-right"><b><%= json.getString("unidad") %></b></span></a></li>
-                            <li><a>Ubicación: <span class="pull-right"><b><%= json.getString("ubicacion") %></b></span></a></li>
-                            <li><a>Fecha de Creación: <span class="pull-right"><b><%= json.getString("fecha_creacion") %></b></span></a></li>
-                            <li><a>Código GrupLav: <span class="pull-right"><b><%= json.getString("codigo_colciencias") %></b></span></a></li>
-                            <li><a>Clasificado Colciencias: <span class="pull-right badge bg-green"><b><%= json.getString("clasificado") %></b></span></a></li>
-                            <li><a>Categoria: <span class="pull-right badge bg-green"><b><%= json.getString("id_categoria") %></b></span></a></li>
-                            <li><a>Correo: <span class="pull-right badge bg-green"><b><%= json.getString("correo") %></b></span></a></li>		                
+                            <li><a>Unidad Académica: <span class="pull-right"><b><%= json.getString("unidadAcademica").substring(0,1).toUpperCase() + json.getString("unidadAcademica").substring(1) %></b></span></a></li>
+                            <li><a>Ubicación: <span class="pull-right"><b><%= json.getString("ubicacion").toUpperCase() %></b></span></a></li>
+                            <li><a>Fecha de Creación: <span class="pull-right"><b><%= json.getString("fechaCreacion") %></b></span></a></li>
+                            <li><a>Código GrupLav: <span class="pull-right"><b><%= json.getString("codigo").toUpperCase() %></b></span></a></li>
+                            <li><a>Clasificado Colciencias: <span class="pull-right badge <%= (json.getInt("clasificado") == 0)? "bg-green" : "bg-green" %>"><b><%= (json.getInt("clasificado") == 0)? "SI" : "NO" %></b></span></a></li>
+                            <li><a>Categoria: <span class="pull-right badge bg-green"><b><%= json.getString("categoria") %></b></span></a></li>
+                            <li class="hidden"><a>Correo: <span class="pull-right badge bg-green"><b></b></span></a></li>		                
                         </ul>		              
                     </div>
-                    <div class="box-footer no-padding">
-                        <a href="procesar/gestionGrupo.jsp?id=<%= json.getString("id_grupo") %>&operacion=3&token=<%= json.getString("token") %>" class="btn btn-block">
+                    <div class="box-footer no-padding hidden">
+                        <a href="procesar/gestionGrupo.jsp?id=<%= json.getInt("id") %>&operacion=3&token=<%= json.getString("token") %>" class="btn btn-block">
                             EDITAR GRUPO
                         </a>
                     </div>
@@ -56,13 +56,13 @@
                                 <b>Departamento</b> <a class="pull-right"><%= director.getString("departamento") %></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Contacto</b> <a class="pull-right"><%= director.getString("telefono") %> - <%= director.getString("celular") %></a>
+                                <b>Contacto</b> <a class="pull-right"><%= director.getString("contacto") %></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Email</b> <a class="pull-right"><%= director.getString("correo_electronico") %></a>
+                                <b>Email</b> <a class="pull-right"><%= director.getString("email") %></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Vinculación</b> <a class="pull-right"><%= director.getString("nombreModalidad") %></a>
+                                <b>Vinculación</b> <a class="pull-right"><%= director.getString("vinculacion") %></a>
                             </li>
                         </ul>
                     </div>
@@ -75,7 +75,7 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3><%= json.getString("proTerminados") %></h3>
+                                <h3><%= json.getInt("proTerminados") %></h3>
                                 <p>Proyectos Terminados</p>
                             </div>
                             <div class="icon">
@@ -88,7 +88,7 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3><%= json.getString("proEjecucion") %></h3>
+                                <h3><%= json.getInt("proEjecucion") %></h3>
                                 <p>Proyectos en Ejecución</p>
                             </div>
                             <div class="icon">

@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -42,8 +44,8 @@
                         <div class="form-group col-xs-12 col-md-2">
                             <label>Tipo Unidad Académica (*)</label>
                             <select class="form-control" name="tipoUnidadAcademica" id="tipo-unidad-academica" required>
-                                <option disabled> Seleccione</option>
-                                <option selected value="2">Departamento</option>
+                                <option disabled selected> Seleccione</option>
+                                <option value="2">Departamento</option>
                                 <option value="1">Facultad</option>
                                 <option value="3">Programa</option>
                             </select>
@@ -51,8 +53,7 @@
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Nombre Unidad Académica (*)</label>
                             <select class="form-control" name="nombreUnidadAcademica" id="nombre-unidad-academica" required>
-                                <option disabled> Seleccione</option>
-                                <option value="2" selected>Departamento de Geotecnia y Minería</option>
+                                <option disabled selected> No hay datos cargados</option>
                             </select>
                         </div>
                         <div class="form-group col-xs-12 col-md-6">
@@ -76,29 +77,48 @@
                                 <option value="1">NO</option>
                             </select>
                         </div>	
+                        <%  
+                            JSONObject info = (JSONObject)session.getAttribute("infoGrupo");
+                            JSONArray cats = info.getJSONArray("categoria");
+                        %>
+                        <script>
+                            var json = JSON.stringify(<%= info.toString() %>)
+                            localStorage.setItem("json", json)
+                        </script>
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Categoria (*)</label>
                             <select class="form-control" name="categoriaGrupo" required>
                                 <option selected disabled>Seleccione</option>
-                                <option selected value="2">A</option>
+                                <% for (int i = 0; i < cats.length(); i++) {
+                                    JSONObject obj = cats.getJSONObject(i); 
+                                %>
+                                <option value="<%= obj.getInt("id_categoria") %>"><%= obj.getString("nombre") %></option>
+                                <% } %>
                             </select>
                         </div>		
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Email del Grupo (*)</label>
                             <input type="email" class="form-control" name="email" required>
                         </div>
-                        <div class="form-group col-xs-12 col-md-5">
+                        <div class="form-group col-xs-12 col-md-5 hidden">
                             <label>Departamento (*)</label>
                             <select class="form-control" name="nombreDepartamento" id="nombre-departamento" required>
-                                <option disabled > Seleccione</option>
+                                <option disabled selected> Seleccione</option>
                                 <option value="11" selected>Departamento de Sistemas</option>
                             </select>
                         </div>
-                        <div class="form-group col-xs-12 col-md-4">
+                        <%  
+                            JSONArray dir = info.getJSONArray("docentes_ufps");
+                        %>
+                        <div class="form-group col-xs-12 col-md-9">
                             <label>Director del Grupo (*)</label>
                             <select class="form-control" name="directorGrupo" required id="director-grupo">
                                 <option selected disabled>seleccione</option>
-                                <option selected value="1">Pilar Rodriguez</option>
+                                <% for (int i = 0; i < dir.length(); i++) {
+                                    JSONObject obj1 = dir.getJSONObject(i); 
+                                %>
+                                <option value="<%= obj1.getInt("id") %>"><%= obj1.getString("nombre") %></option>
+                                <% } %>
                             </select>
                         </div>
                     </form>

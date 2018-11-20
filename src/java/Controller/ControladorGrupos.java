@@ -65,30 +65,57 @@ public class ControladorGrupos {
         return -1;
     }
     
-    public JSONObject consultarGrupo(String id_grupo) throws IOException, JSONException {
+    public JSONObject consultarGrupo(String id_grupo, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupo/"+id_grupo);
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/paginaPrincipal/"+id_grupo);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject json = null;
+        String source = "";
+        System.out.println("id " + id_grupo);
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {
-            String source = EntityUtils.toString(httpResponse.getEntity());
-            System.out.println(source);
+            source = EntityUtils.toString(httpResponse.getEntity());
             json = new JSONObject(source);
-        }            
+        }    
+        System.out.println(source);
         return json;
     }
 
-    public JSONArray listarGrupos() throws IOException, JSONException {
+    // pendiente
+    public JSONObject listarGrupos() throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupo/");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupoCategoriaDirector");
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        JSONArray jsonArr = null;
+        JSONObject jsonObj = null;
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {
             String source = EntityUtils.toString(httpResponse.getEntity());
-            jsonArr = new JSONArray(source);
+            jsonObj = new JSONObject(source);
             System.out.println(source);            
         }            
-        return jsonArr;
+        return jsonObj;
+    }
+
+    public JSONObject cargarInfoRegistroGrupos(String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/datosCrearGrupo");
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject json = null;
+        String source = "";
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {
+            source = EntityUtils.toString(httpResponse.getEntity());
+            json = new JSONObject(source);                   
+        }        
+        System.out.println(source);     
+        return json;
+    }
+
+    public boolean eliminarGrupo(String idDel, String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpDelete httpDelete = new HttpDelete("https://productividadufps.herokuapp.com/api/v1/grupo/"+idDel);
+        HttpResponse httpResponse = httpClient.execute(httpDelete);
+        boolean res = false;
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );    
     }
     
 }

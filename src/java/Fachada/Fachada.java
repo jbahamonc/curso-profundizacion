@@ -48,15 +48,27 @@ public class Fachada {
     
     }
     
-    public JSONObject consultarGrupo(String id_grupo) throws IOException, JSONException {
+    public JSONObject consultarGrupo(String id_grupo, String token) throws IOException, JSONException {
         controladorGrupos = new ControladorGrupos();
-        return controladorGrupos.consultarGrupo(id_grupo);
+        return controladorGrupos.consultarGrupo(id_grupo, token);
     
     }
     
-    public JSONArray listarGrupos() throws IOException, JSONException {
+    public JSONObject listarGrupos() throws IOException, JSONException {
         controladorGrupos = new ControladorGrupos();
         return controladorGrupos.listarGrupos();
+    
+    }
+    
+    public JSONObject cargarInfoRegistroGrupos(String token) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.cargarInfoRegistroGrupos(token);
+    
+    }
+    
+    public boolean eliminarGrupo(String idDel, String token) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.eliminarGrupo(idDel, token);
     
     }
 }

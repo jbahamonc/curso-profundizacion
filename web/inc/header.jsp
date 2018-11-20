@@ -92,10 +92,14 @@
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-                                    <li><a href="registroGrupo.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-                                    <li><a href="procesar/gestionGrupos.jsp?operacion=3&token=ecqwe32e23c2343"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
+                                    <li><a href="" id="link-reg-groups"><i class="fa fa-circle-o"></i>Registro</a></li>
+                                    <li><a href="" id="link-consult-groups"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
                                     <li><a href="categoriasGrupos.jsp"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
                                 </ul>
+                                <script>
+                                    document.getElementById("link-reg-groups").href = "procesar/gestionGrupos.jsp?operacion=4&token="+localStorage.getItem("token")
+                                    document.getElementById("link-consult-groups").href = "procesar/gestionGrupos.jsp?operacion=3&token="+localStorage.getItem("token")
+                                </script>
 		            </li>	
 		            <li class="treeview">
 		            	<a href="#">

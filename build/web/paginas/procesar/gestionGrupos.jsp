@@ -43,26 +43,49 @@
         
         // Consultar
         case 2 :
-            String id_grupo = request.getParameter("id_grupo");
+            String id_grupo = request.getParameter("id");
             token = request.getParameter("token");
-            JSONObject jsonGrupo = f.consultarGrupo(id_grupo);
+            JSONObject jsonGrupo = f.consultarGrupo(id_grupo, token);
             if ( jsonGrupo != null ) { 
                 jsonGrupo.put("token", token);
                 session.setAttribute("grupo", jsonGrupo);
-                //response.sendRedirect("../infoGrupo.jsp");
+                response.sendRedirect("../infoGrupo.jsp");
             } else {
                 System.out.println("ocurrio un error");
-            }
-            response.sendRedirect("../infoGrupo.jsp");
+            }            
             break;   
             
         // Listar
         case 3 :
             token = request.getParameter("token");
-            JSONArray grupos = f.listarGrupos();
+            JSONObject grupos = f.listarGrupos();
             session.setAttribute("grupos", grupos);
             session.setAttribute("token", token);
             response.sendRedirect("../gruposInvestigacion.jsp");
+            break;
+            
+        // Cargar datos para registro de grupos
+        case 4 :
+            token = request.getParameter("token");
+            JSONObject objInfo = f.cargarInfoRegistroGrupos(token);
+            session.setAttribute("infoGrupo", objInfo);
+            response.sendRedirect("../registroGrupo.jsp");
+            break;
+        
+        // Eliminar
+        case 5 :
+            token = request.getParameter("token");
+            String idDel = request.getParameter("id");
+            //boolean bool = f.eliminarGrupo(idDel, token);
+            boolean bool1 = true;
+            JSONObject res = new JSONObject();
+            if ( bool1 ) {
+                res.put("status", 200);
+            } else {
+                res.put("status", 500);
+            }
+            out.print(res);
+            break;
             
         default :
             System.out.println("no hay nada para hacer");
