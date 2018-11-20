@@ -6,14 +6,18 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,6 +70,60 @@ public class ControladorSemillero {
             return -1;
         }
 
+    }
+
+    public ArrayList<JSONObject> listarSemillero() throws IOException, JSONException {
+        ArrayList<JSONObject> listaSemillero = new ArrayList<>();
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("#");
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        JSONObject json = new JSONObject(source);
+        JSONArray array = json.getJSONArray("semillero");
+        for (int i=0; i<array.length(); i++) {
+            listaSemillero.add(array.getJSONObject(i));
+        }
+        return listaSemillero;
+    }
+
+    public boolean eliminarSemillero(String idSemillero) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpDelete httpDelete = new HttpDelete("#"+idSemillero);
+        HttpResponse httpResponse = httpClient.execute(httpDelete);
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return httpResponse.getStatusLine().getStatusCode() == 200;
+    }
+
+    public ArrayList<JSONObject> listarDirectores() throws IOException, JSONException {
+        ArrayList<JSONObject> listaDirectores = new ArrayList<>();
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("#");
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        JSONObject json = new JSONObject(source);
+        JSONArray array = json.getJSONArray("directores");
+        for (int i=0; i<array.length(); i++) {
+            listaDirectores.add(array.getJSONObject(i));
+        }
+        return listaDirectores;
+    }
+
+    public ArrayList<JSONObject> listarLineasInvestigacion() throws IOException, JSONException {
+        ArrayList<JSONObject> listaLineasInvestigacion = new ArrayList<>();
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("#");
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        JSONObject json = new JSONObject(source);
+        JSONArray array = json.getJSONArray("lineasInvestigacion");
+        for (int i=0; i<array.length(); i++) {
+            listaLineasInvestigacion.add(array.getJSONObject(i));
+        }
+        return listaLineasInvestigacion;
     }
 
 }

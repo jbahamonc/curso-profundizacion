@@ -51,4 +51,24 @@ public class Fachada {
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, grupoPertenece, directores, lineaInvestigacion, descripcion);
     }
+    
+    public ArrayList<JSONObject> listarSemilleros() throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.listarSemillero();
+    }
+    
+    public boolean eliminarSemillero(String idSemillero) throws IOException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.eliminarSemillero(idSemillero);
+    }
+    
+    public ArrayList<JSONObject> listarDirectores() throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.listarDirectores();
+    }
+    
+    public ArrayList<JSONObject> listarLineasInvestigacion() throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.listarLineasInvestigacion();
+    }
 }

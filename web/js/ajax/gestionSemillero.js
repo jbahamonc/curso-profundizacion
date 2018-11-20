@@ -43,7 +43,29 @@ $(function () {
         }
     })
 
+    $("#btn-eli-semillero").on("click", function () {
+        var id = $(this).data("id")
+        console.log(id)
+        $.ajax({
+            url: '../paginas/procesar/gestionSemillero.jsp',
+            type: 'POST',
+            data: {id: id, operacion: 3},
+            success: function (response) {
+                console.log(response)
+                if (response.status == 200) {
+                    $.mdtoast('El semillero se ha eliminado', {
+                        duration: 5000
+                    });
+                } else {
+                    $.mdtoast('Algo salió mal, error al eliminar el semillero!', {
+                            duration: 5000
+                        });
+                }
+            }
 
+        })
+
+    })
 
 
 
