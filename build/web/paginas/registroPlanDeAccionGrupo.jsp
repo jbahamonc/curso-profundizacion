@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -22,22 +24,24 @@
                         <h3 class="box-title">Formulario de Registro</h3>
                     </div>        	
                     <div class="box-body">
-                        <form>
+                        <form id="form-plan-action-group">
+                            <input type="hidden" value="3" name="operacion">
                             <div class="form-group col-xs-12 col-md-6">
-                                <label>Año</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="">2018</option>
-                                    <option value="">2019</option>
-                                    <option value="">2020</option>
-                                    <option value="">2021</option>
-                                    <option value="">2022</option>
-                                    <option value="">2023</option>
+                                <label>Año (*)</label>
+                                <select name="año" class="form-control" required>
+                                    <option selected disabled>Seleccione</option>
+                                    <option value="2">2018</option>
+                                    <option value="2">2019</option>
+                                    <option value="2">2020</option>
+                                    <option value="2">2021</option>
+                                    <option value="2">2022</option>
+                                    <option value="2">2023</option>
                                 </select>
                             </div>				                
                             <div class="form-group col-xs-12 col-md-6">
-                                <label>Semestre</label>
-                                <select class="form-control">
-                                    <option>Seleccione</option>
+                                <label>Semestre (*)</label>
+                                <select class="form-control" name="semestre" required>
+                                    <option selected disabled>Seleccione</option>
                                     <option>1</option>
                                     <option>2</option>
                                 </select>
@@ -161,6 +165,14 @@
                                 <label>Seleccione la Linea de Investigación (*)</label>
                                 <select name="" id="" class="form-control">
                                     <option value="" selected="" disabled="">Seleccione</option>
+                                    <%-- 
+                                        JSONObject data = (JSONObject)session.getAttribute("dataForm");
+                                        JSONArray lineas = data.getJSONArray("lineas");
+                                        for (int i = 0; i < lineas.length(); i++) {
+                                            JSONObject obj = lineas.getJSONObject(i);
+                                    %>
+                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
+                                    <% } --%>                                    
                                     <option value="">Linea de Investigación</option>
                                     <option value="">Linea de Investigación</option>
                                     <option value="">Linea de Investigación</option>
@@ -209,6 +221,13 @@
                                 <div class="form-group col-xs-12">
                                     <label>Responsables de la Actividad (*)</label>
                                     <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables[]" multiple style="width: 100%;">
+                                        <%-- 
+                                            JSONArray res = data.getJSONArray("responsables");
+                                            for (int i = 0; i < res.length(); i++) {
+                                                JSONObject obj = res.getJSONObject(i);
+                                        %>
+                                            <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
+                                        <% } --%>
                                         <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
                                         <option value="WY">Oscar Alberto Gallardo Perez</option>
                                         <option value="WY">Jessica Lorena Pabón</option>
@@ -513,3 +532,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionPlanAccionGrupo.js"></script>
+
+</body>
+</html>

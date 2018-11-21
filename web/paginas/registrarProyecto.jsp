@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -22,14 +24,24 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                    <form>
+                    <form id="form-save-project">
+                        <input type="hidden" value="3" name="operacion">
                         <div class="form-group col-xs-12">
                             <label>Título (*)</label>
-                            <input type="text" class="form-control">
-                        </div>
+                            <input type="text" class="form-control" required name="titulo">
+                        </div>                        
                         <div class="form-group col-xs-12 col-md-8">
                             <label>Linea de Investigación (*)</label>
-                            <select class="form-control">
+                            <select class="form-control" required name="linea">
+                                <option selected disabled>Seleccione</option>
+                                <%-- 
+                                    JSONObject data = (JSONObject)session.getAttribute("dataForm");
+                                    JSONArray lineas = data.getJSONArray("lineas");
+                                    for (int i = 0; i < lineas.length(); i++) {
+                                        JSONObject obj = lineas.getJSONObject(i);                                
+                                %>
+                                <option value="<%= obj.getInt("id") %>"><%= obj.getString("nombre") %></option>
+                                <% } --%>
                                 <option>option 1</option>
                                 <option>option 2</option>
                                 <option>option 3</option>
@@ -39,19 +51,23 @@
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Tiempo de Ejecución (Meses) (*)</label>
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" required name="tiempo">
                         </div>	
-                        <div class="form-group col-xs-12 col-md-4">
+                        <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Inicio (*)</label>
-                            <input type="month" class="form-control">
-                        </div>	
-                        <div class="form-group col-xs-12 col-md-4">
+                            <input type="month" class="form-control" required name="fechaInicio">
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3">
+                            <label>Fecha Final (*)</label>
+                            <input type="month" class="form-control" required name="fechaFin">
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3">
                             <label>Costo Total (*)</label>
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" required name="costo">
                         </div>	
-                        <div class="form-group col-xs-12 col-md-4">
+                        <div class="form-group col-xs-12 col-md-3">
                             <label>Tipo de Proyecto (*)</label>
-                            <select class="form-control" id="tipo-proyecto">
+                            <select class="form-control" id="tipo-proyecto" required name="tipoProyecto">
                                 <option selected disabled>Seleccione</option>
                                 <option>Finu</option>
                                 <option>Institucional</option>
@@ -59,32 +75,33 @@
                                 <option>Extension</option>
                             </select>
                         </div>	
+                        <div class="clearfix"></div>
                         <div class="form-group col-xs-12 col-md-4">
-                            <label>Resumen (No debe exceder 250 palabras) (*)</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <label>Resumen (*)</label>
+                            <textarea class="form-control" rows="3" required name="resumen"></textarea>
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Objetivo General (*)</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" required name="objGeneral"></textarea>
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Resultados Esperados (*)</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" required name="resEsparados"></textarea>
                         </div>
                         <div class="form-group col-xs-12">
                             <label>Objetivos Especificos (*) </label>
                             <button type="button" data-toggle="modal" data-target="#modal" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                            <select class="js-example-basic-multiple2" data-placeholder="Ingrese los Objetivos Específicos" name="obj_especificos[]" multiple style="width: 100%;">
-                                <select>	                  	
+                            <select required name="objEspecificos" class="js-example-basic-multiple2" data-placeholder="Ingrese los Objetivos Específicos" name="obj_especificos" multiple style="width: 100%;">
+                                </select>	                  	
                         </div>
                         <div class="form-group col-xs-12 col-md-4 hidden" id="num-contrato">
                             <label>Numero de Contrato (*)</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text" required name="numContrato">
                         </div>
                         <div class="clearfix"></div>
                         <br><br>
                         <div class="form-group col-xs-12 text-right">
-                            <a href="infoProyecto.jsp" class="btn bg-red btn-flat btn-lg">REGISTRAR PROYECTO</a>
+                            <button type="button" class="btn bg-red btn-flat btn-lg" id="btn-save-project">REGISTRAR PROYECTO</button>
                         </div>                				                                      
                     </form>
                 </div>

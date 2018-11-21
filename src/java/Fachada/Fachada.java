@@ -79,14 +79,44 @@ public class Fachada {
         return controladorProyectos.listarProyectos(token);
     }
     
-    public JSONObject cargarInfoFormRegistroProyectos(String token, String tipoSesion) throws IOException, JSONException {
+    public JSONObject cargarInfoFormRegistroProyectos(String token, String tipoSesion, String id) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
-        return controladorProyectos.cargarInfoFormRegistroProyectos(token, tipoSesion);
+        return controladorProyectos.cargarInfoFormRegistroProyectos(token, tipoSesion, id);
     }
     
-    // Metodos de Planes de Accion **********************************************************************************************
+    public int registrarProyecto(String titulo, String linea, String tiempo, String fechaInicio, String fechaFin, String costo, 
+            String tipoProyecto, String resumen, String  objGeneral, String resEsperados, String objEspecificos[], 
+            String numContrato, String token, String tipoSesion) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.registrarProyecto(titulo, linea, tiempo, fechaInicio, fechaFin, costo, tipoProyecto, resumen, 
+                                objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
+    }
+    
+    public JSONObject consultarProyecto(String idProject, String token) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.consultarProyecto(idProject, token);
+    }
+    
+    public boolean cerrarProyecto(String id_project, String token) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.cerrarProyecto(id_project, token);
+    }
+    
+    // Metodos de Planes de Accion Grupo**********************************************************************************************
     public JSONObject listarPlanesAccion(String token, String id) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
         return controladorPlanAccion.listarPlanesAccion(token, id);
     }
+    
+    public JSONObject cargarInfoForm(String token, String idGrupo) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.cargarInfoForm(token, idGrupo);
+    }
+    
+    public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.registrarInicialPlanAccionGrupo(año, semestre, id_grupo, token);
+    }
+    
+    
 }

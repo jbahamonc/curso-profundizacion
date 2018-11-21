@@ -84,7 +84,7 @@
 </div>
 </section>
 </div>
-<a href="registroPlanDeAccionGrupo.jsp" class="btn btn-danger pull-right btn-fixed add-person" title="Nuevo Plan de Acción">
+<a href="procesar/gestionPlanAccionGrupo.jsp?operacion=2&token=<%= session.getAttribute("token").toString() %>" class="btn btn-danger pull-right btn-fixed add-person" title="Nuevo Plan de Acción">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 
