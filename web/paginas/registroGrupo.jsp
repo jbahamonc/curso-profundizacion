@@ -96,30 +96,9 @@
                                 <% } %>
                             </select>
                         </div>		
-                        <div class="form-group col-xs-12 col-md-3">
+                        <div class="form-group col-xs-12 col-md-6">
                             <label>Email del Grupo (*)</label>
                             <input type="email" class="form-control" name="email" required>
-                        </div>
-                        <div class="form-group col-xs-12 col-md-5 hidden">
-                            <label>Departamento (*)</label>
-                            <select class="form-control" name="nombreDepartamento" id="nombre-departamento" required>
-                                <option disabled selected> Seleccione</option>
-                                <option value="11" selected>Departamento de Sistemas</option>
-                            </select>
-                        </div>
-                        <%  
-                            JSONArray dir = info.getJSONArray("docentes_ufps");
-                        %>
-                        <div class="form-group col-xs-12 col-md-9">
-                            <label>Director del Grupo (*)</label>
-                            <select class="form-control" name="directorGrupo" required id="director-grupo">
-                                <option selected disabled>seleccione</option>
-                                <% for (int i = 0; i < dir.length(); i++) {
-                                    JSONObject obj1 = dir.getJSONObject(i); 
-                                %>
-                                <option value="<%= obj1.getInt("id") %>"><%= obj1.getString("nombre") %></option>
-                                <% } %>
-                            </select>
                         </div>
                     </form>
                     <div class="form-group col-xs-12 text-right">

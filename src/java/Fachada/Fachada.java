@@ -19,7 +19,8 @@ import org.json.JSONObject;
 public class Fachada {
     
     private ControladorFacultad controladorFacultad;
-    private ControladorGrupos controladorGrupos;    
+    private ControladorGrupos controladorGrupos;  
+    private ControladorProyectos controladorProyectos;
     
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
@@ -70,5 +71,11 @@ public class Fachada {
         controladorGrupos = new ControladorGrupos();
         return controladorGrupos.eliminarGrupo(idDel, token);
     
+    }
+    
+    // Metodos proyecto **********************************************************************************************
+    public JSONObject listarProyectos(String token) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.listarProyectos(token);
     }
 }

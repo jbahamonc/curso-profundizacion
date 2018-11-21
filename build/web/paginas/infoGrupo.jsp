@@ -118,7 +118,7 @@
                 </a>
             </li>
             <li>
-                <a href="proyectos.jsp">
+                <a href="" id="link-list-proyectos">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Proyectos</h4>
                 </a>
             </li>
@@ -137,6 +137,9 @@
 </aside>
 <!-- The sidebar's background -->
 <div class="control-sidebar-bg bg-yellow"></div>
+<script>
+    document.getElementById("link-list-proyectos").href = "procesar/gestionProyecto.jsp?operacion=2&token="+localStorage.getItem("token")
+</script>
 <a href="#" data-toggle="control-sidebar" style="z-index: 1001" class="btn bg-yellow pull-right btn-fixed" title="Menú">
     <i class="fa fa-bars" style="vertical-align: bottom;"></i>
 </a>

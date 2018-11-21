@@ -80,7 +80,7 @@ public class ControladorGrupos {
         return json;
     }
 
-    // pendiente
+    
     public JSONObject listarGrupos() throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/grupoCategoriaDirector");
@@ -112,7 +112,6 @@ public class ControladorGrupos {
         HttpClient httpClient = HttpClients.createDefault();
         HttpDelete httpDelete = new HttpDelete("https://productividadufps.herokuapp.com/api/v1/grupo/"+idDel);
         HttpResponse httpResponse = httpClient.execute(httpDelete);
-        boolean res = false;
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
         return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );    
