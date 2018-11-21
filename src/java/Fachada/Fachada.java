@@ -5,14 +5,10 @@
  */
 package Fachada;
 
-import Controller.ControladorFacultad;
+import Controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +19,8 @@ import org.json.JSONObject;
 public class Fachada {
     
     private ControladorFacultad controladorFacultad;
-    
+    private ControladorGrupos controladorGrupos;  
+    private ControladorProyectos controladorProyectos;
     
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
@@ -41,5 +38,44 @@ public class Fachada {
         controladorFacultad = new ControladorFacultad();
         return controladorFacultad.listarFacultad();
     
+    }
+    
+    // Metodos de Grupos ***************************************************************************************************************************
+    public int registrarGrupo (String nombre, String siglas, String tipoUnidad, String nombreUnidad, String ubicacion, 
+                                    String fecha, String codigoGruplav, String clasificado, String categoria, String email, 
+                                    String nombreDpto, String director) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, categoria, email, nombreDpto, director);
+    
+    }
+    
+    public JSONObject consultarGrupo(String id_grupo, String token) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.consultarGrupo(id_grupo, token);
+    
+    }
+    
+    public JSONObject listarGrupos() throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.listarGrupos();
+    
+    }
+    
+    public JSONObject cargarInfoRegistroGrupos(String token) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.cargarInfoRegistroGrupos(token);
+    
+    }
+    
+    public boolean eliminarGrupo(String idDel, String token) throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.eliminarGrupo(idDel, token);
+    
+    }
+    
+    // Metodos proyecto **********************************************************************************************
+    public JSONObject listarProyectos(String token) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.listarProyectos(token);
     }
 }

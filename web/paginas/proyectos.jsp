@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -37,16 +39,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%-- 
+                            JSONObject proyectos = (JSONObject)session.getAttribute("proyectos");
+                            JSONArray pro = proyectos.getJSONArray("proyectos");
+                            for(int i=0; i < pro.length(); i++) {
+                                JSONObject obj = pro.getJSONObject(i);                            
+                        --%>
                         <tr>
+                            <%--<td><%= i+1 %></td>
+                            <td><%= obj.getString("nombre") %></td>
+                            <td><%= obj.getString("directores") %></td>
+                            <td><%= obj.getString("linea") %></td>
+                            <td><%= obj.getString("fecha") %></td>
+                            <td><%= obj.getString("tiempo") %></td>
+                            <td><%= obj.getString("costo") %></td>--%>
                             <td>1</td>
-                            <td>Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta</td>
-                            <td>Judith del Pilar Rodríguez T <br>Oscar A. Gallardo Pérez <br>Jessica Lorena Pabón</td>
-                            <td>INGENIERIA DE SOFTWARE</td>
-                            <td>Marzo 2018</td>
-                            <td>5</td>
-                            <td>$ 400.000.000</td>
+                            <td>nombre</td>
+                            <td>nombre directores</td>
+                            <td>linea de investigacion</td>
+                            <td>23/11/2018</td>
+                            <td>3</td>
+                            <td>$3.000.000</td>
                             <td class="text-center">
-                                <a href="infoProyecto.jsp" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
+                                <a href="" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                                 <a href="" data-toggle="modal" data-target="#modal" type="button" title="Finalizar Proyecto" class="btn btn-warning btn-xs">
@@ -54,16 +69,19 @@
                                 </a>
                             </td>
                         </tr>
+                        <%-- } --%>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 </div>
-<a href="registrarProyecto.jsp" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Personal">
+<a href="" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Personal" id="link-reg-proyecto">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
-
+<script>
+    document.getElementById("link-reg-proyecto").href = "procesar/gestionProyecto.jsp?operacion=6&token="+localStorage.getItem("token")
+</script>
 <!-- Modal -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
