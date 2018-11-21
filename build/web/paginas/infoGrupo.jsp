@@ -34,7 +34,7 @@
                             <li><a>Ubicación: <span class="pull-right"><b><%= json.getString("ubicacion").toUpperCase() %></b></span></a></li>
                             <li><a>Fecha de Creación: <span class="pull-right"><b><%= json.getString("fechaCreacion") %></b></span></a></li>
                             <li><a>Código GrupLav: <span class="pull-right"><b><%= json.getString("codigo").toUpperCase() %></b></span></a></li>
-                            <li><a>Clasificado Colciencias: <span class="pull-right badge <%= (json.getInt("clasificado") == 0)? "bg-green" : "bg-green" %>"><b><%= (json.getInt("clasificado") == 0)? "SI" : "NO" %></b></span></a></li>
+                            <li><a>Clasificado Colciencias: <span class="pull-right badge <%= (json.getInt("clasificado") == 0)? "bg-green" : "bg-red" %>"><b><%= (json.getInt("clasificado") == 0)? "SI" : "NO" %></b></span></a></li>
                             <li><a>Categoria: <span class="pull-right badge bg-green"><b><%= json.getString("categoria") %></b></span></a></li>
                             <li class="hidden"><a>Correo: <span class="pull-right badge bg-green"><b></b></span></a></li>		                
                         </ul>		              

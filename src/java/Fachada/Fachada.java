@@ -81,12 +81,12 @@ public class Fachada {
     }
     
     public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
-    String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
+    String director, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
-        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, directores, lineaInvestigacion, descripcion);
+        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, director, lineaInvestigacion, descripcion);
     }
     
-    public ArrayList<JSONObject> listarSemilleros() throws IOException, JSONException{
+    public JSONObject listarSemilleros() throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.listarSemillero();
     }
@@ -96,13 +96,18 @@ public class Fachada {
         return controladorSemillero.eliminarSemillero(idSemillero);
     }
     
-    public ArrayList<JSONObject> listarDirectores() throws IOException, JSONException{
+    public JSONObject listarDirectores() throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.listarDirectores();
     }
     
-    public ArrayList<JSONObject> listarLineasInvestigacion() throws IOException, JSONException{
+    public JSONObject listarLineasInvestigacion() throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.listarLineasInvestigacion();
+    }
+    public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.consultarSemillero(idSemillero, token);
+    
     }
 }

@@ -27,7 +27,7 @@ import org.json.JSONObject;
  */
 public class ControladorSemillero {
 
-    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException {
+    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String director, String lineaInvestigacion, String descripcion) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         NameValuePair value1 = new BasicNameValuePair("nombreSemillero", nombreSemillero);
         NameValuePair value2 = new BasicNameValuePair("sigla", sigla);
@@ -51,17 +51,15 @@ public class ControladorSemillero {
 
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
             HttpClient httpClient2 = HttpClients.createDefault();
-            for (int i = 0; i < directores.length; i++) {
-                NameValuePair valorDirector = new BasicNameValuePair("director", directores[i]);
-                NameValuePair idSemillero = new BasicNameValuePair("idSemillero", obj.getInt("id") + "");
-                RequestBuilder requestBuilder2 = RequestBuilder.post().setUri("#");
-                requestBuilder2.addParameter(valorDirector);
-                requestBuilder2.addParameter(idSemillero);
-                HttpUriRequest uriRequest2 = requestBuilder2.build();
-                HttpResponse httpResponse2 = httpClient2.execute(uriRequest2);
-                if (httpResponse2.getStatusLine().getStatusCode() != 200 || httpResponse2.getStatusLine().getStatusCode() != 201) {
-                    return -1;
-                }
+            NameValuePair valorDirector = new BasicNameValuePair("director", director);
+            NameValuePair idSemillero = new BasicNameValuePair("idSemillero", obj.getInt("id") + "");
+            RequestBuilder requestBuilder2 = RequestBuilder.post().setUri("#");
+            requestBuilder2.addParameter(valorDirector);
+            requestBuilder2.addParameter(idSemillero);
+            HttpUriRequest uriRequest2 = requestBuilder2.build();
+            HttpResponse httpResponse2 = httpClient2.execute(uriRequest2);
+            if (httpResponse2.getStatusLine().getStatusCode() != 200 || httpResponse2.getStatusLine().getStatusCode() != 201) {
+                return -1;
             }
             return obj.getInt("id");
         } else {
@@ -70,58 +68,64 @@ public class ControladorSemillero {
 
     }
 
-    public ArrayList<JSONObject> listarSemillero() throws IOException, JSONException {
-        ArrayList<JSONObject> listaSemillero = new ArrayList<>();
+    public JSONObject listarSemillero() throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("#");
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        String source = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(source);
-        JSONObject json = new JSONObject(source);
-        JSONArray array = json.getJSONArray("semillero");
-        for (int i=0; i<array.length(); i++) {
-            listaSemillero.add(array.getJSONObject(i));
+        JSONObject semillero = null;
+        if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
+            String source = EntityUtils.toString(httpResponse.getEntity());
+            semillero = new JSONObject(source);
         }
-        return listaSemillero;
+        return semillero;
     }
 
     public boolean eliminarSemillero(String idSemillero) throws IOException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpDelete httpDelete = new HttpDelete("#"+idSemillero);
+        HttpDelete httpDelete = new HttpDelete("#" + idSemillero);
         HttpResponse httpResponse = httpClient.execute(httpDelete);
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
         return httpResponse.getStatusLine().getStatusCode() == 200;
     }
 
-    public ArrayList<JSONObject> listarDirectores() throws IOException, JSONException {
-        ArrayList<JSONObject> listaDirectores = new ArrayList<>();
+    public JSONObject listarDirectores() throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("#");
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        String source = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(source);
-        JSONObject json = new JSONObject(source);
-        JSONArray array = json.getJSONArray("directores");
-        for (int i=0; i<array.length(); i++) {
-            listaDirectores.add(array.getJSONObject(i));
+        JSONObject listaDirectores = null;
+        String source = "";
+        if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
+            source = EntityUtils.toString(httpResponse.getEntity());
+            listaDirectores = new JSONObject(source);
         }
         return listaDirectores;
     }
 
-    public ArrayList<JSONObject> listarLineasInvestigacion() throws IOException, JSONException {
-        ArrayList<JSONObject> listaLineasInvestigacion = new ArrayList<>();
+    public JSONObject listarLineasInvestigacion() throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("#");
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        String source = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(source);
-        JSONObject json = new JSONObject(source);
-        JSONArray array = json.getJSONArray("lineasInvestigacion");
-        for (int i=0; i<array.length(); i++) {
-            listaLineasInvestigacion.add(array.getJSONObject(i));
+        JSONObject listaLineasInvestigacion = null;
+        String source = "";
+        if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
+            source = EntityUtils.toString(httpResponse.getEntity());
+            listaLineasInvestigacion = new JSONObject(source);
         }
         return listaLineasInvestigacion;
+    }
+
+    public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("#" + idSemillero);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject jsonSemillero = null;
+        String source = "";
+        if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
+            source = EntityUtils.toString(httpResponse.getEntity());
+            jsonSemillero = new JSONObject(source);
+        }
+        return jsonSemillero;
     }
 
 }

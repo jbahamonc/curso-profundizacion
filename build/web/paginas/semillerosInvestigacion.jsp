@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,7 +26,7 @@
                 <h3 class="box-title">Listado de Semilleros Registrados</h3>
             </div>
             <div class="box-body">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="tablaSemillero" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>Nombre del Semillero</th>
@@ -38,8 +39,10 @@
                     </thead>
                     <tbody>
                         <%
-                            ArrayList<JSONObject> listaSemilleros = (ArrayList) session.getAttribute("semilleros");
-                            for (JSONObject semillero : listaSemilleros) {%>
+                            JSONObject semilleros = (JSONObject)session.getAttribute("semilleros");
+                            JSONArray listaSemilleros = semilleros.getJSONArray("semilleros");
+                            for (int i = 0; i < listaSemilleros.length(); i++) {
+                                JSONObject semillero = listaSemilleros.getJSONObject(i);%>
                         %>
                         <tr>
                             <td><%=semillero.getString("nombreSemillero")%></td>
@@ -51,7 +54,7 @@
                                 <button type="button" class="btn btn-danger btn-xs" id="btn-eli-semillero" data-id="<%=semillero.getInt("id")%>">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
-                                <a href="infoSemillero.jsp" class="btn btn-success btn-xs">
+                                 <a href="procesar/gestionSemillero.jsp?id=<%= semillero.getInt("id") %>&operacion=5&token=<%= session.getAttribute("token") %>" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                             </td>

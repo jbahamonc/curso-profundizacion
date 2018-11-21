@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -23,13 +24,14 @@
                             <img class="img-circle" src="../img/semillero-icon.png" alt="User Avatar">
                         </div>
                         <!-- /.widget-user-image -->
-                        <h3 class="widget-user-username">Semillero de Investigación de Desarrollo de Aplicaciones Web </h3>
-                        <h5 class="widget-user-desc">SIAWEB</h5>
+                        <%JSONObject semillero = (JSONObject)session.getAttribute("semillero"); %>
+                        <h3 class="widget-user-username"><%=semillero.getString("nombre").toUpperCase()%></h3>
+                        <h5 class="widget-user-desc"><%=semillero.getString("sigla").toUpperCase()%></h5>
                     </div>
                     <div class="box-body no-padding">
                         <ul class="nav nav-stacked">
-                            <li><a>Ubicación: <span class="pull-right"><b>lorem ipsum dolor sit mep</b></span></a></li>
-                            <li><a>Fecha de Creación: <span class="pull-right"><b>02/02/2000</b></span></a></li>
+                            <li><a>Ubicación: <span class="pull-right"><b><%=semillero.getString("ubicacion").toUpperCase()%></b></span></a></li>
+                            <li><a>Fecha de Creación: <span class="pull-right"><b><%=semillero.getString("ubicacion")%></b></span></a></li>
                             <li><a>Grupo al que pertenece: <span class="pull-right"><b>GIDIS</b></span></a></li>
                             <li><a>Ubicación: <span class="pull-right"><b>lorem ipsum</b></span></a></li>		                
                         </ul>		              
@@ -38,47 +40,25 @@
                         <a href="registroSemillero.jsp" class="btn btn-block">EDITAR SEMILLERO</a>
                     </div>
                 </div>
+                   <% JSONObject director = semillero.getJSONObject("director"); %>
                 <div class="box box-purple">
                     <div class="box-body box-profile">
                         <img class="profile-user-img img-responsive img-circle" src="../img/avatar5.png" alt="User profile picture">
-                        <h3 class="profile-username text-center">Judith del Pilar Rodriguez Tenjo</h3>
+                        <h3 class="profile-username text-center"><%=director.getString("nombre")%></h3>
                         <p class="text-muted text-center">Director del Semillero</p>
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Departamento</b> <a class="pull-right">Lorem ipsum dolor sit mep</a>
+                                <b>Departamento</b> <a class="pull-right"><%=director.getString("departamento")%></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Contacto</b> <a class="pull-right">34324232 - 23443434</a>
+                                <b>Contacto</b> <a class="pull-right"><%=director.getString("contacto")%></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Email</b> <a class="pull-right">contacto@gidis.ufps.edu.co</a>
+                                <b>Email</b> <a class="pull-right"><%=director.getString("email")%></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Vinculación</b> <a class="pull-right">T.C</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-purple">
-                    <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="../img/avatar5.png" alt="User profile picture">
-                        <h3 class="profile-username text-center">Nelson Beltrán Galvis</h3>
-                        <p class="text-muted text-center">Director del Semillero</p>
-
-                        <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item">
-                                <b>Departamento</b> <a class="pull-right">Lorem ipsum dolor sit mep</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Contacto</b> <a class="pull-right">34324232 - 23443434</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Email</b> <a class="pull-right">contacto@gidis.ufps.edu.co</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Vinculación</b> <a class="pull-right">T.C</a>
+                                <b>Vinculación</b> <a class="pull-right"><%=director.getString("vinculacion")%></a>
                             </li>
                         </ul>
                     </div>
@@ -93,11 +73,11 @@
                     <div class="box-body">
                         <strong><i class="fa fa-file-text-o margin-r-5"></i> Descripción</strong>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quam vero, voluptatibus quaerat minus blanditiis! Odio quo, ratione, magnam quia fuga quae earum! Voluptate totam iure expedita blanditiis nesciunt recusandae.
+                            <%=semillero.getString("descripcion")%>
                         </p>
                         <hr>
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>Linea de Investigación</strong>
-                        <p class="text-muted">Desarrollo y Gestión de proyectos de Aplicaciones Web para la solución de problemas de diversas áreas del conocimiento</p>
+                        <p class="text-muted"><%=semillero.getString("lineaInvestigacion")%></p>
                     </div>
                 </div>
                 <div class="row">
@@ -105,7 +85,7 @@
                         <!-- small box -->
                         <div class="small-box bg-purple">
                             <div class="inner">
-                                <h3>0</h3>
+                                <h3><%= semillero.getInt("proTerminados") %></h3>
                                 <p>Proyectos Terminados</p>
                             </div>
                             <div class="icon">
@@ -118,7 +98,7 @@
                         <!-- small box -->
                         <div class="small-box bg-purple">
                             <div class="inner">
-                                <h3>0</h3>
+                                <h3><%= semillero.getInt("proTerminados") %></h3>
                                 <p>Proyectos en Ejecución</p>
                             </div>
                             <div class="icon">
