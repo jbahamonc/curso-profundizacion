@@ -8,11 +8,6 @@
 <%@page import="Fachada.Fachada"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
-<%@page import="org.apache.http.util.EntityUtils"%>
-<%@page import="org.apache.http.HttpResponse"%>
-<%@page import="org.apache.http.client.methods.HttpGet"%>
-<%@page import="org.apache.http.impl.client.HttpClients"%>
-<%@page import="org.apache.http.client.HttpClient"%>
 <%
     
     int operacion = Integer.parseInt(request.getParameter("operacion"));

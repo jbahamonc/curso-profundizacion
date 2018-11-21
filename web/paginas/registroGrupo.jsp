@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -29,6 +31,7 @@
                 </p>
                 <div class="row">
                     <form id="form-register-groups">
+                        <input type="hidden" name="operacion" value="1">
                         <div class="form-group col-xs-12 col-md-8">
                             <label>Nombre del Grupo (*)</label>
                             <input type="text" class="form-control" name="nombreGrupo" required>
@@ -41,21 +44,16 @@
                         <div class="form-group col-xs-12 col-md-2">
                             <label>Tipo Unidad Académica (*)</label>
                             <select class="form-control" name="tipoUnidadAcademica" id="tipo-unidad-academica" required>
-                                <option selected disabled> Seleccione</option>
-                                <option>Departamento</option>
-                                <option>Facultad</option>
-                                <option>Programa</option>
+                                <option disabled selected> Seleccione</option>
+                                <option value="2">Departamento</option>
+                                <option value="1">Facultad</option>
+                                <option value="3">Programa</option>
                             </select>
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Nombre Unidad Académica (*)</label>
                             <select class="form-control" name="nombreUnidadAcademica" id="nombre-unidad-academica" required>
-                                <option value="" selected disabled> Seleccione</option>
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                                <option disabled selected> No hay datos cargados</option>
                             </select>
                         </div>
                         <div class="form-group col-xs-12 col-md-6">
@@ -75,33 +73,32 @@
                             <label>Clasificado Colciencias (*)</label>
                             <select class="form-control" name="clasificadoColciencias" required>
                                 <option selected disabled>Seleccione</option>
-                                <option>SI</option>
-                                <option>NO</option>
+                                <option value="0">SI</option>
+                                <option value="1">NO</option>
                             </select>
                         </div>	
+                        <%  
+                            JSONObject info = (JSONObject)session.getAttribute("infoGrupo");
+                            JSONArray cats = info.getJSONArray("categoria");
+                        %>
+                        <script>
+                            var json = JSON.stringify(<%= info.toString() %>)
+                            localStorage.setItem("json", json)
+                        </script>
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Categoria (*)</label>
                             <select class="form-control" name="categoriaGrupo" required>
                                 <option selected disabled>Seleccione</option>
-                                <option>A1</option>
-                                <option>A2</option>
-                                <option>B</option>
-                                <option>B1</option>
-                                <option>Reconocido</option>
-                                <option>Sin categoria</option>
+                                <% for (int i = 0; i < cats.length(); i++) {
+                                    JSONObject obj = cats.getJSONObject(i); 
+                                %>
+                                <option value="<%= obj.getInt("id_categoria") %>"><%= obj.getString("nombre") %></option>
+                                <% } %>
                             </select>
                         </div>		
-                        <div class="form-group col-xs-12 col-md-3">
+                        <div class="form-group col-xs-12 col-md-6">
                             <label>Email del Grupo (*)</label>
                             <input type="email" class="form-control" name="email" required>
-                        </div>
-                        <div class="form-group col-xs-12 col-md-9">
-                            <label>Director del Grupo (*)</label>
-                            <select class="form-control" name="directorGrupo" required>
-                                <option selected disabled>Seleccione</option>
-                                <option>Nombre</option>
-                                <option>Nombre</option>
-                            </select>
                         </div>
                     </form>
                     <div class="form-group col-xs-12 text-right">
