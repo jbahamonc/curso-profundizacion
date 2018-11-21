@@ -44,7 +44,7 @@
                             JSONArray pro = proyectos.getJSONArray("proyectos");
                             for(int i=0; i < pro.length(); i++) {
                                 JSONObject obj = pro.getJSONObject(i);                            
-                        --%>
+                     
                         <tr>
                             <%--<td><%= i+1 %></td>
                             <td><%= obj.getString("nombre") %></td>
@@ -53,6 +53,10 @@
                             <td><%= obj.getString("fecha") %></td>
                             <td><%= obj.getString("tiempo") %></td>
                             <td><%= obj.getString("costo") %></td>--%>
+                            
+                        </tr>
+                        <%-- } --%>
+                        <tr>
                             <td>1</td>
                             <td>nombre</td>
                             <td>nombre directores</td>
@@ -69,18 +73,17 @@
                                 </a>
                             </td>
                         </tr>
-                        <%-- } --%>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 </div>
-<a href="" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Personal" id="link-reg-proyecto">
+<a href="" class="btn btn-danger pull-right btn-fixed" title="Registrar Nuevo Proyecto" id="link-reg-proyecto">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 <script>
-    document.getElementById("link-reg-proyecto").href = "procesar/gestionProyecto.jsp?operacion=6&token="+localStorage.getItem("token")
+    document.getElementById("link-reg-proyecto").href = "procesar/gestionProyecto.jsp?operacion=1&token="+localStorage.getItem("token")
 </script>
 <!-- Modal -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog">

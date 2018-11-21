@@ -8,7 +8,6 @@ package Fachada;
 import Controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,6 +20,7 @@ public class Fachada {
     private ControladorFacultad controladorFacultad;
     private ControladorGrupos controladorGrupos;  
     private ControladorProyectos controladorProyectos;
+    private ControladorPlanAccion controladorPlanAccion;
     
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
@@ -77,5 +77,16 @@ public class Fachada {
     public JSONObject listarProyectos(String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
         return controladorProyectos.listarProyectos(token);
+    }
+    
+    public JSONObject cargarInfoFormRegistroProyectos(String token, String tipoSesion) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.cargarInfoFormRegistroProyectos(token, tipoSesion);
+    }
+    
+    // Metodos de Planes de Accion **********************************************************************************************
+    public JSONObject listarPlanesAccion(String token, String id) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.listarPlanesAccion(token, id);
     }
 }

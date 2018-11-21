@@ -128,7 +128,7 @@
                 </a>
             </li>
             <li>
-                <a href="planAccionGrupo.jsp">
+                <a href="planAccionGrupo.jsp" id="link-plan-accion">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Plan de Acción</h4>
                 </a>
             </li>
@@ -139,6 +139,7 @@
 <div class="control-sidebar-bg bg-yellow"></div>
 <script>
     document.getElementById("link-list-proyectos").href = "procesar/gestionProyecto.jsp?operacion=2&token="+localStorage.getItem("token")
+    document.getElementById("link-plan-accion").href = "procesar/gestionPlanAccionGrupo.jsp?operacion=1&token="+localStorage.getItem("token")
 </script>
 <a href="#" data-toggle="control-sidebar" style="z-index: 1001" class="btn bg-yellow pull-right btn-fixed" title="Menú">
     <i class="fa fa-bars" style="vertical-align: bottom;"></i>

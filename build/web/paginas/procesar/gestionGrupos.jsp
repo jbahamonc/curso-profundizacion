@@ -35,6 +35,7 @@
             if (id > 0) {
                 json.put("status", "200");
                 json.put("id_grupo", "1");
+                session.setAttribute("tipoSesion", "grupos");
             }
             else {
                 json.put("status", "500");
@@ -62,6 +63,7 @@
             JSONObject grupos = f.listarGrupos();
             session.setAttribute("grupos", grupos);
             session.setAttribute("token", token);
+            session.setAttribute("tipoSesion", "grupos");
             response.sendRedirect("../gruposInvestigacion.jsp");
             break;
             

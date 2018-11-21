@@ -18,11 +18,11 @@ import org.json.JSONObject;
  *
  * @author jeferson
  */
-class ControladorProyectos {
+class ControladorPlanAccion {
 
-    JSONObject listarProyectos(String token) throws IOException, JSONException {
+    JSONObject listarPlanesAccion(String token, String id) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/proyecto");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/planesAccion");
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());
@@ -30,20 +30,7 @@ class ControladorProyectos {
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
             jsonObj = new JSONObject(source);                        
         }        
-        return jsonObj;    
-    }
-
-    JSONObject cargarInfoFormRegistroProyectos(String token, String tipoSesion) throws IOException, JSONException {
-        HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/algunnombre");
-        HttpResponse httpResponse = httpClient.execute(httpGet);
-        JSONObject jsonObj = null;
-        String source = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(source);
-        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
-            jsonObj = new JSONObject(source);                        
-        }        
-        return jsonObj;
+        return jsonObj;   
     }
     
 }

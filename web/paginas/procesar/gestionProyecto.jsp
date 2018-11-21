@@ -11,16 +11,24 @@
     Fachada f = new Fachada();
     String token = "";
     switch (operacion) {
-        
-        case 2: 
+        // Mostrar form registro
+        case 1:
+            token = session.getAttribute("token").toString();
+            String tipoSesion = session.getAttribute("tipoSesion").toString();
+            JSONObject dataForm = f.cargarInfoFormRegistroProyectos(token, tipoSesion);
             token = request.getParameter("token");
+            response.sendRedirect("../registrarProyecto.jsp");
+            break;
+        case 2: 
+            //token = request.getParameter("token");
             //JSONObject proyectos = f.listarProyectos(token);
             //session.setAttribute("proyectos", proyectos);
             response.sendRedirect("../proyectos.jsp");
+            break;
         
         case 6:
-            token = request.getParameter("token");
-            response.sendRedirect("../registrarProyecto.jsp");
+            
+            break;
     }
 
 %>
