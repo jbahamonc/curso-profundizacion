@@ -35,22 +35,15 @@
                             <label>Siglas (*)</label>
                             <input type="text" class="form-control" name="sigla">
                         </div> 
-                        <div class="form-group col-xs-12 col-md-6">
+                        <div class="form-group col-xs-12 col-md-8">
                             <label>Ubicación (*)</label>
                             <input type="text" class="form-control" name="ubicacion">
                         </div>    
-                        <div class="form-group col-xs-12 col-md-3">
+                        <div class="form-group col-xs-12 col-md-4">
                             <label>Fecha de Creación (*)</label>
                             <input type="date" class="form-control" name="fechaCreacion">
                         </div>  	                 
-                        <div class="form-group col-xs-12 col-md-3">
-                            <label>Grupo al que Pertenece (*)</label>
-                            <select class="form-control" name="grupoPertenece">
-                                <option selected disabled>Seleccione</option>
-                                <option value="3">Nombre del grupo</option>
-                                <option value="2">Nombre del grupo</option>
-                            </select>
-                        </div>	
+                        
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Director(es) del Grupo (*)</label>
                             <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="directores" multiple style="width: 100%;">
@@ -74,7 +67,7 @@
                             <textarea class="form-control" rows="3" name="descripcion"></textarea>
                         </div> 
                         <div class="form-group col-xs-12 text-right">
-                            <a href="infoSemillero.jsp" class="btn bg-red btn-flat btn-lg" id="btn-save-semillero">REGISTRAR GRUPO</a>
+                            <a href="infoSemillero.jsp" class="btn bg-red btn-flat btn-lg" id="btn-save-semillero">REGISTRAR SEMILLERO</a>
                         </div>                	                                      
                     </form>
                 </div>

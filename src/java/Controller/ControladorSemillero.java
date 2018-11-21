@@ -27,15 +27,14 @@ import org.json.JSONObject;
  */
 public class ControladorSemillero {
 
-    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String grupoPertenece, String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException {
+    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         NameValuePair value1 = new BasicNameValuePair("nombreSemillero", nombreSemillero);
         NameValuePair value2 = new BasicNameValuePair("sigla", sigla);
         NameValuePair value3 = new BasicNameValuePair("ubicacion", ubicacion);
         NameValuePair value4 = new BasicNameValuePair("fechaCreacion", fechaCreacion);
-        NameValuePair value5 = new BasicNameValuePair("grupoPertenece", grupoPertenece);
-        NameValuePair value6 = new BasicNameValuePair("lineaInvestigacion", lineaInvestigacion);
-        NameValuePair value7 = new BasicNameValuePair("descripcion", descripcion);
+        NameValuePair value5 = new BasicNameValuePair("lineaInvestigacion", lineaInvestigacion);
+        NameValuePair value6 = new BasicNameValuePair("descripcion", descripcion);
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
         requestBuilder.addParameter(value1);
         requestBuilder.addParameter(value2);
@@ -43,7 +42,6 @@ public class ControladorSemillero {
         requestBuilder.addParameter(value4);
         requestBuilder.addParameter(value5);
         requestBuilder.addParameter(value6);
-        requestBuilder.addParameter(value7);
 
         HttpUriRequest uriRequest = requestBuilder.build();
         HttpResponse httpResponse = httpClient.execute(uriRequest);

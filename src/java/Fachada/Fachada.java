@@ -46,10 +46,10 @@ public class Fachada {
     
     }
     
-    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String grupoPertenece,
+    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
     String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
-        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, grupoPertenece, directores, lineaInvestigacion, descripcion);
+        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, directores, lineaInvestigacion, descripcion);
     }
     
     public ArrayList<JSONObject> listarSemilleros() throws IOException, JSONException{

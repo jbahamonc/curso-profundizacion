@@ -20,12 +20,11 @@
             String siglas = request.getParameter("sigla");
             String ubicacion = request.getParameter("ubicacion");
             String fechaCreacion = request.getParameter("fechaCreacion");
-            String grupoPertenece = request.getParameter("grupoPertenece");
             String[] directores = request.getParameterValues("directores");
             String lineaInvestigacion = request.getParameter("lineaInvestigacion");
             String descripcion = request.getParameter("descripcion");
 
-            int valorId = fachada.registrarSemillero(nombreSemillero, siglas, ubicacion, fechaCreacion, grupoPertenece, directores, lineaInvestigacion, descripcion);
+            int valorId = fachada.registrarSemillero(nombreSemillero, siglas, ubicacion, fechaCreacion, directores, lineaInvestigacion, descripcion);
             JSONObject valor = new JSONObject();
             if (valorId > 0) {
                 valor.put("id", valorId);
