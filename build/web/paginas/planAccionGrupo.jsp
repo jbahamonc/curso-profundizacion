@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -35,6 +37,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <%-- 
+                                    JSONObject lista = (JSONObject)session.getAttribute("planesAccion");
+                                    JSONArray planes = lista.getJSONArray("planes");
+                                    for (int i = 0; i < planes.length(); i++) {
+                                        JSONObject obj = planes.getJSONObject(i);                                        
+                                %>
+                                <tr>
+                                    <td><%= (i + 1) %></td>
+                                    <td><%= obj.getString("año") %></td>
+                                    <td><%= obj.getInt("semestre") %></td>
+                                    <td class="text-center">
+                                        <a href="procesar/gestionPlanAccion.jsp?id=<%= obj.getInt("id") %>&operacion=2&token=<%= obj.getString("token")%>" title="Información de Plan de Acción" class="btn btn-success btn-xs">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="" data-toggle="modal" data-target="#modal" class="btn btn-primary btn-xs" title="Actualizar Estado de las Actividades del Plan">
+                                            <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="" data-toggle="modal" data-target="#modal-evt" class="btn btn-primary btn-xs" title="Actualizar Estado de los Eventos del Plan">
+                                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                        </a>
+                                    </td>                                    
+                                </tr>--%>
                                 <tr>
                                     <td>1</td>
                                     <td>2018</td>
@@ -49,7 +73,7 @@
                                         <a href="" data-toggle="modal" data-target="#modal-evt" class="btn btn-primary btn-xs" title="Actualizar Estado de los Eventos del Plan">
                                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                                         </a>
-                                    </td>
+                                    </td>                                    
                                 </tr>
                             </tbody>
                         </table>
@@ -60,7 +84,7 @@
 </div>
 </section>
 </div>
-<a href="registroPlanDeAccionGrupo.jsp" class="btn btn-danger pull-right btn-fixed add-person" title="Nuevo Plan de Acción">
+<a href="procesar/gestionPlanAccionGrupo.jsp?operacion=2&token=<%= session.getAttribute("token").toString() %>" class="btn btn-danger pull-right btn-fixed add-person" title="Nuevo Plan de Acción">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 

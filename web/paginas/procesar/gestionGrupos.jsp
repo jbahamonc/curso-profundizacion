@@ -27,7 +27,7 @@
             String email = request.getParameter("email");            
             String nombreDpto = request.getParameter("nombreDepartamento");            
             //String director = session.getAttribute("id_director");  
-            String director = "1";  
+            String director = "1"; // esto es porque no hay sesion 
             token = request.getParameter("token");  
             int id = f.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, 
                     categoria, email, nombreDpto, director);
@@ -35,6 +35,7 @@
             if (id > 0) {
                 json.put("status", "200");
                 json.put("id_grupo", "1");
+                session.setAttribute("tipoSesion", "grupos");
             }
             else {
                 json.put("status", "500");
@@ -45,11 +46,13 @@
         // Consultar
         case 2 :
             String id_grupo = request.getParameter("id");
-            token = request.getParameter("token");
+            token = request.getParameter("token");            
             JSONObject jsonGrupo = f.consultarGrupo(id_grupo, token);
             if ( jsonGrupo != null ) { 
                 jsonGrupo.put("token", token);
                 session.setAttribute("grupo", jsonGrupo);
+                session.setAttribute("tipoSesion", "1");
+                session.setAttribute("idGrupoSemillero", id_grupo);
                 response.sendRedirect("../infoGrupo.jsp");
             } else {
                 System.out.println("ocurrio un error");
@@ -61,7 +64,7 @@
             token = request.getParameter("token");
             JSONObject grupos = f.listarGrupos();
             session.setAttribute("grupos", grupos);
-            session.setAttribute("token", token);
+            session.setAttribute("token", token);            
             response.sendRedirect("../gruposInvestigacion.jsp");
             break;
             
