@@ -61,31 +61,21 @@
                         <h3 class="box-title">Listado de Proyectos</h3>
                     </div>        	
                     <div class="box-body">
-                        <div class="text-center" id="info-empty-projects">
+                        <div class="text-center info-empty">
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div class="hidden box-data-action" id="">
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../img/project.svg" alt="Project Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="infoProyecto.jsp" class="product-title">
-                                            Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta
-                                        </a>
-                                        <span class="product-description">
-                                            Fecha de Inicio: 23/02/2018
-                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>
+                        <div class="box-data-action" id="">
+                            <ul class="products-list product-list-in-box" id="ulProjects"></ul>
                         </div>
-                    </div>                    
+                    </div>     
+                    <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
+                        <div class="text-center">
+                            <img src="../img/loader.gif" alt="" class="fa">
+                            <p>Cargando Información...</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="box">
                     <div class="box-header with-border">
@@ -97,26 +87,16 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div id="" class="hidden box-data-action">          
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../img/date.svg" alt="Project Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="eventosGrupo.jsp" class="product-title">
-                                            EIISI 2018
-                                        </a>
-                                        <span class="product-description">
-                                            Internacional
-                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>                           
+                        <div class="hidden box-data-action">          
+                            <ul class="products-list product-list-in-box" id="ulEvents"></ul>                           
                         </div>
-                    </div>                    
+                    </div>  
+                    <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
+                        <div class="text-center">
+                            <img src="../img/loader.gif" alt="" class="fa">
+                            <p>Cargando Información...</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="box">
                     <div class="box-header with-border">
@@ -128,26 +108,16 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div id="" class="hidden box-data-action">    
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../img/activitys.svg" alt="Project Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="eventosGrupo.jsp" class="product-title">
-                                            Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas
-                                        </a>
-                                        <span class="product-description">
-                                            Fecha de Inicio: 23/02/2018
-                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>
+                        <div class="hidden box-data-action">    
+                            <ul class="products-list product-list-in-box" id="ulActivitys"></ul>
                         </div>
-                    </div>                    
+                    </div> 
+                    <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
+                        <div class="text-center">
+                            <img src="../img/loader.gif" alt="" class="fa">
+                            <p>Cargando Información...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
@@ -193,96 +163,8 @@
                                     <option value="">Nombre Proyecto</option>
                                 </select>
                             </div>
-                            <div class="hidden">
-                                <div class="form-group col-xs-12">
-                                    <label>Seleccione el Objetivo (*)</label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="" selected="" disabled="">Seleccione</option>
-                                        <option value="">Descripción del objetivo</option>
-                                        <option value="">Descripción del objetivo</option>
-                                        <option value="">Descripción del objetivo</option>
-                                        <option value="">Descripción del objetivo</option>
-                                        <option value="">Descripción del objetivo</option>
-                                        <option value="">Descripción del objetivo</option>
-                                    </select>
-                                </div>	
-                                <div class="form-group col-xs-12">
-                                    <label>Actividad del Objetivo Específico(*) </label>
-                                    <input type="text" class="form-control">	                  	
-                                </div>		                
-                                <div class="form-group col-xs-12 col-md-6">
-                                    <label>Fecha de Inicio (*)</label>
-                                    <input type="month" class="form-control">
-                                </div>	
-                                <div class="form-group col-xs-12 col-md-6">
-                                    <label>Fecha de Terminación (*)</label>
-                                    <input type="month" class="form-control">
-                                </div>
-                                <div class="form-group col-xs-12">
-                                    <label>Responsables de la Actividad (*)</label>
-                                    <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables[]" multiple style="width: 100%;">
-                                        <%-- 
-                                            JSONArray res = data.getJSONArray("responsables");
-                                            for (int i = 0; i < res.length(); i++) {
-                                                JSONObject obj = res.getJSONObject(i);
-                                        %>
-                                            <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                        <% } --%>
-                                        <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                        <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                        <option value="WY">Jessica Lorena Pabón</option>
-                                        <option value="WY">Gladys Adriana Espinel</option>
-                                        <option value="WY">Milton Vera Contreras</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-xs-12">
-                                    <label>Producto (*)</label>
-                                    <input type="text" class="form-control">
-                                </div>	
-                            </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat">CARGAR DATOS</button>
-                            </div>	                				                                      
-                        </form>
-                    </div>
-                </div>
-                <div class="box collapsed-box hidden">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Registro de Participación en Dirección</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>        	
-                    <div class="box-body">
-                        <form>
-                            <div class="form-group col-xs-12">
-                                <label>Seleccione la Linea de Investigación (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Seleccione el Proyecto (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Nombre del proyecto</option>
-                                    <option value="">Nombre del proyecto</option>
-                                    <option value="">Nombre del proyecto</option>
-                                </select>
-                            </div>                               
-                            <div class="form-group col-xs-12">
-                                <label>Institución (*)</label>
-                                <input type="text" class="form-control">
-                            </div>            	
-                            <div class="form-group col-xs-12 text-right">
-                                <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -333,15 +215,15 @@
                             <div class="form-group col-xs-12">
                                 <label>Instituciones Promotoras (*)</label>
                                 <button type="button" data-toggle="modal" data-target="#modal-promotoras" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                                <select class="js-inst-promo" data-placeholder="Ingrese los Organizadores" name="responsables-evento[]" multiple style="width: 100%;"></select>
+                                <select class="js-inst-promo" data-placeholder="Ingrese los Organizadores" name="responsables-evento" multiple style="width: 100%;"></select>
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Entidades Participante (*)</label>
                                 <button type="button" data-toggle="modal" data-target="#modal-entidad" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                                <select class="js-entidades" data-placeholder="Ingrese las Entidades Participantes" name="entidades[]" multiple style="width: 100%;"></select>
+                                <select class="js-entidades" data-placeholder="Ingrese las Entidades Participantes" name="entidades" multiple style="width: 100%;"></select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -363,13 +245,20 @@
                             <div class="form-group col-xs-12">
                                 <label>Responsables de la Actividad (*)</label>
                                 <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables[]" multiple style="width: 100%;">
+                                    <%-- 
+                                        JSONArray res = data.getJSONArray("responsables");
+                                        for (int i = 0; i < res.length(); i++) {
+                                            JSONObject obj = res.getJSONObject(i);
+                                    %>
+                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
+                                    <% } --%>
                                     <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
                                     <option value="WY">Oscar Alberto Gallardo Perez</option>
                                     <option value="WY">Jessica Lorena Pabón</option>
                                     <option value="WY">Gladys Adriana Espinel</option>
                                     <option value="WY">Milton Vera Contreras</option>
                                 </select>
-                            </div>  
+                            </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Inicio (*)</label>
                                 <input type="month" class="form-control">
@@ -383,7 +272,7 @@
                                 <input type="text" class="form-control">
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>

@@ -41,6 +41,7 @@
             if ( res != null ) {
                 res.put("status", 200);
             } else {
+                res = new JSONObject();
                 res.put("status", 500);
             }
             out.print(res);
