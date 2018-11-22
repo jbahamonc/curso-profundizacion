@@ -84,11 +84,11 @@ public class Fachada {
         return controladorProyectos.cargarInfoFormRegistroProyectos(token, tipoSesion, id);
     }
     
-    public int registrarProyecto(String titulo, String linea, String tiempo, String fechaInicio, String fechaFin, String costo, 
-            String tipoProyecto, String resumen, String  objGeneral, String resEsperados, String objEspecificos[], 
+    public int registrarProyecto(String idGrupoSemillero, String titulo, String linea, String tiempo, String fechaInicio, String fechaFin, String costo, 
+            String tipoProyecto, String resumen, String  objGeneral, String resEsperados, String[] objEspecificos, 
             String numContrato, String token, String tipoSesion) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
-        return controladorProyectos.registrarProyecto(titulo, linea, tiempo, fechaInicio, fechaFin, costo, tipoProyecto, resumen, 
+        return controladorProyectos.registrarProyecto(idGrupoSemillero, titulo, linea, tiempo, fechaInicio, fechaFin, costo, tipoProyecto, resumen, 
                                 objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
     }
     
@@ -121,6 +121,20 @@ public class Fachada {
     public boolean vincularProyectoPlanGrupo(String año, String semestre, String id_grupo, String id_proyecto, String token) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
         return controladorPlanAccion.vincularProyectoPlanGrupo(año, semestre, id_grupo, id_proyecto, token);
+    }
+    
+    public boolean registrarEventoPlanAccionGrupo(String año, String semestre, String id_grupo, String evento, String caracterEvento,
+            String responsables[], String fechaIni, String fechFin, String[] intPromotoras, String[] entidades, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.registrarEventoPlanAccionGrupo(año, semestre, id_grupo, evento, caracterEvento, responsables, fechaIni, 
+                    fechFin, intPromotoras, entidades, token);
+    }
+    
+    public boolean registrarActividadPlanAccionGrupo(String año, String semestre, String id_grupo, String actividad, String[] respAct,
+            String fechaInicio, String fechFinal, String producto, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.registrarActividadPlanAccionGrupo(año, semestre, id_grupo, actividad, respAct, fechaInicio, fechFinal, 
+                    producto, token);
     }
     
     

@@ -18,6 +18,7 @@ $(function () {
         overlay.removeClass('hidden')
         if ( form.valid() ) {
             form = form.serializeArray()
+            console.log(form)
             form.push({ 'token' : token })
             $.ajax({
                 url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
@@ -30,7 +31,7 @@ $(function () {
                     if (json.status == 200) {
                         var buttons = $(".button-plans")
                         buttons.removeAttr('disabled')
-                        localStorage.setItem('dataPlan', {'anio' : '2018', 'semestre' : '2'})
+                        localStorage.setItem('dataPlan', JSON.stringify({'anio' : form[1].value, 'semestre' : form[2].value}))                        
                         $.mdtoast('La información ha sido registrada', {
                             duration  : 4000                
                         });
@@ -128,10 +129,11 @@ $(function () {
         myToast.show()
         var form = $("#form-project-news-plan")
         if ( form.valid() ) {
+            var plan = JSON.parse(localStorage.getItem('dataPlan'))
             form = form.serializeArray()
             form.push('token', token)
-            form.push('anio', localStorage.getItem('dataPlan').anio)
-            form.push('semestre', localStorage.getItem('dataPlan').semestre)
+            form.push('anio', plan.anio)
+            form.push('semestre', plan.semestre)
             $.ajax({
                 url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
                 type    : 'POST',
@@ -141,7 +143,79 @@ $(function () {
                     if ( json.status == 200 ) {
                         myToast.hide()   
                         $.mdtoast('El proyecto se ha vinculado', {
+                            duration  : 3000                
+                        });
+                    } else {
+                        $.mdtoast('Ocurrio un error al guardar la información', {
                             duration  : 5000                
+                        });
+                    }
+                }
+            })
+        } else {
+            $.mdtoast('Los campos marcados con (*) son obligatorios', {
+                duration  : 5000                
+            }); 
+        }
+    })
+    
+    // Evento para registrar actividades en el plan de accion
+    $("#btn-save-act-plan").on("click", function () {
+        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+        myToast.show()
+        var form = $("#form-reg-act-plan")
+        if ( form.valid() ) {
+            var plan = JSON.parse(localStorage.getItem('dataPlan'))
+            var data = form.serializeArray()
+            data.push('token', token)
+            data.push('anio', plan.anio)
+            data.push('semestre', plan.semestre)
+            $.ajax({
+                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
+                type    : 'POST',
+                data    : $.param(data),
+                success : function ( response ) {
+                    var json = JSON.parse(response)
+                    if ( json.status == 200 ) {
+                        myToast.hide()   
+                        $.mdtoast('La actividad ha sido vinculada al plan de acción', {
+                            duration  : 3000                
+                        });
+                    } else {
+                        $.mdtoast('Ocurrio un error al guardar la información', {
+                            duration  : 5000                
+                        });
+                    }
+                }
+            })
+        } else {
+            $.mdtoast('Los campos marcados con (*) son obligatorios', {
+                duration  : 5000                
+            }); 
+        }
+    })
+    
+    // Evento para registrar eventos en el plan de accion
+    $("#btn-save-events-plan").on("click", function () {
+        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+        myToast.show()
+        var form = $("#form-reg-events-plan")
+        if ( form.valid() ) {
+            var plan = JSON.parse(localStorage.getItem('dataPlan'))
+            var data = form.serializeArray()
+            data.push('token', token)
+            data.push('anio', plan.anio)
+            data.push('semestre', plan.semestre)
+            $.ajax({
+                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
+                type    : 'POST',
+                data    : $.param(data),
+                success : function ( response ) {
+                    var json = JSON.parse(response)
+                    if ( json.status == 200 ) {
+                        myToast.hide()   
+                        $.mdtoast('El evento ha sido vinculado al plan de acción', {
+                            duration  : 3000                
                         });
                     } else {
                         $.mdtoast('Ocurrio un error al guardar la información', {

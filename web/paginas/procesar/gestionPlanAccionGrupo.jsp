@@ -59,9 +59,51 @@
             if ( bool ) {
                 json.put("status", 200);
             } else {
-                json.put("status", 200);
+                json.put("status", 500);
             }
             out.print(json);
+            break;
+            
+        // Registrar eventos en el plan de accion
+        case 5:
+            año = request.getParameter("año");
+            semestre = request.getParameter("semestre");  
+            String evento = request.getParameter("nombreEvento");
+            String caracterEvento = request.getParameter("caracterEvento");
+            String responsables[] = request.getParameterValues("responsables");
+            String fechaIni = request.getParameter("fechaIni");
+            String fechFin = request.getParameter("fechFin");
+            String intPromotoras[] = request.getParameterValues("intPromotoras");
+            String entidades[] = request.getParameterValues("entidades");
+            boolean respuesta = f.registrarEventoPlanAccionGrupo(año, semestre, id_grupo, evento, caracterEvento, responsables, fechaIni, 
+                    fechFin, intPromotoras, entidades, token);
+            JSONObject json1 = new JSONObject();
+            if ( respuesta ) {
+                json1.put("status", 200);
+            } else {
+                json1.put("status", 500);
+            }
+            out.print(json1);
+            break;
+            
+        // Registrar actividades en el plan de accion
+        case 6:
+            año = request.getParameter("año");
+            semestre = request.getParameter("semestre");  
+            String actividad = request.getParameter("actividad");
+            String respAct[] = request.getParameterValues("respAct");
+            String fechaInicio = request.getParameter("fechaInicio");
+            String fechFinal = request.getParameter("fechFinal");
+            String producto = request.getParameter("producto");
+            boolean rsp = f.registrarActividadPlanAccionGrupo(año, semestre, id_grupo, actividad, respAct, fechaInicio, fechFinal, 
+                    producto, token);
+            JSONObject json2 = new JSONObject();
+            if ( rsp ) {
+                json2.put("status", 200);
+            } else {
+                json2.put("status", 200);
+            }
+            out.print(json2);
             break;
     }
 

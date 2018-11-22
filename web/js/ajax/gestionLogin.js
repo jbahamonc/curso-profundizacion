@@ -4,11 +4,9 @@ $(function () {
 
     $("#btn-login").on("click", function () {        
         var form = $("#form-login")
-        var isValid = form.valid()
-        if ( isValid ) {
-            $.mdtoast('Enviando información...', {
-                duration  : 7000                
-            });
+        if ( form.valid() ) {
+            var myToast = $.mdtoast('Validando el usuario...', { duration: 1000000, init: true });
+            myToast.show()
             $.ajax({
                 url     : '#',
                 type    : 'POST',

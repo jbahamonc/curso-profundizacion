@@ -11,19 +11,18 @@
     Fachada f = new Fachada();
     String token = request.getParameter("token");
     String tipoSesion = "";
+    String id = session.getAttribute("idGrupoSemillero").toString();
     switch (operacion) {
         // Mostrar form registro
         case 1:
-            tipoSesion = session.getAttribute("tipoSesion").toString();
-            String id = session.getAttribute("idGrupoSemillero").toString();
-            //JSONObject dataForm = f.cargarInfoFormRegistroProyectos(token, tipoSesion, id);
-            //if (dataForm != null) {
-            //    session.setAttribute("dataForm", dataForm);
+            tipoSesion = session.getAttribute("tipoSesion").toString();            
+            JSONObject dataForm = f.cargarInfoFormRegistroProyectos(token, tipoSesion, id);
+            if (dataForm != null) {
+                session.setAttribute("dataForm", dataForm);
                 response.sendRedirect("../registrarProyecto.jsp");
-            //} else {
-            //    response.sendError(500, "Ocurrio un error en el servidor");
-            //}
-            
+            } else {
+                response.sendError(500, "Ocurrio un error en el servidor");
+            }            
             break;
             
         // Listar proyectos
@@ -49,9 +48,8 @@
             String objEspecificos[] = request.getParameterValues("objEspecificos");
             String numContrato = request.getParameter("numContrato");
             tipoSesion = session.getAttribute("tipoSesion").toString();
-            //int res = f.registrarProyecto(titulo, linea, tiempo, fechaInicio, fechaFin, costo, tipoProyecto, resumen, 
-            //                    objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
-            int res = 1;
+            int res = f.registrarProyecto(id, titulo, linea, tiempo, fechaInicio, fechaFin, costo, tipoProyecto, resumen, 
+                                objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
             JSONObject json = new JSONObject();
             if ( res > 0 ) {
                 json.put("status", 200);

@@ -17,7 +17,7 @@ $(document).ready(function() {
     var $js2 = $('.js-example-basic-multiple2').select2();
     var objDiv = $("#obj_esp")
     $("#btn-add-objective").on("click", function () {
-    	var newOption = new Option(objDiv.val(), 1, true, true);
+    	var newOption = new Option(objDiv.val(), objDiv.val(), true, true);
     	$js2.append(newOption).trigger('change');
     	objDiv.val("")
     	objDiv.focus()

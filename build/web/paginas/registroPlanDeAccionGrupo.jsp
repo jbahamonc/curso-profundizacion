@@ -30,24 +30,24 @@
                                 <label>Año (*)</label>
                                 <select name="año" class="form-control" required>
                                     <option selected disabled>Seleccione</option>
-                                    <option value="2">2018</option>
-                                    <option value="2">2019</option>
-                                    <option value="2">2020</option>
-                                    <option value="2">2021</option>
-                                    <option value="2">2022</option>
-                                    <option value="2">2023</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
                                 </select>
                             </div>				                
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Semestre (*)</label>
                                 <select class="form-control" name="semestre" required>
                                     <option selected disabled>Seleccione</option>
-                                    <option>1</option>
-                                    <option>2</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
                                 </select>
                             </div>	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" class="btn bg-red btn-flat" id="btn-save-action-plan">REGISTRAR PLAN DE ACCIÓN</button>
+                                <button type="button" class="btn bg-red btn-block btn-flat" id="btn-save-action-plan">REGISTRAR PLAN DE ACCIÓN</button>
                             </div>	                				                                      
                         </form>
                     </div>                    
@@ -179,52 +179,60 @@
                         </div>
                     </div>        	
                     <div class="box-body">
-                        <form>
+                        <form id="form-reg-events-plan">
+                            <input type="hidden" value="5" name="operacion">
                             <div class="form-group col-xs-12">
                                 <label>Nombre del Evento (*)</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="nombreEvento" required>
                             </div> 
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Caracter del Evento (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Local</option>
-                                    <option value="">Regional</option>
-                                    <option value="">Nacional</option>
-                                    <option value="">Internacional</option>
+                                <select name="caracterEvento" id="" class="form-control" required>
+                                    <option selected="" disabled="">Seleccione</option>
+                                    <option value="1">Local</option>
+                                    <option value="2">Regional</option>
+                                    <option value="3">Nacional</option>
+                                    <option value="4">Internacional</option>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Responsables del Evento (*)</label>
-                                <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables[]" multiple style="width: 100%;">
-                                    <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                    <option value="WY">Jessica Lorena Pabón</option>
-                                    <option value="WY">Gladys Adriana Espinel</option>
-                                    <option value="WY">Milton Vera Contreras</option>
+                                <select required class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple style="width: 100%;">
+                                    <%-- 
+                                        JSONArray res = data.getJSONArray("responsables");
+                                        for (int i = 0; i < res.length(); i++) {
+                                            JSONObject obj = res.getJSONObject(i);
+                                    %>
+                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
+                                    <% } --%>
+                                    <option value="1">Judith del Pilar Rodriguez Tenjo</option>
+                                    <option value="2">Oscar Alberto Gallardo Perez</option>
+                                    <option value="3">Jessica Lorena Pabón</option>
+                                    <option value="4">Gladys Adriana Espinel</option>
+                                    <option value="5">Milton Vera Contreras</option>
                                 </select>
                             </div>   
                             <div class="clearfix"></div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Inicio (*)</label>
-                                <input type="month" class="form-control">
+                                <input type="month" class="form-control" name="fechaIni" required>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Finalización (*)</label>
-                                <input type="month" class="form-control">
+                                <input type="month" class="form-control" name="fechFin" required>
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Instituciones Promotoras (*)</label>
                                 <button type="button" data-toggle="modal" data-target="#modal-promotoras" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                                <select class="js-inst-promo" data-placeholder="Ingrese los Organizadores" name="responsables-evento" multiple style="width: 100%;"></select>
+                                <select required class="js-inst-promo" data-placeholder="Ingrese los Organizadores" name="intPromotoras" multiple style="width: 100%;"></select>
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Entidades Participante (*)</label>
                                 <button type="button" data-toggle="modal" data-target="#modal-entidad" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                                <select class="js-entidades" data-placeholder="Ingrese las Entidades Participantes" name="entidades" multiple style="width: 100%;"></select>
+                                <select required class="js-entidades" data-placeholder="Ingrese las Entidades Participantes" name="entidades" multiple style="width: 100%;"></select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-events-plan">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -238,14 +246,15 @@
                         </div>
                     </div>        	
                     <div class="box-body">
-                        <form>
+                        <form id="form-reg-act-plan">
+                            <input type="hidden" value="6" name="operacion">
                             <div class="form-group col-xs-12">
                                 <label>Nombre de la Actividad (*)</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="actividad" required>
                             </div> 
                             <div class="form-group col-xs-12">
                                 <label>Responsables de la Actividad (*)</label>
-                                <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables[]" multiple style="width: 100%;">
+                                <select required class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="respAct" multiple style="width: 100%;">
                                     <%-- 
                                         JSONArray res = data.getJSONArray("responsables");
                                         for (int i = 0; i < res.length(); i++) {
@@ -262,18 +271,18 @@
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Inicio (*)</label>
-                                <input type="month" class="form-control">
+                                <input type="month" class="form-control" name="fechaInicio" required>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Finalización (*)</label>
-                                <input type="month" class="form-control">
+                                <input type="month" class="form-control" name="fechaFinal" required>
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Producto (*)</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="producto" required>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>

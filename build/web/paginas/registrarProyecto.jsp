@@ -34,19 +34,14 @@
                             <label>Linea de Investigación (*)</label>
                             <select class="form-control" required name="linea">
                                 <option selected disabled>Seleccione</option>
-                                <%-- 
+                                <%
                                     JSONObject data = (JSONObject)session.getAttribute("dataForm");
-                                    JSONArray lineas = data.getJSONArray("lineas");
+                                    JSONArray lineas = data.getJSONArray("lineasGrupoSemillero");
                                     for (int i = 0; i < lineas.length(); i++) {
                                         JSONObject obj = lineas.getJSONObject(i);                                
                                 %>
                                 <option value="<%= obj.getInt("id") %>"><%= obj.getString("nombre") %></option>
-                                <% } --%>
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                                <% } %>
                             </select>
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
@@ -55,11 +50,11 @@
                         </div>	
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Inicio (*)</label>
-                            <input type="month" class="form-control" required name="fechaInicio">
+                            <input type="date" class="form-control" required name="fechaInicio">
                         </div>
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha Final (*)</label>
-                            <input type="month" class="form-control" required name="fechaFin">
+                            <input type="date" class="form-control" required name="fechaFin">
                         </div>
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Costo Total (*)</label>
@@ -69,10 +64,13 @@
                             <label>Tipo de Proyecto (*)</label>
                             <select class="form-control" id="tipo-proyecto" required name="tipoProyecto">
                                 <option selected disabled>Seleccione</option>
-                                <option>Finu</option>
-                                <option>Institucional</option>
-                                <option>Externo</option>
-                                <option>Extension</option>
+                                <%
+                                    JSONArray tipoPro = data.getJSONArray("TipoProyecto");
+                                    for (int i = 0; i < tipoPro.length(); i++) {
+                                        JSONObject obj = tipoPro.getJSONObject(i);                                
+                                %>
+                                <option value="<%= obj.getInt("id") %>"><%= obj.getString("nombre") %></option>
+                                <% } %>
                             </select>
                         </div>	
                         <div class="clearfix"></div>
@@ -91,7 +89,7 @@
                         <div class="form-group col-xs-12">
                             <label>Objetivos Especificos (*) </label>
                             <button type="button" data-toggle="modal" data-target="#modal" style="margin: 0px 0px 5px 10px" class="btn btn-danger btn-xs">AGREGAR</button>
-                            <select required name="objEspecificos" class="js-example-basic-multiple2" data-placeholder="Ingrese los Objetivos Específicos" name="obj_especificos" multiple style="width: 100%;">
+                            <select required name="objEspecificos" class="js-example-basic-multiple2" data-placeholder="Ingrese los Objetivos Específicos" multiple style="width: 100%;">
                                 </select>	                  	
                         </div>
                         <div class="form-group col-xs-12 col-md-4 hidden" id="num-contrato">

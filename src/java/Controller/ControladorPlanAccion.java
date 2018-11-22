@@ -7,13 +7,11 @@ package Controller;
 
 import java.io.IOException;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,6 +73,48 @@ public class ControladorPlanAccion {
         requestBuilder.addParameter("semestre", semestre);
         requestBuilder.addParameter("id_grupo", id_grupo);
         requestBuilder.addParameter("id_proyecto", id_proyecto);
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+
+    public boolean registrarEventoPlanAccionGrupo(String año, String semestre, String id_grupo, String evento, String caracterEvento, 
+            String[] responsables, String fechaIni, String fechFin, String[] intPromotoras, String[] entidades, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/eventoGrupo");
+        requestBuilder.addParameter("año", año);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("id_grupo", id_grupo);
+        requestBuilder.addParameter("evento", evento);
+        requestBuilder.addParameter("caracterEvento", caracterEvento);
+        requestBuilder.addParameter("responsables", String.join("-", responsables));
+        requestBuilder.addParameter("fechaIni", fechaIni);
+        requestBuilder.addParameter("fechFin", fechFin);
+        requestBuilder.addParameter("intPromotoras", String.join("-", intPromotoras));
+        requestBuilder.addParameter("entidades", String.join("-", entidades));
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+
+    public boolean registrarActividadPlanAccionGrupo(String año, String semestre, String id_grupo, String actividad, String[] respAct, 
+            String fechaInicio, String fechFinal, String producto, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/actiGrupo");
+        requestBuilder.addParameter("año", año);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("id_grupo", id_grupo);
+        requestBuilder.addParameter("actividad", actividad);
+        requestBuilder.addParameter("respAct", String.join("-", respAct));
+        requestBuilder.addParameter("fechaInicio", fechaInicio);
+        requestBuilder.addParameter("fechFinal", fechFinal);
+        requestBuilder.addParameter("producto", producto);
         requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 

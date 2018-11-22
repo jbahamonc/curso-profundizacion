@@ -38,7 +38,7 @@ public class ControladorProyectos {
 
     public JSONObject cargarInfoFormRegistroProyectos(String token, String tipoSesion, String id) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/nombre/"+tipoSesion);
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/lineasGrupoTipoProyectoGrupo/"+id+"/session/"+tipoSesion);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());
@@ -49,43 +49,49 @@ public class ControladorProyectos {
         return jsonObj;
     }
 
-    public int registrarProyecto(String titulo, String linea, String tiempo, String fechaInicio, String fechaFin, 
-            String costo, String tipoProyecto, String resumen, String objGeneral, String resEsperados, String objEspecificos[], 
+    public int registrarProyecto(String idGrupoSemillero, String titulo, String linea, String tiempo, String fechaInicio, String fechaFin, 
+            String costo, String tipoProyecto, String resumen, String objGeneral, String resEsperados, String[] objEspecificos, 
             String numContrato, String token, String tipoSesion) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();        
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/proyecto");
         requestBuilder.addParameter("titulo", titulo);
-        requestBuilder.addParameter("linea", linea);
-        requestBuilder.addParameter("tiempo", tiempo);
-        requestBuilder.addParameter("fechaInicio", fechaInicio);
-        requestBuilder.addParameter("fechaFin", fechaFin);
+        requestBuilder.addParameter("id_linea", linea);
+        requestBuilder.addParameter("tiempo_ejecucion", tiempo);
+        requestBuilder.addParameter("fecha_inicio", fechaInicio);
+        requestBuilder.addParameter("fecha_final", fechaFin);
         requestBuilder.addParameter("costo", costo);
-        requestBuilder.addParameter("tipoProyecto", tipoProyecto);
+        requestBuilder.addParameter("id_tipo", tipoProyecto);
         requestBuilder.addParameter("resumen", resumen);
-        requestBuilder.addParameter("objGeneral", objGeneral);
-        requestBuilder.addParameter("resEsperados", resEsperados);
-        requestBuilder.addParameter("numContrato", numContrato);
+        requestBuilder.addParameter("objetivo_general", objGeneral);
+        requestBuilder.addParameter("resultados_esperados", resEsperados);
+        requestBuilder.addParameter("n_contrato", numContrato);
         requestBuilder.addParameter("token", token);
-        requestBuilder.addParameter("tipoSesion", tipoSesion);
+        requestBuilder.addParameter("tipoSession", tipoSesion);
+        requestBuilder.addParameter("idGrupoSemillero", idGrupoSemillero);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
-        String source = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(source);
+        String source = EntityUtils.toString(httpResponse.getEntity()); 
+//        System.out.println(source);
         int id = -1;
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
-            id = new JSONObject(source).getInt("id"); 
-            for (String obj : objEspecificos) {
-                RequestBuilder request = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/objetivos");
-                request.addParameter("id", id+"");
-                request.addParameter("objetivo", obj);
+            id = new JSONObject(source).getJSONObject("proyecto").getInt("id"); 
+            HttpClient httpClient1 = HttpClients.createDefault();            
+            for (String obj : objEspecificos) {    
+                RequestBuilder request = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/objetivoEspecifico");
+                request.addParameter("idProyecto", id+"");
+                request.addParameter("nombre", obj);
                 HttpUriRequest uri = request.build();        
-                HttpResponse response = httpClient.execute(uri); 
-                if (response.getStatusLine().getStatusCode() != 200 || response.getStatusLine().getStatusCode() != 201) {
+                HttpResponse response = httpClient1.execute(uri); 
+                String s = EntityUtils.toString(response.getEntity());
+                System.out.println("------------------------------------------");
+                System.out.println(obj);
+                System.out.println(s);   
+                System.out.println("status: " + response.getStatusLine().getStatusCode());
+                if (response.getStatusLine().getStatusCode() != 201) {
+                    System.out.println("entro al if");
                     id = -1;
                     break;
                 }
-//                String json = EntityUtils.toString(response.getEntity());
-//                System.out.println(json);
             }
         }        
         return id;
