@@ -18,6 +18,7 @@ import org.json.JSONObject;
 public class Fachada {
     
     private ControladorFacultad controladorFacultad;
+    private ControladorSemillero controladorSemillero;
     private ControladorGrupos controladorGrupos;  
     private ControladorProyectos controladorProyectos;
     private ControladorPlanAccion controladorPlanAccion;
@@ -138,4 +139,25 @@ public class Fachada {
     }
     
     
+    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
+    String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, directores, lineaInvestigacion, descripcion);
+    }
+    public ArrayList<JSONObject> listarSemilleros() throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.listarSemillero();
+    }
+    public boolean eliminarSemillero(String idSemillero) throws IOException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.eliminarSemillero(idSemillero);
+    }
+    public ArrayList<JSONObject> listarDirectores() throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.listarDirectores();
+    }
+    public ArrayList<JSONObject> listarLineasInvestigacion() throws IOException, JSONException{
+        controladorSemillero = new ControladorSemillero();
+        return controladorSemillero.listarLineasInvestigacion();
+    }
 }

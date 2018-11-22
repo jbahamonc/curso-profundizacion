@@ -132,6 +132,11 @@
                     <h4 class="control-sidebar-subheading" style="margin: 0">Plan de Acción</h4>
                 </a>
             </li>
+            <li>
+                <a href="registroSemillero.jsp">
+                    <h4 class="control-sidebar-subheading" style="margin: 0">Registrar Semillero</h4>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

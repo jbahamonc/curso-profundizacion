@@ -104,12 +104,11 @@
 		            <li class="treeview">
 		            	<a href="#">
                                     <i class="fa fa-users"></i>
-                                    <span>Gestión de Semilleros</span>
+                                    <span>Semilleros</span>
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-                                    <li><a href="registroSemillero.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-                                    <li><a href="semillerosInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
+                                    <li><a href="procesar/gestionSemillero.jsp?operacion=2"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
                                 </ul>
 		            </li>        				  		
 		            <li class="treeview">

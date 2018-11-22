@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -35,14 +37,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            ArrayList<JSONObject> listaSemilleros = (ArrayList) session.getAttribute("semilleros");
+                            for (JSONObject semillero : listaSemilleros) {%>
+                        %>
                         <tr>
-                            <td>Semillero de Investigación de Desarrollo de Aplicaciones Web</td>
-                            <td>SIAWEB</td>
-                            <td>02/02/2000</td>
-                            <td>Judith Del Pilar Rodriguez Tenjo - Nelson Beltran</td>
-                            <td>Aula Sur 404</td>
+                            <td><%=semillero.getString("nombreSemillero")%></td>
+                            <td><%=semillero.getString("sigla")%></td>
+                            <td><%=semillero.getString("fechaCreacion")%></td>
+                            <td><%=semillero.getString("directores")%></td>
+                            <td><%=semillero.getString("ubicacion")%></td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger btn-xs">
+                                <button type="button" class="btn btn-danger btn-xs" id="btn-eli-semillero" data-id="<%=semillero.getInt("id")%>">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                                 <a href="infoSemillero.jsp" class="btn btn-success btn-xs">
@@ -50,6 +56,7 @@
                                 </a>
                             </td>
                         </tr>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
