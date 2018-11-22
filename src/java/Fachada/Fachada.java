@@ -118,5 +118,10 @@ public class Fachada {
         return controladorPlanAccion.registrarInicialPlanAccionGrupo(año, semestre, id_grupo, token);
     }
     
+    public boolean vincularProyectoPlanGrupo(String año, String semestre, String id_grupo, String id_proyecto, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.vincularProyectoPlanGrupo(año, semestre, id_grupo, id_proyecto, token);
+    }
+    
     
 }

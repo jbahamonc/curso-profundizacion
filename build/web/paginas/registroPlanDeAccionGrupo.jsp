@@ -130,11 +130,12 @@
                         </div>
                     </div>        	
                     <div class="box-body">
-                        <form>
+                        <form id="form-project-news-plan">
+                            <input type="hidden" value="4" name="operacion">
                             <div class="form-group col-xs-12">
                                 <label>Seleccione la Linea de Investigación (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
+                                <select name="linea" id="" class="form-control" required>
+                                    <option selected="" disabled="">Seleccione</option>
                                     <%-- 
                                         JSONObject data = (JSONObject)session.getAttribute("dataForm");
                                         JSONArray lineas = data.getJSONArray("lineas");
@@ -143,28 +144,28 @@
                                     %>
                                         <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
                                     <% } --%>                                    
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
+                                    <option value="1">Linea de Investigación</option>
+                                    <option value="1">Linea de Investigación</option>
+                                    <option value="1">Linea de Investigación</option>
+                                    <option value="1">Linea de Investigación</option>
+                                    <option value="1">Linea de Investigación</option>
+                                    <option value="1">Linea de Investigación</option>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Seleccione el Proyecto a Ejecutar (*)</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
+                                <select name="proyecto" id="" class="form-control" required>
+                                    <option  selected="" disabled="">Seleccione</option>
+                                    <option value="1">Nombre Proyecto</option>
+                                    <option value="1">Nombre Proyecto</option>
+                                    <option value="1">Nombre Proyecto</option>
+                                    <option value="1">Nombre Proyecto</option>
+                                    <option value="1">Nombre Proyecto</option>
+                                    <option value="1">Nombre Proyecto</option>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-group">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>

@@ -67,5 +67,20 @@ public class ControladorPlanAccion {
         }        
         return obj;
     }
+
+    public boolean vincularProyectoPlanGrupo(String año, String semestre, String id_grupo, String id_proyecto, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/vincularProyecto");
+        requestBuilder.addParameter("año", año);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("id_grupo", id_grupo);
+        requestBuilder.addParameter("id_proyecto", id_proyecto);
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
     
 }

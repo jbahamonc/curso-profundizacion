@@ -24,14 +24,15 @@ $(function () {
                 type    : 'POST',
                 data    : $.param(form),
                 success : function ( response ) {
-                    console.log(response)
                     var json = JSON.parse(response)
                     var infoEmpty = $(".info-empty")
                     myToast.hide()
                     if (json.status == 200) {
-                        $(".button-plans").removeAttr('disabled')
-                        $.mdtoast('La información ha sido regitrada', {
-                            duration  : 5000                
+                        var buttons = $(".button-plans")
+                        buttons.removeAttr('disabled')
+                        localStorage.setItem('dataPlan', {'anio' : '2018', 'semestre' : '2'})
+                        $.mdtoast('La información ha sido registrada', {
+                            duration  : 4000                
                         });
                         var html = ""
                         var ulProjects = $("#ulProjects")
@@ -116,9 +117,44 @@ $(function () {
             })
         } else {
             $.mdtoast('Los campos marcados con (*) son obligatorios', {
-                duration  : 5000                
+                duration  : 4000                
             });
         }        
+    })
+    
+    // Evento para agregar proyectos al plan de accion
+    $("#btn-add-project-plan-group").on("click", function () {
+        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+        myToast.show()
+        var form = $("#form-project-news-plan")
+        if ( form.valid() ) {
+            form = form.serializeArray()
+            form.push('token', token)
+            form.push('anio', localStorage.getItem('dataPlan').anio)
+            form.push('semestre', localStorage.getItem('dataPlan').semestre)
+            $.ajax({
+                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
+                type    : 'POST',
+                data    : $.param(form),
+                success : function ( response ) {
+                    var json = JSON.parse(response)
+                    if ( json.status == 200 ) {
+                        myToast.hide()   
+                        $.mdtoast('El proyecto se ha vinculado', {
+                            duration  : 5000                
+                        });
+                    } else {
+                        $.mdtoast('Ocurrio un error al guardar la información', {
+                            duration  : 5000                
+                        });
+                    }
+                }
+            })
+        } else {
+            $.mdtoast('Los campos marcados con (*) son obligatorios', {
+                duration  : 5000                
+            }); 
+        }
     })
 })
 
