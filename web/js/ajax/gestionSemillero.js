@@ -8,6 +8,9 @@ $(function () {
     jQuery.validator.messages.required = 'Este campo es obligatorio.';
     jQuery.validator.messages.number = 'Este campo debe ser num&eacute;rico.';
     jQuery.validator.messages.email = 'La direcci&oacute;n de correo es incorrecta.';
+    
+    // Init DataTable of Groups
+    var semilleros = $('#semilleros').DataTable();
 
     // Registrar semilleros
     $("#btn-save-semillero").on("click", function () {

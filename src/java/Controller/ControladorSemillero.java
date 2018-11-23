@@ -73,7 +73,7 @@ public class ControladorSemillero {
     public ArrayList<JSONObject> listarSemillero() throws IOException, JSONException {
         ArrayList<JSONObject> listaSemillero = new ArrayList<>();
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("#");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/datosSemilleroDirector");
         HttpResponse httpResponse = httpClient.execute(httpGet);
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);

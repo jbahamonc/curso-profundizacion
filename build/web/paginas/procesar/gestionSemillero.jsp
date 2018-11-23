@@ -35,7 +35,7 @@
             out.print(valor);
             break;
         case 2: //LISTAR
-            ArrayList<JSONObject> semilleros = fachada.listarFacultades();
+            ArrayList<JSONObject> semilleros = fachada.listarSemilleros();
             session.setAttribute("semilleros", semilleros);
             response.sendRedirect("../semillerosInvestigacion.jsp");
             break;
