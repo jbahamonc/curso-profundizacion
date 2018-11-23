@@ -44,7 +44,7 @@
                 res.put("status", 200);
             } else {
                 res = new JSONObject();
-                res.put("status", 200);
+                res.put("status", 500);
             }
             out.print(res);
             break;
@@ -101,9 +101,54 @@
             if ( rsp ) {
                 json2.put("status", 200);
             } else {
-                json2.put("status", 200);
+                json2.put("status", 500);
             }
             out.print(json2);
+            break;
+            
+        // Registrar avance actividades en el plan de accion
+        case 7:
+            año = request.getParameter("año");
+            semestre = request.getParameter("semestre"); 
+            String id_actividad = request.getParameter("actividad");
+            String porcentaje = request.getParameter("porcActividad");
+            boolean r = f.registroAvanceActividadPlan(año, semestre, id_grupo, id_actividad, porcentaje, token);
+            JSONObject json3 = new JSONObject();
+            if ( r ) {
+                json3.put("status", 200);
+            } else {
+                json3.put("status", 500);
+            }
+            out.print(json3);
+            break;
+            
+        // Registrar avance eventos en el plan de accion
+        case 8:
+            año = request.getParameter("año");
+            semestre = request.getParameter("semestre"); 
+            String id_evento = request.getParameter("id_evento");
+            String por = request.getParameter("porcEvento");
+            boolean re = f.registroAvanceEventoPlan(año, semestre, id_grupo, id_evento, por, token);
+            JSONObject json4 = new JSONObject();
+            if ( re ) {
+                json4.put("status", 200);
+            } else {
+                json4.put("status", 500);
+            }
+            out.print(json4);
+            break;
+            
+        // Registrar avance eventos en el plan de accion
+        case 9:
+            año = request.getParameter("año");
+            semestre = request.getParameter("semestre"); 
+            JSONObject infoPlan = f.consultarPlanAccionGrupo(año, semestre, id_grupo, token);
+            if ( infoPlan == null ) {
+                //session.setAttribute("infoPlan", infoPlan);
+                response.sendRedirect("../infoPlanAccionGrupo.jsp");
+            } else {
+                response.sendError(500, "Ocurrio un error en el servidor");
+            }
             break;
     }
 

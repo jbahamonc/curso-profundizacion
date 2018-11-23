@@ -37,7 +37,7 @@
                             <li><a>Semestre Académico: <span class="pull-right"><b>2</b></span></a></li>
                         </ul>		              
                     </div>
-                    <div class="box-footer no-padding">
+                    <div class="box-footer no-padding hidden">
                         <a href="registroPlanDeAccionGrupo.jsp" class="btn btn-block btn-info btn-flat">Editar Plan de Accion</a>
                     </div>
                 </div>	

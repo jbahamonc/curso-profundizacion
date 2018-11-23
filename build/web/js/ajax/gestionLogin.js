@@ -8,19 +8,19 @@ $(function () {
             var myToast = $.mdtoast('Validando el usuario...', { duration: 1000000, init: true });
             myToast.show()
             $.ajax({
-                url     : '#',
+                url     : 'paginas/procesar/gestionLogin.jsp',
                 type    : 'POST',
-                //dataType : 'json',
                 data     : form.serialize(),
                 success  : function ( response ) {
-                    //if ( response.status == 200 ) {
-                    //    localStorage.setItem('token', response.token)
+                    var obj = JSON.parse(response)
+                    if ( obj.status == 200 ) {
+                        localStorage.setItem('token', obj.token)
                         document.location.href = 'paginas/index.jsp' 
-                    //} else {
-                    //    $.mdtoast('Las credenciales ingresadas no son válidas', {
-                    //        duration  : 7000                
-                    //    });
-                    //}
+                    } else {
+                        $.mdtoast(obj.msg, {
+                            duration  : 5000                
+                        });
+                    }
                 }
             })
         } else {

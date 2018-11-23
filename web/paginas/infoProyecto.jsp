@@ -38,7 +38,7 @@
                             <li><a>Estado del Proyecto: <span class="pull-right badge bg-green"><b>Ejecución</b></span></a></li>
                         </ul>		              
                     </div>
-                    <div class="box-footer no-padding">
+                    <div class="box-footer no-padding hidden">
                         <a href="registrarProyecto.jsp" class="btn btn-block btn-flat btn-success">Editar Proyecto</a>
                     </div>
                 </div>
