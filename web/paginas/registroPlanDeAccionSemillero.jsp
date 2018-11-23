@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -33,10 +35,10 @@
                         <h3 class="box-title">Formulario de Registro</h3>
                     </div>        	
                     <div class="box-body">
-                        <form>
+                        <form id="form-plan-action-semillero">
                             <div class="form-group col-xs-12 col-md-6">
-                                <label>Año</label>
-                                <select name="" id="" class="form-control">
+                                <label>Año (*)</label>
+                                <select name="anio" id="anio" class="form-control" required>
                                     <option value="">2018</option>
                                     <option value="">2019</option>
                                     <option value="">2020</option>
@@ -46,8 +48,8 @@
                                 </select>
                             </div>				                
                             <div class="form-group col-xs-12 col-md-6">
-                                <label>Semestre</label>
-                                <select class="form-control">
+                                <label>Semestre (*)</label>
+                                <select class="form-control" name="semestre" id="semestre" required>
                                     <option>Seleccione</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -73,26 +75,13 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div class="hidden box-data-action" id="">
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../img/project.svg" alt="Project Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="infoProyecto.jsp" class="product-title">
-                                            Arquitectura de Información (AI) Como Marco De Trabajo Que Proporcione Un Enfoque Para El Diseño, Planificación, Implementación Y Gobierno De Una Arquitectura Empresarial De Información Para La Creación Del Repositorio Digital Que  Gestione La Producción Académica E Investigativa De Los Investigadores  De La Universidad Francisco De Paula Santander-Cúcuta
-                                        </a>
-                                        <span class="product-description">
-                                            Fecha de Inicio: 23/02/2018
-                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>
+                    </div> 
+                    <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
+                        <div class="text-center">
+                            <img src="../img/loader.gif" alt="" class="fa">
+                            <p>Cargando Información...</p>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="box">
                     <div class="box-header with-border">
@@ -104,26 +93,13 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div id="" class="hidden box-data-action">    
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../img/teacher.svg" alt="Project Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="" class="product-title">
-                                            Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas
-                                        </a>
-                                        <span class="product-description">
-                                            Fecha de Inicio: 23/02/2018
-                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>
+                    </div>  
+                    <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
+                        <div class="text-center">
+                            <img src="../img/loader.gif" alt="" class="fa">
+                            <p>Cargando Información...</p>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="box">
                     <div class="box-header with-border">
@@ -135,26 +111,13 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div id="" class="hidden box-data-action">    
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../img/activitys.svg" alt="Project Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="eventosGrupo.jsp" class="product-title">
-                                            Caracterización de la dirección de proyectos de tecnología en las  pequeñas y medianas empresas
-                                        </a>
-                                        <span class="product-description">
-                                            Fecha de Inicio: 23/02/2018
-                                            <button class="btn btn-xs btn-success pull-right">VINCULAR</button>
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            </ul>
+                    </div>  
+                    <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
+                        <div class="text-center">
+                            <img src="../img/loader.gif" alt="" class="fa">
+                            <p>Cargando Información...</p>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
@@ -167,22 +130,26 @@
                         </div>
                     </div>        	
                     <div class="box-body">
-                        <form>
+                        <form id="form-project-news-plan-semillero">
                             <div class="form-group col-xs-12">
                                 <label>Seleccione la Linea de Investigación (*)</label>
-                                <select name="" id="" class="form-control">
+                                <select name="linea" id="" class="form-control">
                                     <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
-                                    <option value="">Linea de Investigación</option>
+                                    <%
+                                        JSONObject info = (JSONObject) session.getAttribute("info");
+                                        JSONArray lineasInvestigacion = info.getJSONArray("lineasInvestigacion");
+
+                                        for (int i = 0; i < lineasInvestigacion.length(); i++) {
+                                            JSONObject lineaInvestigacion = lineasInvestigacion.getJSONObject(i);
+
+                                    %>
+                                    <option value="<%=lineaInvestigacion.getInt("id")%>"><%=lineaInvestigacion.getString("nombre")%></option>
+                                    <% }%>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Seleccione el Proyecto a Ejecutar (*)</label>
-                                <select name="" id="" class="form-control">
+                                <select name="proyecto" id="proyecto" class="form-control">
                                     <option value="" selected="" disabled="">Seleccione</option>
                                     <option value="">Nombre Proyecto</option>
                                     <option value="">Nombre Proyecto</option>
@@ -193,7 +160,7 @@
                                 </select>
                             </div>                            	
                             <div class="form-group col-xs-12 text-right">
-                                <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-semillero">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -211,36 +178,44 @@
                             <div id="fields-capacity">
                                 <div class="form-group col-xs-12">
                                     <label>Linea de Investigación (*)</label>
-                                    <select class="form-control">
+                                    <select class="form-control" name="lineaInv" required>
                                         <option disabled="" selected="">Seleccione</option>
-                                        <option value="0">Nombre de la linea</option>
-                                        <option value="1">Nombre de la linea</option>
+                                        <%
+                                            JSONArray lineasInvestigacionCapacitaciones = info.getJSONArray("lineasInvestigacion");
+                                            for (int i = 0; i < lineasInvestigacionCapacitaciones.length(); i++) {
+                                                JSONObject lineaInvestigacionCapacitacion = lineasInvestigacionCapacitaciones.getJSONObject(i);
+
+                                        %>
+                                        <option value="<%=lineaInvestigacionCapacitacion.getInt("id")%>"><%=lineaInvestigacionCapacitacion.getString("nombre")%></option>
+                                        <% }%>
                                     </select>
                                 </div> 
                                 <div class="form-group col-xs-12">
                                     <label>Nombre de la Capacitación (*)</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="nombreCapacitacion" required>
                                 </div>			                
                                 <div class="form-group col-xs-12">
                                     <label>Objetivo (*)</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="objetivoCapacitacion" required>
                                 </div>
                                 <div class="form-group col-xs-12 col-md-6">
                                     <label>Fecha de Realización (*)</label>
-                                    <input type="month" class="form-control">
+                                    <input type="month" class="form-control" name="fechaRealizacion" required>
                                 </div>
                                 <div class="form-group col-xs-12 col-md-6">
                                     <label>Numero de Asistentes (*)</label>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="numAsistentes" required>
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label>Responsables (*)</label>
-                                    <select class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores[]" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                        <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                        <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                        <option value="WY">Jessica Lorena Pabón</option>
-                                        <option value="WY">Gladys Adriana Espinel</option>
-                                        <option value="WY">Milton Vera Contreras</option>
+                                    <select required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores" multiple style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <%
+                                            JSONArray capacitores = info.getJSONArray("responsables");
+                                            for (int i = 0; i < capacitores.length(); i++) {
+                                                JSONObject capacitor = capacitores.getJSONObject(i);
+                                        %>
+                                        <option value="<%=capacitor.getInt("id")%>"><%=capacitor.getString("nombre")%></option>
+                                        <% }%>
                                     </select>
                                 </div>                               
                                 <div class="clearfix"></div>
@@ -248,11 +223,11 @@
                             <div id="fields-capacity-resource" class="hidden">
                                 <div class="form-group col-xs-12">
                                     <label>Nombre de la Evidencia (*)</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="nombreEvidencia" required>
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label for="exampleInputFile">Archivos</label>
-                                    <input type="file" id="exampleInputFile" multiple="">
+                                    <input type="file" id="exampleInputFile" multiple="" name="file">
                                     <p class="help-block">Seleccione todos los archivos de la evidencia.</p>
                                 </div>
                                 <div class="clearfix"></div>
@@ -278,31 +253,33 @@
                             <h4><i class="icon fa fa-warning"></i> Importante!</h4>
                             Las Actividadedes de Investigación corresponden a Espacios de socialización, Foros, Reuniones, Elaboración de documentos, entre otros.
                         </div>
-                        <form>
+                        <form id="form-reg-act-plan-semillero">
                             <div class="form-group col-xs-12">
                                 <label>Nombre de la Actividad (*)</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" required name="actividad">
                             </div>	
                             <div class="form-group col-xs-12">
                                 <label>Responsables (*)</label>
-                                <select class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores[]" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                    <option value="WY">Jessica Lorena Pabón</option>
-                                    <option value="WY">Gladys Adriana Espinel</option>
-                                    <option value="WY">Milton Vera Contreras</option>
+                                <select required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <%
+                                        JSONArray responsables = info.getJSONArray("responsables");
+                                        for (int i = 0; i < responsables.length(); i++) {
+                                            JSONObject responsable = responsables.getJSONObject(i);
+                                    %>
+                                    <option value="<%=responsable.getInt("id")%>"><%=responsable.getString("nombre")%></option>
+                                    <% }%>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Fecha de Realización (*)</label>
-                                <input type="month" class="form-control">
+                                <input type="month" class="form-control" required name="fechaRealizacion">
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Producto (*)</label>
-                                <input type="text" class="form-control" id="producto" name="producto"/>
+                                <input type="text" class="form-control" id="producto" name="producto" required/>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
-                                <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan-semillero">CARGAR DATOS</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -373,3 +350,4 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionPlanAccionSemillero.js"></script>

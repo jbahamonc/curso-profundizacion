@@ -71,6 +71,7 @@
             if (jsonSemillero != null) {
                 jsonSemillero.put("token", token);
                 session.setAttribute("semillero", jsonSemillero);
+                session.setAttribute("idSemillero", idSemillero);
                 response.sendRedirect("../infoSemillero.jsp");
             } else {
                 System.out.println("ocurrio un error");

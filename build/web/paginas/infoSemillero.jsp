@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li>
-                <a href="planAccionSemillero.jsp">
+                <a href="" id="link-plan-accion-semillero">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Plan de Acción</h4>
                 </a>
             </li>
@@ -142,6 +142,9 @@
 </aside>
 <!-- The sidebar's background -->
 <div class="control-sidebar-bg bg-purple"></div>
+<script type="text/javascript">
+    document.getElementById("link-plan-accion-semillero").href = "procesar/gestionPlanAccionSemillero.jsp?operacion=1&token="+localStorage.getItem("token")
+</script>
 <a href="#" data-toggle="control-sidebar" style="z-index: 1001" class="btn bg-purple pull-right btn-fixed" title="Agregar Nuevo Personal">
     <i class="fa fa-bars" style="vertical-align: bottom;"></i>
 </a>

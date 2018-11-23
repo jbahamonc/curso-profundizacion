@@ -46,7 +46,6 @@
         // Consultar
         case 2 :
             String id_grupo = request.getParameter("id");
-            session.setAttribute("idGrupoSemillero", id_grupo);
             token = request.getParameter("token");
             JSONObject jsonGrupo = f.consultarGrupo(id_grupo, token);
             if ( jsonGrupo != null ) { 

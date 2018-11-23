@@ -142,7 +142,7 @@
 </aside>
 <!-- The sidebar's background -->
 <div class="control-sidebar-bg bg-yellow"></div>
-<script>
+<script type="text/javascript">
     document.getElementById("link-list-proyectos").href = "procesar/gestionProyecto.jsp?operacion=2&token="+localStorage.getItem("token")
     document.getElementById("link-plan-accion").href = "procesar/gestionPlanAccionGrupo.jsp?operacion=1&token="+localStorage.getItem("token")
     document.getElementById("link-registro-semillero").href = "procesar/gestionSemillero.jsp?operacion=4&token="+localStorage.getItem("token")
