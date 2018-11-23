@@ -33,28 +33,30 @@
                             <th>Responsables</th>
                             <th>Linea de Investigación</th>
                             <th>Fecha de Inicio</th>
+                            <th>Fecha de Finalización</th>
                             <th>Tiempo de Ejecución (Meses)</th>
                             <th>Costo Total</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%-- 
+                        <% 
                             JSONObject proyectos = (JSONObject)session.getAttribute("proyectos");
-                            JSONArray pro = proyectos.getJSONArray("proyectos");
+                            JSONArray pro = proyectos.getJSONArray("proyecto");
                             for(int i=0; i < pro.length(); i++) {
                                 JSONObject obj = pro.getJSONObject(i);                            
-                     
+                        %>
                         <tr>
-                            <%--<td><%= i+1 %></td>
-                            <td><%= obj.getString("nombre") %></td>
-                            <td><%= obj.getString("directores") %></td>
+                            <td><%= i+1 %></td>
+                            <td><%= obj.getString("titulo") %></td>
+                            <td><%= obj.getJSONArray("responsable").join("-").replace('"', ' ') %></td>
                             <td><%= obj.getString("linea") %></td>
-                            <td><%= obj.getString("fecha") %></td>
-                            <td><%= obj.getString("tiempo") %></td>
-                            <td><%= obj.getString("costo") %></td>
+                            <td><%= obj.getString("fecha_inicio") %></td>
+                            <td><%= obj.getString("fecha_final") %></td>
+                            <td><%= obj.getString("tiempo_ejecucion") %></td>
+                            <td><%= obj.getString("costoTotal") %></td>
                             <td class="text-center">
-                                <a href="procesar/gestionProyecto.jsp?id=<%= obj.getInt("id") %>&operacion=4&token=<%= obj.getToken("token") %>" id="link-info-proyecto" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
+                                <a href="procesar/gestionProyecto.jsp?id=<%= obj.getInt("id") %>&operacion=4&token=<%= session.getAttribute("token").toString() %>" id="link-info-proyecto" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                                 <button type="button" title="Finalizar Proyecto" class="btn btn-warning btn-xs btn-finish-project">
@@ -62,25 +64,7 @@
                                 </button>
                             </td>
                         </tr>
-                        <% } --%>
-                        <tr>
-                            <td>1</td>
-                            <td>nombre</td>
-                            <td>nombre directores</td>
-                            <td>linea de investigacion</td>
-                            <td>23/11/2018</td>
-                            <td>3</td>
-                            <td>$3.000.000</td>
-                            <td class="text-center">
-                                <a href="procesar/gestionProyecto.jsp?id=1&operacion=4&token=saasd3qwe" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                </a>
-                                <button type="button" title="Finalizar Proyecto" data-project="1" class="btn btn-warning btn-xs btn-finish-project">
-                                    <i class="fa fa-times" aria-hidden="true"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <%-- } --%>
+                        <% } %>
                     </tbody>
                 </table>
             </div>

@@ -29,7 +29,7 @@
         case 2: 
             tipoSesion = session.getAttribute("tipoSesion").toString();
             JSONObject proyectos = f.listarProyectos(id, tipoSesion, token);
-            if ( proyectos == null ) { // == nul para probar 
+            if ( proyectos != null ) { 
                 session.setAttribute("proyectos", proyectos);
                 session.setAttribute("token", token);
                 response.sendRedirect("../proyectos.jsp");
