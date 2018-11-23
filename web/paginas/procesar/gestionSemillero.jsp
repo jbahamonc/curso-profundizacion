@@ -7,6 +7,7 @@
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Fachada.Fachada"%>
+
 <%
     
     int operacion = Integer.parseInt(request.getParameter("operacion"));
@@ -44,7 +45,7 @@
         case 3: //ELIMINAR
             token = request.getParameter("token");
             String id = request.getParameter("id");
-
+            //boolean resultado = fachada.eliminarSemillero(id);
             boolean resultado = true;
             JSONObject res = new JSONObject();
             if (resultado) {

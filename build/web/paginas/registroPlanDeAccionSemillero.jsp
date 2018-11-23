@@ -299,13 +299,7 @@
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Producto (*)</label>
-                                <select class="form-control" name="" >
-                                    <option disabled>Seleccione</option>
-                                    <option value="AL">Tipo Producto</option>
-                                    <option value="AL">Tipo Producto</option>
-                                    <option value="AL">Tipo Producto</option>
-                                    <option value="AL">Tipo Producto</option>
-                                </select>
+                                <input type="text" class="form-control" id="producto" name="producto"/>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
                                 <a href="" class="btn bg-red btn-flat">CARGAR DATOS</a>
