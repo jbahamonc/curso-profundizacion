@@ -34,7 +34,7 @@
                             <li><a>Ubicación: <span class="pull-right"><b><%= json.getString("ubicacion").toUpperCase() %></b></span></a></li>
                             <li><a>Fecha de Creación: <span class="pull-right"><b><%= json.getString("fechaCreacion") %></b></span></a></li>
                             <li><a>Código GrupLav: <span class="pull-right"><b><%= json.getString("codigo").toUpperCase() %></b></span></a></li>
-                            <li><a>Clasificado Colciencias: <span class="pull-right badge <%= (json.getInt("clasificado") == 0)? "bg-green" : "bg-green" %>"><b><%= (json.getInt("clasificado") == 0)? "SI" : "NO" %></b></span></a></li>
+                            <li><a>Clasificado Colciencias: <span class="pull-right badge <%= (json.getInt("clasificado") == 0)? "bg-green" : "bg-red" %>"><b><%= (json.getInt("clasificado") == 0)? "SI" : "NO" %></b></span></a></li>
                             <li><a>Categoria: <span class="pull-right badge bg-green"><b><%= json.getString("categoria") %></b></span></a></li>
                             <li class="hidden"><a>Correo: <span class="pull-right badge bg-green"><b></b></span></a></li>		                
                         </ul>		              
@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li>
-                <a href="registroSemillero.jsp">
+                <a href="" id="link-registro-semillero">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Registrar Semillero</h4>
                 </a>
             </li>
@@ -145,6 +145,7 @@
 <script>
     document.getElementById("link-list-proyectos").href = "procesar/gestionProyecto.jsp?operacion=2&token="+localStorage.getItem("token")
     document.getElementById("link-plan-accion").href = "procesar/gestionPlanAccionGrupo.jsp?operacion=1&token="+localStorage.getItem("token")
+    document.getElementById("link-registro-semillero").href = "procesar/gestionSemillero.jsp?operacion=4&token="+localStorage.getItem("token")
 </script>
 <a href="#" data-toggle="control-sidebar" style="z-index: 1001" class="btn bg-yellow pull-right btn-fixed" title="Menú">
     <i class="fa fa-bars" style="vertical-align: bottom;"></i>

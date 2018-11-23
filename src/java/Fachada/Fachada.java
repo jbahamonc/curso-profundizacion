@@ -139,12 +139,13 @@ public class Fachada {
     }
     
     
-    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
-    String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
+    public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
+    String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
-        return controladorSemillero.registrarSemillero(nombreSemillero, sigla, ubicacion, fechaCreacion, directores, lineaInvestigacion, descripcion);
+        return controladorSemillero.registrarSemillero(codigo, nombreSemillero, sigla, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
     }
-    public ArrayList<JSONObject> listarSemilleros() throws IOException, JSONException{
+    
+    public JSONObject listarSemilleros() throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.listarSemillero();
     }
@@ -152,12 +153,14 @@ public class Fachada {
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.eliminarSemillero(idSemillero);
     }
-    public ArrayList<JSONObject> listarDirectores() throws IOException, JSONException{
+    
+    public JSONObject listarDirectoresYLineasInvestigacion(int idGrupo) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
-        return controladorSemillero.listarDirectores();
+        return controladorSemillero.listarDirectoresYLineasInvestigacion(idGrupo);
     }
-    public ArrayList<JSONObject> listarLineasInvestigacion() throws IOException, JSONException{
+    public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
         controladorSemillero = new ControladorSemillero();
-        return controladorSemillero.listarLineasInvestigacion();
+        return controladorSemillero.consultarSemillero(idSemillero, token);
+    
     }
 }

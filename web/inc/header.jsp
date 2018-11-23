@@ -108,8 +108,11 @@
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-                                    <li><a href="procesar/gestionSemillero.jsp?operacion=2"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
+                                    <li><a href="" id="link-listar-semilleros"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
                                 </ul>
+                                 <script>
+                                    document.getElementById("link-listar-semilleros").href = "procesar/gestionSemillero.jsp?operacion=2&token="+localStorage.getItem("token")
+                                </script>
 		            </li>        				  		
 		            <li class="treeview">
 		            	<a href="#">
