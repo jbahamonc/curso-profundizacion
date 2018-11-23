@@ -59,7 +59,7 @@
                                 <a href="procesar/gestionProyecto.jsp?id=<%= obj.getInt("id") %>&operacion=4&token=<%= session.getAttribute("token").toString() %>" id="link-info-proyecto" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
-                                <button type="button" title="Finalizar Proyecto" class="btn btn-warning btn-xs btn-finish-project">
+                                <button type="button" title="Finalizar Proyecto" data-project="1" class="btn btn-warning btn-xs btn-finish-project">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </button>
                             </td>

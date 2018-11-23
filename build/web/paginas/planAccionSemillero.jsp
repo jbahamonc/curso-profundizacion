@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -35,10 +37,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <%
+                                    JSONObject listaPlanAccionesSemillero = (JSONObject)session.getAttribute("listaPlanesAccionSemillero");
+                                    JSONArray planesAccionesSemillero = listaPlanAccionesSemillero.getJSONArray("plan_accion_semillero");
+                                    
+                                    for (int i = 0; i < planesAccionesSemillero.length(); i++) {
+                                            JSONObject planAccionSemillero = planesAccionesSemillero.getJSONObject(i);
+                                        
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>2018</td>
-                                    <td>1</td>
+                                    <td><%=i + 1%></td>
+                                    <td><%=planAccionSemillero.getString("anio")%></td>
+                                    <td><%=planAccionSemillero.getInt("semestre")%></td>
                                     <td class="text-center">
                                         <a href="infoPlanAccionSemillero.jsp" title="Información del Semillero" class="btn btn-success btn-xs">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -51,6 +61,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -60,7 +71,7 @@
 </div>
 </section>
 </div>
-<a href="registroPlanDeAccionSemillero.jsp" class="btn btn-danger pull-right btn-fixed add-person" title="Nuevo Plan de Acción">
+<a href="procesar/gestionPlanAccionSemillero.jsp?operacion=2&token=<%= session.getAttribute("token").toString() %>" class="btn btn-danger pull-right btn-fixed add-person" title="Nuevo Plan de Acción">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 

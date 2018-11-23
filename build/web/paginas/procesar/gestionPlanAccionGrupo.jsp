@@ -12,7 +12,7 @@
     Fachada f = new Fachada();
     String token = token = request.getParameter("token");
     String id_grupo = session.getAttribute("idGrupoSemillero").toString();
-    String año = "";
+    String aï¿½o = "";
     String semestre = "";
     switch (operacion) {
         
@@ -37,9 +37,9 @@
             
         // Registro inicial de plan de accion
         case 3:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre");            
-            JSONObject res = f.registrarInicialPlanAccionGrupo(año, semestre, id_grupo, token);
+            JSONObject res = f.registrarInicialPlanAccionGrupo(aï¿½o, semestre, id_grupo, token);
             if ( res != null ) {
                 res.put("status", 200);
             } else {
@@ -51,10 +51,10 @@
             
         // Vincular proyectos al plan de accion
         case 4:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre");  
             String id_proyecto = request.getParameter("proyecto");
-            boolean bool = f.vincularProyectoPlanGrupo(año, semestre, id_grupo, id_proyecto, token);
+            boolean bool = f.vincularProyectoPlanGrupo(aï¿½o, semestre, id_grupo, id_proyecto, token);
             JSONObject json = new JSONObject();
             if ( bool ) {
                 json.put("status", 200);
@@ -66,7 +66,7 @@
             
         // Registrar eventos en el plan de accion
         case 5:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre");  
             String evento = request.getParameter("nombreEvento");
             String caracterEvento = request.getParameter("caracterEvento");
@@ -75,7 +75,7 @@
             String fechFin = request.getParameter("fechFin");
             String intPromotoras[] = request.getParameterValues("intPromotoras");
             String entidades[] = request.getParameterValues("entidades");
-            boolean respuesta = f.registrarEventoPlanAccionGrupo(año, semestre, id_grupo, evento, caracterEvento, responsables, fechaIni, 
+            boolean respuesta = f.registrarEventoPlanAccionGrupo(aï¿½o, semestre, id_grupo, evento, caracterEvento, responsables, fechaIni, 
                     fechFin, intPromotoras, entidades, token);
             JSONObject json1 = new JSONObject();
             if ( respuesta ) {
@@ -88,14 +88,14 @@
             
         // Registrar actividades en el plan de accion
         case 6:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre");  
             String actividad = request.getParameter("actividad");
             String respAct[] = request.getParameterValues("respAct");
             String fechaInicio = request.getParameter("fechaInicio");
             String fechFinal = request.getParameter("fechFinal");
             String producto = request.getParameter("producto");
-            boolean rsp = f.registrarActividadPlanAccionGrupo(año, semestre, id_grupo, actividad, respAct, fechaInicio, fechFinal, 
+            boolean rsp = f.registrarActividadPlanAccionGrupo(aï¿½o, semestre, id_grupo, actividad, respAct, fechaInicio, fechFinal, 
                     producto, token);
             JSONObject json2 = new JSONObject();
             if ( rsp ) {
@@ -108,11 +108,11 @@
             
         // Registrar avance actividades en el plan de accion
         case 7:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre"); 
             String id_actividad = request.getParameter("actividad");
             String porcentaje = request.getParameter("porcActividad");
-            boolean r = f.registroAvanceActividadPlan(año, semestre, id_grupo, id_actividad, porcentaje, token);
+            boolean r = f.registroAvanceActividadPlan(aï¿½o, semestre, id_grupo, id_actividad, porcentaje, token);
             JSONObject json3 = new JSONObject();
             if ( r ) {
                 json3.put("status", 200);
@@ -124,11 +124,11 @@
             
         // Registrar avance eventos en el plan de accion
         case 8:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre"); 
             String id_evento = request.getParameter("id_evento");
             String por = request.getParameter("porcEvento");
-            boolean re = f.registroAvanceEventoPlan(año, semestre, id_grupo, id_evento, por, token);
+            boolean re = f.registroAvanceEventoPlan(aï¿½o, semestre, id_grupo, id_evento, por, token);
             JSONObject json4 = new JSONObject();
             if ( re ) {
                 json4.put("status", 200);
@@ -140,9 +140,9 @@
             
         // Registrar avance eventos en el plan de accion
         case 9:
-            año = request.getParameter("año");
+            aï¿½o = request.getParameter("aï¿½o");
             semestre = request.getParameter("semestre"); 
-            JSONObject infoPlan = f.consultarPlanAccionGrupo(año, semestre, id_grupo, token);
+            JSONObject infoPlan = f.consultarPlanAccionGrupo(aï¿½o, semestre, id_grupo, token);
             if ( infoPlan == null ) {
                 //session.setAttribute("infoPlan", infoPlan);
                 response.sendRedirect("../infoPlanAccionGrupo.jsp");

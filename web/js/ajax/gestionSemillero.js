@@ -12,6 +12,8 @@ $(function () {
     // Init DataTable of Groups
     var semilleros = $('#semilleros').DataTable();
 
+    
+    var tablaSemillero = $('#tablaSemillero').DataTable();
     // Registrar semilleros
     $("#btn-save-semillero").on("click", function () {
         var form = $("#form-register-semillero")
@@ -46,28 +48,32 @@ $(function () {
         }
     })
 
-    $("#btn-eli-semillero").on("click", function () {
-        var id = $(this).data("id")
-        console.log(id)
+//ELIMINAR UN SEMILLERO
+     $(".btn-eli-semillero").on("click", function (e) {
+        var myToast = $.mdtoast('Eliminando el semillero...', { duration: 1000000, init: true });
+        myToast.show()
+        var btn = $(e.currentTarget)
         $.ajax({
-            url: '../paginas/procesar/gestionSemillero.jsp',
-            type: 'POST',
-            data: {id: id, operacion: 3},
-            success: function (response) {
+            url      : '../paginas/procesar/gestionSemillero.jsp?id='+btn.data("id")+"&operacion=3&token="+localStorage.getItem("token"),
+            type     : 'GET',
+//            dataType : 'json',
+            success  : function ( response ) { 
                 console.log(response)
-                if (response.status == 200) {
-                    $.mdtoast('El semillero se ha eliminado', {
-                        duration: 5000
+                var json = JSON.parse( response )
+                if ( json.status == 200 ) {                    
+                    myToast.hide()
+                    tablaSemillero.row(btn.parents("tr")).remove().draw()
+                    $.mdtoast('El Semillero se ha eliminado', {
+                        duration  : 4000                
                     });
                 } else {
-                    $.mdtoast('Algo salió mal, error al eliminar el semillero!', {
-                            duration: 5000
-                        });
+                    $.mdtoast('Lo sentimo!. Ocurrio un error en el sistema', {
+                        duration  : 5000                
+                    });
                 }
+                
             }
-
-        })
-
+        })        
     })
 
 
