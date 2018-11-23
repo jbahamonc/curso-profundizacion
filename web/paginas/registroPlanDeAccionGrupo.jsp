@@ -123,7 +123,7 @@
             <div class="col-xs-12 col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Registro de Información de Lineas de Investigación</h3>
+                        <h3 class="box-title">Vinculación de Proyectos al Plan de Acción</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                             </button>
@@ -133,29 +133,17 @@
                         <form id="form-project-news-plan">
                             <input type="hidden" value="4" name="operacion">
                             <div class="form-group col-xs-12">
-                                <label>Seleccione la Linea de Investigación (*)</label>
-                                <select name="linea" id="" class="form-control" required>
-                                    <option selected="" disabled="">Seleccione</option>
-                                    <%-- 
-                                        JSONObject data = (JSONObject)session.getAttribute("dataForm");
-                                        JSONArray lineas = data.getJSONArray("lineas");
-                                        for (int i = 0; i < lineas.length(); i++) {
-                                            JSONObject obj = lineas.getJSONObject(i);
-                                    %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%>                                    
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Seleccione el Proyecto a Ejecutar (*)</label>
+                                <label>Seleccione el Proyecto a Vincular (*)</label>
                                 <select name="proyecto" id="" class="form-control" required>
                                     <option  selected="" disabled="">Seleccione</option>
+                                    <%-- 
+                                        JSONObject data = (JSONObject)session.getAttribute("dataForm");
+                                        JSONArray proyectos = data.getJSONArray("proyectos");
+                                        for (int i = 0; i < proyectos.length(); i++) {
+                                            JSONObject obj = proyectos.getJSONObject(i);
+                                    %>
+                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
+                                    <% } --%> 
                                     <option value="1">Nombre Proyecto</option>
                                     <option value="1">Nombre Proyecto</option>
                                     <option value="1">Nombre Proyecto</option>
@@ -165,7 +153,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-group">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-group">Vincular</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -232,7 +220,7 @@
                                 <select required class="js-entidades" data-placeholder="Ingrese las Entidades Participantes" name="entidades" multiple style="width: 100%;"></select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-events-plan">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-events-plan">Registrar</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -282,7 +270,7 @@
                                 <input type="text" class="form-control" name="producto" required>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan">Registrar</button>
                             </div>	                				                                      
                         </form>
                     </div>
