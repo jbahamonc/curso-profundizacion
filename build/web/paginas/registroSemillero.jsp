@@ -40,48 +40,52 @@
                             <label>Siglas (*)</label>
                             <input type="text" class="form-control" name="sigla" required>
                         </div> 
-                        <div class="form-group col-xs-12 col-md-8">
+                        <div class="form-group col-xs-12 col-md-6">
                             <label>Ubicación (*)</label>
                             <input type="text" class="form-control" name="ubicacion" required>
                         </div>    
-                        <div class="form-group col-xs-12 col-md-4">
+                        <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Creación (*)</label>
                             <input type="date" class="form-control" name="fechaCreacion" required>
-                        </div>  	                 
-                         <%  
-                            JSONObject directores = (JSONObject)session.getAttribute("directores");
-                            JSONArray listaDirectores = directores.getJSONArray("docente");
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3">
+                            <label>Codigo Semillero (*)</label>
+                            <input type="text" class="form-control" name="codigo" required>
+                        </div>                        
+                        <%
+                            JSONObject listarDirectoresYLineasInvestigacion = (JSONObject) session.getAttribute("listarDirectoresYLineasInvestigacion");
+                            JSONArray listaDirectores = listarDirectoresYLineasInvestigacion.getJSONArray("director");
                         %>
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Director(es) del Grupo (*)</label>
                             <select required class="form-control" name="director">
                                 <option selected disabled>Seleccione un director</option>
                                 <% for (int i = 0; i < listaDirectores.length(); i++) {
-                                    JSONObject director = listaDirectores.getJSONObject(i); 
+                                        JSONObject director = listaDirectores.getJSONObject(i);
                                 %>
                                 <option value="<%=director.getInt("id")%>"><%=director.getString("nombre")%></option>
                                 <% } %>
                             </select>
                         </div>
-                        <%  
-                            JSONObject lineasInvestigacion = (JSONObject)session.getAttribute("lineasInvestigacion");
-                            JSONArray listaLineasInvestigacion = lineasInvestigacion.getJSONArray("lineasInvestigacion");
+                        <%
+                            
+                            JSONArray listaLineasInvestigacion = listarDirectoresYLineasInvestigacion.getJSONArray("linea_grupo");
                         %>
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Linea de Investigación (*)</label>
                             <select required class="form-control" name="lineaInvestigacion">
                                 <option selected disabled>Seleccione Linea de Investigación</option>
                                 <% for (int i = 0; i < listaLineasInvestigacion.length(); i++) {
-                                    JSONObject lineaInvestigacion = listaLineasInvestigacion.getJSONObject(i); 
+                                        JSONObject lineaInvestigacion = listaLineasInvestigacion.getJSONObject(i);
                                 %>
                                 <option value="<%=lineaInvestigacion.getInt("id")%>"><%=lineaInvestigacion.getString("nombre")%></option>
-                                <% } %>
+                                <% }%>
                             </select>
                         </div>
                         <div class="form-group col-xs-12">
-                            <label>Descripción</label>
-                            <textarea required class="form-control" rows="3" name="descripcion"></textarea>
-                        </div> 
+                            <label>Email del Semillero (*)</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
                         <div class="form-group col-xs-12 text-right">
                             <a type="button" class="btn bg-red btn-flat btn-lg" id="btn-save-semillero">REGISTRAR SEMILLERO</a>
                         </div>                	                                      

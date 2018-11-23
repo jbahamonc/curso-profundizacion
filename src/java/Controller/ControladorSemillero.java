@@ -27,21 +27,29 @@ import org.json.JSONObject;
  */
 public class ControladorSemillero {
 
-    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String director, String lineaInvestigacion, String descripcion) throws IOException, JSONException {
+    public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        NameValuePair value1 = new BasicNameValuePair("nombreSemillero", nombreSemillero);
-        NameValuePair value2 = new BasicNameValuePair("sigla", sigla);
-        NameValuePair value3 = new BasicNameValuePair("ubicacion", ubicacion);
-        NameValuePair value4 = new BasicNameValuePair("fechaCreacion", fechaCreacion);
-        NameValuePair value5 = new BasicNameValuePair("lineaInvestigacion", lineaInvestigacion);
-        NameValuePair value6 = new BasicNameValuePair("descripcion", descripcion);
-        RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
+        
+        NameValuePair value1 = new BasicNameValuePair("codigo", codigo);
+        NameValuePair value2 = new BasicNameValuePair("nombreSemillero", nombreSemillero);
+        NameValuePair value3 = new BasicNameValuePair("sigla", sigla);
+        NameValuePair value4 = new BasicNameValuePair("ubicacion", ubicacion);
+        NameValuePair value5 = new BasicNameValuePair("fechaCreacion", fechaCreacion);
+        NameValuePair value6 = new BasicNameValuePair("idGrupo", ""+idGrupo);
+        NameValuePair value7 = new BasicNameValuePair("email", email);
+        NameValuePair value8 = new BasicNameValuePair("lineaInvestigacion", ""+idLineaInvestigacion);
+        NameValuePair value9 = new BasicNameValuePair("director", ""+idDirector);
+        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/semillero");
         requestBuilder.addParameter(value1);
         requestBuilder.addParameter(value2);
         requestBuilder.addParameter(value3);
         requestBuilder.addParameter(value4);
         requestBuilder.addParameter(value5);
         requestBuilder.addParameter(value6);
+        requestBuilder.addParameter(value7);
+        requestBuilder.addParameter(value8);
+        requestBuilder.addParameter(value9);
 
         HttpUriRequest uriRequest = requestBuilder.build();
         HttpResponse httpResponse = httpClient.execute(uriRequest);
@@ -50,17 +58,6 @@ public class ControladorSemillero {
         JSONObject obj = new JSONObject(source);
 
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
-            HttpClient httpClient2 = HttpClients.createDefault();
-            NameValuePair valorDirector = new BasicNameValuePair("director", director);
-            NameValuePair idSemillero = new BasicNameValuePair("idSemillero", obj.getInt("id") + "");
-            RequestBuilder requestBuilder2 = RequestBuilder.post().setUri("#");
-            requestBuilder2.addParameter(valorDirector);
-            requestBuilder2.addParameter(idSemillero);
-            HttpUriRequest uriRequest2 = requestBuilder2.build();
-            HttpResponse httpResponse2 = httpClient2.execute(uriRequest2);
-            if (httpResponse2.getStatusLine().getStatusCode() != 200 || httpResponse2.getStatusLine().getStatusCode() != 201) {
-                return -1;
-            }
             return obj.getInt("id");
         } else {
             return -1;
@@ -70,7 +67,7 @@ public class ControladorSemillero {
 
     public JSONObject listarSemillero() throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("#");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/datosSemilleroDirector");
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject semillero = null;
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
@@ -89,30 +86,17 @@ public class ControladorSemillero {
         return httpResponse.getStatusLine().getStatusCode() == 200;
     }
 
-    public JSONObject listarDirectores() throws IOException, JSONException {
+    public JSONObject listarDirectoresYLineasInvestigacion(int idGrupo) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("#");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/semillero/lineaGrupoDocente/"+idGrupo);
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        JSONObject listaDirectores = null;
+        JSONObject listarDirectoresYLineasInvestigacion = null;
         String source = "";
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
             source = EntityUtils.toString(httpResponse.getEntity());
-            listaDirectores = new JSONObject(source);
+            listarDirectoresYLineasInvestigacion = new JSONObject(source);
         }
-        return listaDirectores;
-    }
-
-    public JSONObject listarLineasInvestigacion() throws IOException, JSONException {
-        HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("#");
-        HttpResponse httpResponse = httpClient.execute(httpGet);
-        JSONObject listaLineasInvestigacion = null;
-        String source = "";
-        if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
-            source = EntityUtils.toString(httpResponse.getEntity());
-            listaLineasInvestigacion = new JSONObject(source);
-        }
-        return listaLineasInvestigacion;
+        return listarDirectoresYLineasInvestigacion;
     }
 
     public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {

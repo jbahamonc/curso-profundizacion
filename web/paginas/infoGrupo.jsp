@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li>
-                <a href="registroSemillero.jsp">
+                <a href="" id="link-registro-semillero">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Registrar Semillero</h4>
                 </a>
             </li>
@@ -144,6 +144,7 @@
 <div class="control-sidebar-bg bg-yellow"></div>
 <script>
     document.getElementById("link-list-proyectos").href = "procesar/gestionProyecto.jsp?operacion=2&token="+localStorage.getItem("token")
+    document.getElementById("link-registro-semillero").href = "procesar/gestionSemillero.jsp?operacion=4&token="+localStorage.getItem("token")
 </script>
 <a href="#" data-toggle="control-sidebar" style="z-index: 1001" class="btn bg-yellow pull-right btn-fixed" title="Menú">
     <i class="fa fa-bars" style="vertical-align: bottom;"></i>
