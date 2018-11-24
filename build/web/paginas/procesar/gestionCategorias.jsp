@@ -16,6 +16,7 @@
 <%
     
     int operacion = Integer.parseInt(request.getParameter("operacion"));
+    String token = "eyJ0eXAiOiJV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCJ9.3JMOfjxsGnnoHO0aM34eFJskcZKidt-X0_LO1Bh_7MY";
     System.out.println(operacion);
     Fachada f = new Fachada();
     switch (operacion) {
@@ -23,8 +24,9 @@
         // Registrar
         case 1 : 
             
-            String nombre = request.getParameter("nombre");            
-            if (f.registrarCategoriaDedicacion(nombre)) {
+            String nombre = request.getParameter("nombre"); 
+            token = request.getParameter("token");
+            if (f.registrarCategoriaDedicacion(token,nombre)) {
                 session.setAttribute("resultad", "Se ha registrado la Categoria de Dedicacion Docente");
                 System.out.println("entro aca");
             }
@@ -35,8 +37,10 @@
         // Eliminar
         case 2 :
             System.out.println("llego");
+            token = request.getParameter("token");
             String id = request.getParameter("id");
-            if (f.registrarCategoriaDedicacion(id)) {
+            token = request.getParameter("token");
+            if (f.registrarCategoriaDedicacion(token,id)) {
                 response.setStatus(200);
             } else {
                 response.setStatus(400);
@@ -55,7 +59,7 @@
          case 4 : 
             
             String nombre2 = request.getParameter("nombre");            
-            if (f.registrarCategoriaDocente(nombre2)) {
+            if (f.registrarCategoriaDocente(token,nombre2)) {
                 session.setAttribute("resultad", "Se ha registrado la Categoria Docente");
                 System.out.println("entro aca");
             }
@@ -85,9 +89,9 @@
             
             // REGGISTRAR 
          case 7 : 
-            
+            token = request.getParameter("token");
             String nombre3 = request.getParameter("nombre");            
-            if (f.registrarCategoriaInvestigador(nombre3)) {
+            if (f.registrarCategoriaInvestigador(token,nombre3)) {
                 session.setAttribute("resultad", "Se ha registrado la Categoria Investigador");
                 System.out.println("entro aca");
             }

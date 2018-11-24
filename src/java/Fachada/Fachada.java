@@ -7,6 +7,7 @@ package Fachada;
 
 import Controller.ControladorCategorias;
 import Controller.ControladorFacultad;
+import Controller.ControladorTipologias;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.apache.http.HttpResponse;
@@ -25,6 +26,7 @@ public class Fachada {
     
     private ControladorFacultad controladorFacultad;
     private ControladorCategorias controladorCategorias;
+    private ControladorTipologias controladorTipologias;
     
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
@@ -47,9 +49,9 @@ public class Fachada {
     
     
     //METODOS CATEGORIA DEDICACION DOCENTE
-      public boolean registrarCategoriaDedicacion (String nombre) throws IOException {
+      public boolean registrarCategoriaDedicacion (String nombre, String token) throws IOException {
         controladorCategorias = new ControladorCategorias();
-        return controladorCategorias.registrarCategoriaDedicacion(nombre);
+        return controladorCategorias.registrarCategoriaDedicacion(token,nombre);
     }
     
     public boolean eliminarCategoriaDedicacion (String codigo) throws IOException {
@@ -67,9 +69,9 @@ public class Fachada {
     
         
     //METODOS CATEGORIA DOCENTE
-      public boolean registrarCategoriaDocente (String nombre) throws IOException {
+      public boolean registrarCategoriaDocente (String token,String nombre) throws IOException {
         controladorCategorias = new ControladorCategorias();
-        return controladorCategorias.registrarCategoriaDedicacion(nombre);
+        return controladorCategorias.registrarCategoriaDedicacion(token,nombre);
     }
     
     public boolean eliminarCategoriaDocente (String codigo) throws IOException {
@@ -85,9 +87,9 @@ public class Fachada {
     }
     
     //METODOS CATEGORIA Investigador
-      public boolean registrarCategoriaInvestigador (String nombre) throws IOException {
+      public boolean registrarCategoriaInvestigador (String token,String nombre) throws IOException {
         controladorCategorias = new ControladorCategorias();
-        return controladorCategorias.registrarCategoriaInvestigador(nombre);
+        return controladorCategorias.registrarCategoriaInvestigador(token,nombre);
     }
     
     public boolean eliminarCategoriaInvestigador (String codigo) throws IOException {
@@ -99,6 +101,81 @@ public class Fachada {
     public ArrayList<JSONObject> listarCategoriaInvestigador () throws IOException, JSONException {
          controladorCategorias = new ControladorCategorias();
         return controladorCategorias.listarCategoriasInvestigador();
+    
+    }
+    
+    //METODOS TIPOLOGIA
+      public boolean registrarTipologias (String token,String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.registrarTipologias(token,nombre);
+    }
+    
+    public boolean eliminarTipologias (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.eliminarTipologias(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarTipologias () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.listarTipologias();
+    
+    }
+    
+     //METODOS SUBTIPOLOGIA
+      public boolean registrarSubtipologia (String token,String tipologia, String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.registrarSubtipologia(token,tipologia,nombre);
+    }
+    
+    public boolean eliminarSubtipologia (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.eliminarSubtipologia(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarSubtipologias () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.listarSubtipologias();
+    
+    }
+    
+    
+      //METODOS TIPOLOGIA: TIPO PRODUCTO
+      public boolean registrarTipoProducto (String token,String tipologia,String subtipologia, String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.registrarTipoProducto(token,tipologia,subtipologia,nombre);
+    }
+    
+    public boolean eliminarTipoProducto (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.eliminarTipoProducto(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarTipoProducto () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.listarTipoProducto();
+    
+    }
+    
+    
+          //METODOS TIPOLOGIA: CATEGORIAS
+      public boolean registrarCategoriaProducto (String token,String tipologia,String subtipologia,
+              String tipo, String nombre) throws IOException {
+        controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.registrarCategoriaProducto(token,tipologia,subtipologia,tipo,nombre);
+    }
+    
+    public boolean eliminarCategoriaProducto (String codigo) throws IOException {
+       controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.eliminarCategoriaProducto(codigo);
+    
+    }
+    
+    public ArrayList<JSONObject> listarCategoriaProducto () throws IOException, JSONException {
+         controladorCategorias = new ControladorCategorias();
+        return controladorTipologias.listarCategoriaProducto();
     
     }
 }

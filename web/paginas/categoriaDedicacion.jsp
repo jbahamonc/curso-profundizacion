@@ -36,18 +36,19 @@
 					            </tr>
 					        </thead>
 					        <tbody>
-                                                    <% 
+                                     <% 
                                     ArrayList<JSONObject> lista = (ArrayList)session.getAttribute("categoriadedicacion");
                                     for(JSONObject obj : lista) {%>
 					            <tr>
-					                <td>1</td>
-					                <td>TC</td>
+                                                        <td><%= obj.getInt("id") %></td>
+                                                        <td><%= obj.getInt("nombre") %></td>
 					                <td class="text-center">
-					                	<button type="button" class="btn btn-danger btn-xs">
+					                	<button type="button" class="btn btn-danger btn-xs" id="btn-del-dedicacion" data-id="1">
 					                		<i class="fa fa-trash" aria-hidden="true"></i>
 					                	</button>
 					                </td>
 					            </tr>
+                                                  
 					        </tbody>
 					    </table>
 		            </div>
@@ -78,7 +79,7 @@
 	      		</div>
 		      	<div class="modal-footer">
 		       		<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		        	<button type="button" class="btn btn-primary">Guardar</button>
+		        	<button type="submit" class="btn btn-primary">Guardar</button>
 		      	</div>
 	      	</form>
     	</div><!-- /.modal-content -->

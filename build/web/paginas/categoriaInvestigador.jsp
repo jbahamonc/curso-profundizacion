@@ -37,18 +37,18 @@
 					        </thead>
 					        <tbody>
                                                     
-                                                                <% 
+                                                               <% 
                                     ArrayList<JSONObject> lista = (ArrayList)session.getAttribute("categoriainvestigador");
-                                    for(JSONObject obj : lista) {%>
+                                    for(JSONObject obj : lista) {%> 
 					            <tr>
-					                <td>1</td>
-					                <td>Inv. Docente</td>
+					          
 					                <td class="text-center">
 					                	<button type="button" class="btn btn-danger btn-xs">
 					                		<i class="fa fa-trash" aria-hidden="true"></i>
 					                	</button>
 					                </td>
 					            </tr>
+                                                    <% } %>
 					        </tbody>
 					    </table>
 		            </div>

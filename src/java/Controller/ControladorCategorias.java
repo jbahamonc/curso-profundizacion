@@ -28,12 +28,12 @@ import org.json.JSONObject;
 public class ControladorCategorias {
     
     // CATEGORIAS DEDICACION DOCENTE
-    public boolean registrarCategoriaDedicacion (String nombre) throws IOException {
-        HttpClient httpClient = HttpClients.createDefault();    
-        
+    public boolean registrarCategoriaDedicacion (String token, String nombre) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();       
         NameValuePair value2 = new BasicNameValuePair("nombre", nombre);     
-        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/categoriadedicacion");
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/categoria/dedicacion");
         requestBuilder.addParameter(value2);
+        requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest);
         String source = EntityUtils.toString(httpResponse.getEntity());
@@ -43,17 +43,17 @@ public class ControladorCategorias {
 
     public boolean eliminarCategoriaDedicacion(String codigo) throws IOException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpDelete httpDelete = new HttpDelete("https://productividadufps.herokuapp.com/api/v1/categoriadedicacion/"+codigo);
+        HttpDelete httpDelete = new HttpDelete("https://productividadufps.herokuapp.com/api/v1/categoria/dedicacion/"+codigo);
         HttpResponse httpResponse = httpClient.execute(httpDelete);
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
         return httpResponse.getStatusLine().getStatusCode() == 200;
     }
 
-    public ArrayList<JSONObject> listarCategoriasDedicacion() throws IOException, JSONException {
+    public ArrayList<JSONObject> listarCategoriasDedicacion() throws IOException, JSONException { 
         ArrayList<JSONObject> lista = new ArrayList<>();
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/categoriadedicacion");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/categoria/dedicacion");
         HttpResponse httpResponse = httpClient.execute(httpGet);
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
@@ -69,12 +69,14 @@ public class ControladorCategorias {
     
      
     // CATEGORIAS  DOCENTE
-    public boolean registrarCategoriaDocente (String nombre) throws IOException {
+    public boolean registrarCategoriaDocente (String token, String nombre) throws IOException {
+        
         HttpClient httpClient = HttpClients.createDefault();    
         
         NameValuePair value2 = new BasicNameValuePair("nombre", nombre);     
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/categoriadocente");
         requestBuilder.addParameter(value2);
+        requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest);
         String source = EntityUtils.toString(httpResponse.getEntity());
@@ -83,6 +85,7 @@ public class ControladorCategorias {
     }
 
     public boolean eliminarCategoriaDocente(String codigo) throws IOException {
+        
         HttpClient httpClient = HttpClients.createDefault();
         HttpDelete httpDelete = new HttpDelete("https://productividadufps.herokuapp.com/api/v1/categoriadocente/"+codigo);
         HttpResponse httpResponse = httpClient.execute(httpDelete);
@@ -92,6 +95,7 @@ public class ControladorCategorias {
     }
 
     public ArrayList<JSONObject> listarCategoriasDocente() throws IOException, JSONException {
+        
         ArrayList<JSONObject> lista = new ArrayList<>();
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/categoriadocente");
@@ -109,12 +113,14 @@ public class ControladorCategorias {
     
     
     // CATEGORIAS  DOCENTE
-    public boolean registrarCategoriaInvestigador (String nombre) throws IOException {
+    public boolean registrarCategoriaInvestigador (String token,String nombre) throws IOException {
+        
         HttpClient httpClient = HttpClients.createDefault();    
         
         NameValuePair value2 = new BasicNameValuePair("nombre", nombre);     
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/categoriadocente");
         requestBuilder.addParameter(value2);
+        requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest);
         String source = EntityUtils.toString(httpResponse.getEntity());
