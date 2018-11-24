@@ -136,20 +136,14 @@
                                 <label>Seleccione el Proyecto a Vincular (*)</label>
                                 <select name="proyecto" id="" class="form-control" required>
                                     <option  selected="" disabled="">Seleccione</option>
-                                    <%-- 
-                                        JSONObject data = (JSONObject)session.getAttribute("dataForm");
-                                        JSONArray proyectos = data.getJSONArray("proyectos");
+                                    <%
+                                        JSONObject data = (JSONObject)session.getAttribute("data");
+                                        JSONArray proyectos = data.getJSONArray("proyectoNuevo");
                                         for (int i = 0; i < proyectos.length(); i++) {
                                             JSONObject obj = proyectos.getJSONObject(i);
                                     %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%> 
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
+                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("titulo")%></option>
+                                    <% } %> 
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
@@ -186,18 +180,13 @@
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Responsables del Evento (*)</label>
                                 <select required class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple style="width: 100%;">
-                                    <%-- 
-                                        JSONArray res = data.getJSONArray("responsables");
+                                    <%
+                                        JSONArray res = data.getJSONArray("integrante");
                                         for (int i = 0; i < res.length(); i++) {
                                             JSONObject obj = res.getJSONObject(i);
                                     %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%>
-                                    <option value="1">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="2">Oscar Alberto Gallardo Perez</option>
-                                    <option value="3">Jessica Lorena Pabón</option>
-                                    <option value="4">Gladys Adriana Espinel</option>
-                                    <option value="5">Milton Vera Contreras</option>
+                                        <option value="<%= obj.getString("nombre")%>"><%= obj.getString("nombre")%></option>
+                                    <% } %>
                                 </select>
                             </div>   
                             <div class="clearfix"></div>
@@ -243,18 +232,13 @@
                             <div class="form-group col-xs-12">
                                 <label>Responsables de la Actividad (*)</label>
                                 <select required class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="respAct" multiple style="width: 100%;">
-                                    <%-- 
-                                        JSONArray res = data.getJSONArray("responsables");
-                                        for (int i = 0; i < res.length(); i++) {
-                                            JSONObject obj = res.getJSONObject(i);
+                                    <% 
+                                        JSONArray inte = data.getJSONArray("integrante");
+                                        for (int i = 0; i < inte.length(); i++) {
+                                            JSONObject obj1 = inte.getJSONObject(i);
                                     %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%>
-                                    <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                    <option value="WY">Jessica Lorena Pabón</option>
-                                    <option value="WY">Gladys Adriana Espinel</option>
-                                    <option value="WY">Milton Vera Contreras</option>
+                                        <option value="<%= obj1.getString("nombre")%>"><%= obj1.getString("nombre")%></option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
@@ -329,95 +313,6 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulario de Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Descripción de la Actividad (*)</label>
-                        <textarea id="obj_esp" class="form-control" rows="3"></textarea>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-objective" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Modal Directores -->
-<div class="modal fade" id="modal-directores" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulario de Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group col-xs-12">
-                        <label>Seleccione la Linea de Investigación (*)</label>
-                        <select name="" id="director" class="form-control">
-                            <option value="" selected="" disabled="">Seleccione</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                        </select>
-                    </div>	      
-                    <div class="form-group col-xs-12">
-                        <label>Rol (*)</label>
-                        <input type="text" class="form-control" id="rol-director">
-                    </div>	  		
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-director" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Modal Estudinates plan accion -->
-<div class="modal fade" id="modal-estudiantes" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulario de Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group col-xs-12">
-                        <label>Nombre del Estudiante (*)</label>
-                        <input type="text" class="form-control" id="nombre-estudiante">
-                    </div>	      
-                    <div class="form-group col-xs-12">
-                        <label>Programa Académico (*)</label>
-                        <input type="text" class="form-control" id="programa-estudiante">
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-estudiante" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
 <script src="../js/ajax/gestionPlanAccionGrupo.js"></script>
 
