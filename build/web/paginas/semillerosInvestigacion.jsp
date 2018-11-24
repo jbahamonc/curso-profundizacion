@@ -39,9 +39,9 @@
                     <tbody>
                         <%
                             JSONObject semilleros = (JSONObject)session.getAttribute("semilleros");
-                            JSONArray listaSemilleros = semilleros.getJSONArray("semilleros");
+                            JSONArray listaSemilleros = semilleros.getJSONArray("semillero");
                             for (int i = 0; i < listaSemilleros.length(); i++) {
-                                JSONObject semillero = listaSemilleros.getJSONObject(i);%>
+                                JSONObject semillero = listaSemilleros.getJSONObject(i);
                         %>
                         <tr>
                             <td><%=semillero.getString("nombre")%></td>
@@ -52,7 +52,7 @@
                                 <button type="button" class="btn btn-danger btn-xs" id="btn-eli-semillero" data-id="<%=semillero.getInt("id")%>">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
-                                 <a href="procesar/gestionSemillero.jsp?id=<%= semillero.getInt("id") %>&operacion=5&token=<%= session.getAttribute("token") %>" class="btn btn-success btn-xs">
+                                 <a href="procesar/gestionSemillero.jsp?id=<%= semillero.getInt("id") %>&operacion=5&token=<%= session.getAttribute("token").toString() %>" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                             </td>

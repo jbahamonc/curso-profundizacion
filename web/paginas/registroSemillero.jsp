@@ -53,7 +53,7 @@
                             <input type="text" class="form-control" name="codigo" required>
                         </div>                        
                         <%
-                            JSONObject listarDirectoresYLineasInvestigacion = (JSONObject) session.getAttribute("listarDirectoresYLineasInvestigacion");
+                            JSONObject listarDirectoresYLineasInvestigacion = (JSONObject) session.getAttribute("listaDirectoresYLineasInvestigacion");
                             JSONArray listaDirectores = listarDirectoresYLineasInvestigacion.getJSONArray("director");
                         %>
                         <div class="form-group col-xs-12 col-md-6">

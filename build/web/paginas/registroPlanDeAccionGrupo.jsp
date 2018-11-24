@@ -28,7 +28,7 @@
                             <input type="hidden" value="3" name="operacion">
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Año (*)</label>
-                                <select name="año" class="form-control" required>
+                                <select name="anio" class="form-control" required>
                                     <option selected disabled>Seleccione</option>
                                     <option value="2018">2018</option>
                                     <option value="2019">2019</option>

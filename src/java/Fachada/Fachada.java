@@ -117,9 +117,9 @@ public class Fachada {
         return controladorPlanAccion.listarPlanesAccion(token, id);
     }
     
-    public JSONObject cargarInfoForm(String token, String idGrupo) throws IOException, JSONException {
+    public JSONObject cargarInfoForm(String token, String idGrupo, String tipoSesion) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
-        return controladorPlanAccion.cargarInfoForm(token, idGrupo);
+        return controladorPlanAccion.cargarInfoForm(token, idGrupo, tipoSesion);
     }
     
     public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
@@ -162,8 +162,8 @@ public class Fachada {
     }
     
     // Metodos de Semilleros *********************************************************************************************************
-    public int registrarSemillero(String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
-    String[] directores, String lineaInvestigacion, String descripcion) throws IOException, JSONException{
+    public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
+    String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.registrarSemillero(codigo, nombreSemillero, sigla, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
     }

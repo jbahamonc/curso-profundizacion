@@ -35,9 +35,9 @@ public class ControladorPlanAccion {
         return jsonObj;   
     }
 
-    public JSONObject cargarInfoForm(String token, String idGrupo) throws IOException, JSONException {
+    public JSONObject cargarInfoForm(String token, String idGrupo, String tipoSesion) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/dataForm/"+idGrupo);
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/proyectosNuevosIntegrantes/"+idGrupo+"/session/"+tipoSesion);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());
