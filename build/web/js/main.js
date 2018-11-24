@@ -17,7 +17,7 @@ $(document).ready(function() {
     var $js2 = $('.js-example-basic-multiple2').select2();
     var objDiv = $("#obj_esp")
     $("#btn-add-objective").on("click", function () {
-    	var newOption = new Option(objDiv.val(), 1, true, true);
+    	var newOption = new Option(objDiv.val(), objDiv.val(), true, true);
     	$js2.append(newOption).trigger('change');
     	objDiv.val("")
     	objDiv.focus()
@@ -234,15 +234,11 @@ $(document).ready(function() {
         $("#data-productivity-empty").addClass("hidden")
     })
     
-    // Evento que se dispara cuando se registra un plan de accion de un grupo
-    $("#btn-save-action-plan").on("click", function() {
-        $(".box-data-action").removeClass("hidden")
-        $("#info-empty-projects, #info-empty-events, #info-empty-activitys").addClass("hidden")
-    })
+    
     
     // Evento que se dispara cuando se registra un plan de accion de un semillero
-    $("#btn-save-action-plan-semillero").on("click", function() {
-        $(".box-data-action").removeClass("hidden")
-        $("#info-empty-projects-semillero, #info-empty-events-semillero, #info-empty-activitys-semillero").addClass("hidden")
-    })
+//    $("#btn-save-action-plan-semillero").on("click", function() {
+//        $(".box-data-action").removeClass("hidden")
+//        $("#info-empty-projects-semillero, #info-empty-events-semillero, #info-empty-activitys-semillero").addClass("hidden")
+//    })
 } );

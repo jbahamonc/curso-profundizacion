@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -24,56 +26,68 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+                <p>
+                    <span class="label label-danger">IMPORTANTE: Todos los campos marcados con asterisco (*) son obligatorios</span>                    
+                </p>
                 <div class="row">
-                    <form>
+                    <form id="form-register-semillero">
+                        <input type="hidden" value="1" name="operacion"/>
                         <div class="form-group col-xs-12 col-md-8">
                             <label>Nombre del Semillero (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="nombre" required>
                         </div>				                
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Siglas (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="sigla" required>
                         </div> 
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Ubicación (*)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="ubicacion" required>
                         </div>    
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Creación (*)</label>
-                            <input type="date" class="form-control">
-                        </div>  	                 
+                            <input type="date" class="form-control" name="fechaCreacion" required>
+                        </div>
                         <div class="form-group col-xs-12 col-md-3">
-                            <label>Grupo al que Pertenece (*)</label>
-                            <select class="form-control">
-                                <option selected disabled>Seleccione</option>
-                                <option>Nombre del grupo</option>
-                                <option>Nombre del grupo</option>
-                            </select>
-                        </div>	
+                            <label>Codigo Semillero (*)</label>
+                            <input type="text" class="form-control" name="codigo" required>
+                        </div>                        
+                        <%
+                            JSONObject listarDirectoresYLineasInvestigacion = (JSONObject) session.getAttribute("listaDirectoresYLineasInvestigacion");
+                            JSONArray listaDirectores = listarDirectoresYLineasInvestigacion.getJSONArray("director");
+                        %>
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Director(es) del Grupo (*)</label>
-                            <select class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="directores[]" multiple style="width: 100%;">
-                                <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                <option value="WY">Jessica Lorena Pabón</option>
-                                <option value="WY">Gladys Adriana Espinel</option>
-                                <option value="WY">Milton Vera Contreras</option>
+                            <select required class="form-control" name="director">
+                                <option selected disabled>Seleccione un director</option>
+                                <% for (int i = 0; i < listaDirectores.length(); i++) {
+                                        JSONObject director = listaDirectores.getJSONObject(i);
+                                %>
+                                <option value="<%=director.getInt("id")%>"><%=director.getString("nombre")%></option>
+                                <% } %>
                             </select>
                         </div>
+                        <%
+                            
+                            JSONArray listaLineasInvestigacion = listarDirectoresYLineasInvestigacion.getJSONArray("linea_grupo");
+                        %>
                         <div class="form-group col-xs-12 col-md-6">
                             <label>Linea de Investigación (*)</label>
-                            <select class="form-control">
-                                <option selected disabled>Seleccione</option>
-                                <option>Nombre de la Linea</option>
-                                <option>Nombre de la Linea</option>
+                            <select required class="form-control" name="lineaInvestigacion">
+                                <option selected disabled>Seleccione Linea de Investigación</option>
+                                <% for (int i = 0; i < listaLineasInvestigacion.length(); i++) {
+                                        JSONObject lineaInvestigacion = listaLineasInvestigacion.getJSONObject(i);
+                                %>
+                                <option value="<%=lineaInvestigacion.getInt("id")%>"><%=lineaInvestigacion.getString("nombre")%></option>
+                                <% }%>
                             </select>
                         </div>
                         <div class="form-group col-xs-12">
-                            <label>Descripción</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div> 
+                            <label>Email del Semillero (*)</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
                         <div class="form-group col-xs-12 text-right">
-                            <a href="infoSemillero.jsp" class="btn bg-red btn-flat btn-lg">REGISTRAR GRUPO</a>
+                            <a type="button" class="btn bg-red btn-flat btn-lg" id="btn-save-semillero">REGISTRAR SEMILLERO</a>
                         </div>                	                                      
                     </form>
                 </div>
@@ -82,3 +96,4 @@
     </section>
 </div>
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionSemillero.js"></script>

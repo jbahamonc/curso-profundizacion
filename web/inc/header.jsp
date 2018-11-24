@@ -3,6 +3,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Curso de profundizacion</title>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/select2.min.css">	
@@ -14,7 +15,7 @@
         <link rel="stylesheet" href="../css/mdtoast.css">
         <link rel="stylesheet" href="../css/admin.css">
     </head>
-    <body id="con" class="hold-transition skin-red-light sidebar-mini">
+    <body id="con" class="hold-transition skin-red-light sidebar-mini fixed">
         <div class="wrapper">
             <!-- NAVBAR -->
             <header class="main-header">
@@ -92,21 +93,27 @@
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-                                    <li><a href="registroGrupo.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-                                    <li><a href="gruposInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
+                                    <li><a href="" id="link-reg-groups"><i class="fa fa-circle-o"></i>Registro</a></li>
+                                    <li><a href="" id="link-consult-groups"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
                                     <li><a href="categoriasGrupos.jsp"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
                                 </ul>
+                                <script>
+                                    document.getElementById("link-reg-groups").href = "procesar/gestionGrupos.jsp?operacion=4&token="+localStorage.getItem("token")
+                                    document.getElementById("link-consult-groups").href = "procesar/gestionGrupos.jsp?operacion=3&token="+localStorage.getItem("token")
+                                </script>
 		            </li>	
 		            <li class="treeview">
 		            	<a href="#">
                                     <i class="fa fa-users"></i>
-                                    <span>Gestión de Semilleros</span>
+                                    <span>Semilleros</span>
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 		            	</a>
 		            	<ul class="treeview-menu" style="display: none;">
-                                    <li><a href="registroSemillero.jsp"><i class="fa fa-circle-o"></i>Registro</a></li>
-                                    <li><a href="semillerosInvestigacion.jsp"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
+                                    <li><a href="" id="link-listar-semilleros"><i class="fa fa-circle-o"></i>Ver Semilleros</a></li>
                                 </ul>
+                                 <script>
+                                    document.getElementById("link-listar-semilleros").href = "procesar/gestionSemillero.jsp?operacion=2&token="+localStorage.getItem("token")
+                                </script>
 		            </li>        				  		
 		            <li class="treeview">
 		            	<a href="#">
