@@ -45,67 +45,66 @@ $(function () {
                                         '</div>'+
                                         '<div class="product-info">'+
                                             '<a href="infoProyecto.jsp" class="product-title">'+
-                                                p.nombre +
+                                                p.titulo +
                                             '</a>'+
                                             '<span class="product-description">'+
-                                                'Fecha de Inicio:'+ p.fecha +
-                                                '<button class="btn btn-xs btn-success pull-right">VINCULAR</button>'
+                                                '<button class="btn btn-xs btn-success pull-right" data-id='+p.id+'>VINCULAR</button>'
                                             '</span>'+
                                         '</div>'+
                                     '</li>'
                             }
                             ulProjects.html(html)
-                        } 
-                        infoEmpty[0].addClass("hidden")
-                        overlay[0].addClass("hidden")
+                            infoEmpty.first().addClass("hidden")
+                        }                         
+                        overlay.first().addClass("hidden")
                         
-                        var ulEvents = $("#ulEvents")
-                        ulEvents.empty()
-                        if ( json.eventos.length > 0 ) {
-                            for (var p of json.eventos) {
-                                html += '<li class="item">'+
-                                        '<div class="product-img">'+
-                                            '<img src="../img/date.svg" alt="Project Image">'+
-                                        '</div>'+
-                                        '<div class="product-info">'+
-                                            '<a href="infoProyecto.jsp" class="product-title">'+
-                                                p.nombre +
-                                            '</a>'+
-                                            '<span class="product-description">'+
-                                                p.caracter +
-                                                '<button class="btn btn-xs btn-success pull-right">VINCULAR</button>'
-                                            '</span>'+
-                                        '</div>'+
-                                    '</li>'
-                            }
-                            ulEvents.html(html)
-                        } 
-                        infoEmpty[1].addClass("hidden")
-                        overlay[1].addClass("hidden")
-                        
+//                        var ulEvents = $("#ulEvents")
+//                        ulEvents.empty()
+//                        if ( json.eventos.length > 0 ) {
+//                            html = ""
+//                            for (var p of json.eventos) {
+//                                html += '<li class="item">'+
+//                                        '<div class="product-img">'+
+//                                            '<img src="../img/date.svg" alt="Project Image">'+
+//                                        '</div>'+
+//                                        '<div class="product-info">'+
+//                                            '<a href="infoProyecto.jsp" class="product-title">'+
+//                                                p.nombre +
+//                                            '</a>'+
+//                                            '<span class="product-description">'+
+//                                                '<button class="btn btn-xs btn-success pull-right" data-id='+a.id+'>VINCULAR</button>'
+//                                            '</span>'+
+//                                        '</div>'+
+//                                    '</li>'
+//                            }
+//                            ulEvents.html(html)
+//                            infoEmpty.eq(1).addClass("hidden")
+//                        }                         
+//                        overlay.eq(1).addClass("hidden")
+//                        
                         var ulActivitys = $("#ulActivitys")
                         ulActivitys.empty()
                         if ( json.actividades.length > 0 ) {
-                            for (var p of json.actividades) {
+                            html = ""
+                            for (var a of json.actividades) {
                                 html += '<li class="item">'+
                                         '<div class="product-img">'+
                                             '<img src="../img/activitys.svg" alt="Project Image">'+
                                         '</div>'+
                                         '<div class="product-info">'+
                                             '<a href="infoProyecto.jsp" class="product-title">'+
-                                                p.nombre +
+                                                a.nombre +
                                             '</a>'+
                                             '<span class="product-description">'+
-                                                'Fecha de Inicio: '+p.caracter +
-                                                '<button class="btn btn-xs btn-success pull-right">VINCULAR</button>'
+                                                '<button class="btn btn-xs btn-success pull-right" data-id='+a.id+'>VINCULAR</button>'
                                             '</span>'+
                                         '</div>'+
                                     '</li>'
                             }
                             ulActivitys.html(html)
-                        } 
-                        infoEmpty[2].addClass("hidden")
-                        overlay[2].addClass("hidden")
+                            infoEmpty.last().addClass("hidden")
+                        }                         
+                        overlay.last().addClass("hidden")
                         
                     } else {
                         overlay.addClass("hidden")

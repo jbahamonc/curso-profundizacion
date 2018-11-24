@@ -48,12 +48,13 @@ public class ControladorPlanAccion {
         return jsonObj; 
     }
 
-    public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
+    public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String tipoSession, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();        
-        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/planAccion");
-        requestBuilder.addParameter("año", año);
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/createPlanGrupoSemillero");
+        requestBuilder.addParameter("year", año);
         requestBuilder.addParameter("semestre", semestre);
-        requestBuilder.addParameter("id_grupo", id_grupo);
+        requestBuilder.addParameter("idGrupoSemillero", id_grupo);
+        requestBuilder.addParameter("tipoSession", tipoSession);
         requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
@@ -62,6 +63,11 @@ public class ControladorPlanAccion {
         JSONObject obj = null;
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
             obj = new JSONObject(source);
+            JSONObject planOld = obtenerProyectosActividadesNoTerminados(año, semestre, "6", "0", token);
+            if ( planOld != null ) {
+                obj.put("proyectos", planOld.getJSONArray("proyectosNoTerminado"));
+                obj.put("actividades", planOld.getJSONArray("actividadesNoterminada"));
+            }
         }        
         return obj;
     }
@@ -168,4 +174,17 @@ public class ControladorPlanAccion {
         return jsonObj; 
     }
     
+    private JSONObject obtenerProyectosActividadesNoTerminados(String año, String semestre, String id_grupo, String tipoSesion, String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/ProyectosActividadesNoterminadoPlanAccionGrupoSemillero/"+id_grupo+"/session/"+tipoSesion);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject jsonObj = null;
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println("----------------------- plan old");
+        System.out.println(source);
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
+            jsonObj = new JSONObject(source);                        
+        }        
+        return jsonObj;
+    }
 }
