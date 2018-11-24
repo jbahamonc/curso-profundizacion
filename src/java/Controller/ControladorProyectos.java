@@ -23,9 +23,9 @@ import org.json.JSONObject;
  */
 public class ControladorProyectos {
 
-    public JSONObject listarProyectos(String token) throws IOException, JSONException {
+    public JSONObject listarProyectos(String idGrupoSemillero, String tipoSesion, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/proyecto");
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/proyectoResponsable/"+idGrupoSemillero+"/session/"+tipoSesion);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());

@@ -27,10 +27,15 @@
             
         // Listar proyectos
         case 2: 
-            //JSONObject proyectos = f.listarProyectos(token);
-            //session.setAttribute("proyectos", proyectos);
-            //session.setAttribute("token", token);
-            response.sendRedirect("../proyectos.jsp");
+            tipoSesion = session.getAttribute("tipoSesion").toString();
+            JSONObject proyectos = f.listarProyectos(id, tipoSesion, token);
+            if ( proyectos != null ) { 
+                session.setAttribute("proyectos", proyectos);
+                session.setAttribute("token", token);
+                response.sendRedirect("../proyectos.jsp");
+            } else {
+                response.sendError(500, "Ocurrio un error en el servidor");
+            }
             break;
         
         // Registrar proyectos
@@ -63,25 +68,25 @@
         // Consultar proyecto
         case 4:
             String idProject = request.getParameter("id");
-            //JSONObject data = f.consultarProyecto(idProject, token);
-            //if (data != null) {
-            //    session.setAttribute("infoProject", data);
+            JSONObject data = f.consultarProyecto(idProject, token);
+            if (data == null) { // null para probar
+                session.setAttribute("infoProject", data);
                 response.sendRedirect("../infoProyecto.jsp");
-            //} else {
-            //    response.sendError(500, "Ocurrio un error en el servidor");
-            //}
+            } else {
+                response.sendError(500, "Ocurrio un error en el servidor");
+            }
             break;
             
         // Cerrar un proyecto
         case 5:
             String id_project = request.getParameter("id_proyecto");
-            //boolean respon = f.cerrarProyecto(id_project, token);
+            boolean respon = f.cerrarProyecto(id_project, token);
             JSONObject obj = new JSONObject();
-            //if ( respon ) {
+            if ( respon ) {
                 obj.put("status", 200);
-            //} else {
-            //    obj.put("status", 500);
-            //}
+            } else {
+                obj.put("status", 500);
+            }
             out.print(obj);
             break;
             

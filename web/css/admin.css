@@ -90,3 +90,9 @@ form label.error {
     color: red;
     margin: 0;
 }
+
+.content.content-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

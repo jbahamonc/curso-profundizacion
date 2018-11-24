@@ -22,8 +22,15 @@ public class Fachada {
     private ControladorGrupos controladorGrupos;  
     private ControladorProyectos controladorProyectos;
     private ControladorPlanAccion controladorPlanAccion;
+    private ControladorLogin controladorLogin;
     private ControladorPlanAccionSemillero controladorPlanAccionSemillero;
     
+    
+    
+    public JSONObject iniciarSesion(String user, String pass) throws IOException, JSONException {
+        controladorLogin = new ControladorLogin();
+        return controladorLogin.iniciarSesion(user, pass);
+    }
     
     public boolean registrarFacultad (String codigo, String nombre) throws IOException {
         controladorFacultad = new ControladorFacultad();
@@ -76,9 +83,9 @@ public class Fachada {
     }
     
     // Metodos proyecto **********************************************************************************************
-    public JSONObject listarProyectos(String token) throws IOException, JSONException {
+    public JSONObject listarProyectos(String idGrupoSemillero, String tipoSesion, String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
-        return controladorProyectos.listarProyectos(token);
+        return controladorProyectos.listarProyectos(idGrupoSemillero, tipoSesion, token);
     }
     
     public JSONObject cargarInfoFormRegistroProyectos(String token, String tipoSesion, String id) throws IOException, JSONException {
@@ -110,14 +117,19 @@ public class Fachada {
         return controladorPlanAccion.listarPlanesAccion(token, id);
     }
     
-    public JSONObject cargarInfoForm(String token, String idGrupo) throws IOException, JSONException {
+    public JSONObject cargarInfoForm(String token, String idGrupo, String tipoSesion) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
-        return controladorPlanAccion.cargarInfoForm(token, idGrupo);
+        return controladorPlanAccion.cargarInfoForm(token, idGrupo, tipoSesion);
     }
     
     public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
         return controladorPlanAccion.registrarInicialPlanAccionGrupo(año, semestre, id_grupo, token);
+    }
+    
+    public JSONObject consultarPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.consultarPlanAccionGrupo(año, semestre, id_grupo, token);
     }
     
     public boolean vincularProyectoPlanGrupo(String año, String semestre, String id_grupo, String id_proyecto, String token) throws IOException, JSONException {
@@ -139,7 +151,17 @@ public class Fachada {
                     producto, token);
     }
     
+    public boolean registroAvanceActividadPlan(String año, String semestre, String id_grupo, String id_actividad, String porcentaje, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.registroAvanceActividadPlan(año, semestre, id_actividad, porcentaje, id_grupo, token);
+    }
     
+    public boolean registroAvanceEventoPlan(String año, String semestre, String id_grupo, String id_evt, String porcentaje, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.registroAvanceEventoPlan(año, semestre, id_evt, porcentaje, id_grupo, token);
+    }
+    
+    // Metodos de Semilleros *********************************************************************************************************
     public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
     String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();

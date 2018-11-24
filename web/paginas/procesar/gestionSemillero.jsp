@@ -5,11 +5,8 @@
 --%>
 
 <%@page import="org.json.JSONObject"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="Fachada.Fachada"%>
-
-<%
-    
+<%  
     int operacion = Integer.parseInt(request.getParameter("operacion"));
     Fachada fachada = new Fachada();
     String token = "";
@@ -23,7 +20,7 @@
             String idDirector = request.getParameter("director");
             String idLineaInvestigacion = request.getParameter("lineaInvestigacion");
             String email = request.getParameter("email");
-            String idGrupo = (String)session.getAttribute("idGrupoSemillero");
+            String idGrupo = session.getAttribute("idGrupoSemillero").toString();
             int valorId = fachada.registrarSemillero(codigo, nombreSemillero, siglas, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
             JSONObject valor = new JSONObject();
             if (valorId > 0) {
@@ -34,7 +31,7 @@
             }
             out.print(valor);
             break;
-        case 2: //LISTAR
+        case 2: //LISTAR            
             token = request.getParameter("token");
             JSONObject semilleros = fachada.listarSemilleros();
             session.setAttribute("semilleros", semilleros);
@@ -58,9 +55,10 @@
 
         case 4: //LISTAR DIRECTORES Y LINEAS DE INVESTIGACION
             token = request.getParameter("token");
-            int idGrupoConsulta = (int) session.getAttribute("idGrupoSemillero");
+            int idGrupoConsulta = Integer.parseInt(session.getAttribute("idGrupoSemillero").toString());
+            System.out.println(idGrupoConsulta);
             JSONObject listaDirectoresYLIneasInvestigacion = fachada.listarDirectoresYLineasInvestigacion(idGrupoConsulta);
-            session.setAttribute("listaDirectoresYLIneasInvestigacion", listaDirectoresYLIneasInvestigacion);
+            session.setAttribute("listaDirectoresYLineasInvestigacion", listaDirectoresYLIneasInvestigacion);
             response.sendRedirect("../registroSemillero.jsp");
             break;
 
@@ -77,10 +75,6 @@
                 System.out.println("ocurrio un error");
             }
             break;
-
-        default:
-            System.out.println("no hay nada para hacer");
-            break;
     }
-
 %>
+

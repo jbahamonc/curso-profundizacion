@@ -46,7 +46,7 @@
         // Consultar
         case 2 :
             String id_grupo = request.getParameter("id");
-            token = request.getParameter("token");
+            token = request.getParameter("token");            
             JSONObject jsonGrupo = f.consultarGrupo(id_grupo, token);
             if ( jsonGrupo != null ) { 
                 jsonGrupo.put("token", token);

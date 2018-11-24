@@ -88,12 +88,13 @@ public class ControladorSemillero {
 
     public JSONObject listarDirectoresYLineasInvestigacion(int idGrupo) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/semillero/lineaGrupoDocente/"+idGrupo);
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/lineaGrupoDocenteGrupo/"+idGrupo);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject listarDirectoresYLineasInvestigacion = null;
         String source = "";
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
             source = EntityUtils.toString(httpResponse.getEntity());
+            System.out.println(source);
             listarDirectoresYLineasInvestigacion = new JSONObject(source);
         }
         return listarDirectoresYLineasInvestigacion;

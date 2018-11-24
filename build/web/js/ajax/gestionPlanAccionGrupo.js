@@ -13,12 +13,11 @@ $(function () {
     $("#btn-save-action-plan").on("click", function() {
         var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
         myToast.show()
-        var form = $("#form-plan-action-group") 
-        var overlay = $(".overlay")
-        overlay.removeClass('hidden')
+        var form = $("#form-plan-action-group")         
         if ( form.valid() ) {
+            var overlay = $(".overlay")
+            overlay.removeClass('hidden')
             form = form.serializeArray()
-            console.log(form)
             form.push({ 'token' : token })
             $.ajax({
                 url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
@@ -193,7 +192,7 @@ $(function () {
                 duration  : 5000                
             }); 
         }
-    })
+    })   
     
     // Evento para registrar eventos en el plan de accion
     $("#btn-save-events-plan").on("click", function () {
@@ -215,6 +214,91 @@ $(function () {
                     if ( json.status == 200 ) {
                         myToast.hide()   
                         $.mdtoast('El evento ha sido vinculado al plan de acción', {
+                            duration  : 3000                
+                        });
+                    } else {
+                        $.mdtoast('Ocurrio un error al guardar la información', {
+                            duration  : 5000                
+                        });
+                    }
+                }
+            })
+        } else {
+            $.mdtoast('Los campos marcados con (*) son obligatorios', {
+                duration  : 5000                
+            }); 
+        }
+    })
+    
+    // Abrir modal para el regsitro de avances de actividades
+    var modal
+    $("#modal").on("show.bs.modal", function (e) {
+        var btn = $(e.relatedTarget)
+        modal = $(this)
+        modal.find("#anio").val(btn.data("anio"))
+        modal.find("#semestre").val(btn.data("semestre"))        
+    })
+    
+    // Registrar el % de avance de las actividades del plan de accion
+    $("#btn-avance-act-plan").on("click", function () {
+        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+        myToast.show()        
+        var form = $("#form-avance-act-plan")
+        if ( form.valid() ) {
+            var data = form.serializeArray()
+            data.push('token', token)
+            $.ajax({
+                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
+                type    : 'POST',
+                data    : $.param(data),
+                success : function ( response ) {
+                    var json = JSON.parse(response)
+                    if ( json.status == 200 ) {
+                        modal.modal('hide')
+                        myToast.hide()   
+                        $.mdtoast('El avance de la actividad se ha registrado', {
+                            duration  : 3000                
+                        });
+                    } else {
+                        $.mdtoast('Ocurrio un error al guardar la información', {
+                            duration  : 5000                
+                        });
+                    }
+                }
+            })
+        } else {
+            $.mdtoast('Los campos marcados con (*) son obligatorios', {
+                duration  : 5000                
+            }); 
+        }
+    })
+    
+    // Abrir modal para el regsitro de avances de eventos
+    $("#modal-evt").on("show.bs.modal", function (e) {
+        var btn = $(e.relatedTarget)
+        modal = $(this)
+        modal.find("#anio").val(btn.data("anio"))
+        modal.find("#semestre").val(btn.data("semestre"))        
+    })
+    
+    // Registrar el % de avance de los eventos del plan de accion
+    $("#btn-avance-evt-plan").on("click", function () {
+        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+        myToast.show()        
+        var form = $("#form-avance-evt-plan")
+        if ( form.valid() ) {
+            var data = form.serializeArray()
+            data.push('token', token)
+            $.ajax({
+                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
+                type    : 'POST',
+                data    : $.param(data),
+                success : function ( response ) {
+                    var json = JSON.parse(response)
+                    if ( json.status == 200 ) {
+                        modal.modal('hide')
+                        myToast.hide()   
+                        $.mdtoast('El avance del evento se ha registrado', {
                             duration  : 3000                
                         });
                     } else {

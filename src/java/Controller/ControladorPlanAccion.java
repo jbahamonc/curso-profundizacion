@@ -35,9 +35,9 @@ public class ControladorPlanAccion {
         return jsonObj;   
     }
 
-    public JSONObject cargarInfoForm(String token, String idGrupo) throws IOException, JSONException {
+    public JSONObject cargarInfoForm(String token, String idGrupo, String tipoSesion) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/dataForm/"+idGrupo);
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/proyectosNuevosIntegrantes/"+idGrupo+"/session/"+tipoSesion);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());
@@ -121,6 +121,51 @@ public class ControladorPlanAccion {
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
         return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+
+    public boolean registroAvanceActividadPlan(String año, String semestre, String id_grupo, String id_actividad, String porcentaje, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/avanceActividad");
+        requestBuilder.addParameter("año", año);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("id_grupo", id_grupo);
+        requestBuilder.addParameter("actividad", id_actividad);
+        requestBuilder.addParameter("porcentaje", porcentaje);
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+
+    public boolean registroAvanceEventoPlan(String año, String semestre, String id_evt, String porcentaje, String id_grupo, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/avanceEvento");
+        requestBuilder.addParameter("año", año);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("id_grupo", id_grupo);
+        requestBuilder.addParameter("id_evento", id_evt);
+        requestBuilder.addParameter("porcentaje", porcentaje);
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+
+    public JSONObject consultarPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/planAccionGrupo/"+año+"/"+semestre+"/"+id_grupo);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject jsonObj = null;
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
+            jsonObj = new JSONObject(source);                        
+        }        
+        return jsonObj; 
     }
     
 }

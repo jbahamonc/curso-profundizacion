@@ -28,7 +28,7 @@
                             <input type="hidden" value="3" name="operacion">
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Año (*)</label>
-                                <select name="año" class="form-control" required>
+                                <select name="anio" class="form-control" required>
                                     <option selected disabled>Seleccione</option>
                                     <option value="2018">2018</option>
                                     <option value="2019">2019</option>
@@ -123,7 +123,7 @@
             <div class="col-xs-12 col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Registro de Información de Lineas de Investigación</h3>
+                        <h3 class="box-title">Vinculación de Proyectos al Plan de Acción</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                             </button>
@@ -133,39 +133,21 @@
                         <form id="form-project-news-plan">
                             <input type="hidden" value="4" name="operacion">
                             <div class="form-group col-xs-12">
-                                <label>Seleccione la Linea de Investigación (*)</label>
-                                <select name="linea" id="" class="form-control" required>
-                                    <option selected="" disabled="">Seleccione</option>
-                                    <%-- 
-                                        JSONObject data = (JSONObject)session.getAttribute("dataForm");
-                                        JSONArray lineas = data.getJSONArray("lineas");
-                                        for (int i = 0; i < lineas.length(); i++) {
-                                            JSONObject obj = lineas.getJSONObject(i);
-                                    %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%>                                    
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                    <option value="1">Linea de Investigación</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Seleccione el Proyecto a Ejecutar (*)</label>
+                                <label>Seleccione el Proyecto a Vincular (*)</label>
                                 <select name="proyecto" id="" class="form-control" required>
                                     <option  selected="" disabled="">Seleccione</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
-                                    <option value="1">Nombre Proyecto</option>
+                                    <%
+                                        JSONObject data = (JSONObject)session.getAttribute("data");
+                                        JSONArray proyectos = data.getJSONArray("proyectoNuevo");
+                                        for (int i = 0; i < proyectos.length(); i++) {
+                                            JSONObject obj = proyectos.getJSONObject(i);
+                                    %>
+                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("titulo")%></option>
+                                    <% } %> 
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-group">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-group">Vincular</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -198,18 +180,13 @@
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Responsables del Evento (*)</label>
                                 <select required class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple style="width: 100%;">
-                                    <%-- 
-                                        JSONArray res = data.getJSONArray("responsables");
+                                    <%
+                                        JSONArray res = data.getJSONArray("integrante");
                                         for (int i = 0; i < res.length(); i++) {
                                             JSONObject obj = res.getJSONObject(i);
                                     %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%>
-                                    <option value="1">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="2">Oscar Alberto Gallardo Perez</option>
-                                    <option value="3">Jessica Lorena Pabón</option>
-                                    <option value="4">Gladys Adriana Espinel</option>
-                                    <option value="5">Milton Vera Contreras</option>
+                                        <option value="<%= obj.getString("nombre")%>"><%= obj.getString("nombre")%></option>
+                                    <% } %>
                                 </select>
                             </div>   
                             <div class="clearfix"></div>
@@ -232,7 +209,7 @@
                                 <select required class="js-entidades" data-placeholder="Ingrese las Entidades Participantes" name="entidades" multiple style="width: 100%;"></select>
                             </div>
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-events-plan">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-events-plan">Registrar</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -255,18 +232,13 @@
                             <div class="form-group col-xs-12">
                                 <label>Responsables de la Actividad (*)</label>
                                 <select required class="js-example-basic-multiple1" data-placeholder="Seleccione uno o varios investigadores" name="respAct" multiple style="width: 100%;">
-                                    <%-- 
-                                        JSONArray res = data.getJSONArray("responsables");
-                                        for (int i = 0; i < res.length(); i++) {
-                                            JSONObject obj = res.getJSONObject(i);
+                                    <% 
+                                        JSONArray inte = data.getJSONArray("integrante");
+                                        for (int i = 0; i < inte.length(); i++) {
+                                            JSONObject obj1 = inte.getJSONObject(i);
                                     %>
-                                        <option value="<%= obj.getInt("id")%>"><%= obj.getString("nombre")%></option>
-                                    <% } --%>
-                                    <option value="AL">Judith del Pilar Rodriguez Tenjo</option>
-                                    <option value="WY">Oscar Alberto Gallardo Perez</option>
-                                    <option value="WY">Jessica Lorena Pabón</option>
-                                    <option value="WY">Gladys Adriana Espinel</option>
-                                    <option value="WY">Milton Vera Contreras</option>
+                                        <option value="<%= obj1.getString("nombre")%>"><%= obj1.getString("nombre")%></option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
@@ -282,7 +254,7 @@
                                 <input type="text" class="form-control" name="producto" required>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan">Registrar</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -341,95 +313,6 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulario de Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Descripción de la Actividad (*)</label>
-                        <textarea id="obj_esp" class="form-control" rows="3"></textarea>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-objective" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Modal Directores -->
-<div class="modal fade" id="modal-directores" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulario de Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group col-xs-12">
-                        <label>Seleccione la Linea de Investigación (*)</label>
-                        <select name="" id="director" class="form-control">
-                            <option value="" selected="" disabled="">Seleccione</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                            <option value="Nombre Director">Nombre Director</option>
-                        </select>
-                    </div>	      
-                    <div class="form-group col-xs-12">
-                        <label>Rol (*)</label>
-                        <input type="text" class="form-control" id="rol-director">
-                    </div>	  		
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-director" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Modal Estudinates plan accion -->
-<div class="modal fade" id="modal-estudiantes" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Formulario de Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group col-xs-12">
-                        <label>Nombre del Estudiante (*)</label>
-                        <input type="text" class="form-control" id="nombre-estudiante">
-                    </div>	      
-                    <div class="form-group col-xs-12">
-                        <label>Programa Académico (*)</label>
-                        <input type="text" class="form-control" id="programa-estudiante">
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" id="btn-add-estudiante" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
 <script src="../js/ajax/gestionPlanAccionGrupo.js"></script>
 

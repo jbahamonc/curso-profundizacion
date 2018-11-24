@@ -48,13 +48,13 @@
                                     <td><%= obj.getString("año") %></td>
                                     <td><%= obj.getInt("semestre") %></td>
                                     <td class="text-center">
-                                        <a href="procesar/gestionPlanAccion.jsp?id=<%= obj.getInt("id") %>&operacion=2&token=<%= obj.getString("token")%>" title="Información de Plan de Acción" class="btn btn-success btn-xs">
+                                        <a href="procesar/gestionPlanAccionGrupo.jsp?anio=<%= obj.getInt("año") %>&sem=<%= obj.getInt("semestre") %>&operacion=9&token=<%= obj.getString("token")%>" title="Información de Plan de Acción" class="btn btn-success btn-xs">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
-                                        <a href="" data-toggle="modal" data-target="#modal" class="btn btn-primary btn-xs" title="Actualizar Estado de las Actividades del Plan">
+                                        <a href="#" data-anio="<%= obj.getString("anio")%>" data-semestre="<%= obj.getString("semestre")%>" data-toggle="modal" data-target="#modal" class="btn btn-primary btn-xs" title="Registrar Avance de las Actividades del Plan">
                                             <i class="fa fa-line-chart" aria-hidden="true"></i>
                                         </a>
-                                        <a href="" data-toggle="modal" data-target="#modal-evt" class="btn btn-primary btn-xs" title="Actualizar Estado de los Eventos del Plan">
+                                        <a href="#" data-toggle="modal" data-target="#modal-evt" class="btn btn-primary btn-xs" title="Registrar Avances en los Eventos del Plan">
                                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                                         </a>
                                     </td>                                    
@@ -64,13 +64,13 @@
                                     <td>2018</td>
                                     <td>1</td>
                                     <td class="text-center">
-                                        <a href="infoPlanAccionGrupo.jsp" title="Información de Plan de Acción" class="btn btn-success btn-xs">
+                                        <a href="procesar/gestionPlanAccionGrupo.jsp?anio=2018&sem=1&operacion=9&token=asdasd34234" title="Información de Plan de Acción" class="btn btn-success btn-xs">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
-                                        <a href="" data-toggle="modal" data-target="#modal" class="btn btn-primary btn-xs" title="Actualizar Estado de las Actividades del Plan">
+                                        <a href="" data-anio="2018" data-semestre="1" data-toggle="modal" data-target="#modal" class="btn btn-primary btn-xs" title="Actualizar Estado de las Actividades del Plan">
                                             <i class="fa fa-line-chart" aria-hidden="true"></i>
                                         </a>
-                                        <a href="" data-toggle="modal" data-target="#modal-evt" class="btn btn-primary btn-xs" title="Actualizar Estado de los Eventos del Plan">
+                                        <a href="" data-anio="2018" data-semestre="1" data-toggle="modal" data-target="#modal-evt" class="btn btn-primary btn-xs" title="Actualizar Estado de los Eventos del Plan">
                                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                                         </a>
                                     </td>                                    
@@ -92,7 +92,10 @@
 <div class="modal fade" id="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="">
+            <form id="form-avance-act-plan">
+                <input type="hidden" value="7" name="operacion">
+                <input type="hidden" name="año" id="anio">
+                <input type="hidden" name="semestre" id="semestre">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulario de Registro</h4>
@@ -100,8 +103,16 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Seleccione la Actividad (*)</label>
-                        <select class="form-control" required>
+                        <select class="form-control" required name="actividad">
                             <option disabled selected>Seleccione</option>
+                            <%-- 
+                                JSONObject obj = (JSONObject)session.getAttribute("actividades");
+                                JSONArray actividades = obj.getJSONArray("actividades");
+                                for (int i = 0; i < actividades.length(); i++) {   
+                                    JSONObject act = actividades.getJSONObject(i);
+                            %>                            
+                            <option value="<%= act.getInt("id") %>"><%= act.getString("nombre")%></option>
+                            <% } --%>
                             <option value="0">Actividad 1</option>
                             <option value="1">Actividad 2</option>
                             <option value="2">Actividad 3</option>
@@ -109,12 +120,12 @@
                     </div>
                     <div class="form-group">
                         <label>Porcentaje de avance (%) (*)</label>
-                        <input type="number" class="form-control" required>
+                        <input type="number" class="form-control" required name="porcActividad">
                     </div> 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btn-avance-act-plan">Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
@@ -125,7 +136,10 @@
 <div class="modal fade" id="modal-evt" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="">
+            <form id="form-avance-evt-plan">
+                <input type="hidden" value="8" name="operacion">
+                <input type="hidden" name="año" id="anio">
+                <input type="hidden" name="semestre" id="semestre">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Formulario de Registro</h4>
@@ -133,8 +147,15 @@
                 <div class="modal-body"> 
                     <div class="form-group">
                         <label>Nombre del Evento (*)</label>
-                        <select class="form-control" required>
+                        <select class="form-control" required name="id_evento">
                             <option disabled selected>Seleccione</option>
+                            <%-- 
+                                JSONArray eventos = obj.getJSONArray("eventos");
+                                for (int i = 0; i < eventos.length(); i++) {   
+                                    JSONObject evt = eventos.getJSONObject(i);
+                            %>                            
+                            <option value="<%= evt.getInt("id") %>"><%= evt.getString("nombre")%></option>
+                            <% } --%>
                             <option value="0">Evento 1</option>
                             <option value="1">Evento 2</option>
                             <option value="2">Evento 3</option>
@@ -142,15 +163,19 @@
                     </div>
                     <div class="form-group">
                         <label>Porcentaje de avance (%) (*)</label>
-                        <input type="number" class="form-control" required>
+                        <input type="number" class="form-control" required name="porcEvento">
                     </div> 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btn-avance-evt-plan">Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionPlanAccionGrupo.js"></script>
+
+</body>
+</html>
