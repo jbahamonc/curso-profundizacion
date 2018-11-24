@@ -122,9 +122,9 @@ public class Fachada {
         return controladorPlanAccion.cargarInfoForm(token, idGrupo, tipoSesion);
     }
     
-    public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {
+    public JSONObject registrarInicialPlanAccionGrupo(String año, String semestre, String id_grupo, String tipoSesion, String token) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
-        return controladorPlanAccion.registrarInicialPlanAccionGrupo(año, semestre, id_grupo, token);
+        return controladorPlanAccion.registrarInicialPlanAccionGrupo(año, semestre, id_grupo, tipoSesion, token);
     }
     
     public JSONObject consultarPlanAccionGrupo(String año, String semestre, String id_grupo, String token) throws IOException, JSONException {

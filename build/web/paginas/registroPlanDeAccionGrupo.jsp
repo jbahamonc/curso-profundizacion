@@ -82,12 +82,12 @@
                         <h3 class="box-title">Listado de Eventos</h3>
                     </div>        	
                     <div class="box-body">
-                        <div class="text-center" id="info-empty-events">
+                        <div class="text-center info-empty">
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div class="hidden box-data-action">          
+                        <div class="box-data-action">          
                             <ul class="products-list product-list-in-box" id="ulEvents"></ul>                           
                         </div>
                     </div>  
@@ -103,12 +103,12 @@
                         <h3 class="box-title">Listado de Actividades</h3>
                     </div>        	
                     <div class="box-body">
-                        <div class="text-center " id="info-empty-activitys">
+                        <div class="text-center info-empty">
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
-                        <div class="hidden box-data-action">    
+                        <div class="box-data-action">    
                             <ul class="products-list product-list-in-box" id="ulActivitys"></ul>
                         </div>
                     </div> 

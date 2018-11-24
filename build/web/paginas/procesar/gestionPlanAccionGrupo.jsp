@@ -39,8 +39,9 @@
         // Registro inicial de plan de accion
         case 3:
             anio = request.getParameter("anio");
-            semestre = request.getParameter("semestre");             
-            JSONObject res = f.registrarInicialPlanAccionGrupo(anio, semestre, id_grupo, token);
+            semestre = request.getParameter("semestre");   
+            String tipoSession = session.getAttribute("tipoSesion").toString();
+            JSONObject res = f.registrarInicialPlanAccionGrupo(anio, semestre, id_grupo, tipoSession, token);
             if ( res != null ) {
                 res.put("status", 200);
             } else {
