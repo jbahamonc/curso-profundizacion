@@ -20,6 +20,7 @@
             String idDirector = request.getParameter("director");
             String idLineaInvestigacion = request.getParameter("lineaInvestigacion");
             String email = request.getParameter("email");
+            System.out.println("***********" + session.getAttribute("idGrupoSemillero").toString());
             String idGrupo = session.getAttribute("idGrupoSemillero").toString();
             int valorId = fachada.registrarSemillero(codigo, nombreSemillero, siglas, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
             JSONObject valor = new JSONObject();

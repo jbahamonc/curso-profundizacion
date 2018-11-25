@@ -12,8 +12,6 @@ $(function () {
     // Init DataTable of Groups
     var semilleros = $('#semilleros').DataTable();
 
-    
-    var tablaSemillero = $('#tablaSemillero').DataTable();
     // Registrar semilleros
     $("#btn-save-semillero").on("click", function () {
         var form = $("#form-register-semillero")
@@ -62,7 +60,7 @@ $(function () {
                 var json = JSON.parse( response )
                 if ( json.status == 200 ) {                    
                     myToast.hide()
-                    tablaSemillero.row(btn.parents("tr")).remove().draw()
+                    semilleros.row(btn.parents("tr")).remove().draw()
                     $.mdtoast('El Semillero se ha eliminado', {
                         duration  : 4000                
                     });

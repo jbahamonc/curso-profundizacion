@@ -49,7 +49,7 @@
                             <td><%=semillero.getString("fecha_creacion")%></td>
                             <td><%=semillero.getString("tutor")%></td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger btn-xs" id="btn-eli-semillero" data-id="<%=semillero.getInt("id")%>">
+                                <button type="button" class="btn btn-danger btn-xs btn-eli-semillero" data-id="<%=semillero.getInt("id")%>">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                                  <a href="procesar/gestionSemillero.jsp?id=<%= semillero.getInt("id") %>&operacion=5&token=<%= session.getAttribute("token").toString() %>" class="btn btn-success btn-xs">

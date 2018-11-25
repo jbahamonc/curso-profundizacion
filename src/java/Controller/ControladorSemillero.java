@@ -31,14 +31,14 @@ public class ControladorSemillero {
         HttpClient httpClient = HttpClients.createDefault();
         
         NameValuePair value1 = new BasicNameValuePair("codigo", codigo);
-        NameValuePair value2 = new BasicNameValuePair("nombreSemillero", nombreSemillero);
+        NameValuePair value2 = new BasicNameValuePair("nombre", nombreSemillero);
         NameValuePair value3 = new BasicNameValuePair("sigla", sigla);
         NameValuePair value4 = new BasicNameValuePair("ubicacion", ubicacion);
-        NameValuePair value5 = new BasicNameValuePair("fechaCreacion", fechaCreacion);
-        NameValuePair value6 = new BasicNameValuePair("idGrupo", idGrupo);
-        NameValuePair value7 = new BasicNameValuePair("email", email);
-        NameValuePair value8 = new BasicNameValuePair("lineaInvestigacion", idLineaInvestigacion);
-        NameValuePair value9 = new BasicNameValuePair("director", idDirector);
+        NameValuePair value5 = new BasicNameValuePair("fecha_creacion", fechaCreacion);
+        NameValuePair value6 = new BasicNameValuePair("correo", email);
+        NameValuePair value7 = new BasicNameValuePair("idLinea", idLineaInvestigacion);
+        NameValuePair value8 = new BasicNameValuePair("idDirector", idDirector);
+        NameValuePair value9 = new BasicNameValuePair("idGrupo", idGrupo);
         
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/semillero");
         requestBuilder.addParameter(value1);
