@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,20 +31,20 @@
                                 <label>Año (*)</label>
                                 <select name="anio" class="form-control" required>
                                     <option selected disabled>Seleccione</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
+                                    <% 
+                                        int anio = Calendar.getInstance().get(Calendar.YEAR);
+                                        for (int i = anio; i < anio + 20; i++) {                                                                                  
+                                    %>
+                                        <option value="<%= i %>"><%= i %></option>
+                                    <% } %>
                                 </select>
                             </div>				                
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Semestre (*)</label>
                                 <select class="form-control" name="semestre" required>
                                     <option selected disabled>Seleccione</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    <option value="I">1</option>
+                                    <option value="II">2</option>
                                 </select>
                             </div>	
                             <div class="form-group col-xs-12 text-right">
@@ -171,10 +172,10 @@
                                 <label>Caracter del Evento (*)</label>
                                 <select name="caracterEvento" id="" class="form-control" required>
                                     <option selected="" disabled="">Seleccione</option>
-                                    <option value="1">Local</option>
-                                    <option value="2">Regional</option>
-                                    <option value="3">Nacional</option>
-                                    <option value="4">Internacional</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Regional">Regional</option>
+                                    <option value="Nacional">Nacional</option>
+                                    <option value="Internacional">Internacional</option>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
