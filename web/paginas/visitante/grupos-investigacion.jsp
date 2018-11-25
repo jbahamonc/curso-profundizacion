@@ -99,7 +99,7 @@
                         <td><%= obj.getString("nombreDirector") %></td> 
                         <td><%= obj.getString("nombre_categoria") %></td> 
                         <td>
-                            <a href="../procesar/gestionProyecto.jsp?id=<%=obj.getInt("id")%>&operacion=6" class="btn btn-success btn-xs">
+                            <a href="../procesar/gestionProyecto.jsp?id=<%=obj.getInt("id")%>&operacion=6&token=4324bhj2" class="btn btn-success btn-xs">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                         </td>
