@@ -35,10 +35,10 @@ public class ControladorSemillero {
         NameValuePair value3 = new BasicNameValuePair("sigla", sigla);
         NameValuePair value4 = new BasicNameValuePair("ubicacion", ubicacion);
         NameValuePair value5 = new BasicNameValuePair("fechaCreacion", fechaCreacion);
-        NameValuePair value6 = new BasicNameValuePair("idGrupo", ""+idGrupo);
+        NameValuePair value6 = new BasicNameValuePair("idGrupo", idGrupo);
         NameValuePair value7 = new BasicNameValuePair("email", email);
-        NameValuePair value8 = new BasicNameValuePair("lineaInvestigacion", ""+idLineaInvestigacion);
-        NameValuePair value9 = new BasicNameValuePair("director", ""+idDirector);
+        NameValuePair value8 = new BasicNameValuePair("lineaInvestigacion", idLineaInvestigacion);
+        NameValuePair value9 = new BasicNameValuePair("director", idDirector);
         
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/semillero");
         requestBuilder.addParameter(value1);
@@ -55,9 +55,9 @@ public class ControladorSemillero {
         HttpResponse httpResponse = httpClient.execute(uriRequest);
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
-        JSONObject obj = new JSONObject(source);
 
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
+            JSONObject obj = new JSONObject(source);
             return obj.getInt("id");
         } else {
             return -1;

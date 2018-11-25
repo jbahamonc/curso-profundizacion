@@ -132,31 +132,19 @@
                     <div class="box-body">
                         <form id="form-project-news-plan-semillero">
                             <div class="form-group col-xs-12">
-                                <label>Seleccione la Linea de Investigación (*)</label>
-                                <select name="linea" id="" class="form-control">
+                                <label>Seleccione el Proyecto a Ejecutar (*)</label>
+                                <select name="proyecto" id="proyecto" class="form-control">
                                     <option value="" selected="" disabled="">Seleccione</option>
-                                    <%
+                                     <%--
                                         JSONObject info = (JSONObject) session.getAttribute("info");
                                         JSONArray lineasInvestigacion = info.getJSONArray("lineasInvestigacion");
 
                                         for (int i = 0; i < lineasInvestigacion.length(); i++) {
                                             JSONObject lineaInvestigacion = lineasInvestigacion.getJSONObject(i);
 
-                                    %>
-                                    <option value="<%=lineaInvestigacion.getInt("id")%>"><%=lineaInvestigacion.getString("nombre")%></option>
-                                    <% }%>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Seleccione el Proyecto a Ejecutar (*)</label>
-                                <select name="proyecto" id="proyecto" class="form-control">
-                                    <option value="" selected="" disabled="">Seleccione</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
-                                    <option value="">Nombre Proyecto</option>
+                                    --%>
+                                    <option value="<%--=lineaInvestigacion.getInt("id")--%>"><%--=lineaInvestigacion.getString("nombre")--%></option>
+                                    <%-- }--%>
                                 </select>
                             </div>                            	
                             <div class="form-group col-xs-12 text-right">
@@ -180,14 +168,14 @@
                                     <label>Linea de Investigación (*)</label>
                                     <select class="form-control" name="lineaInv" required>
                                         <option disabled="" selected="">Seleccione</option>
-                                        <%
+                                        <%--
                                             JSONArray lineasInvestigacionCapacitaciones = info.getJSONArray("lineasInvestigacion");
                                             for (int i = 0; i < lineasInvestigacionCapacitaciones.length(); i++) {
                                                 JSONObject lineaInvestigacionCapacitacion = lineasInvestigacionCapacitaciones.getJSONObject(i);
 
-                                        %>
-                                        <option value="<%=lineaInvestigacionCapacitacion.getInt("id")%>"><%=lineaInvestigacionCapacitacion.getString("nombre")%></option>
-                                        <% }%>
+                                        --%>
+                                        <option value="<%--=lineaInvestigacionCapacitacion.getInt("id")--%>"><%--=lineaInvestigacionCapacitacion.getString("nombre")--%></option>
+                                        <%--}--%>
                                     </select>
                                 </div> 
                                 <div class="form-group col-xs-12">
@@ -209,13 +197,13 @@
                                 <div class="form-group col-xs-12">
                                     <label>Responsables (*)</label>
                                     <select required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores" multiple style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                        <%
+                                        <%--
                                             JSONArray capacitores = info.getJSONArray("responsables");
                                             for (int i = 0; i < capacitores.length(); i++) {
                                                 JSONObject capacitor = capacitores.getJSONObject(i);
-                                        %>
-                                        <option value="<%=capacitor.getInt("id")%>"><%=capacitor.getString("nombre")%></option>
-                                        <% }%>
+                                        --%>
+                                        <option value="<%--=capacitor.getInt("id")--%>"><%--=capacitor.getString("nombre")--%></option>
+                                        <%-- }--%>
                                     </select>
                                 </div>                               
                                 <div class="clearfix"></div>
@@ -261,13 +249,13 @@
                             <div class="form-group col-xs-12">
                                 <label>Responsables (*)</label>
                                 <select required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <%
+                                    <%--
                                         JSONArray responsables = info.getJSONArray("responsables");
                                         for (int i = 0; i < responsables.length(); i++) {
                                             JSONObject responsable = responsables.getJSONObject(i);
-                                    %>
-                                    <option value="<%=responsable.getInt("id")%>"><%=responsable.getString("nombre")%></option>
-                                    <% }%>
+                                    --%>
+                                    <option value="<%--=responsable.getInt("id")--%>"><%--=responsable.getString("nombre")--%></option>
+                                    <%-- }--%>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">

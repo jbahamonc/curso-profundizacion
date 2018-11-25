@@ -69,7 +69,8 @@
             if (jsonSemillero != null) {
                 jsonSemillero.put("token", token);
                 session.setAttribute("semillero", jsonSemillero);
-                session.setAttribute("idSemillero", idSemillero);
+                session.setAttribute("idGrupoSemillero", idSemillero);
+                session.setAttribute("tipoSesion", "0");
                 response.sendRedirect("../infoSemillero.jsp");
             } else {
                 System.out.println("ocurrio un error");
