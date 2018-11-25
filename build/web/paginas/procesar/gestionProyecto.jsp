@@ -11,10 +11,11 @@
     Fachada f = new Fachada();
     String token = request.getParameter("token");
     String tipoSesion = "";
-    String id = session.getAttribute("idGrupoSemillero").toString();
+    String id = "";
     switch (operacion) {
         // Mostrar form registro
         case 1:
+            id = session.getAttribute("idGrupoSemillero").toString();
             tipoSesion = session.getAttribute("tipoSesion").toString();            
             JSONObject dataForm = f.cargarInfoFormRegistroProyectos(token, tipoSesion, id);
             if (dataForm != null) {
@@ -27,6 +28,7 @@
             
         // Listar proyectos
         case 2: 
+            id = session.getAttribute("idGrupoSemillero").toString();
             tipoSesion = session.getAttribute("tipoSesion").toString();
             JSONObject proyectos = f.listarProyectos(id, tipoSesion, token);
             if ( proyectos != null ) { 
@@ -53,6 +55,7 @@
             String objEspecificos[] = request.getParameterValues("objEspecificos");
             String numContrato = request.getParameter("numContrato");
             tipoSesion = session.getAttribute("tipoSesion").toString();
+            id = session.getAttribute("idGrupoSemillero").toString();
             int res = f.registrarProyecto(id, titulo, linea, tiempo, fechaInicio, fechaFin, costo, tipoProyecto, resumen, 
                                 objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
             JSONObject json = new JSONObject();
@@ -93,7 +96,7 @@
         // para visitantes
         // Listar proyectos
         case 6: 
-            String idGrupo = request.getParameter("id");
+            String idGrupo = request.getParameter("id");            
             JSONObject pro = f.listarProyectos(idGrupo, "1", token);
             if ( pro != null ) { 
                 session.setAttribute("proyectos", pro);

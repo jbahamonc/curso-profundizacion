@@ -58,29 +58,29 @@ $(function () {
                         }                         
                         overlay.first().addClass("hidden")
                         
-//                        var ulEvents = $("#ulEvents")
-//                        ulEvents.empty()
-//                        if ( json.eventos.length > 0 ) {
-//                            html = ""
-//                            for (var p of json.eventos) {
-//                                html += '<li class="item">'+
-//                                        '<div class="product-img">'+
-//                                            '<img src="../img/date.svg" alt="Project Image">'+
-//                                        '</div>'+
-//                                        '<div class="product-info">'+
-//                                            '<a href="infoProyecto.jsp" class="product-title">'+
-//                                                p.nombre +
-//                                            '</a>'+
-//                                            '<span class="product-description">'+
-//                                                '<button class="btn btn-xs btn-success pull-right" data-id='+a.id+'>VINCULAR</button>'
-//                                            '</span>'+
-//                                        '</div>'+
-//                                    '</li>'
-//                            }
-//                            ulEvents.html(html)
-//                            infoEmpty.eq(1).addClass("hidden")
-//                        }                         
-//                        overlay.eq(1).addClass("hidden")
+                        var ulEvents = $("#ulEvents")
+                        ulEvents.empty()
+                        if ( json.eventos.length > 0 ) {
+                            html = ""
+                            for (var e of json.eventos) {
+                                html += '<li class="item">'+
+                                        '<div class="product-img">'+
+                                            '<img src="../img/date.svg" alt="Project Image">'+
+                                        '</div>'+
+                                        '<div class="product-info">'+
+                                            '<a href="infoProyecto.jsp" class="product-title">'+
+                                                e.nombre +
+                                            '</a>'+
+                                            '<span class="product-description">'+
+                                                '<button class="btn btn-xs btn-success pull-right" data-id='+e.id+'>VINCULAR</button>'
+                                            '</span>'+
+                                        '</div>'+
+                                    '</li>'
+                            }
+                            ulEvents.html(html)
+                            infoEmpty.eq(1).addClass("hidden")
+                        }                         
+                        overlay.eq(1).addClass("hidden")
 //                        
                         var ulActivitys = $("#ulActivitys")
                         ulActivitys.empty()
@@ -165,9 +165,9 @@ $(function () {
         if ( form.valid() ) {
             var plan = JSON.parse(localStorage.getItem('dataPlan'))
             var data = form.serializeArray()
-            data.push('token', token)
-            data.push('anio', plan.anio)
-            data.push('semestre', plan.semestre)
+            data.push({'token': token})
+            data.push({'name' : 'anio', 'value' : plan.anio})
+            data.push({'name' : 'semestre', 'value' : plan.semestre})
             $.ajax({
                 url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
                 type    : 'POST',
@@ -176,6 +176,8 @@ $(function () {
                     var json = JSON.parse(response)
                     if ( json.status == 200 ) {
                         myToast.hide()   
+                        form[0].reset()
+                        $(".js-example-basic-multiple1").val(null).trigger("change")
                         $.mdtoast('La actividad ha sido vinculada al plan de acción', {
                             duration  : 3000                
                         });
@@ -199,11 +201,11 @@ $(function () {
         myToast.show()
         var form = $("#form-reg-events-plan")
         if ( form.valid() ) {
-            var plan = JSON.parse(localStorage.getItem('dataPlan'))
+            var plan = JSON.parse(localStorage.getItem('dataPlan'))            
             var data = form.serializeArray()
-            data.push('token', token)
-            data.push('anio', plan.anio)
-            data.push('semestre', plan.semestre)
+            data.push({'token': token})
+            data.push({'name' : 'anio', 'value' : plan.anio})
+            data.push({'name' : 'semestre', 'value' : plan.semestre})
             $.ajax({
                 url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
                 type    : 'POST',
@@ -211,7 +213,9 @@ $(function () {
                 success : function ( response ) {
                     var json = JSON.parse(response)
                     if ( json.status == 200 ) {
-                        myToast.hide()   
+                        myToast.hide()  
+                        form[0].reset()
+                        $(".js-inst-promo, .js-entidades, .js-example-basic-multiple1").val(null).trigger("change")
                         $.mdtoast('El evento ha sido vinculado al plan de acción', {
                             duration  : 3000                
                         });

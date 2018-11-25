@@ -47,16 +47,16 @@ $(document).ready(function() {
     })
     
     // JS del select de estudiantes en registro de participación en direccion del plan de accion
-    var $js5 = $('.js-estudiantes-plan').select2();
-    var nombreEst = $("#nombre-estudiante")
-    var programa = $("#programa-estudiante")
-    $("#btn-add-estudiante").on("click", function () {    	
-    	var newOption = new Option(nombreEst.val()+" - "+programa.val(), 1, true, true);
-    	$js5.append(newOption).trigger('change');
-    	nombreEst.val("")
-    	nombreEst.focus()
-    	programa.val("")
-    })
+//    var $js5 = $('.js-estudiantes-plan').select2();
+//    var nombreEst = $("#nombre-estudiante")
+//    var programa = $("#programa-estudiante")
+//    $("#btn-add-estudiante").on("click", function () {    	
+//    	var newOption = new Option(nombreEst.val()+" - "+programa.val(), 1, true, true);
+//    	$js5.append(newOption).trigger('change');
+//    	nombreEst.val("")
+//    	nombreEst.focus()
+//    	programa.val("")
+//    })
     
     // JS del select de responsables en registro de actividades del grupo de investigación
     var $js6 = $('.js-estudiantes-plan').select2();
@@ -92,7 +92,7 @@ $(document).ready(function() {
     var $js8 = $('.js-inst-promo').select2();    
     $("#btn-add-inst-promo").on("click", function () { 
         var instPromo = $("#nombre-inst-promo")
-    	var newOption = new Option(instPromo.val(), 1, true, true);
+    	var newOption = new Option(instPromo.val(), instPromo.val(), true, true);
     	$js8.append(newOption).trigger('change');
     	instPromo.val("")
     	instPromo.focus()
@@ -102,7 +102,7 @@ $(document).ready(function() {
     var $js9 = $('.js-entidades').select2();    
     $("#btn-add-entidad").on("click", function () { 
         var instEntidad = $("#nombre-entidad")
-    	var newOption = new Option(instEntidad.val(), 1, true, true);
+    	var newOption = new Option(instEntidad.val(), instEntidad.val(), true, true);
     	$js9.append(newOption).trigger('change');
     	instEntidad.val("")
     	instEntidad.focus()
@@ -234,11 +234,4 @@ $(document).ready(function() {
         $("#data-productivity-empty").addClass("hidden")
     })
     
-    
-    
-    // Evento que se dispara cuando se registra un plan de accion de un semillero
-//    $("#btn-save-action-plan-semillero").on("click", function() {
-//        $(".box-data-action").removeClass("hidden")
-//        $("#info-empty-projects-semillero, #info-empty-events-semillero, #info-empty-activitys-semillero").addClass("hidden")
-//    })
 } );
