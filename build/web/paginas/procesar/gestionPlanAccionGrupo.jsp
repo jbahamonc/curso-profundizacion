@@ -69,7 +69,7 @@
         // Registrar eventos en el plan de accion
         case 5:
             anio = request.getParameter("anio");
-            semestre = request.getParameter("semestre");  
+            semestre = request.getParameter("semestre"); 
             String evento = request.getParameter("nombreEvento");
             String caracterEvento = request.getParameter("caracterEvento");
             String responsables[] = request.getParameterValues("responsables");
@@ -95,9 +95,10 @@
             String actividad = request.getParameter("actividad");
             String respAct[] = request.getParameterValues("respAct");
             String fechaInicio = request.getParameter("fechaInicio");
-            String fechFinal = request.getParameter("fechFinal");
+            String fechaFinal = request.getParameter("fechaFinal");
             String producto = request.getParameter("producto");
-            boolean rsp = f.registrarActividadPlanAccionGrupo(anio, semestre, id_grupo, actividad, respAct, fechaInicio, fechFinal, 
+            System.out.println("año="+String.join("-", respAct));
+            boolean rsp = f.registrarActividadPlanAccionGrupo(anio, semestre, id_grupo, actividad, respAct, fechaInicio, fechaFinal, 
                     producto, token);
             JSONObject json2 = new JSONObject();
             if ( rsp ) {
