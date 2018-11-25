@@ -8,14 +8,14 @@ $(function () {
             var myToast = $.mdtoast('Validando el usuario...', { duration: 1000000, init: true });
             myToast.show()
             $.ajax({
-                url     : 'paginas/procesar/gestionLogin.jsp',
+                url     : '../paginas/procesar/gestionLogin.jsp',
                 type    : 'POST',
                 data     : form.serialize(),
                 success  : function ( response ) {
                     var obj = JSON.parse(response)
                     if ( obj.status == 200 ) {
                         localStorage.setItem('token', obj.token)
-                        document.location.href = 'paginas/index.jsp' 
+                        document.location.href = 'index.jsp' 
                     } else {
                         $.mdtoast(obj.msg, {
                             duration  : 5000                

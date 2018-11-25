@@ -91,6 +91,14 @@
             out.print(res);
             break;
             
+        // Para visitantes
+        // listar grupos
+        case 6 :
+            JSONObject gruposV = f.listarGrupos();
+            session.setAttribute("grupos", gruposV);  
+            response.sendRedirect("../visitante/grupos-investigacion.jsp");
+            break;
+            
         default :
             System.out.println("no hay nada para hacer");
             break;
