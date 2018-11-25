@@ -10,7 +10,8 @@
     int operacion = Integer.parseInt(request.getParameter("operacion"));
     String token = request.getParameter("token");
     Fachada fachada = new Fachada();
-    String idSemillero = (String) session.getAttribute("idSemillero");
+    String idSemillero = (String) session.getAttribute("idGrupoSemillero");
+    String tipoSesion = (String) session.getAttribute("tipoSesion");
     String anio = "";
     String semestre = "";
     switch (operacion) {
@@ -35,7 +36,7 @@
         case 3://REGISTRO PLAN ACCION
             anio = request.getParameter("anio");
             semestre = request.getParameter("semestre");            
-            JSONObject resultado = fachada.registrarPlanAccionSemillero(anio, semestre, idSemillero, token);
+            JSONObject resultado = fachada.registrarPlanAccionSemillero(anio, semestre, idSemillero, tipoSesion, token);
             if ( resultado != null ) {
                 resultado.put("status", 200);
             } else {
@@ -49,7 +50,7 @@
             anio = request.getParameter("anio");
             semestre = request.getParameter("semestre");  
             String idProyecto = request.getParameter("proyecto");
-            boolean resultadoProyeco = fachada.vincularProyectoPlanSemillero(anio, semestre, idSemillero, idProyecto, token);
+            boolean resultadoProyeco = fachada.vincularProyectoPlanSemillero(anio, semestre, idSemillero, idProyecto, tipoSesion, token);
             JSONObject json = new JSONObject();
             if ( resultadoProyeco ) {
                 json.put("status", 200);
@@ -89,7 +90,7 @@
             String fechaRealizacionAct = request.getParameter("fechaRealizacion");
             String producto = request.getParameter("producto");
             boolean respuestaActividad = fachada.registrarActividadPlanAccionSemillero(anio, semestre, idSemillero, actividad, responsablesAct, fechaRealizacionAct, 
-                    producto, token);
+                    producto, tipoSesion, token);
             JSONObject json2 = new JSONObject();
             if ( respuestaActividad ) {
                 json2.put("status", 200);

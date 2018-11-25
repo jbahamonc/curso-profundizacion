@@ -46,13 +46,14 @@ public class ControladorPlanAccionSemillero {
         return infoPlanAccion;  
     }
 
-    public boolean vincularProyectoPlanSemillero(String anio, String semestre, String idSemillero, String idProyecto, String token) throws IOException {
+    public boolean vincularProyectoPlanSemillero(String anio, String semestre, String idSemillero, String idProyecto, String tipoSesion, String token) throws IOException {
         HttpClient httpClient = HttpClients.createDefault();        
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
         requestBuilder.addParameter("año", anio);
         requestBuilder.addParameter("semestre", semestre);
-        requestBuilder.addParameter("idSemillero", idSemillero);
+        requestBuilder.addParameter("idGrupoSemillero", idSemillero);
         requestBuilder.addParameter("idProyecto", idProyecto);
+        requestBuilder.addParameter("tipoSesion", tipoSesion);
         requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
@@ -65,7 +66,7 @@ public class ControladorPlanAccionSemillero {
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
         requestBuilder.addParameter("anio", anio);
         requestBuilder.addParameter("semestre", semestre);
-        requestBuilder.addParameter("idSemillero", idSemillero);
+        requestBuilder.addParameter("idGrupoSemillero", idSemillero);
         requestBuilder.addParameter("lineaInvestigacion", lineaInvestigacion);
         requestBuilder.addParameter("nombreCapacitacion", nombreCapacitacion);
         requestBuilder.addParameter("objetivoCapacitacion", objetivoCapacitacion);
@@ -81,16 +82,17 @@ public class ControladorPlanAccionSemillero {
         return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
     }
 
-    public boolean registrarActividadPlanAccionSemillero(String anio, String semestre, String idSemillero, String actividad, String[] responsablesAct, String fechaRealizacion, String producto, String token) throws IOException {
+    public boolean registrarActividadPlanAccionSemillero(String anio, String semestre, String idSemillero, String actividad, String[] responsablesAct, String fechaRealizacion, String producto, String tipoSesion, String token) throws IOException {
         HttpClient httpClient = HttpClients.createDefault();        
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
         requestBuilder.addParameter("anio", anio);
         requestBuilder.addParameter("semestre", semestre);
-        requestBuilder.addParameter("idSemillero", idSemillero);
+        requestBuilder.addParameter("idGrupoSemillero", idSemillero);
         requestBuilder.addParameter("actividad", actividad);
         requestBuilder.addParameter("responsablesAct", String.join("-", responsablesAct));
         requestBuilder.addParameter("fechaInicio", fechaRealizacion);
         requestBuilder.addParameter("producto", producto);
+        requestBuilder.addParameter("tipoSesion", tipoSesion);
         requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
@@ -98,12 +100,13 @@ public class ControladorPlanAccionSemillero {
         return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
     }
 
-    public JSONObject registrarPlanAccionSemillero(String anio, String semestre, String idSemillero, String token) throws IOException, JSONException {
+    public JSONObject registrarPlanAccionSemillero(String anio, String semestre, String idSemillero, String tipoSesion, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();        
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
         requestBuilder.addParameter("anio", anio);
         requestBuilder.addParameter("semestre", semestre);
-        requestBuilder.addParameter("idSemillero", idSemillero);
+        requestBuilder.addParameter("idGrupoSemillero", idSemillero);
+        requestBuilder.addParameter("tipoSesion", tipoSesion);
         requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
