@@ -95,7 +95,7 @@
 		            	<ul class="treeview-menu" style="display: none;">
                                     <li><a href="" id="link-reg-groups"><i class="fa fa-circle-o"></i>Registro</a></li>
                                     <li><a href="" id="link-consult-groups"><i class="fa fa-circle-o"></i>Ver Grupos</a></li>
-                                    <li><a href="categoriasGrupos.jsp"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
+                                    <li><a href="procesar/gestionGrupos.jsp?operacion=7"><i class="fa fa-circle-o"></i><span>Categorias</span></a></li>
                                 </ul>
                                 <script>
                                     document.getElementById("link-reg-groups").href = "procesar/gestionGrupos.jsp?operacion=4&token="+localStorage.getItem("token")

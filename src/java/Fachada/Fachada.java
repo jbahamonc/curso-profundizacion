@@ -82,6 +82,12 @@ public class Fachada {
     
     }
     
+    public JSONObject listarGruposCategorias() throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.listarGruposCategorias();
+    
+    }
+    
     // Metodos proyecto **********************************************************************************************
     public JSONObject listarProyectos(String idGrupoSemillero, String tipoSesion, String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();

@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -34,17 +36,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <%
+                                    JSONObject categorias = (JSONObject)session.getAttribute("categorias");
+                                    JSONArray lista = categorias.getJSONArray("categoria_grupo");
+                                    for (int i = 0; i < lista.length(); i++) { 
+                                        JSONObject obj = lista.getJSONObject(i);
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>A1</td>
+                                    <td><%= i+1 %></td>
+                                    <td><%= obj.getString("nombre") %></td>
                                     <td>
                                         <div class="text-center"> 
-                                            <button type="button" data-id="1" class="btn btn-danger btn-xs btn-del-category">
+                                            <button type="button" data-id="<%= obj.getInt("id_categoria") %>" class="btn btn-danger btn-xs btn-del-category">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
