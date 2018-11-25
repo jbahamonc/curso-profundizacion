@@ -102,11 +102,11 @@ public class ControladorPlanAccionSemillero {
 
     public JSONObject registrarPlanAccionSemillero(String anio, String semestre, String idSemillero, String tipoSesion, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();        
-        RequestBuilder requestBuilder = RequestBuilder.post().setUri("#");
-        requestBuilder.addParameter("anio", anio);
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/createPlanGrupoSemillero");
+        requestBuilder.addParameter("year", anio);
         requestBuilder.addParameter("semestre", semestre);
         requestBuilder.addParameter("idGrupoSemillero", idSemillero);
-        requestBuilder.addParameter("tipoSesion", tipoSesion);
+        requestBuilder.addParameter("tipoSession", tipoSesion);
         requestBuilder.addParameter("token", token);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
