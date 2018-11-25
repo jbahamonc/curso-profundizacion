@@ -90,6 +90,19 @@
             out.print(obj);
             break;
             
+        // para visitantes
+        // Listar proyectos
+        case 6: 
+            String idGrupo = request.getParameter("id");
+            JSONObject pro = f.listarProyectos(idGrupo, "1", token);
+            if ( pro != null ) { 
+                session.setAttribute("proyectos", pro);
+                response.sendRedirect("../visitante/listado-proyectos.jsp");
+            } else {
+                response.sendError(500, "Ocurrio un error en el servidor");
+            }
+            break;
+            
     }
 
 %>
