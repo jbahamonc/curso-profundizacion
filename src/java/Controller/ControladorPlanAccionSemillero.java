@@ -24,7 +24,7 @@ public class ControladorPlanAccionSemillero {
 
     public JSONObject listarPlanesAccionSemillero(String idSemillero, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("#");
+        HttpGet httpGet = new HttpGet("");
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject listaplanesAccionSemillero = null;
         String source = EntityUtils.toString(httpResponse.getEntity());

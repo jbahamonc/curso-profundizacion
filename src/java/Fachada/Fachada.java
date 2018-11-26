@@ -163,7 +163,7 @@ public class Fachada {
     
     // Metodos de Semilleros *********************************************************************************************************
     public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
-    String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException{
+    int idDirector, int idLineaInvestigacion, String email, int idGrupo) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.registrarSemillero(codigo, nombreSemillero, sigla, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
     }

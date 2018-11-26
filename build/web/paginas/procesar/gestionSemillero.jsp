@@ -17,11 +17,10 @@
             String siglas = request.getParameter("sigla");
             String ubicacion = request.getParameter("ubicacion");
             String fechaCreacion = request.getParameter("fechaCreacion");
-            String idDirector = request.getParameter("director");
-            String idLineaInvestigacion = request.getParameter("lineaInvestigacion");
+            int idDirector = Integer.parseInt(request.getParameter("director"));
+            int idLineaInvestigacion = Integer.parseInt(request.getParameter("lineaInvestigacion"));
             String email = request.getParameter("email");
-            System.out.println("***********" + session.getAttribute("idGrupoSemillero").toString());
-            String idGrupo = session.getAttribute("idGrupoSemillero").toString();
+            int idGrupo = Integer.parseInt(session.getAttribute("idGrupoSemillero").toString());
             int valorId = fachada.registrarSemillero(codigo, nombreSemillero, siglas, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
             JSONObject valor = new JSONObject();
             if (valorId > 0) {
