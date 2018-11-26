@@ -8,6 +8,7 @@ package Fachada;
 import Controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -107,7 +108,7 @@ public class Fachada {
                                 objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
     }
     
-    public JSONObject consultarProyecto(String idProject, String token) throws IOException, JSONException {
+    public JSONArray consultarProyecto(String idProject, String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
         return controladorProyectos.consultarProyecto(idProject, token);
     }
@@ -165,6 +166,16 @@ public class Fachada {
     public boolean registroAvanceEventoPlan(String año, String semestre, String id_grupo, String id_evt, String porcentaje, String token) throws IOException, JSONException {
         controladorPlanAccion = new ControladorPlanAccion();
         return controladorPlanAccion.registroAvanceEventoPlan(año, semestre, id_evt, porcentaje, id_grupo, token);
+    }
+    
+    public boolean vincularProyectosNuevosViejos(String año, String semestre, String id_grupo, String id_pro, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.vincularProyectosNuevosViejos(año, semestre, id_grupo, id_pro, token);
+    }
+    
+    public boolean vincularActividadesAntiguasPlanGrupo(String año, String semestre, String id_grupo, String id_act, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.vincularActividadesAntiguasPlanGrupo(año, semestre, id_grupo, id_act, token);
     }
     
     // Metodos de Semilleros *********************************************************************************************************

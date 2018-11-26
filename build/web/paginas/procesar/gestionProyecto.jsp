@@ -4,6 +4,7 @@
     Author     : jeferson
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="Fachada.Fachada"%>
 <% 
@@ -71,8 +72,8 @@
         // Consultar proyecto
         case 4:
             String idProject = request.getParameter("id");
-            JSONObject data = f.consultarProyecto(idProject, token);
-            if (data == null) { // null para probar
+            JSONArray data = f.consultarProyecto(idProject, token);
+            if (data != null) { // null para probar
                 session.setAttribute("infoProject", data);
                 response.sendRedirect("../infoProyecto.jsp");
             } else {

@@ -153,6 +153,38 @@
                 response.sendError(500, "Ocurrio un error en el servidor");
             }
             break;
+            
+        // Vincular proyectos nuevo y viejos al plan de accion
+        case 10:
+            anio = request.getParameter("anio");
+            semestre = request.getParameter("semestre"); 
+            String id_pro = request.getParameter("id");
+            //System.out.println("anio="+anio+"semestre="+semestre+"grupo="+id_grupo+"proyecto="+id_pro);
+            boolean vinculado = f.vincularProyectosNuevosViejos(anio, semestre, id_grupo, id_pro, token);
+            JSONObject jo = new JSONObject();
+            if ( vinculado ) {
+                jo.put("status", 200);
+            } else {
+                jo.put("status", 500);
+            }
+            out.print(jo);
+            break;
+            
+        // Vincular actividades antiguas al nuevo plan de accion
+        case 11:
+            anio = request.getParameter("anio");
+            semestre = request.getParameter("semestre"); 
+            String id_act = request.getParameter("id");
+            //System.out.println("anio="+anio+"semestre="+semestre+"grupo="+id_grupo+"proyecto="+id_pro);
+            boolean resp = f.vincularActividadesAntiguasPlanGrupo(anio, semestre, id_grupo, id_act, token);
+            JSONObject j1 = new JSONObject();
+            if ( resp ) {
+                j1.put("status", 200);
+            } else {
+                j1.put("status", 500);
+            }
+            out.print(j1);
+            break;
     }
 
 %>

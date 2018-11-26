@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -24,18 +26,28 @@
                             <img class="img-circle" src="../img/project.png" alt="User Avatar">
                         </div>
                         <!-- /.widget-user-image -->
-                        <h3 class="widget-user-username">Nombre del Proyecto de Investigación</h3>
+                        <% 
+                            JSONArray data = (JSONArray)session.getAttribute("infoProject");
+                            JSONObject info = data.getJSONObject(0);
+                        %>
+                        <h3 class="widget-user-username"><%= info.getString("titulo") %></h3>
                         <h5 class="widget-user-desc">GIDIS</h5>
                     </div>
                     <div class="box-body no-padding">
                         <ul class="nav nav-stacked">
-                            <li><a>Linea de Investigación: <span class="pull-right"><b>lorem ipsum dolor sit mep</b></span></a></li>
+                            <li><a>Linea de Investigación: <span class="pull-right"><b><%= info.getJSONObject("linea").getString("nombre") %></b></span></a></li>
                             <li><a>Tiempo de Ejecución: <span class="pull-right"><b>3 Meses</b></span></a></li>
-                            <li><a>Tipo de Proyecto: <span class="pull-right"><b>Proyecto de Grado</b></span></a></li>
-                            <li><a>Fecha de Inicio: <span class="pull-right"><b>02/2000</b></span></a></li>
-                            <li><a>Fecha de Finalización: <span class="pull-right"><b>02/2001</b></span></a></li>
-                            <li><a>Costo Total: <span class="pull-right"><b>$ 3.000.000.000</b></span></a></li>
-                            <li><a>Estado del Proyecto: <span class="pull-right badge bg-green"><b>Ejecución</b></span></a></li>
+                            <li><a>Tipo de Proyecto: <span class="pull-right"><b><%= info.getJSONObject("tipo").getString("nombre") %></b></span></a></li>
+                            <li><a>Fecha de Inicio: <span class="pull-right"><b><%= info.getString("fecha-inicio") %></b></span></a></li>
+                            <li><a>Fecha de Finalización: <span class="pull-right"><b><%= info.getString("fecha-final") %></b></span></a></li>
+                            <li><a>Costo Total: <span class="pull-right"><b>$ <%= info.getLong("costoTotal") %></b></span></a></li>
+                            <li>
+                                <a>Estado del Proyecto: 
+                                    <span class="pull-right badge <%= (info.getInt("estado") == 1)? "bg-green":"bg-red" %>">
+                                        <b><%= (info.getInt("estado") == 1)? "En Ejecición":"Finalizado" %></b>
+                                    </span>
+                                </a>
+                            </li>
                         </ul>		              
                     </div>
                     <div class="box-footer no-padding hidden">
@@ -53,26 +65,6 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="../img/avatar5.png" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="#" class="product-title">Nombre del Investigador
-                                        <span class="label label-success pull-right">GIDIS</span></a>
-                                    <span class="product-description">correo@algo.com</span>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="../img/avatar5.png" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="#" class="product-title">Nombre del Investigador
-                                        <span class="label label-success pull-right">GIDIS</span></a>
-                                    <span class="product-description">correo@algo.com</span>
-                                </div>
-                            </li>
                             <li class="item">
                                 <div class="product-img">
                                     <img src="../img/avatar5.png" alt="Product Image">
@@ -123,7 +115,7 @@
                     <div class="box-body">
                         <strong><i class="fa fa-file-text-o margin-r-5"></i> Resultados Esperados</strong>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quam vero, voluptatibus quaerat minus blanditiis! Odio quo, ratione, magnam quia fuga quae earum! Voluptate totam iure expedita blanditiis nesciunt recusandae.
+                            <%= info.getString("resultados-esperados") %>
                         </p>
                         <hr>
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>Resultados Obtenidos</strong>

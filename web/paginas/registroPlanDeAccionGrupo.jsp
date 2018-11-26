@@ -135,7 +135,7 @@
                             <input type="hidden" value="4" name="operacion">
                             <div class="form-group col-xs-12">
                                 <label>Seleccione el Proyecto a Vincular (*)</label>
-                                <select name="proyecto" id="" class="form-control" required>
+                                <select name="proyecto" id="select-project-news" class="form-control" required>
                                     <option  selected="" disabled="">Seleccione</option>
                                     <%
                                         JSONObject data = (JSONObject)session.getAttribute("data");
