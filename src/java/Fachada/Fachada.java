@@ -25,6 +25,7 @@ public class Fachada {
     private ControladorPlanAccion controladorPlanAccion;
     private ControladorLogin controladorLogin;
     private ControladorPlanAccionSemillero controladorPlanAccionSemillero;
+    private ControladorProductos controlProductos;
     
     
     
@@ -235,4 +236,17 @@ public class Fachada {
         controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
         return controladorPlanAccionSemillero.registrarPlanAccionSemillero(anio, semestre, idSemillero, token);
     }
+    
+    // Metodos de productos *********************************************************************************************************
+    
+    public JSONObject cargarDatosRegistroProductos() throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.cargarDatosRegistroProductos();
+    }
+    
+    public JSONObject listarProductosProyecto(String id_proyecto) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.listarProductosProyecto(id_proyecto);
+    }
+    
 }

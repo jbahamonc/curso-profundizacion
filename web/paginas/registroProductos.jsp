@@ -245,15 +245,7 @@
                                 <div class="form-group">
                                     <label>Institución (*)</label>
                                     <input type="text" class="form-control">
-                                </div>            
-                                <div class="form-group">
-                                    <label>Director (*)</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Coodirector (*)</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                                </div>    
                                 <div class="form-group">
                                     <label>Reconocimientos (*)</label>
                                     <input type="text" class="form-control">

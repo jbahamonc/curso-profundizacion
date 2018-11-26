@@ -61,6 +61,7 @@
                                 objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
             JSONObject json = new JSONObject();
             if ( res > 0 ) {
+                session.setAttribute("proyecto_sesion", res+"");
                 json.put("status", 200);
                 json.put("id", res);
             } else {
@@ -73,7 +74,8 @@
         case 4:
             String idProject = request.getParameter("id");
             JSONArray data = f.consultarProyecto(idProject, token);
-            if (data != null) { // null para probar
+            if (data != null) { 
+                session.setAttribute("proyecto_sesion", idProject);
                 session.setAttribute("infoProject", data);
                 response.sendRedirect("../infoProyecto.jsp");
             } else {

@@ -31,13 +31,18 @@
                             JSONObject info = data.getJSONObject(0);
                         %>
                         <h3 class="widget-user-username"><%= info.getString("titulo") %></h3>
-                        <h5 class="widget-user-desc">GIDIS</h5>
                     </div>
                     <div class="box-body no-padding">
                         <ul class="nav nav-stacked">
                             <li><a>Linea de Investigación: <span class="pull-right"><b><%= info.getJSONObject("linea").getString("nombre") %></b></span></a></li>
                             <li><a>Tiempo de Ejecución: <span class="pull-right"><b>3 Meses</b></span></a></li>
                             <li><a>Tipo de Proyecto: <span class="pull-right"><b><%= info.getJSONObject("tipo").getString("nombre") %></b></span></a></li>
+                            <li><a>Num. Contrato: 
+                                    <span class="pull-right">
+                                        <b><%= (info.getJSONObject("tipo").getString("nombre").equals("FINU"))? info.getString("n_contrato"):"-" %></b>
+                                    </span>
+                                </a>
+                            </li>
                             <li><a>Fecha de Inicio: <span class="pull-right"><b><%= info.getString("fecha-inicio") %></b></span></a></li>
                             <li><a>Fecha de Finalización: <span class="pull-right"><b><%= info.getString("fecha-final") %></b></span></a></li>
                             <li><a>Costo Total: <span class="pull-right"><b>$ <%= info.getLong("costoTotal") %></b></span></a></li>
@@ -135,7 +140,7 @@
         <h4 class="control-sidebar-heading">Opciones del Proyecto</h4>
         <ul class="control-sidebar-menu">
             <li>
-                <a href="productosProyecto.jsp">
+                <a href="procesar/gestionProductos.jsp?operacion=1">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Productos</h4>
                 </a>
             </li>

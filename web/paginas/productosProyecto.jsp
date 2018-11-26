@@ -55,7 +55,7 @@
         </div>
     </section>
 </div>
-<a href="registroProductos.jsp" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Producto">
+<a href="procesar/gestionProductos.jsp?operacion=2" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Producto">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 <jsp:include page="../inc/footer.jsp"/>
