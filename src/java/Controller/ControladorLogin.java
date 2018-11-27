@@ -25,7 +25,7 @@ public class ControladorLogin {
         HttpClient httpClient = HttpClients.createDefault();        
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/login");
         requestBuilder.addParameter("usuario", user);
-        requestBuilder.addParameter("contraseña", pass);
+        requestBuilder.addParameter("clave", pass);
         HttpUriRequest uriRequest = requestBuilder.build();        
         HttpResponse httpResponse = httpClient.execute(uriRequest); 
         String source = EntityUtils.toString(httpResponse.getEntity()); 

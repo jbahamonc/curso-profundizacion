@@ -6,6 +6,7 @@
 package Controller;
 
 import java.io.IOException;
+import static jdk.nashorn.internal.objects.NativeRegExp.source;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -104,11 +105,25 @@ public class ControladorProyectos {
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONArray jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(source);
+        
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
-            jsonObj = new JSONArray(source);                        
+            jsonObj = new JSONArray(source);                 
         }        
         return jsonObj;
+    }
+    
+    public JSONArray listarObjetivos(String idProject) throws IOException, JSONException {
+         HttpClient httpClient1 = HttpClients.createDefault();
+        HttpGet httpGet1 = new HttpGet("https://productividadufps.herokuapp.com/api/v1/objetivoProyecto/"+idProject);
+        HttpResponse httpResponse1 = httpClient1.execute(httpGet1);
+        JSONArray jsonObj1 = null;
+        String source1 = EntityUtils.toString(httpResponse1.getEntity());
+        System.out.println(source1);
+        if ( httpResponse1.getStatusLine().getStatusCode() == 200 || httpResponse1.getStatusLine().getStatusCode() == 201 ) {            
+            jsonObj1 = new JSONArray(source1);  
+            System.out.println(source1);
+        } 
+        return jsonObj1;
     }
 
     public boolean cerrarProyecto(String id_project, String token) throws IOException, JSONException {
@@ -119,5 +134,7 @@ public class ControladorProyectos {
         System.out.println(source);
         return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
     }
+
+    
     
 }

@@ -48,8 +48,8 @@
                             <li><a>Costo Total: <span class="pull-right"><b>$ <%= info.getLong("costoTotal") %></b></span></a></li>
                             <li>
                                 <a>Estado del Proyecto: 
-                                    <span class="pull-right badge <%= (info.getInt("estado") == 1)? "bg-green":"bg-red" %>">
-                                        <b><%= (info.getInt("estado") == 1)? "En Ejecición":"Finalizado" %></b>
+                                    <span class="pull-right badge <%= (info.getInt("estado") == 1)? "bg-red":"bg-green" %>">
+                                        <b><%= (info.getInt("estado") == 1)? "Finalizado":"En Ejecición" %></b>
                                     </span>
                                 </a>
                             </li>
@@ -59,7 +59,7 @@
                         <a href="registrarProyecto.jsp" class="btn btn-block btn-flat btn-success">Editar Proyecto</a>
                     </div>
                 </div>
-                <div class="box box-success">
+                <div class="box box-success hidden">
                     <div class="box-header with-border">
                         <h3 class="box-title">Responsables del Proyecto</h3>
                         <div class="box-tools pull-right">
@@ -95,17 +95,20 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Objetivo General</strong>
+                        <%--<strong><i class="fa fa-file-text-o margin-r-5"></i> Objetivo General</strong>
                         <p class="text-muted">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quam vero, voluptatibus quaerat minus blanditiis! Odio quo, ratione, magnam quia fuga quae earum! Voluptate totam iure expedita blanditiis nesciunt recusandae.
                         </p>
-                        <hr>
+                        <hr>--%>
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>Objetivos Específicos</strong>
                         <ul>
-                            <li class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
-                            <li class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
-                            <li class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
-                            <li class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+                            <%
+                                JSONArray objs = (JSONArray)session.getAttribute("objetivos");
+                                for (int i = 0; i < objs.length(); i++) {
+                                    JSONObject o = objs.getJSONObject(i).getJSONObject("objetivo");                                    
+                            %>
+                            <li class="text-muted"><%= o.getString("objetivo") %></li>
+                            <% } %>
                         </ul>
                     </div>
                 </div>
@@ -122,11 +125,11 @@
                         <p class="text-muted">
                             <%= info.getString("resultados-esperados") %>
                         </p>
-                        <hr>
+                        <%--<hr>
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>Resultados Obtenidos</strong>
                         <p class="text-muted">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quam vero, voluptatibus quaerat minus blanditiis! Odio quo, ratione, magnam quia fuga quae earum! Voluptate totam iure expedita blanditiis nesciunt recusandae.
-                        </p>
+                        </p>--%>
                     </div>
                     <!-- /.box-body -->
                 </div>

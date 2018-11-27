@@ -33,11 +33,11 @@
                 <form action="" method="post" id="form-login">
                     <input type="hidden" value="1" name="operacion">
                     <div class="form-group has-feedback">
-                        <input type="email" name="user" class="form-control" placeholder="Email" required>
+                        <input type="text" name="user" class="form-control" placeholder="Usuario" required>
                         <span class="fa fa-envelope-o form-control-feedback" style="top: 0"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" name="pass" class="form-control" placeholder="Password" required onkeypress="pulsar(event);">
+                        <input type="password" name="pass" class="form-control" placeholder="Contraseña" required >
                         <span class="fa fa-lock form-control-feedback" style="top: 0"></span>
                     </div>
                     <div class="form-group">
@@ -51,14 +51,5 @@
         <script src="../js/mdtoast.min.js"></script>
         <script src="../js/jquery.validate.min.js"></script>
         <script src="../js/ajax/gestionLogin.js"></script>
-        <script>
-            function pulsar(e) {
-                if (e.keyCode === 13 && !e.shiftKey) {
-                    e.preventDefault();
-                    var boton = document.getElementById("btn-login");
-                    angular.element(boton).triggerHandler('click');
-                }
-            }
-        </script>
     </body>
 </html>
