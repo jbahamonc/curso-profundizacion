@@ -38,8 +38,8 @@
                             </thead>
                             <tbody>
                                 <%
-                                    JSONObject listaPlanAccionesSemillero = (JSONObject)session.getAttribute("listaPlanesAccionSemillero");
-                                    JSONArray planesAccionesSemillero = listaPlanAccionesSemillero.getJSONArray("plan_accion_semillero");
+                                    
+                                    JSONArray planesAccionesSemillero = (JSONArray)session.getAttribute("listaPlanesAccionSemillero");
                                     
                                     for (int i = 0; i < planesAccionesSemillero.length(); i++) {
                                             JSONObject planAccionSemillero = planesAccionesSemillero.getJSONObject(i);
@@ -47,8 +47,8 @@
                                 %>
                                 <tr>
                                     <td><%=i + 1%></td>
-                                    <td><%=planAccionSemillero.getString("anio")%></td>
-                                    <td><%=planAccionSemillero.getInt("semestre")%></td>
+                                    <td><%=planAccionSemillero.getString("year")%></td>
+                                    <td><%=planAccionSemillero.getString("semestre")%></td>
                                     <td class="text-center">
                                         <a href="infoPlanAccionSemillero.jsp" title="Información del Semillero" class="btn btn-success btn-xs">
                                             <i class="fa fa-eye" aria-hidden="true"></i>

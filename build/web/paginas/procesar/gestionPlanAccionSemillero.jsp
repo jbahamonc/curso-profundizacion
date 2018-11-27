@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="Fachada.Fachada"%>
 <%
@@ -17,14 +18,14 @@
     switch (operacion) {
 
         case 1://LISTAR PLAN ACCION SEMILLERO
-            JSONObject listaPlanesAccionSemillero = fachada.listarPlanesAccionSemillero(idSemillero, token);
+            JSONArray listaPlanesAccionSemillero = fachada.listarPlanesAccionSemillero(idSemillero, tipoSesion, token);
             session.setAttribute("listaPlanesAccionSemillero", listaPlanesAccionSemillero);
             session.setAttribute("token", token);
             response.sendRedirect("../planAccionSemillero.jsp");
             break;
 
         case 2://CARGAR LINEAS DE INVESTIGACION
-            JSONObject cargarInfo = fachada.cargarInfo(idSemillero, token);
+            JSONObject cargarInfo = fachada.cargarInfo(idSemillero, tipoSesion, token);
             if (cargarInfo != null) {
                 session.setAttribute("info", cargarInfo);
                 response.sendRedirect("../registroPlanDeAccionSemillero.jsp");
@@ -63,16 +64,14 @@
         case 5://REGISTRAR CAPACITACIONES AL PLAN DE ACCION
             anio = request.getParameter("anio");
             semestre = request.getParameter("semestre");  
-            String lineaInvestigacion = request.getParameter("lineaInv");
             String nombreCapacitacion = request.getParameter("nombreCapcitacion");
             String objetivoCapacitacion = request.getParameter("objetivoCapacitacion");
-            String fechaRealizacion = request.getParameter("fechaRealizacion");
+            String fechaInicio = request.getParameter("fechaInicio");
+            String fechaFinal = request.getParameter("fechaFinal");
             String numAsistentes = request.getParameter("numAsistentes");
             String responsables[] = request.getParameterValues("capacitores");
-            String nombreEvidencia = request.getParameter("nombreEvidencia");
-            String file[] = request.getParameterValues("file");
-            boolean respuesta = fachada.registrarCapacitacionPlanAccionSemillero(anio, semestre, idSemillero, lineaInvestigacion, nombreCapacitacion, objetivoCapacitacion, fechaRealizacion, 
-                    numAsistentes, responsables, nombreEvidencia, file, token);
+            boolean respuesta = fachada.registrarCapacitacionPlanAccionSemillero(anio, semestre, idSemillero, nombreCapacitacion, objetivoCapacitacion, fechaInicio, fechaFinal, 
+                    numAsistentes, responsables, token);
             JSONObject json1 = new JSONObject();
             if ( respuesta ) {
                 json1.put("status", 200);
@@ -87,9 +86,10 @@
             semestre = request.getParameter("semestre");  
             String actividad = request.getParameter("actividad");
             String responsablesAct[] = request.getParameterValues("responsables");
-            String fechaRealizacionAct = request.getParameter("fechaRealizacion");
+            String fechaInicioAct = request.getParameter("fechaInicio");
+            String fechaFinalAct = request.getParameter("fechaFinal");
             String producto = request.getParameter("producto");
-            boolean respuestaActividad = fachada.registrarActividadPlanAccionSemillero(anio, semestre, idSemillero, actividad, responsablesAct, fechaRealizacionAct, 
+            boolean respuestaActividad = fachada.registrarActividadPlanAccionSemillero(anio, semestre, idSemillero, actividad, responsablesAct, fechaInicioAct, fechaFinalAct, 
                     producto, tipoSesion, token);
             JSONObject json2 = new JSONObject();
             if ( respuestaActividad ) {

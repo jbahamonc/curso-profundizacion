@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li>
-                <a href="proyectos.jsp">
+                <a href="" id="link-proyectos-semillero">
                     <h4 class="control-sidebar-subheading" style="margin: 0">Proyectos</h4>
                 </a>
             </li>
@@ -149,6 +149,7 @@
 <div class="control-sidebar-bg bg-purple"></div>
 <script type="text/javascript">
     document.getElementById("link-plan-accion-semillero").href = "procesar/gestionPlanAccionSemillero.jsp?operacion=1&token=" + localStorage.getItem("token")
+    document.getElementById("link-proyectos-semillero").href = "procesar/gestionProyecto.jsp?operacion=2&token=" + localStorage.getItem("token")
 </script>
 <a href="#" data-toggle="control-sidebar" style="z-index: 1001" class="btn bg-purple pull-right btn-fixed" title="Agregar Nuevo Personal">
     <i class="fa fa-bars" style="vertical-align: bottom;"></i>

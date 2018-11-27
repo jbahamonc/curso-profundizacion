@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,20 +40,21 @@
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Año (*)</label>
                                 <select name="anio" id="anio" class="form-control" required>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
+                                    <option selected disabled>Seleccione</option>
+                                    <% 
+                                        int anio = Calendar.getInstance().get(Calendar.YEAR);
+                                        for (int i = anio; i < anio + 20; i++) {                                                                                  
+                                    %>
+                                        <option value="<%= i %>"><%= i %></option>
+                                    <% } %>
                                 </select>
                             </div>				                
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Semestre (*)</label>
                                 <select class="form-control" name="semestre" id="semestre" required>
                                     <option>Seleccione</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    <option value="I">1</option>
+                                    <option value="II">2</option>
                                 </select>
                             </div>	
                             <div class="form-group col-xs-12 text-right">
@@ -123,7 +125,7 @@
             <div class="col-xs-12 col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Registro de Información por Lineas de Investigación</h3>
+                        <h3 class="box-title">Vinculación de Proyectos al Plan de Acción</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                             </button>
@@ -132,23 +134,23 @@
                     <div class="box-body">
                         <form id="form-project-news-plan-semillero">
                             <div class="form-group col-xs-12">
-                                <label>Seleccione el Proyecto a Ejecutar (*)</label>
+                                <label>Seleccione el Proyecto a Vincular (*)</label>
                                 <select name="proyecto" id="proyecto" class="form-control">
                                     <option value="" selected="" disabled="">Seleccione</option>
-                                     <%--
-                                        JSONObject info = (JSONObject) session.getAttribute("info");
-                                        JSONArray lineasInvestigacion = info.getJSONArray("lineasInvestigacion");
+                                    <%
+                                       JSONObject info = (JSONObject) session.getAttribute("info");
+                                       JSONArray proyectos = info.getJSONArray("proyectoNuevo");
 
-                                        for (int i = 0; i < lineasInvestigacion.length(); i++) {
-                                            JSONObject lineaInvestigacion = lineasInvestigacion.getJSONObject(i);
+                                        for (int i = 0; i < proyectos.length(); i++) {
+                                            JSONObject proyecto = proyectos.getJSONObject(i);
 
-                                    --%>
-                                    <option value="<%--=lineaInvestigacion.getInt("id")--%>"><%--=lineaInvestigacion.getString("nombre")--%></option>
-                                    <%-- }--%>
+                                    %>
+                                    <option value="<%=proyecto.getInt("id")%>"><%=proyecto.getString("titulo")%></option>
+                                    <% }%>
                                 </select>
                             </div>                            	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-semillero">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-add-project-plan-semillero">Vincular</button>
                             </div>	                				                                      
                         </form>
                     </div>
@@ -165,48 +167,39 @@
                         <form action="" id="form-capacity">
                             <div id="fields-capacity">
                                 <div class="form-group col-xs-12">
-                                    <label>Linea de Investigación (*)</label>
-                                    <select class="form-control" name="lineaInv" required>
-                                        <option disabled="" selected="">Seleccione</option>
-                                        <%--
-                                            JSONArray lineasInvestigacionCapacitaciones = info.getJSONArray("lineasInvestigacion");
-                                            for (int i = 0; i < lineasInvestigacionCapacitaciones.length(); i++) {
-                                                JSONObject lineaInvestigacionCapacitacion = lineasInvestigacionCapacitaciones.getJSONObject(i);
-
-                                        --%>
-                                        <option value="<%--=lineaInvestigacionCapacitacion.getInt("id")--%>"><%--=lineaInvestigacionCapacitacion.getString("nombre")--%></option>
-                                        <%--}--%>
+                                    <label>Nombre de la Capacitación (*)</label>
+                                    <input type="text" class="form-control" name="nombreCapacitacion" id="nombre" required>
+                                </div>	
+                                <div class="form-group col-xs-12">
+                                    <label>Responsables (*)</label>
+                                    <select id="resCapacitacion" required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores" multiple style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <%
+                                            JSONArray capacitores = info.getJSONArray("integrante");
+                                            for (int i = 0; i < capacitores.length(); i++) {
+                                                JSONObject capacitor = capacitores.getJSONObject(i);
+                                        %>
+                                        <option value="<%=capacitor.getString("nombre")%>"><%=capacitor.getString("nombre")%></option>
+                                        <% }%>
                                     </select>
                                 </div> 
                                 <div class="form-group col-xs-12">
-                                    <label>Nombre de la Capacitación (*)</label>
-                                    <input type="text" class="form-control" name="nombreCapacitacion" required>
-                                </div>			                
-                                <div class="form-group col-xs-12">
                                     <label>Objetivo (*)</label>
-                                    <input type="text" class="form-control" name="objetivoCapacitacion" required>
+                                    <input type="text" class="form-control" name="objetivoCapacitacion" id="objetivo" required>
                                 </div>
                                 <div class="form-group col-xs-12 col-md-6">
-                                    <label>Fecha de Realización (*)</label>
-                                    <input type="month" class="form-control" name="fechaRealizacion" required>
+                                    <label>Fecha de Inicio (*)</label>
+                                    <input type="month" class="form-control" name="fechaInicio" id="fechaI" required>
                                 </div>
                                 <div class="form-group col-xs-12 col-md-6">
+                                    <label>Fecha de Finalización (*)</label>
+                                    <input type="month" class="form-control" name="fechaFinal" id="fechaF" required>
+                                </div>
+                                <div class="form-group col-xs-12 col-md-12">
                                     <label>Numero de Asistentes (*)</label>
-                                    <input type="number" class="form-control" name="numAsistentes" required>
+                                    <input type="number" class="form-control" name="numAsistentes" id="numAsis" min="0" required>
                                 </div>
-                                <div class="form-group col-xs-12">
-                                    <label>Responsables (*)</label>
-                                    <select required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="capacitores" multiple style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                        <%--
-                                            JSONArray capacitores = info.getJSONArray("responsables");
-                                            for (int i = 0; i < capacitores.length(); i++) {
-                                                JSONObject capacitor = capacitores.getJSONObject(i);
-                                        --%>
-                                        <option value="<%--=capacitor.getInt("id")--%>"><%--=capacitor.getString("nombre")--%></option>
-                                        <%-- }--%>
-                                    </select>
-                                </div>                               
-                                <div class="clearfix"></div>
+
+                                <!--div class="clearfix"></div>
                             </div>
                             <div id="fields-capacity-resource" class="hidden">
                                 <div class="form-group col-xs-12">
@@ -219,10 +212,10 @@
                                     <p class="help-block">Seleccione todos los archivos de la evidencia.</p>
                                 </div>
                                 <div class="clearfix"></div>
-                            </div>
+                            </div-->
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" class="btn hidden btn-flat" id="btn-back-capacity">Atras</button>
-                                <button type="button" class="btn btn-danger btn-flat" id="btn-save-capacity">Siguiente</button>
+                                <!--button type="button" class="btn hidden btn-flat" id="btn-back-capacity">Atras</button-->
+                                <button type="button" disabled class="btn btn-danger btn-flat button-plans" id="btn-save-capacity">Registrar</button>
                             </div>
                         </form>
                     </div>
@@ -244,30 +237,34 @@
                         <form id="form-reg-act-plan-semillero">
                             <div class="form-group col-xs-12">
                                 <label>Nombre de la Actividad (*)</label>
-                                <input type="text" class="form-control" required name="actividad">
+                                <input type="text" class="form-control" required name="actividad" id="actividad">
                             </div>	
                             <div class="form-group col-xs-12">
                                 <label>Responsables (*)</label>
-                                <select required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <%--
-                                        JSONArray responsables = info.getJSONArray("responsables");
+                                <select id="responsables" required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <%
+                                        JSONArray responsables = info.getJSONArray("integrante");
                                         for (int i = 0; i < responsables.length(); i++) {
                                             JSONObject responsable = responsables.getJSONObject(i);
-                                    --%>
-                                    <option value="<%--=responsable.getInt("id")--%>"><%--=responsable.getString("nombre")--%></option>
-                                    <%-- }--%>
+                                    %>
+                                    <option value="<%=responsable.getString("nombre")%>"><%=responsable.getString("nombre")%></option>
+                                    <% }%>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
-                                <label>Fecha de Realización (*)</label>
-                                <input type="month" class="form-control" required name="fechaRealizacion">
+                                <label>Fecha de Inicio (*)</label>
+                                <input type="month" class="form-control" name="fechaInicio" id="fechaInicio" required>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
+                                <label>Fecha de Finalización (*)</label>
+                                <input type="month" class="form-control" name="fechaFinal" id="fechaFinal" required>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-12">
                                 <label>Producto (*)</label>
                                 <input type="text" class="form-control" id="producto" name="producto" required/>
                             </div>           	
                             <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan-semillero">CARGAR DATOS</button>
+                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan-semillero">Registrar</button>
                             </div>	                				                                      
                         </form>
                     </div>
