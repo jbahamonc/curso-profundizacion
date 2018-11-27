@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,8 +26,12 @@
                         </div>
                         <!-- /.widget-user-image -->
                         <%
-                            JSONObject semillero = (JSONObject) session.getAttribute("semillero");
-                            JSONObject grupo = semillero.getJSONObject("grupo-investigacion");
+                            JSONArray listaSemillero = (JSONArray) session.getAttribute("semillero");
+                            JSONObject semillero = null;
+                            for (int i = 0; i < listaSemillero.length(); i++) {
+                                semillero = listaSemillero.getJSONObject(i);
+
+                                JSONObject grupo = semillero.getJSONObject("grupo-investigacion");
                         %>
                         <h3 class="widget-user-username"><%=semillero.getString("nombre").toUpperCase()%></h3>
                         <h5 class="widget-user-desc"><%=semillero.getString("sigla").toUpperCase()%></h5>
@@ -78,9 +83,9 @@
                     <div class="box-body">
                         <!--strong><i class="fa fa-file-text-o margin-r-5"></i> Descripción</strong>
                         <p class="text-muted">
-                            <%--=semillero.getString("descripcion")--%>
-                        </p>
-                        <hr-->
+                        <%--=semillero.getString("descripcion")--%>
+                    </p>
+                    <hr-->
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>Linea de Investigación</strong>
                         <p class="text-muted"><%=lineaInvestigacion.getString("nombre").toUpperCase()%></p>
                     </div>
@@ -115,6 +120,7 @@
                 </div>		        
             </div>
         </div>
+        <% }%>
     </section>
 </div>
 <!-- The Right Sidebar -->

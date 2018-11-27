@@ -40,23 +40,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% 
-                            JSONObject proyectos = (JSONObject)session.getAttribute("proyectos");
-                            JSONArray pro = proyectos.getJSONArray("proyecto");
-                            for(int i=0; i < pro.length(); i++) {
-                                JSONObject obj = pro.getJSONObject(i);                            
+                        <%
+                            JSONObject proyectos = (JSONObject) session.getAttribute("proyectos");
+                            
+                                JSONArray pro = proyectos.getJSONArray("proyecto");
+                                if (pro.length() > 0) {
+                                for (int i = 0; i < pro.length(); i++) {
+                                    JSONObject obj = pro.getJSONObject(i);
                         %>
                         <tr>
-                            <td><%= i+1 %></td>
-                            <td><%= obj.getString("titulo") %></td>
-                            <td><%= obj.getJSONArray("responsable").join("-").replace('"', ' ') %></td>
-                            <td><%= obj.getString("linea") %></td>
-                            <td><%= obj.getString("fecha_inicio") %></td>
-                            <td><%= obj.getString("fecha_final") %></td>
-                            <td><%= obj.getString("tiempo_ejecucion") %></td>
-                            <td><%= obj.getString("costoTotal") %></td>
+                            <td><%= i + 1%></td>
+                            <td><%= obj.getString("titulo")%></td>
+                            <td><%= obj.getJSONArray("responsable").join("-").replace('"', ' ')%></td>
+                            <td><%= obj.getString("linea")%></td>
+                            <td><%= obj.getString("fecha_inicio")%></td>
+                            <td><%= obj.getString("fecha_final")%></td>
+                            <td><%= obj.getString("tiempo_ejecucion")%></td>
+                            <td><%= obj.getString("costoTotal")%></td>
                             <td class="text-center">
-                                <a href="procesar/gestionProyecto.jsp?id=<%= obj.getInt("id") %>&operacion=4&token=<%= session.getAttribute("token").toString() %>" id="link-info-proyecto" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
+                                <a href="procesar/gestionProyecto.jsp?id=<%= obj.getInt("id")%>&operacion=4&token=<%= session.getAttribute("token").toString()%>" id="link-info-proyecto" title="Información del Proyecto" type="button" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                                 <button type="button" title="Finalizar Proyecto" data-project="<%= obj.getInt("id") %>" class="btn hidden btn-warning btn-xs btn-finish-project">
@@ -64,7 +66,13 @@
                                 </button>
                             </td>
                         </tr>
-                        <% } %>
+                        <% }
+                        } else {
+                        %>
+                        <tr>
+                            <td colspan="9"><center>No Existen Proyectos Registrados</center></td>
+                        </tr>
+                        <% }%>
                     </tbody>
                 </table>
             </div>
@@ -75,7 +83,7 @@
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 <script>
-    document.getElementById("link-reg-proyecto").href = "procesar/gestionProyecto.jsp?operacion=1&token="+localStorage.getItem("token")
+    document.getElementById("link-reg-proyecto").href = "procesar/gestionProyecto.jsp?operacion=1&token=" + localStorage.getItem("token")
 </script>
 <jsp:include page="../inc/footer.jsp"/>
 <script src="../js/ajax/gestionarProyectos.js"></script>

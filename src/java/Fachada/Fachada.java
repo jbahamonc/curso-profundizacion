@@ -215,7 +215,7 @@ public class Fachada {
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.listarDirectoresYLineasInvestigacion(idGrupo);
     }
-    public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
+    public JSONArray consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.consultarSemillero(idSemillero, token);
     
@@ -310,6 +310,22 @@ public class Fachada {
     public JSONObject registrarTesis(String id_proyecto,String nombrePro,String descPro,String id_tipoPro,String titulo,String anio, String institucion,String reco) throws IOException, JSONException{
         controlProductos = new ControladorProductos();
         return controlProductos.registrarTesis(id_proyecto,nombrePro,descPro,id_tipoPro,titulo,anio,institucion,reco);
+    }
+    
+    public boolean vincularProyectosNuevosViejosSemillero(String anio, String semestre, String idSemillero, String id_pro, String token) throws IOException, JSONException {
+        controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
+        return controladorPlanAccionSemillero.vincularProyectosNuevosViejosSemillero(anio, semestre, idSemillero, id_pro, token);
+    }
+    
+    public boolean vincularActividadesAntiguasPlanSemillero(String anio, String semestre, String idSemillero, String id_act, String token) throws IOException, JSONException {
+        controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
+        return controladorPlanAccionSemillero.vincularActividadesAntiguasPlanSemillero(anio, semestre, idSemillero, id_act, token);
+    }
+    
+    
+    public boolean vincularCapacitacionesAntiguosPlanSemillero(String anio, String semestre, String idSemillero, String id_cap, String token) throws IOException, JSONException {
+        controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
+        return controladorPlanAccionSemillero.vincularCapacitacionesAntiguosPlanSemillero(anio, semestre, idSemillero, id_cap, token);
     }
     
 }

@@ -4,6 +4,7 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="Fachada.Fachada"%>
 <%  
@@ -65,9 +66,8 @@
         case 5: //CONSULTAR UN SEMILLERO
             String idSemillero = request.getParameter("id");
             token = request.getParameter("token");
-            JSONObject jsonSemillero = fachada.consultarSemillero(idSemillero, token);
+            JSONArray jsonSemillero = fachada.consultarSemillero(idSemillero, token);
             if (jsonSemillero != null) {
-                jsonSemillero.put("token", token);
                 session.setAttribute("semillero", jsonSemillero);
                 session.setAttribute("idGrupoSemillero", idSemillero);
                 session.setAttribute("tipoSesion", "0");

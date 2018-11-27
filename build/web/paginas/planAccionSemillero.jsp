@@ -41,6 +41,7 @@
                                     
                                     JSONArray planesAccionesSemillero = (JSONArray)session.getAttribute("listaPlanesAccionSemillero");
                                     
+                                    if (planesAccionesSemillero.length() > 0){
                                     for (int i = 0; i < planesAccionesSemillero.length(); i++) {
                                             JSONObject planAccionSemillero = planesAccionesSemillero.getJSONObject(i);
                                         
@@ -60,6 +61,12 @@
                                             <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                         </a>
                                     </td>
+                                </tr>
+                                <% } 
+                                } else {
+                                %>
+                                <tr>
+                                    <td colspan="4"><center>No Existen Planes de Acción Registrados</center></td>
                                 </tr>
                                 <% } %>
                             </tbody>

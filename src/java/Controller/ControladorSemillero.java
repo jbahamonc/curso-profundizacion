@@ -103,15 +103,16 @@ public class ControladorSemillero {
         return listarDirectoresYLineasInvestigacion;
     }
 
-    public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
+    public JSONArray consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/semillero/"+idSemillero);
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        JSONObject jsonSemillero = null;
+        JSONArray jsonSemillero = null;
         String source = "";
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
             source = EntityUtils.toString(httpResponse.getEntity());
-            jsonSemillero = new JSONObject(source);
+            System.out.println("**" + source);
+            jsonSemillero = new JSONArray(source);
         }
         return jsonSemillero;
     }

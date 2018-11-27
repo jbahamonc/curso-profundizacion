@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group col-xs-12 col-md-4">
                             <label>Tiempo de Ejecución (Meses) (*)</label>
-                            <input type="number" class="form-control" required name="tiempo">
+                            <input type="number" class="form-control" required min="0" name="tiempo">
                         </div>	
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Fecha de Inicio (*)</label>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Costo Total (*)</label>
-                            <input type="number" class="form-control" required name="costo">
+                            <input type="number" class="form-control" required min="0" name="costo">
                         </div>	
                         <div class="form-group col-xs-12 col-md-3">
                             <label>Tipo de Proyecto (*)</label>

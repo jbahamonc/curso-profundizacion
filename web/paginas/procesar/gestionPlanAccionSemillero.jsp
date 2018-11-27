@@ -42,7 +42,7 @@
                 resultado.put("status", 200);
             } else {
                 resultado = new JSONObject();
-                resultado.put("status", 200);
+                resultado.put("status", 500);
             }
             out.print(resultado);
             break;
@@ -95,9 +95,56 @@
             if ( respuestaActividad ) {
                 json2.put("status", 200);
             } else {
-                json2.put("status", 200);
+                json2.put("status", 500);
             }
             out.print(json2);
+            break;
+            
+            // Vincular proyectos nuevo y viejos al plan de accion
+        case 7:
+            anio = request.getParameter("anio");
+            semestre = request.getParameter("semestre"); 
+            String id_pro = request.getParameter("id");
+            boolean vinculado = fachada.vincularProyectosNuevosViejosSemillero(anio, semestre, idSemillero, id_pro, token);
+            JSONObject jo = new JSONObject();
+            if ( vinculado ) {
+                jo.put("status", 200);
+            } else {
+                jo.put("status", 500);
+            }
+            out.print(jo);
+            break;
+            
+            // Vincular actividades antiguas al nuevo plan de accion
+        case 8:
+            anio = request.getParameter("anio");
+            semestre = request.getParameter("semestre"); 
+            String id_act = request.getParameter("id");
+            //System.out.println("anio="+anio+"semestre="+semestre+"grupo="+id_grupo+"proyecto="+id_pro);
+            boolean resp = fachada.vincularActividadesAntiguasPlanSemillero(anio, semestre, idSemillero, id_act, token);
+            JSONObject j1 = new JSONObject();
+            if ( resp ) {
+                j1.put("status", 200);
+            } else {
+                j1.put("status", 500);
+            }
+            out.print(j1);
+            break;
+            
+        // Vincular capacitaciones antiguos al nuevo plan de accion
+        case 9:
+            anio = request.getParameter("anio");
+            semestre = request.getParameter("semestre"); 
+            String id_cap = request.getParameter("id");
+            //System.out.println("anio="+anio+"semestre="+semestre+"grupo="+id_grupo+"proyecto="+id_pro);
+            boolean msg = fachada.vincularCapacitacionesAntiguosPlanSemillero(anio, semestre, idSemillero, id_cap, token);
+            JSONObject j2 = new JSONObject();
+            if ( msg ) {
+                j2.put("status", 200);
+            } else {
+                j2.put("status", 500);
+            }
+            out.print(j2);
             break;
 
     }
