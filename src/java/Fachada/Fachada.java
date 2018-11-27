@@ -186,7 +186,7 @@ public class Fachada {
     
     // Metodos de Semilleros *********************************************************************************************************
     public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
-    String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException{
+    int idDirector, int idLineaInvestigacion, String email, int idGrupo) throws IOException, JSONException{
         controladorSemillero = new ControladorSemillero();
         return controladorSemillero.registrarSemillero(codigo, nombreSemillero, sigla, ubicacion, fechaCreacion, idDirector, idLineaInvestigacion, email, idGrupo);
     }
@@ -210,14 +210,14 @@ public class Fachada {
     
     }
     
-    public JSONObject listarPlanesAccionSemillero(String idSemillero, String token) throws IOException, JSONException{
+    public JSONArray listarPlanesAccionSemillero(String idSemillero, String tipoSesion, String token) throws IOException, JSONException{
         controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
-        return controladorPlanAccionSemillero.listarPlanesAccionSemillero(idSemillero, token);
+        return controladorPlanAccionSemillero.listarPlanesAccionSemillero(idSemillero, tipoSesion, token);
     }
     
-    public JSONObject cargarInfo(String idSemillero, String token) throws IOException, JSONException{
+    public JSONObject cargarInfo(String idSemillero, String tipoSesion, String token) throws IOException, JSONException{
         controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
-        return controladorPlanAccionSemillero.cargarInfo(idSemillero, token);
+        return controladorPlanAccionSemillero.cargarInfo(idSemillero, tipoSesion, token);
     }
     
     public boolean vincularProyectoPlanSemillero(String anio, String semestre, String idSemillero, String idProyecto, String tipoSesion, String token) throws IOException{
@@ -225,16 +225,16 @@ public class Fachada {
         return controladorPlanAccionSemillero.vincularProyectoPlanSemillero(anio, semestre, idSemillero, idProyecto, tipoSesion, token);
     }
     
-    public boolean registrarCapacitacionPlanAccionSemillero(String anio, String semestre, String idSemillero, String lineaInvestigacion, String nombreCapacitacion, String objetivoCapacitacion, String fechaRealizacion, String numAsistentes, String responsables[],
-    String nombreEvidencia, String file[], String token) throws IOException{
+    public boolean registrarCapacitacionPlanAccionSemillero(String anio, String semestre, String idSemillero, String nombreCapacitacion, String objetivoCapacitacion, String fechaInicio, String fechaFinal, String numAsistentes, String responsables[],
+     String token) throws IOException{
         controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
-        return controladorPlanAccionSemillero.registrarCapacitacionPlanAccionSemillero(anio, semestre, idSemillero, lineaInvestigacion, nombreCapacitacion, objetivoCapacitacion, fechaRealizacion,
-                numAsistentes, responsables, nombreEvidencia, file, token);
+        return controladorPlanAccionSemillero.registrarCapacitacionPlanAccionSemillero(anio, semestre, idSemillero, nombreCapacitacion, objetivoCapacitacion, fechaInicio, fechaFinal,
+                numAsistentes, responsables, token);
     }
     
-    public boolean registrarActividadPlanAccionSemillero(String anio, String semestre, String idSemillero, String actividad, String[] responsablesAct, String fechaRealizacion, String producto, String tipoSesion, String token) throws IOException{
+    public boolean registrarActividadPlanAccionSemillero(String anio, String semestre, String idSemillero, String actividad, String[] responsablesAct, String fechaInicio, String fechaFinal, String producto, String tipoSesion, String token) throws IOException{
         controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
-        return controladorPlanAccionSemillero.registrarActividadPlanAccionSemillero(anio, semestre, idSemillero, actividad, responsablesAct, fechaRealizacion, producto, tipoSesion, token);
+        return controladorPlanAccionSemillero.registrarActividadPlanAccionSemillero(anio, semestre, idSemillero, actividad, responsablesAct, fechaInicio, fechaFinal, producto, tipoSesion, token);
     }
     
     public JSONObject registrarPlanAccionSemillero(String anio, String semestre, String idSemillero, String tipoSesion, String token) throws IOException, JSONException{

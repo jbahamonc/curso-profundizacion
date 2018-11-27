@@ -27,7 +27,7 @@ import org.json.JSONObject;
  */
 public class ControladorSemillero {
 
-    public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException {
+    public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion, int idDirector, int idLineaInvestigacion, String email, int idGrupo) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         
         NameValuePair value1 = new BasicNameValuePair("codigo", codigo);
@@ -35,10 +35,11 @@ public class ControladorSemillero {
         NameValuePair value3 = new BasicNameValuePair("sigla", sigla);
         NameValuePair value4 = new BasicNameValuePair("ubicacion", ubicacion);
         NameValuePair value5 = new BasicNameValuePair("fecha_creacion", fechaCreacion);
-        NameValuePair value6 = new BasicNameValuePair("correo", email);
-        NameValuePair value7 = new BasicNameValuePair("idLinea", idLineaInvestigacion);
-        NameValuePair value8 = new BasicNameValuePair("idDirector", idDirector);
-        NameValuePair value9 = new BasicNameValuePair("idGrupo", idGrupo);
+        NameValuePair value6 = new BasicNameValuePair("idGrupo", ""+idGrupo);
+        NameValuePair value7 = new BasicNameValuePair("correo", email);
+        NameValuePair value8 = new BasicNameValuePair("idLinea", ""+idLineaInvestigacion);
+        NameValuePair value9 = new BasicNameValuePair("id_director", ""+idDirector);
+        
         
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/semillero");
         requestBuilder.addParameter(value1);
@@ -55,9 +56,11 @@ public class ControladorSemillero {
         HttpResponse httpResponse = httpClient.execute(uriRequest);
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
+        System.out.println(httpResponse.getStatusLine().getStatusCode());
 
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
             JSONObject obj = new JSONObject(source);
+            System.out.println("**** " + obj.getInt("id"));
             return obj.getInt("id");
         } else {
             return -1;
@@ -102,7 +105,7 @@ public class ControladorSemillero {
 
     public JSONObject consultarSemillero(String idSemillero, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("#" + idSemillero);
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/semillero/"+idSemillero);
         HttpResponse httpResponse = httpClient.execute(httpGet);
         JSONObject jsonSemillero = null;
         String source = "";
