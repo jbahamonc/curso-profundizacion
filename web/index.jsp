@@ -126,7 +126,7 @@
                     <!-- About -->
                     <div class="col-md-3 col-sm-4 md-margin-bottom-40">
                       <div class="footer-main">
-                        <a href="http://ingsistemas@ufps.edu.co"><img width="200" id="logo-footer" class="img-responsive" src="img/logo_ingsistemas_vertical_invertido.png" alt="Logo Pie de Página"></a>
+                        <a href="http://ww2.ufps.edu.co"><img width="200" id="logo-footer" class="img-responsive" src="img/logoufpsvertical.png" alt="Logo Pie de Página"></a>
                       </div>
                     </div><!--/col-md-3-->
                     <!-- End About -->

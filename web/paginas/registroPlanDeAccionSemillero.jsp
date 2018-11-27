@@ -73,7 +73,7 @@
                         <h3 class="box-title">Listado de Proyectos</h3>
                     </div>        	
                     <div class="box-body">
-                        <div class="text-center" id="info-empty-projects-semillero">
+                        <div class="text-center info-empty">
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
@@ -94,7 +94,7 @@
                         <h3 class="box-title">Listado de Capacitaciones</h3>
                     </div>        	
                     <div class="box-body">
-                        <div class="text-center " id="info-empty-activitys-semillero">
+                        <div class="text-center info-empty">
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
@@ -115,7 +115,7 @@
                         <h3 class="box-title">Listado de Actividades</h3>
                     </div>        	
                     <div class="box-body">
-                        <div class="text-center " id="info-empty-activitys-semillero">
+                        <div class="text-center info-empty">
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>

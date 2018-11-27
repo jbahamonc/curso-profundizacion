@@ -25,7 +25,6 @@ $(function () {
         overlay.removeClass('hidden')
         if (form.valid()) {
             form = form.serializeArray()
-            console.log(form)
             form.push({'token': token})
             $.ajax({
                 url: '../paginas/procesar/gestionPlanAccionSemillero.jsp',
