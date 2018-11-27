@@ -113,8 +113,88 @@ public class ControladorPlanAccionSemillero {
         JSONObject planAccionSemillero = null;
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
             planAccionSemillero = new JSONObject(source);
+            JSONObject planOld = obtenerProyectosActividadesNoTerminados(anio, semestre, idSemillero, tipoSesion, token);
+            if ( planOld != null ) {
+                planAccionSemillero.put("proyectos", planOld.getJSONArray("proyectosNoTerminado"));
+                planAccionSemillero.put("actividades", planOld.getJSONArray("actividadesNoterminada"));
+            }
+            JSONObject eventOld = obtenerCapacitacionesPlanAccionNoTerminados(anio, semestre, idSemillero, token);
+            if ( eventOld != null ) {
+                planAccionSemillero.put("eventos", eventOld.getJSONArray("EventoNoTerminado"));
+            }
         }        
         return planAccionSemillero;
+    }
+    
+    private JSONObject obtenerProyectosActividadesNoTerminados(String anio, String semestre, String idSemillero, String tipoSesion, String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/ProyectosActividadesNoterminadoPlanAccionGrupoSemillero/"+idSemillero+"/session/"+tipoSesion);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject jsonObj = null;
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
+            jsonObj = new JSONObject(source);                        
+        }        
+        return jsonObj;
+    }
+    
+    private JSONObject obtenerCapacitacionesPlanAccionNoTerminados(String anio, String semestre, String idSemillero, String token) throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/capacitacionNoTerminadoPlanAccionSemillero/"+idSemillero);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject jsonObj = null;
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
+            jsonObj = new JSONObject(source);                        
+        }        
+        return jsonObj;
+    }
+    
+    public boolean vincularProyectosNuevosViejosSemillero(String anio, String semestre, String idSemillero, String id_pro, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/asignarProyectoPlanAccionGrupoSemillero");
+        requestBuilder.addParameter("year", anio);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("idGrupoSemillero", idSemillero);
+        requestBuilder.addParameter("tipoSession", "0");
+        requestBuilder.addParameter("id_proyecto", id_pro);
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+    
+    public boolean vincularActividadesAntiguasPlanSemillero(String anio, String semestre, String idSemillero, String id_act, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/asignarActividadesPlanAccionGrupoSemillero");
+        requestBuilder.addParameter("year", anio);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("idGrupoSemillero", idSemillero);
+        requestBuilder.addParameter("tipoSession", "0");
+        requestBuilder.addParameter("id_actividad", id_act);
+        requestBuilder.addParameter("token", token);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
+    }
+
+    public boolean vincularCapacitacionesAntiguosPlanSemillero(String anio, String semestre, String idSemillero, String id_cap, String token) throws IOException {
+        HttpClient httpClient = HttpClients.createDefault();        
+        RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/asignarCapacitacionPlanAccionSemillero");
+        requestBuilder.addParameter("year", anio);
+        requestBuilder.addParameter("semestre", semestre);
+        requestBuilder.addParameter("idSemillero", idSemillero);
+        requestBuilder.addParameter("id_capacitacion", id_cap);
+        HttpUriRequest uriRequest = requestBuilder.build();        
+        HttpResponse httpResponse = httpClient.execute(uriRequest); 
+        String source = EntityUtils.toString(httpResponse.getEntity());
+        System.out.println(source);
+        return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );
     }
     
 }

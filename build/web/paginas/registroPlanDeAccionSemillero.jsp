@@ -37,15 +37,16 @@
                     </div>        	
                     <div class="box-body">
                         <form id="form-plan-action-semillero">
+                            <input type="hidden" value="3" name="operacion">
                             <div class="form-group col-xs-12 col-md-6">
                                 <label>Año (*)</label>
                                 <select name="anio" id="anio" class="form-control" required>
                                     <option selected disabled>Seleccione</option>
-                                    <% 
+                                    <%
                                         int anio = Calendar.getInstance().get(Calendar.YEAR);
-                                        for (int i = anio; i < anio + 20; i++) {                                                                                  
+                                        for (int i = anio; i < anio + 20; i++) {
                                     %>
-                                        <option value="<%= i %>"><%= i %></option>
+                                    <option value="<%= i%>"><%= i%></option>
                                     <% } %>
                                 </select>
                             </div>				                
@@ -77,6 +78,9 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
+                        <div class="box-data-action" id="">
+                            <ul class="products-list product-list-in-box" id="ulProjects"></ul>
+                        </div>
                     </div> 
                     <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
                         <div class="text-center">
@@ -95,6 +99,9 @@
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
                         </div>
+                        <div class="box-data-action">          
+                            <ul class="products-list product-list-in-box" id="ulCapacity"></ul>                           
+                        </div>
                     </div>  
                     <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
                         <div class="text-center">
@@ -112,6 +119,9 @@
                             <img src="../img/sad.png" alt="">
                             <h4><b>No hay información!</b></h4>
                             <p>No se ha cargado ninguna información en este panel.</p>
+                        </div>
+                        <div class="box-data-action">    
+                            <ul class="products-list product-list-in-box" id="ulActivitys"></ul>
                         </div>
                     </div>  
                     <div class="overlay hidden" style="display: flex;align-items: center;justify-content: center;background: rgba(255, 255, 255, 0.91);">
@@ -133,13 +143,14 @@
                     </div>        	
                     <div class="box-body">
                         <form id="form-project-news-plan-semillero">
+                            <input type="hidden" value="4" name="operacion">
                             <div class="form-group col-xs-12">
                                 <label>Seleccione el Proyecto a Vincular (*)</label>
                                 <select name="proyecto" id="proyecto" class="form-control">
                                     <option value="" selected="" disabled="">Seleccione</option>
                                     <%
-                                       JSONObject info = (JSONObject) session.getAttribute("info");
-                                       JSONArray proyectos = info.getJSONArray("proyectoNuevo");
+                                        JSONObject info = (JSONObject) session.getAttribute("info");
+                                        JSONArray proyectos = info.getJSONArray("proyectoNuevo");
 
                                         for (int i = 0; i < proyectos.length(); i++) {
                                             JSONObject proyecto = proyectos.getJSONObject(i);
@@ -165,6 +176,7 @@
                     </div>        	
                     <div class="box-body">
                         <form action="" id="form-capacity">
+                            <input type="hidden" value="5" name="operacion">
                             <div id="fields-capacity">
                                 <div class="form-group col-xs-12">
                                     <label>Nombre de la Capacitación (*)</label>
@@ -213,64 +225,66 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div-->
-                            <div class="form-group col-xs-12 text-right">
-                                <!--button type="button" class="btn hidden btn-flat" id="btn-back-capacity">Atras</button-->
-                                <button type="button" disabled class="btn btn-danger btn-flat button-plans" id="btn-save-capacity">Registrar</button>
+                                <div class="form-group col-xs-12 text-right">
+                                    <!--button type="button" class="btn hidden btn-flat" id="btn-back-capacity">Atras</button-->
+                                    <button type="button" disabled class="btn btn-danger btn-flat button-plans" id="btn-save-capacity">Registrar</button>
+                                </div>
+
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Otras Actividades de Investigación</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                            </button>
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Otras Actividades de Investigación</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>        	
+                        <div class="box-body">
+                            <div class="alert alert-warning alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                                Las Actividadedes de Investigación corresponden a Espacios de socialización, Foros, Reuniones, Elaboración de documentos, entre otros.
+                            </div>
+                            <form id="form-reg-act-plan-semillero">
+                                <input type="hidden" value="6" name="operacion">
+                                <div class="form-group col-xs-12">
+                                    <label>Nombre de la Actividad (*)</label>
+                                    <input type="text" class="form-control" required name="actividad" id="actividad">
+                                </div>	
+                                <div class="form-group col-xs-12">
+                                    <label>Responsables (*)</label>
+                                    <select id="responsables" required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <%
+                                            JSONArray responsables = info.getJSONArray("integrante");
+                                            for (int i = 0; i < responsables.length(); i++) {
+                                                JSONObject responsable = responsables.getJSONObject(i);
+                                        %>
+                                        <option value="<%=responsable.getString("nombre")%>"><%=responsable.getString("nombre")%></option>
+                                        <% }%>
+                                    </select>
+                                </div>
+                                <div class="form-group col-xs-12 col-md-6">
+                                    <label>Fecha de Inicio (*)</label>
+                                    <input type="month" class="form-control" name="fechaInicio" id="fechaInicio" required>
+                                </div>
+                                <div class="form-group col-xs-12 col-md-6">
+                                    <label>Fecha de Finalización (*)</label>
+                                    <input type="month" class="form-control" name="fechaFinal" id="fechaFinal" required>
+                                </div>
+                                <div class="form-group col-xs-12 col-md-12">
+                                    <label>Producto (*)</label>
+                                    <input type="text" class="form-control" id="producto" name="producto" required/>
+                                </div>           	
+                                <div class="form-group col-xs-12 text-right">
+                                    <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan-semillero">Registrar</button>
+                                </div>	                				                                      
+                            </form>
                         </div>
-                    </div>        	
-                    <div class="box-body">
-                        <div class="alert alert-warning alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4><i class="icon fa fa-warning"></i> Importante!</h4>
-                            Las Actividadedes de Investigación corresponden a Espacios de socialización, Foros, Reuniones, Elaboración de documentos, entre otros.
-                        </div>
-                        <form id="form-reg-act-plan-semillero">
-                            <div class="form-group col-xs-12">
-                                <label>Nombre de la Actividad (*)</label>
-                                <input type="text" class="form-control" required name="actividad" id="actividad">
-                            </div>	
-                            <div class="form-group col-xs-12">
-                                <label>Responsables (*)</label>
-                                <select id="responsables" required class="js-example-basic-multiple1 select2-hidden-accessible" data-placeholder="Seleccione uno o varios investigadores" name="responsables" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <%
-                                        JSONArray responsables = info.getJSONArray("integrante");
-                                        for (int i = 0; i < responsables.length(); i++) {
-                                            JSONObject responsable = responsables.getJSONObject(i);
-                                    %>
-                                    <option value="<%=responsable.getString("nombre")%>"><%=responsable.getString("nombre")%></option>
-                                    <% }%>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label>Fecha de Inicio (*)</label>
-                                <input type="month" class="form-control" name="fechaInicio" id="fechaInicio" required>
-                            </div>
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label>Fecha de Finalización (*)</label>
-                                <input type="month" class="form-control" name="fechaFinal" id="fechaFinal" required>
-                            </div>
-                            <div class="form-group col-xs-12 col-md-12">
-                                <label>Producto (*)</label>
-                                <input type="text" class="form-control" id="producto" name="producto" required/>
-                            </div>           	
-                            <div class="form-group col-xs-12 text-right">
-                                <button type="button" disabled class="btn bg-red btn-flat button-plans" id="btn-save-act-plan-semillero">Registrar</button>
-                            </div>	                				                                      
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 </div>
 <!-- /END CONTENT WRAPPER -->
