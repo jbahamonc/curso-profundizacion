@@ -185,6 +185,22 @@
             }
             out.print(j1);
             break;
+            
+        // Vincular eventos antiguos al nuevo plan de accion
+        case 12:
+            anio = request.getParameter("anio");
+            semestre = request.getParameter("semestre"); 
+            String id_evt = request.getParameter("id");
+            //System.out.println("anio="+anio+"semestre="+semestre+"grupo="+id_grupo+"proyecto="+id_pro);
+            boolean msg = f.vincularEventosAntiguosPlanGrupo(anio, semestre, id_grupo, id_evt, token);
+            JSONObject j2 = new JSONObject();
+            if ( msg ) {
+                j2.put("status", 200);
+            } else {
+                j2.put("status", 500);
+            }
+            out.print(j2);
+            break;
     }
 
 %>

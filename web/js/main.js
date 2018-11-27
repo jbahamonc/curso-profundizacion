@@ -110,33 +110,41 @@ $(document).ready(function() {
 
     // Evento que se dispara cuando se selecciona algun tipo de producto, con el fin de mostrar campos adicionales
     // dependiento del tipo de producto
-    $("#select-tipo-producto").on("change", function () {
-    	var tipo = $("#select-tipo-producto option:selected").text()    
+    $("#select-tipoProducto").on("change", function () {
+    	var tipo = $("#select-tipoProducto option:selected").text()    
         tipo = tipo.toLowerCase()
         tipo = quitaAcentos(tipo)
+        console.log(tipo)
+        var tipoProducto 
     	$("form .active").removeClass('active').addClass('hidden')
     	if ( tipo === "libro") {
             $("#fields-book").removeClass('hidden').addClass('active')
+            tipoProducto = "libro"
     	}
     	else if ( tipo == "capitulo") {
             $("#fields-chapter").removeClass('hidden').addClass('active')
+            tipoProducto = "capitulo"
     	}
     	else if ( tipo == "articulo") {
             $("#fields-article").removeClass('hidden').addClass('active')
+            tipoProducto = "articulo"
     	}
-    	else if ( tipo == "trabajo de grado") {
+    	else if ( tipo == "trabajo de grado pregrado" || tipo == "tesis de doctorado" || tipo == "trabajo de grado de maestria") {
             $("#fields-project").removeClass('hidden').addClass('active')
+            tipoProducto = "tesis"
     	}
         else if ( tipo == "evento cientifico") {
             $("#fields-ponencia").removeClass('hidden').addClass('active')
+            tipoProducto = "evento cientifico"
     	}
         else if ( tipo == "software") {
             $("#fields-software").removeClass('hidden').addClass('active')
+            tipoProducto = "software"
     	}
         else {
             $("#box-empty").removeClass('hidden').addClass('active')
         }
-
+        localStorage.setItem("tipoProducto", tipoProducto)
     })
     
     // Funcion que quita los acentos del str
