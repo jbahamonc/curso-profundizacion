@@ -13,11 +13,11 @@ $(function () {
                 data     : form.serialize(),
                 success  : function ( response ) {
                     var obj = JSON.parse(response)
-                    if ( obj.status == 200 ) {
-                        localStorage.setItem('token', obj.token)
-                        document.location.href = 'index.jsp' 
+                    console.log(obj)
+                    if ( obj.exito === "1" ) {
+                        document.location.href = '../paginas/index.jsp' 
                     } else {
-                        $.mdtoast(obj.msg, {
+                        $.mdtoast("El usuario o la contraseña no son correctos", {
                             duration  : 5000                
                         });
                     }

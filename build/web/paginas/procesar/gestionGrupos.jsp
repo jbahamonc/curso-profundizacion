@@ -26,8 +26,7 @@
             String categoria = request.getParameter("categoriaGrupo");            
             String email = request.getParameter("email");            
             String nombreDpto = request.getParameter("nombreDepartamento");            
-            //String director = session.getAttribute("id_director");  
-            String director = "1"; // esto es porque no hay sesion 
+            String director = session.getAttribute("id_director").toString();  
             token = request.getParameter("token");  
             int id = f.registrarGrupo(nombre, siglas, tipoUnidad, nombreUnidad, ubicacion, fecha, codigoGruplav, clasificado, 
                     categoria, email, nombreDpto, director);
