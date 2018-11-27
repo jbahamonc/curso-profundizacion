@@ -17,6 +17,7 @@
             JSONObject res = f.iniciarSesion(user, pass);
             if ( res.getString("exito").equals("1") ) {
                 session.setAttribute("id_director", res.getJSONObject("usuario").getInt("id"));
+                System.out.println(session.getAttribute("id_director").toString());
                 session.setAttribute("usuario_sesion", res);
             }
             out.print(res);

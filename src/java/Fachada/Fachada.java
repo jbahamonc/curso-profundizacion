@@ -66,9 +66,15 @@ public class Fachada {
     
     }
     
-    public JSONObject listarGrupos() throws IOException, JSONException {
+    public JSONObject listarGrupos(String id) throws IOException, JSONException {
         controladorGrupos = new ControladorGrupos();
-        return controladorGrupos.listarGrupos();
+        return controladorGrupos.listarGrupos(id);
+    
+    }
+    
+    public JSONObject listarGruposVisitante() throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.listarGruposVisitante();
     
     }
     
@@ -112,6 +118,11 @@ public class Fachada {
     public JSONArray consultarProyecto(String idProject, String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
         return controladorProyectos.consultarProyecto(idProject, token);
+    }
+    
+    public JSONArray listarObjetivos(String idProject) throws IOException, JSONException {
+        controladorProyectos = new ControladorProyectos();
+        return controladorProyectos.listarObjetivos(idProject);
     }
     
     public boolean cerrarProyecto(String id_project, String token) throws IOException, JSONException {

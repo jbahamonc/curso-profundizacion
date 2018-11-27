@@ -75,7 +75,9 @@
             String idProject = request.getParameter("id");
             JSONArray data = f.consultarProyecto(idProject, token);
             if (data != null) { 
+                JSONArray objs = f.listarObjetivos(idProject);
                 session.setAttribute("proyecto_sesion", idProject);
+                session.setAttribute("objetivos", objs);
                 session.setAttribute("infoProject", data);
                 response.sendRedirect("../infoProyecto.jsp");
             } else {

@@ -63,7 +63,10 @@
         // Listar
         case 3 :
             token = request.getParameter("token");
-            JSONObject grupos = f.listarGrupos();
+            String id_director = session.getAttribute("id_director").toString();
+            System.out.println("---------------------------------------------------");
+            System.out.println(id_director);
+            JSONObject grupos = f.listarGrupos(id_director);
             session.setAttribute("grupos", grupos);
             session.setAttribute("token", token);            
             response.sendRedirect("../gruposInvestigacion.jsp");
@@ -81,10 +84,9 @@
         case 5 :
             token = request.getParameter("token");
             String idDel = request.getParameter("id");
-            //boolean bool = f.eliminarGrupo(idDel, token);
-            boolean bool1 = true;
+            boolean bool = f.eliminarGrupo(idDel, token);
             JSONObject res = new JSONObject();
-            if ( bool1 ) {
+            if ( bool ) {
                 res.put("status", 200);
             } else {
                 res.put("status", 500);
@@ -95,7 +97,7 @@
         // Para visitantes
         // listar grupos
         case 6 :
-            JSONObject gruposV = f.listarGrupos();
+            JSONObject gruposV = f.listarGruposVisitante();
             session.setAttribute("grupos", gruposV);  
             response.sendRedirect("../visitante/grupos-investigacion.jsp");
             break;

@@ -71,7 +71,7 @@
     <main>
         <div class="container" style="background-color: #FFF;">
             <img src="img/logo_ufps.png" alt="" class="center-block">
-        	<h3 class="text-center">Asistente de Investigación y extensión UFPS (AIE)</h3> 
+        	<h3 class="text-center">Sistema para el registro y consulta de proyectos, productos y planes de acción grupos y semilleros de investigación de la UFPS</h3> 
             <div id="carousel-example-generic" class="carousel hidden slide" data-ride="carousel" style="margin: 30px 0;">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">

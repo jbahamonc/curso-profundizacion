@@ -78,15 +78,15 @@
                         <th>Nombre del Grupo</th> 
                         <th>Fecha de Creación</th> 
                         <th>Codigo</th> 
-                        <th>Director</th> 
-                        <th>Categoria</th> 
+                        <th>Siglas</th> 
+                        <th>Ubicacion</th> 
                         <th>Acciones</th> 
                     </tr> 
                 </thead> 
                 <tbody> 
                     <% 
                         JSONObject grupos = (JSONObject)session.getAttribute("grupos");
-                        JSONArray lista = grupos.getJSONArray("grupos");
+                        JSONArray lista = grupos.getJSONArray("grupo");
                         if ( grupos != null ) {
                             for (int i = 0; i < lista.length(); i++) {
                                 JSONObject obj = lista.getJSONObject(i);
@@ -96,8 +96,8 @@
                         <td><%= obj.getString("nombre") %></td> 
                         <td><%= obj.getString("fecha_creacion") %></td> 
                         <td><%= obj.getString("codigo_colciencias") %></td> 
-                        <td><%= obj.getString("nombreDirector") %></td> 
-                        <td><%= obj.getString("nombre_categoria") %></td> 
+                        <td><%= obj.getString("sigla") %></td> 
+                        <td><%= obj.getString("ubicacion") %></td> 
                         <td>
                             <a href="../procesar/gestionProyecto.jsp?id=<%=obj.getInt("id")%>&operacion=6&token=4324bhj2" class="btn btn-success btn-xs">
                                 <i class="fa fa-eye" aria-hidden="true"></i>

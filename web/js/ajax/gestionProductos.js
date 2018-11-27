@@ -3,6 +3,10 @@ $(function () {
     jQuery.validator.messages.required = 'Este campo es obligatorio.';
     jQuery.validator.messages.number = 'Este campo debe ser num&eacute;rico.';
     
+    $(document).ajaxStart(function () {
+        Pace.restart()
+    })
+    
     $("#productos").DataTable()
 
     $("#btn-save-product").on("click", function () {        

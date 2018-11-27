@@ -50,7 +50,7 @@
                             <td><%= obj.getString("nombreDirector") %></td>
                             <td><%= obj.getString("nombre_categoria") %></td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger btn-xs btn-del-group" data-id="<%= obj.getInt("id") %>">
+                                <button type="button" class="btn btn-danger btn-xs btn-del-group hidden" data-id="<%= obj.getInt("id") %>">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                                 <a href="procesar/gestionGrupos.jsp?id=<%= obj.getInt("id") %>&operacion=2&token=<%= session.getAttribute("token") %>" class="btn btn-success btn-xs">
