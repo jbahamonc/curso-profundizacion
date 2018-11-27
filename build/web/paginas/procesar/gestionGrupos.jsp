@@ -35,7 +35,8 @@
             if (id > 0) {
                 json.put("status", "200");
                 json.put("id_grupo", "1");
-                session.setAttribute("tipoSesion", "grupos");
+                session.setAttribute("tipoSesion", "1");
+                session.setAttribute("idGrupoSemillero", id);
             }
             else {
                 json.put("status", "500");
@@ -56,6 +57,7 @@
                 response.sendRedirect("../infoGrupo.jsp");
             } else {
                 System.out.println("ocurrio un error");
+                response.sendError(500, "Ocurrio un error en el servidor");
             }            
             break;   
             
@@ -97,6 +99,13 @@
             JSONObject gruposV = f.listarGrupos();
             session.setAttribute("grupos", gruposV);  
             response.sendRedirect("../visitante/grupos-investigacion.jsp");
+            break;
+            
+        // listar categoria grupos
+        case 7 :
+            JSONObject categorias = f.listarGruposCategorias();
+            session.setAttribute("categorias", categorias);  
+            response.sendRedirect("../categoriasGrupos.jsp");
             break;
             
         default :

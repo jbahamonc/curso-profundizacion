@@ -116,5 +116,19 @@ public class ControladorGrupos {
         System.out.println(source);
         return ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 );    
     }
+
+    public JSONObject listarGruposCategorias() throws IOException, JSONException {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/categoriaGrupo");
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        JSONObject json = null;
+        String source = "";
+        if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {
+            source = EntityUtils.toString(httpResponse.getEntity());
+            json = new JSONObject(source);                   
+        }        
+        System.out.println(source);     
+        return json;
+    }
     
 }

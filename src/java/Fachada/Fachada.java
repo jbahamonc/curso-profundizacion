@@ -8,6 +8,7 @@ package Fachada;
 import Controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,6 +25,7 @@ public class Fachada {
     private ControladorPlanAccion controladorPlanAccion;
     private ControladorLogin controladorLogin;
     private ControladorPlanAccionSemillero controladorPlanAccionSemillero;
+    private ControladorProductos controlProductos;
     
     
     
@@ -82,6 +84,12 @@ public class Fachada {
     
     }
     
+    public JSONObject listarGruposCategorias() throws IOException, JSONException {
+        controladorGrupos = new ControladorGrupos();
+        return controladorGrupos.listarGruposCategorias();
+    
+    }
+    
     // Metodos proyecto **********************************************************************************************
     public JSONObject listarProyectos(String idGrupoSemillero, String tipoSesion, String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
@@ -101,7 +109,7 @@ public class Fachada {
                                 objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
     }
     
-    public JSONObject consultarProyecto(String idProject, String token) throws IOException, JSONException {
+    public JSONArray consultarProyecto(String idProject, String token) throws IOException, JSONException {
         controladorProyectos = new ControladorProyectos();
         return controladorProyectos.consultarProyecto(idProject, token);
     }
@@ -161,6 +169,21 @@ public class Fachada {
         return controladorPlanAccion.registroAvanceEventoPlan(año, semestre, id_evt, porcentaje, id_grupo, token);
     }
     
+    public boolean vincularProyectosNuevosViejos(String año, String semestre, String id_grupo, String id_pro, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.vincularProyectosNuevosViejos(año, semestre, id_grupo, id_pro, token);
+    }
+    
+    public boolean vincularActividadesAntiguasPlanGrupo(String año, String semestre, String id_grupo, String id_act, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.vincularActividadesAntiguasPlanGrupo(año, semestre, id_grupo, id_act, token);
+    }
+    
+    public boolean vincularEventosAntiguosPlanGrupo(String anio, String semestre, String id_grupo, String id_evt, String token) throws IOException, JSONException {
+        controladorPlanAccion = new ControladorPlanAccion();
+        return controladorPlanAccion.vincularEventosAntiguosPlanGrupo(anio, semestre, id_grupo, id_evt, token);
+    }
+    
     // Metodos de Semilleros *********************************************************************************************************
     public int registrarSemillero(String codigo, String nombreSemillero, String sigla, String ubicacion, String fechaCreacion,
     String idDirector, String idLineaInvestigacion, String email, String idGrupo) throws IOException, JSONException{
@@ -218,4 +241,64 @@ public class Fachada {
         controladorPlanAccionSemillero = new ControladorPlanAccionSemillero();
         return controladorPlanAccionSemillero.registrarPlanAccionSemillero(anio, semestre, idSemillero, tipoSesion, token);
     }
+    
+    // Metodos de productos *********************************************************************************************************
+    
+    public JSONArray cargarDatosRegistroProductosTipologi1() throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.cargarDatosRegistroProductosTipologi1();
+    }
+    
+    public JSONArray listarProductosProyecto(String id_proyecto) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.listarProductosProyecto(id_proyecto);
+    }
+    
+    public JSONArray cargarSubtipologia(String id_tipologia) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.cargarSubtipologia(id_tipologia);
+    }
+    
+    public JSONArray cargarTipoProductos(String id_subtipologia) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.cargarTipoProductos(id_subtipologia);
+    }
+    
+    public JSONArray cargarCategoriasTipoProductos(String id_catProducto) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.cargarCategoriasTipoProductos(id_catProducto);
+    }
+    
+    public JSONObject registrarArticulo(String id_proyecto, String nombrePro, String descPro,String tipoPro,String 
+            tipoArti,String nombreArt,String title, String anio,String mes,String volumen, String numeroArt, String pIni, String pFin,
+            String issn, String website, String doi) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.registrarArticulo(id_proyecto, nombrePro,descPro,tipoPro,tipoArti,nombreArt,title,anio,mes,volumen,numeroArt,pIni,pFin,issn,website,doi);
+    }
+    
+    public JSONObject registrarCapitulo(String id_proyecto,String nombrePro,String descPro,String id_tipoPro,String tituloLibro,String tituloCap,
+            String fechaPubli,String autor,String editorial,String lugarPubli,String certEntidad,String curriculo,String tipoDesarrollo, String isbn) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.registrarCapitulo(id_proyecto,nombrePro,descPro,id_tipoPro,tituloLibro, tituloCap,fechaPubli,autor,editorial,lugarPubli,
+                        certEntidad,curriculo, tipoDesarrollo, isbn);
+    }
+    
+    public JSONObject registrarLibro(String id_proyecto,String nombrePro,String descPro,String id_tipoPro,String fechaPubli,String autor,
+            String editorial,String lugarPubli,String certEntidad,String curriculo,String tipoDesarrollo, String isbn, String titulo) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.registrarLibro(id_proyecto,nombrePro,descPro,id_tipoPro,fechaPubli,autor,editorial,lugarPubli,
+                        certEntidad,curriculo, tipoDesarrollo, isbn, titulo);
+    }
+    
+    public JSONObject registrarSoftware(String id_proyecto,String nombrePro,String descPro,String id_tipoPro, String dnda,String anioObtencion,
+            String analisis,String diseño,String implementacion,String validacion) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.registrarSoftware(id_proyecto,nombrePro,descPro,id_tipoPro,dnda,anioObtencion,analisis,diseño,implementacion,validacion);
+    }
+    
+    public JSONObject registrarTesis(String id_proyecto,String nombrePro,String descPro,String id_tipoPro,String titulo,String anio, String institucion,String reco) throws IOException, JSONException{
+        controlProductos = new ControladorProductos();
+        return controlProductos.registrarTesis(id_proyecto,nombrePro,descPro,id_tipoPro,titulo,anio,institucion,reco);
+    }
+    
 }

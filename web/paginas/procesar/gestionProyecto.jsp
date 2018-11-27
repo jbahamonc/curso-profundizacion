@@ -4,6 +4,7 @@
     Author     : jeferson
 --%>
 
+<%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="Fachada.Fachada"%>
 <% 
@@ -60,6 +61,7 @@
                                 objGeneral, resEsperados, objEspecificos, numContrato, token, tipoSesion);
             JSONObject json = new JSONObject();
             if ( res > 0 ) {
+                session.setAttribute("proyecto_sesion", res+"");
                 json.put("status", 200);
                 json.put("id", res);
             } else {
@@ -71,8 +73,9 @@
         // Consultar proyecto
         case 4:
             String idProject = request.getParameter("id");
-            JSONObject data = f.consultarProyecto(idProject, token);
-            if (data == null) { // null para probar
+            JSONArray data = f.consultarProyecto(idProject, token);
+            if (data != null) { 
+                session.setAttribute("proyecto_sesion", idProject);
                 session.setAttribute("infoProject", data);
                 response.sendRedirect("../infoProyecto.jsp");
             } else {

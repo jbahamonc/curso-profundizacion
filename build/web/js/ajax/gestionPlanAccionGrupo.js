@@ -48,7 +48,7 @@ $(function () {
                                                 p.titulo +
                                             '</a>'+
                                             '<span class="product-description">'+
-                                                '<button class="btn btn-xs btn-success pull-right" data-id='+p.id+'>VINCULAR</button>'
+                                                '<button class="btn btn-xs btn-success pull-right btn-add-projectOld-plan" data-id='+p.id+'>VINCULAR</button>'
                                             '</span>'+
                                         '</div>'+
                                     '</li>'
@@ -72,7 +72,7 @@ $(function () {
                                                 e.nombre +
                                             '</a>'+
                                             '<span class="product-description">'+
-                                                '<button class="btn btn-xs btn-success pull-right" data-id='+e.id+'>VINCULAR</button>'
+                                                '<button class="btn btn-xs btn-success pull-right btn-add-evtOld-plan" data-id='+e.id+'>VINCULAR</button>'
                                             '</span>'+
                                         '</div>'+
                                     '</li>'
@@ -96,7 +96,7 @@ $(function () {
                                                 a.nombre +
                                             '</a>'+
                                             '<span class="product-description">'+
-                                                '<button class="btn btn-xs btn-success pull-right" data-id='+a.id+'>VINCULAR</button>'
+                                                '<button class="btn btn-xs btn-success pull-right btn-add-actOld-plan" data-id='+a.id+'>VINCULAR</button>'
                                             '</span>'+
                                         '</div>'+
                                     '</li>'
@@ -122,40 +122,40 @@ $(function () {
     })
     
     // Evento para agregar proyectos al plan de accion
-    $("#btn-add-project-plan-group").on("click", function () {
-        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
-        myToast.show()
-        var form = $("#form-project-news-plan")
-        if ( form.valid() ) {
-            var plan = JSON.parse(localStorage.getItem('dataPlan'))
-            form = form.serializeArray()
-            form.push('token', token)
-            form.push('anio', plan.anio)
-            form.push('semestre', plan.semestre)
-            $.ajax({
-                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
-                type    : 'POST',
-                data    : $.param(form),
-                success : function ( response ) {
-                    var json = JSON.parse(response)
-                    if ( json.status == 200 ) {
-                        myToast.hide()   
-                        $.mdtoast('El proyecto se ha vinculado', {
-                            duration  : 3000                
-                        });
-                    } else {
-                        $.mdtoast('Ocurrio un error al guardar la información', {
-                            duration  : 5000                
-                        });
-                    }
-                }
-            })
-        } else {
-            $.mdtoast('Los campos marcados con (*) son obligatorios', {
-                duration  : 5000                
-            }); 
-        }
-    })
+//    $("#btn-add-project-plan-group").on("click", function () {
+//        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+//        myToast.show()
+//        var form = $("#form-project-news-plan")
+//        if ( form.valid() ) {
+//            var plan = JSON.parse(localStorage.getItem('dataPlan'))
+//            form = form.serializeArray()
+//            form.push('token', token)
+//            form.push('anio', plan.anio)
+//            form.push('semestre', plan.semestre)
+//            $.ajax({
+//                url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp',
+//                type    : 'POST',
+//                data    : $.param(form),
+//                success : function ( response ) {
+//                    var json = JSON.parse(response)
+//                    if ( json.status == 200 ) {
+//                        myToast.hide()   
+//                        $.mdtoast('El proyecto se ha vinculado', {
+//                            duration  : 3000                
+//                        });
+//                    } else {
+//                        $.mdtoast('Ocurrio un error al guardar la información', {
+//                            duration  : 5000                
+//                        });
+//                    }
+//                }
+//            })
+//        } else {
+//            $.mdtoast('Los campos marcados con (*) son obligatorios', {
+//                duration  : 5000                
+//            }); 
+//        }
+//    })
     
     // Evento para registrar actividades en el plan de accion
     $("#btn-save-act-plan").on("click", function () {
@@ -316,6 +316,97 @@ $(function () {
                 duration  : 5000                
             }); 
         }
+    })
+    
+    // Vincular proyecto del plan de accion anterior al nuevo
+    $("body").on("click", ".btn-add-projectOld-plan", function (e) {
+        var btn = $(e.currentTarget)        
+        vincularProyecto(btn.data("id"), 1, btn)
+    })
+    
+    // Vincular proyectos nuevos al plan de accion nuevo
+    $("#btn-add-project-plan-group").on("click", function () {
+        var select = $("#select-project-news :selected")
+        vincularProyecto(select.val(), 2, select)
+    })
+    
+    function vincularProyecto(id, from, node) {
+        var myToast = $.mdtoast('Registro en proceso...', { duration: 1000000, init: true });
+        myToast.show()   
+        var dataPlan = JSON.parse(localStorage.getItem("dataPlan"))
+        $.ajax({
+            url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp?id='+id+"&anio="+dataPlan.anio+"&semestre="+dataPlan.semestre+"&operacion=10",
+            type    : 'GET',
+            success : function ( response ) {
+                var json = JSON.parse(response)
+                if ( json.status == 200 ) {
+                    myToast.hide()  
+                    if ( from == 1 ) node.addClass("hidden")
+                    $.mdtoast('El proyecto ha sido vinculado', {
+                        duration  : 3000                
+                    });
+                } else {
+                    res = false
+                    $.mdtoast('Ocurrio un error al guardar la información', {
+                        duration  : 5000                
+                    });
+                }
+            }
+        })
+    }
+    
+    // Vincular actividades del plan de accion anteriores al nuevo
+    $("body").on("click", ".btn-add-actOld-plan", function (e) {
+        var myToast = $.mdtoast('Vinculación en proceso...', { duration: 1000000, init: true });
+        myToast.show()   
+        var dataPlan = JSON.parse(localStorage.getItem("dataPlan"))
+        var btn = $(e.currentTarget)        
+        $.ajax({
+            url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp?id='+btn.data("id")+"&anio="+dataPlan.anio+"&semestre="+dataPlan.semestre+"&operacion=11",
+            type    : 'GET',
+            success : function ( response ) {
+                var json = JSON.parse(response)
+                if ( json.status == 200 ) {
+                    myToast.hide()  
+                    btn.addClass("hidden")
+                    $.mdtoast('La actividad ha sido vinculado al plan de acción', {
+                        duration  : 3000                
+                    });
+                } else {
+                    res = false
+                    $.mdtoast('Ocurrio un error al guardar la información', {
+                        duration  : 5000                
+                    });
+                }
+            }
+        })
+    })
+    
+    // Vincular eventos del plan de accion anteriores al nuevo
+    $("body").on("click", ".btn-add-evtOld-plan", function (e) {
+        var myToast = $.mdtoast('Vinculación en proceso...', { duration: 1000000, init: true });
+        myToast.show()   
+        var dataPlan = JSON.parse(localStorage.getItem("dataPlan"))
+        var btn = $(e.currentTarget)        
+        $.ajax({
+            url     : '../paginas/procesar/gestionPlanAccionGrupo.jsp?id='+btn.data("id")+"&anio="+dataPlan.anio+"&semestre="+dataPlan.semestre+"&operacion=12",
+            type    : 'GET',
+            success : function ( response ) {
+                var json = JSON.parse(response)
+                if ( json.status == 200 ) {
+                    myToast.hide()  
+                    btn.addClass("hidden")
+                    $.mdtoast('El evento ha sido vinculado al plan de acción', {
+                        duration  : 3000                
+                    });
+                } else {
+                    res = false
+                    $.mdtoast('Ocurrio un error al guardar la información', {
+                        duration  : 5000                
+                    });
+                }
+            }
+        })
     })
 })
 

@@ -48,8 +48,11 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-5">
                         <a href="./">
-                            <img id="logo-header" src="img/logo_sistemas_top.png" alt="Logo Programa de Ingeniería de Sistemas" style="max-height:180px;">
+                            <img id="logo-header" src="img/logo_ufps.png" alt="Logo Programa de Ingeniería de Sistemas" style="max-height:180px;">
                         </a>
+                    </div>
+                    <div class="col-md-2 col-ms-1 col-xs-2 pull-right">
+                        <a href="http://www.colombia.co/"><img class="header-banner" src="https://ww2.ufps.edu.co/public/imagenes/template/header/escudo_colombia.png" alt="Escudo de Colombia"></a>
                     </div>
                 </div>
             </div>
@@ -69,7 +72,7 @@
         <div class="container" style="background-color: #FFF;">
             <img src="img/logo_ufps.png" alt="" class="center-block">
         	<h3 class="text-center">Asistente de Investigación y extensión UFPS (AIE)</h3> 
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin: 30px 0;">
+            <div id="carousel-example-generic" class="carousel hidden slide" data-ride="carousel" style="margin: 30px 0;">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -93,6 +96,26 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+            </div>
+            <div style="margin-bottom:40px">                                  
+                <div class="headline" style="margin-bottom: 30px;">
+                    <h1>Presentación</h1>
+                </div>
+                <div class="shadow-wrapper">        
+                    <blockquote class="tag-box tag-box-v4" style="margin-bottom:40px;font-size: 17px;">
+                        <h4><p><strong>Vicerrector:</strong>&nbsp;&nbsp;Jhan Piero&nbsp;Rojas Suárez<br>
+                        <strong>Correo institucional:</strong> viceinvestigaciones@ufps.edu.co -&nbsp;jhanpierorojas@ufps.edu.co<br>
+                        <strong>Nombre:</strong> Jessica Lorena Leal Pabón<br>
+                        <strong>Cargo:</strong> Coordinadora de Investigación<br>
+                        <strong>Correo Electrónico:</strong> viceinvestigaciones@ufps.edu.co<br>
+                        <strong>Teléfono:</strong> 5776655 Ext. 333<br>
+                        <strong>Ubicación:</strong> Edificio de Investigaciones<br>
+                        <strong>Horario de atención:</strong> lunes a viernes 8:00 a.m. a 12:00 m. y 2:00 p.m. a 6:00 p.m.</p>
+                        </h4>
+                    </blockquote>
+                </div>
+                <h4><p>AIE es un sistema para el registro y consulta  de proyectos ,productos y planes de acción de grupos y semilleros de investigación de la UFPS que  permite realizar la procesos relacionados con la labor investigativa de los docentes investigadores, asi mismo generar reportes y estadisticas de la producción de los mismos.</p>
+                </h4>
             </div>
         </div>
     </main>

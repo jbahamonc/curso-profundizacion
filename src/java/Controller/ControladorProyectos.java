@@ -14,6 +14,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -97,15 +98,15 @@ public class ControladorProyectos {
         return id;
     }
 
-    public JSONObject consultarProyecto(String idProject, String token) throws IOException, JSONException {
+    public JSONArray consultarProyecto(String idProject, String token) throws IOException, JSONException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("https://productividadufps.herokuapp.com/api/v1/proyecto/"+idProject);
         HttpResponse httpResponse = httpClient.execute(httpGet);
-        JSONObject jsonObj = null;
+        JSONArray jsonObj = null;
         String source = EntityUtils.toString(httpResponse.getEntity());
         System.out.println(source);
         if ( httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201 ) {            
-            jsonObj = new JSONObject(source);                        
+            jsonObj = new JSONArray(source);                        
         }        
         return jsonObj;
     }

@@ -69,9 +69,9 @@
     </header>
     <main>
         <div class="container" style="background-color: #FFF;">
-            <h2>Listado de Grupos de Investigación</h2>
+            <h2>Listado de Proyectos de Investigación</h2>
             <table class="table"> 
-                <caption>A continuacion podra visualizar los grupos de investigación, asi como sus proyectos asociados.</caption> 
+                <caption>A continuación podra visualizar los proyectos asociados al grupo de investigación.</caption> 
                 <thead> 
                     <tr> 
                         <th>#</th> 

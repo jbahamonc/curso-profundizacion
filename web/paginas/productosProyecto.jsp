@@ -4,6 +4,8 @@
     Author     : fasap
 --%>
 
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../inc/header.jsp"/>
@@ -23,39 +25,43 @@
                 <h3 class="box-title">Listado</h3>
             </div>
             <div class="box-body">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="productos" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th width="200">Nombre del Producto</th>
-                            <th width="400">Descripción</th>
-                            <th>Tipología</th>
-                            <th>Categoria</th>
+                            <th>Nombre del Producto</th>
                             <th>Tipo de Producto</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            JSONArray data = (JSONArray)session.getAttribute("productos");
+                            for (int i = 0; i < data.length(); i++) {
+                                JSONObject pro = data.getJSONObject(i);                                
+                        %>
                         <tr>
-                            <td>1</td>
-                            <td>Propuesta final del proyecto de investigación y extensión</td>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate similique recusandae beatae illo, quia non libero aperiam consequatur nostrum ut itaque corrupti totam ducimus at natus doloribus inventore iusto quo.</td>
-                            <td>Generación de nuevo conocimiento o desarrollo tecnológico </td>
-                            <td>LA1</td>
-                            <td>Libro</td>
-                            <td class="text-center">
+                            <td><%= i+1 %></td>
+                            <td><%= pro.getString("nombre-producto") %></td>
+                            <td><%= pro.getJSONObject("tipo-producto").getString("tipo") %></td>                            
+                            <td class="text-center hidden">
                                 <a href="infoProducto.jsp" type="button" class="btn btn-success btn-xs">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 </div>
-<a href="registroProductos.jsp" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Producto">
+<a href="procesar/gestionProductos.jsp?operacion=2" class="btn btn-danger pull-right btn-fixed" title="Agregar Nuevo Producto">
     <i class="fa fa-plus" style="vertical-align: bottom;"></i>
 </a>
 <jsp:include page="../inc/footer.jsp"/>
+<script src="../js/ajax/gestionProductos.js"></script>
+
+</body>
+</html>
