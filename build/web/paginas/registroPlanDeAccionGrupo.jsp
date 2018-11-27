@@ -33,7 +33,7 @@
                                     <option selected disabled>Seleccione</option>
                                     <% 
                                         int anio = Calendar.getInstance().get(Calendar.YEAR);
-                                        for (int i = anio; i < anio + 2; i++) {                                                                                  
+                                        for (int i = anio; i < anio + 12; i++) {                                                                                  
                                     %>
                                         <option value="<%= i %>"><%= i %></option>
                                     <% } %>
