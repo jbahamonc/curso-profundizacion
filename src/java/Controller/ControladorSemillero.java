@@ -38,8 +38,7 @@ public class ControladorSemillero {
         NameValuePair value6 = new BasicNameValuePair("idGrupo", ""+idGrupo);
         NameValuePair value7 = new BasicNameValuePair("correo", email);
         NameValuePair value8 = new BasicNameValuePair("idLinea", ""+idLineaInvestigacion);
-        NameValuePair value9 = new BasicNameValuePair("id_director", ""+idDirector);
-        
+        NameValuePair value9 = new BasicNameValuePair("id_director", ""+idDirector);       
         
         RequestBuilder requestBuilder = RequestBuilder.post().setUri("https://productividadufps.herokuapp.com/api/v1/semillero");
         requestBuilder.addParameter(value1);
@@ -60,8 +59,8 @@ public class ControladorSemillero {
 
         if (httpResponse.getStatusLine().getStatusCode() == 200 || httpResponse.getStatusLine().getStatusCode() == 201) {
             JSONObject obj = new JSONObject(source);
-            System.out.println("**** " + obj.getInt("id"));
-            return obj.getInt("id");
+            System.out.println("**** " +obj.getJSONObject("semillero").getInt("id"));
+            return obj.getJSONObject("semillero").getInt("id");
         } else {
             return -1;
         }
